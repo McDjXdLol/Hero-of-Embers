@@ -1,7 +1,7 @@
 {
     "scene_1": {
         "scene_name": "scene_1",
-        "description": "opis",
+        "description": "desc",
         "1": {
             "description": "option 1 description",
             "effect": "option 1 effect",
