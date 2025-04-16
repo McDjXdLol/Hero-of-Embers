@@ -1,4 +1,4 @@
-# Hero of Ember
+# Hero of Ember (WIP) 
 ### List of content:
 - [Description](#Description)
 - [Plot](#Plot)
