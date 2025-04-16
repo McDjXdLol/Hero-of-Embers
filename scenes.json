@@ -1,0 +1,46 @@
+{
+    "scene_1": {
+        "scene_name": "scene_1",
+        "description": "opis",
+        "1": {
+            "description": "option 1 description",
+            "effect": "option 1 effect",
+            "requirements": "opt",
+            "giving_item": "",
+            "is_combat": true,
+            "enemy_name": "Werewolf",
+            "next_scene": "scene_2"
+        },
+        "2": {
+            "description": "option 2 description",
+            "effect": "option 2 effect",
+            "requirements": "",
+            "giving_item": "spider_eye",
+            "is_combat": true,
+            "enemy_name": "Spider",
+            "next_scene": "scene_2"
+        }
+    },
+    "scene_2": {
+        "scene_name": "scene_2",
+        "description": "scene 2 description",
+        "1": {
+            "description": "option 1 scene 2 description",
+            "effect": "option 1 scene 2 effect",
+            "requirements": "spider_eye",
+            "giving_item": "",
+            "is_combat": false,
+            "enemy_name": "",
+            "next_scene": "scene_1"
+        },
+        "2": {
+            "description": "option 2 scene 2 description",
+            "effect": "option 2 scene 2 effect",
+            "requirements": "",
+            "giving_item": "opt",
+            "is_combat": false,
+            "enemy_name": "",
+            "next_scene": "scene_1"
+        }
+    }
+}
