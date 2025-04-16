@@ -22,8 +22,8 @@ If you want you can make your own plot. By starting plot_maker_app.py in python.
 4. So the option value is for player for later on in the game. Player will have to enter it. So I recommend using some simple alfabet or numbers. There is no difference if it is capital letter or not. The difference will be only for player. Because he will see it if it's capitaled or not. But the mechanics of the game will any way make it small, same as the player input.
 5. Description of the option is shut the text. For example "run away", "stay", "fight", etc.
 6. Effect is for telling player what actually happened after he choose one of the options.
-7. Requirements (WIP) it is used to check if player have the items. Like imagine there is an option to eat berries. But if player doesn't have them in inventory. The option will be not avaible for player.
-8. Items to give (WIP) it is used for previous one. So for example as previous one if you want to give player some items that he will later on need, you have to give it to him first and this is the place that you can do it.
+7. Requirements it is used to check if player have the items. Like imagine there is an option to eat berries. But if player doesn't have them in inventory. The option will be not avaible for player.
+8. Items to give it is used for previous one. So for example as previous one if you want to give player some items that he will later on need, you have to give it to him first and this is the place that you can do it.
 9. In combat is to set if there will be a fight after selecting this option or not.
 10. And if there will be Enemy name is to set with what player will be fighting. (It's only working for already added enemies, you can find them in library.py file) But be carefull because the name has to be exactly right.
 11. And next scene it is used to tell the game what scene will open after selecting this option (you can type the scene that is not exist YET).
