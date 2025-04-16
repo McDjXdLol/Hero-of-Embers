@@ -12,7 +12,7 @@ class BattleHandler:
         self.player = player
         self.enemy = enemy
 
-    def StartBattle(self):
+    def start_battle(self):
         to_return = f"""    {self.player.name}
 HP:{self.player.hp}
 Armor: {self.player.armor}
@@ -26,7 +26,7 @@ Damage: {self.enemy.damage}"""
 
     def enemy_turn(self):
         print(f"\n\n{self.enemy.name} turn!\n")
-        self.player.DealDamage(self.enemy.damage)
+        self.player.deal_damage(self.enemy.damage)
         time.sleep(0.5)
         print(f"{self.enemy.name} dealt {self.enemy.damage} dmg! \n{self.player.name} HP: {self.player.hp} Armor: {self.player.armor}")
         return 0
@@ -54,13 +54,13 @@ Damage: {self.enemy.damage}"""
     def sel_attack(self, attack_sel):
         match attack_sel:
             case 1:
-                self.enemy.DealDamage(self.player.damage)
+                self.enemy.deal_damage(self.player.damage)
                 print(
                     f"{self.player.name} dealt {self.player.damage} dmg!\n{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}")
                 return 1
             case 2:
                 if random.random() < 0.3:
-                    self.enemy.DealDamage(self.player.damage)
+                    self.enemy.deal_damage(self.player.damage)
                     print(
                         f"{self.player.name} dealt {self.player.damage} dmg!\n{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}")
                     return 0
@@ -69,7 +69,7 @@ Damage: {self.enemy.damage}"""
                     return 1
             case 3:
                 if random.random() < 0.2:
-                    self.enemy.DealDamage(self.player.damage * 5)
+                    self.enemy.deal_damage(self.player.damage * 5)
                     print(
                         f"{self.player.name} hit strong attack! {self.player.name} dealt {self.player.damage * 5} dmg!\n{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}")
                     return 1
@@ -105,8 +105,8 @@ Damage: {self.enemy.damage}"""
                     self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
                     for elix in Library.HEAL_ITEMS:
                         if chosen_elixir_name[0] in elix:
-                            self.player.HealHp(elix[1])
-                            print(f"{self.player.name} got hp healt by {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
+                            self.player.heal_hp(elix[1])
+                            print(f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
                             return 0
             case 5:
                 print("Elixirs: ", end="")
@@ -124,7 +124,7 @@ Damage: {self.enemy.damage}"""
 
 
     def battle(self):
-        print(self.StartBattle())
+        print(self.start_battle())
         whos_next = random.randint(0, 1)
         while not self.player.dead and not self.enemy.dead:
             if whos_next == 0:
@@ -136,7 +136,7 @@ Damage: {self.enemy.damage}"""
         if self.player.dead:
             return False
         elif self.enemy.dead:
-            self.player.giveExperience(self.enemy.experience_drop)
+            self.player.give_experience(self.enemy.experience_drop)
             self.player.armor += int(self.player.max_armor/4)
             return True
         else:

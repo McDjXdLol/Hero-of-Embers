@@ -1,9 +1,8 @@
 import sys
 import json
-from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QVBoxLayout, QWidget, QLineEdit,
-    QPushButton, QLabel, QTextEdit, QHBoxLayout, QFormLayout, QFileDialog
+    QPushButton, QTextEdit, QHBoxLayout, QFormLayout
 )
 
 

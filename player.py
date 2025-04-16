@@ -3,12 +3,12 @@ from inventory import Inventory
 
 class Player:
     """
-    Class that got every information about player. Information like damage, hp, maxhp etc.
+    Class that got every information about player. Information like damage, hp, max hp etc.
     """
 
     def __init__(self, name="No Name", hp=100, player_class="Human", armor=0, damage=0):
         self.name = name
-        self.maxhp = hp
+        self.max_hp = hp
         self.hp = hp
         self.max_armor = armor
         self.armor = armor
@@ -21,9 +21,9 @@ class Player:
         self.experience_to_next_level = [0, 50, 120, 210, 320, 450, 600, 770, 960, 1170, 1400]
         self.experience_to_legendary_level = [2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000]
 
-    def DealDamage(self, amount):
+    def deal_damage(self, amount):
         if (self.hp + self.armor) - amount <= 0:
-            return self.KillPlayer()
+            return self.kill_player()
         else:
             if self.armor - amount < 0:
                 self.hp += self.armor - amount
@@ -32,19 +32,19 @@ class Player:
                 self.armor -= amount
             return False
 
-    def HealHp(self, amount):
-        if self.hp + amount > self.maxhp:
-            self.hp = self.maxhp
+    def heal_hp(self, amount):
+        if self.hp + amount > self.max_hp:
+            self.hp = self.max_hp
         else:
             self.hp += amount
 
-    def KillPlayer(self):
+    def kill_player(self):
         self.hp = 0
         self.armor = 0
         self.dead = True
         return self.dead
 
-    def giveExperience(self, amount):
+    def give_experience(self, amount):
         print(f"{self.name} gained {amount} xp!")
         if type(self.level) == int:
             if self.level < len(self.experience_to_next_level):
@@ -66,9 +66,9 @@ class Player:
             else:
                 self.experience = "MAX"
                 self.level = "MAX"
-                print("You got the maximmum level!")
+                print("You got the maximum level!")
         else:
-            print("You already got the maximmum level!")
+            print("You already got the maximum level!")
 
 
     def select_legendary_boost(self):
@@ -80,7 +80,7 @@ class Player:
             try:
                 sel = int(input(""))
                 if 1 > sel > 3:
-                    print("The number is incorect!")
+                    print("The number is incorrect!")
                 else:
                     print(f"You selected {sel}")
                     self.give_legendary_bonus(sel)
@@ -101,7 +101,7 @@ class Player:
                     self.give_bonus(sel)
                     break
                 else:
-                    print("The number is incorect! Try again!")
+                    print("The number is incorrect! Try again!")
             except ValueError:
                 print("You have to enter the number!")
 
@@ -110,7 +110,7 @@ class Player:
             case 1:
                 self.damage += 15
             case 2:
-                self.maxhp += 30
+                self.max_hp += 30
                 self.hp += 30
             case 3:
                 self.armor += 15
@@ -121,7 +121,7 @@ class Player:
             case 1:
                 self.damage += 5
             case 2:
-                self.maxhp += 10
+                self.max_hp += 10
                 self.hp += 10
             case 3:
                 self.armor += 5
@@ -129,10 +129,10 @@ class Player:
 
 
 if __name__ == "__main__":
-    gracz = Player("name", 100, "Human", 100, 0, 10)
-    gracz.DealDamage(20)
+    gracz = Player("name", 100, "Human", 100, 0)
+    gracz.deal_damage(20)
     while type(gracz.level) == int :
-        gracz.giveExperience(50)
+        gracz.give_experience(50)
         if type(gracz.level) == int:
             try:
                 xp = gracz.experience_to_next_level[gracz.level]
@@ -142,7 +142,7 @@ if __name__ == "__main__":
             xp = gracz.level
         print(f"""
         Name: {gracz.name}
-        MAX HP: {gracz.maxhp}
+        MAX HP: {gracz.max_hp}
         HP: {gracz.hp}
         Armor: {gracz.armor}
         Damage: {gracz.damage}

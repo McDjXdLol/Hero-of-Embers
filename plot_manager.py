@@ -13,51 +13,51 @@ class PlotManager:
         scene_str = scene_file.read()
         self.scenes_data = json.loads(scene_str)
         first_scene = list(self.scenes_data.keys())[0]
-        self.actuall_scene = first_scene
+        self.actual_scene = first_scene
 
     def open_scene(self, scene_name):
         return self.scenes_data[scene_name]
 
-    def get_desciption(self):
-        return self.scenes_data[self.actuall_scene]['description']
+    def get_description(self):
+        return self.scenes_data[self.actual_scene]['description']
 
     def get_options_names(self):
         options = []
-        for nr, p in enumerate(self.scenes_data[self.actuall_scene]):
+        for nr, p in enumerate(self.scenes_data[self.actual_scene]):
             if nr > 1:
                 options.append(p.lower())
         return options
 
     def get_option_description(self, option_name):
-        return self.scenes_data[self.actuall_scene][option_name]['description']
+        return self.scenes_data[self.actual_scene][option_name]['description']
 
     def get_option_effect(self, option_name):
-        return self.scenes_data[self.actuall_scene][option_name]['effect']
+        return self.scenes_data[self.actual_scene][option_name]['effect']
 
     def get_option_requirements(self, option_name):
-        return self.scenes_data[self.actuall_scene][option_name]['requirements']
+        return self.scenes_data[self.actual_scene][option_name]['requirements']
 
     def get_option_giving_item(self, option_name):
-        return self.scenes_data[self.actuall_scene][option_name]['giving_item']
+        return self.scenes_data[self.actual_scene][option_name]['giving_item']
 
     def get_option_next_scene(self, option_name):
-        return self.scenes_data[self.actuall_scene][option_name]['next_scene']
+        return self.scenes_data[self.actual_scene][option_name]['next_scene']
 
     def set_next_scene(self, option_name):
-        self.actuall_scene = self.scenes_data[self.actuall_scene][option_name]['next_scene']
+        self.actual_scene = self.scenes_data[self.actual_scene][option_name]['next_scene']
 
     def show_all_options(self):
         for option in self.get_options_names():
             print(f"{option}. {self.get_option_description(option)}")
 
     def show_description(self):
-        print(f"{self.get_desciption()}")
+        print(f"{self.get_description()}")
 
     def is_fight(self, option_name):
-        return self.scenes_data[self.actuall_scene][option_name]['is_combat']
+        return self.scenes_data[self.actual_scene][option_name]['is_combat']
 
     def fight_who(self, option_name):
-        return self.scenes_data[self.actuall_scene][option_name]['enemy_name']
+        return self.scenes_data[self.actual_scene][option_name]['enemy_name']
 
     def select_option(self):
         selected_option = None

@@ -4,11 +4,11 @@ class Selection:
     Class that is used to start the game. It's gotten the class selection etc.
     """
     @staticmethod
-    def giveNickname():
+    def give_nickname():
         return input("Enter username: ")
 
     @staticmethod
-    def ClassSelect():
+    def class_select():
         print("Choose class:")
         for class_nr, classes in enumerate(Library.PLAYER_CLASSES):
             print(f"{class_nr+1}. {classes[0]}")
