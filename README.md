@@ -2,7 +2,7 @@
 ### List of content:
 - [Description](#Description)
 - [Plot](#Plot)
-- [Plot Writter](#PlotWritter)
+- [Plot Writter](#plot-writter)
 - [About](#About)
 ## Description
 So this is some simple WIP game in console. It's fantasy RPG game. More about later. For now it's not even exported to exe. And not even some kind of click to play. If you want to test the machanics you have to start py file via main.py. But for now the plot is just scene_name.
@@ -11,7 +11,7 @@ So the plot is YET not in the game. And of course I should first add it to game.
 
 But anyway, the plot is about the hero from small village. The plot is placed long, long time ago, with knight's etc. And it's kinda drama (idk).
 
-
+<a name="plot-writter"></a>
 ## Plot Writter
 If you want you can make your own plot. By starting plot_maker_app.py in python. But you have to first install pyqt6. This is the only time that i used GUI. 
 
