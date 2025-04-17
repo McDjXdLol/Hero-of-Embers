@@ -10,7 +10,7 @@ if __name__ == "__main__":
         user = Player(name="", hp=0, armor=0,
                       damage=0, player_class=[])
         PLOT_MANAGER = PlotManager(user)
-        LoadGame(user, PLOT_MANAGER)
+        LoadGame(user, PLOT_MANAGER).load_data()
     else:
         NICKNAME = Selection.give_nickname()
         CLASS_NR = Selection.class_select()
@@ -21,5 +21,6 @@ if __name__ == "__main__":
         PLOT_MANAGER = PlotManager(user)
         LoadGame(user, PLOT_MANAGER).load_data()
     while PLOT_MANAGER.select_option():
-        print("")
-    SaveGame(user, PLOT_MANAGER).save_game()
+        print("_++_")
+    if not user.dead:
+        SaveGame(user, PLOT_MANAGER).save_game()
