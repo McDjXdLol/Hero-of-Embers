@@ -41,7 +41,7 @@ class BattleHandler:
                 "1. Normal attack (100% chance)", "2.Quick attack (30% chance)", "3. Strong attack (20% chance)",
                 "4. Heal", "5. Check Inventory"])
             try:
-                sel = self.ui.get_input(0, "")
+                sel = int(self.ui.get_input(0, ""))
                 if sel < 1:
                     self.ui.change_text("The number is incorrect!")
                     continue
@@ -115,16 +115,16 @@ class BattleHandler:
                                 f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
                             return 0
             case 5:
-                self.ui.change_text("Elixirs: ", end="")
+                self.ui.change_text("Elixirs: ")
                 self.player.inventory.show_inv_elixirs()
-                self.ui.change_text()
-                self.ui.change_text("Items: ", end="")
+                self.ui.change_text("")
+                self.ui.change_text("Items: ")
                 self.player.inventory.show_inv()
-                self.ui.change_text()
-                self.ui.change_text("Weapon: ", end="")
+                self.ui.change_text("")
+                self.ui.change_text("Weapon: ")
                 self.player.inventory.show_equiped_weapons(self.player.inventory.weapon)
-                self.ui.change_text()
-                self.ui.change_text("Armor: ", end="")
+                self.ui.change_text("")
+                self.ui.change_text("Armor: ")
                 self.player.inventory.show_equiped_weapons(self.player.inventory.armor)
                 return 0
         return 1
