@@ -31,7 +31,6 @@ class Inventory:
         try:
             selected_weapon = int(input())
             if selected_weapon <= len(inv_weapons):
-                self.ui.change_text("Equipping")
                 self.equip_weapon(inv_weapons[selected_weapon - 1])
                 self.remove_from_inv(inv_weapons[selected_weapon - 1], self.inventory)
             else:
@@ -74,6 +73,12 @@ class Inventory:
                 inventory_items.append(item)
                 continue
 
+        if len(self.weapon) != 0:
+            self.ui.change_text(f"Equipped Weapon: {self.weapon[0]}")
+
+        if len(self.armor) != 0:
+            self.ui.change_text(f"Equipped Armor: {self.armor[0]}")
+
         if len(self.inventory) == 0:
             self.ui.change_text("Inventory: Empty")
             return
@@ -96,7 +101,7 @@ class Inventory:
                 want = int(input())
                 if want == 1:
                     if len(inventory_armors) > 0 and len(inventory_weapons) > 0:
-                        self.ui.change_text(["Do you want to equip:", "1. Weapon", "2. Armor?"])
+                        self.ui.change_text(["Do you want to equip:", "1. Weapon", "2. Armor"])
                         try:
                             which_to_equip = int(input())
                             if which_to_equip == 1:
