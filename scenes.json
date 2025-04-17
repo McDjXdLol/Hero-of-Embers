@@ -1,7 +1,7 @@
 {
   "scene_1": {
     "scene_name": "Ash and Soil",
-    "description": "You are Aldric, a poor farmer from a dying village. With nothing left, you’ve just arrived in the city of Eldoria, cold and hungry.",
+    "description": "You are {name}, a poor farmer from a dying village. With nothing left, you've just arrived in the city of Eldoria, cold and hungry.",
     "1": {
       "description": "Search the alleys for work or food.",
       "effect": "You wander into a shady alley and are approached by a suspicious man.",
@@ -23,7 +23,7 @@
   },
   "scene_2": {
     "scene_name": "Filth and Ale",
-    "description": "You find work in a moldy tavern. The barkeep hires you as a janitor. It’s hard, thankless work, but it keeps you alive.",
+    "description": "You find work in a moldy tavern. The barkeep hires you as a janitor. It's hard, thankless work, but it keeps you alive.",
     "1": {
       "description": "Keep sweeping floors and emptying pots.",
       "effect": "You work for months, learning to stay invisible. One night, mercenaries arrive, drunk and loud.",
@@ -48,7 +48,7 @@
     "description": "One evening, while scrubbing near a table of mercenaries, you overhear talk of a dragon in the northern forests. Smoke, fire, and an ancient threat.",
     "1": {
       "description": "Eavesdrop on the mercenaries.",
-      "effect": "They laugh it off, but something stirs inside you. A pull you can’t explain.",
+      "effect": "They laugh it off, but something stirs inside you. A pull you can't explain.",
       "requirements": "",
       "giving_item": "",
       "is_combat": false,
@@ -67,7 +67,7 @@
   },
   "scene_4": {
     "scene_name": "Into the Forest",
-    "description": "You can’t sleep. The whispers of fire echo in your mind. Grabbing what little you own, you head north into the woods.",
+    "description": "You can't sleep. The whispers of fire echo in your mind. Grabbing what little you own, you head north into the woods.",
     "1": {
       "description": "Keep walking deeper into the darkness.",
       "effect": "Hours pass. No beast. No fire. Just silence. Until a scream cuts the air.",
@@ -80,10 +80,10 @@
   },
   "scene_5": {
     "scene_name": "The Screaming Clearing",
-    "description": "In a moonlit clearing, a monstrous dragon looms over a girl. Its eyes burn like coals. She’s trapped.",
+    "description": "In a moonlit clearing, a monstrous dragon looms over a girl. Its eyes burn like coals. She's trapped.",
     "1": {
       "description": "Rush in and grab the girl.",
-      "effect": "You charge without thinking. The dragon roars, but doesn’t follow. Somehow, you escape.",
+      "effect": "You charge without thinking. The dragon roars, but doesn't follow. Somehow, you escape.",
       "requirements": "",
       "giving_item": "",
       "is_combat": false,
@@ -126,8 +126,8 @@
       "next_scene": "scene_8"
     },
     "2": {
-      "description": "Ask her why the dragon didn’t attack.",
-      "effect": "She doesn’t know. But something in her eyes says she’s seen more than she admits.",
+      "description": "Ask her why the dragon didn't attack.",
+      "effect": "She doesn't know. But something in her eyes says she's seen more than she admits.",
       "requirements": "",
       "giving_item": "",
       "is_combat": false,
@@ -174,7 +174,7 @@
     "scene_name": "The Hollow Hand",
     "description": "The rumors spread quickly: a strange cult calling themselves the Hollow Hand is making their presence known in Eldoria. Disappearances. Weird symbols. Whispers in the dark.",
     "1": {
-      "description": "Investigate the cult’s symbols.",
+      "description": "Investigate the cult's symbols.",
       "effect": "You find strange runes carved into the walls of an abandoned building. They glow faintly. This is no ordinary cult.",
       "requirements": "",
       "giving_item": "",
@@ -194,10 +194,10 @@
   },
   "scene_11": {
     "scene_name": "The First Encounter",
-    "description": "Lyria approaches you one evening with a grave expression. 'I’ve found something,' she says. 'A temple. Beneath the city. It’s the cult’s headquarters.'",
+    "description": "Lyria approaches you one evening with a grave expression. 'I've found something,' she says. 'A temple. Beneath the city. It's the cult's headquarters.'",
     "1": {
       "description": "Plan an attack on the cult's temple.",
-      "effect": "You and Lyria gather your things and head out under the cover of night, determined to uncover the cult’s true purpose.",
+      "effect": "You and Lyria gather your things and head out under the cover of night, determined to uncover the cult's true purpose.",
       "requirements": "",
       "giving_item": "",
       "is_combat": true,
@@ -206,7 +206,7 @@
     },
     "2": {
       "description": "Take a cautious approach, try to learn more about the cult before acting.",
-      "effect": "Lyria nods, but there’s urgency in her eyes. 'We don’t have much time. They are preparing something.'",
+      "effect": "Lyria nods, but there's urgency in her eyes. 'We don't have much time. They are preparing something.'",
       "requirements": "",
       "giving_item": "",
       "is_combat": false,
@@ -216,10 +216,10 @@
   },
   "scene_12": {
     "scene_name": "The Betrayal",
-    "description": "You and Lyria make your way into the cult’s temple, the air thick with the scent of incense and fear. You hear the sound of chanting coming from deep within.",
+    "description": "You and Lyria make your way into the cult's temple, the air thick with the scent of incense and fear. You hear the sound of chanting coming from deep within.",
     "1": {
       "description": "Move forward cautiously, prepared for a confrontation.",
-      "effect": "You step into the temple’s main hall, where shadowy figures gather around a stone altar. The chant grows louder.",
+      "effect": "You step into the temple's main hall, where shadowy figures gather around a stone altar. The chant grows louder.",
       "requirements": "",
       "giving_item": "",
       "is_combat": true,
@@ -228,7 +228,7 @@
     },
     "2": {
       "description": "Try to sneak past the cultists and find the source of the ritual.",
-      "effect": "You and Lyria carefully move to the side, avoiding the cultists as best you can. But something doesn’t feel right.",
+      "effect": "You and Lyria carefully move to the side, avoiding the cultists as best you can. But something doesn't feel right.",
       "requirements": "",
       "giving_item": "",
       "is_combat": false,
@@ -284,8 +284,8 @@
     "scene_name": "The Last Stand",
     "description": "You are face-to-face with Taren as the temple crumbles. The betrayal is fresh in your mind, but now is not the time for hesitation.",
     "1": {
-      "description": "Continue the fight, determined to stop Taren’s plan.",
-      "effect": "With every strike, you feel the fury of the betrayal coursing through you. Taren’s magic is powerful, but you won't back down.",
+      "description": "Continue the fight, determined to stop Taren's plan.",
+      "effect": "With every strike, you feel the fury of the betrayal coursing through you. Taren's magic is powerful, but you won't back down.",
       "requirements": "",
       "giving_item": "stormfang",
       "is_combat": true,
@@ -304,7 +304,7 @@
   },
   "scene_16": {
     "scene_name": "The Collapse",
-    "description": "You manage to escape the crumbling temple, but the damage has been done. The Hollow Hand’s plan is nearly complete, and the cult has gained too much power.",
+    "description": "You manage to escape the crumbling temple, but the damage has been done. The Hollow Hand's plan is nearly complete, and the cult has gained too much power.",
     "1": {
       "description": "Regroup with Lyria and decide what to do next.",
       "effect": "Lyria is shaken but determined. The weight of the betrayal weighs heavily on both of you, but you know the war isn't over.",
@@ -351,7 +351,7 @@
     "description": "As Taren falls, the ground shakes violently. You feel a deep rumble, the earth itself groaning under the pressure. The dragon is waking.",
     "1": {
       "description": "Rush to the summoning circle, trying to stop the awakening before it's too late.",
-      "effect": "The dark ritual is in full swing. You must act fast to prevent the dragon’s return.",
+      "effect": "The dark ritual is in full swing. You must act fast to prevent the dragon's return.",
       "requirements": "",
       "giving_item": "",
       "is_combat": false,
@@ -370,10 +370,10 @@
   },
   "scene_19": {
     "scene_name": "Stopping the Ritual",
-    "description": "You try to disrupt the summoning, but it’s too late. The ritual is reaching its climax, and the ground splits open. A shadowy figure rises from the depths.",
+    "description": "You try to disrupt the summoning, but it's too late. The ritual is reaching its climax, and the ground splits open. A shadowy figure rises from the depths.",
     "1": {
       "description": "Keep fighting to destroy the ritual before the dragon fully awakens.",
-      "effect": "You push forward, trying to break the ritual’s hold, but the energy is overwhelming.",
+      "effect": "You push forward, trying to break the ritual's hold, but the energy is overwhelming.",
       "requirements": "",
       "giving_item": "",
       "is_combat": true,
@@ -382,7 +382,7 @@
     },
     "2": {
       "description": "Flee the ritual site and prepare for the inevitable battle with the dragon.",
-      "effect": "The ritual is complete. You know that you can’t stop the dragon now, only face it head-on.",
+      "effect": "The ritual is complete. You know that you can't stop the dragon now, only face it head-on.",
       "requirements": "",
       "giving_item": "",
       "is_combat": false,
@@ -404,7 +404,7 @@
     },
     "2": {
       "description": "Look for a way to outsmart the dragon, knowing that brute force alone won't defeat it.",
-      "effect": "You analyze the dragon’s weaknesses, searching for an opening. The battle will be as much about strategy as strength.",
+      "effect": "You analyze the dragon's weaknesses, searching for an opening. The battle will be as much about strategy as strength.",
       "requirements": "",
       "giving_item": "",
       "is_combat": true,
@@ -417,7 +417,7 @@
     "description": "The Shadow Dragon roars one last time as it rears back to strike. You know this is it—the final moment to deliver the killing blow.",
     "1": {
       "description": "Deliver the final strike with all your might, using Stormfang.",
-      "effect": "With one last surge of power, you drive Stormfang deep into the dragon’s heart. The beast screeches in pain as it collapses, its massive body crumbling to dust.",
+      "effect": "With one last surge of power, you drive Stormfang deep into the dragon's heart. The beast screeches in pain as it collapses, its massive body crumbling to dust.",
       "requirements": "",
       "giving_item": "",
       "is_combat": true,

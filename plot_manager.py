@@ -51,7 +51,7 @@ class PlotManager:
             print(f"{option}. {self.get_option_description(option)}")
 
     def show_description(self):
-        print(f"{self.get_description()}")
+        print(f"{self.get_description().format(name=self.player.name)}")
 
     def is_fight(self, option_name):
         return self.scenes_data[self.actual_scene][option_name]['is_combat']
