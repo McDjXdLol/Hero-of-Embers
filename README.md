@@ -1,48 +1,110 @@
 # Hero of Embers (WIP)
-### List of content:
-- [Description](#Description)
+
+### Table of Contents:
+- [Description](#description)
 - [Installation](#installation)
-- [Plot](#Plot)
+- [Plot](#plot)
+- [Gameplay](#gameplay)
 - [Plot Writer](#plot-writer)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Description
-This is a simple work-in-progress (WIP) console-based fantasy RPG game. Currently, it's not exported to an executable and lacks a click-to-play feature. To test the mechanics, you need to run the Python file via `main.py`. At this stage, the plot consists only of scene names.
+"Hero of Embers" is a work-in-progress console-based fantasy RPG. Currently, it’s in early development, with the core game mechanics and plot still evolving. The game takes place in a rich, fantasy world filled with combat, choices, and an engaging narrative. You take on the role of a young hero who must uncover hidden secrets and battle a rising evil.
+
+The game is not yet exported to an executable, and it lacks a click-to-play feature. To test the mechanics, you need to run the Python script via `main.py`. As of now, the plot consists mainly of scene names and basic structure, but it is rapidly evolving.
 
 ## Installation
-Currently, there is no "click and run" option. You need to have Python installed on your PC. After that, download all the necessary files. Once you have the files, open the command prompt and run the command: `pip install -r requirements.txt`. This will install all the required dependencies. For now, this is only needed to start the "Plot Writer" application. In the future, I may add a few more libraries to the list.
+To play the game, you need to have Python 3.x installed on your PC. You can then download the project files and run the game locally.
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/McDjXdLol/Hero-of-Embers.git
+    ```
+
+2. Navigate to the project folder:
+    ```bash
+    cd Hero-of-Embers
+    ```
+
+3. Install the required dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+   This will install all the necessary dependencies, including `pyqt6` (used for the plot creation tool).
+
+4. To start the game, run the following:
+    ```bash
+    python main.py
+    ```
 
 ## Plot
-The story follows a young farmer who arrives in a city and soon becomes involved in a mysterious ancient threat. After meeting a strange girl, they uncover secrets about an ancient order and a legendary weapon. As they grow stronger, they get caught in a dangerous cult's web, facing tough choices and powerful enemies. The hero must uncover hidden conspiracies and prepare for a final battle that will determine the fate of the world.
+The story follows **Aldric**, a young farmer who arrives in a bustling city only to be drawn into a world of ancient mysteries. Soon, Aldric meets **Lyria**, a mysterious girl with ties to a powerful order that once protected the world from darkness. As Aldric grows stronger, he becomes embroiled in a dangerous cult's conspiracy, fighting to uncover secrets about an ancient weapon that could determine the fate of the world.
 
-<a name="plot-writer"></a>
+Along the way, he must make tough choices, including dealing with betrayal, forging alliances, and facing powerful enemies, all while preparing for an ultimate showdown against a dark force that threatens to consume everything.
+
+### Key Story Elements:
+- **The Protector**: A knightly order long thought destroyed, with connections to Aldric’s destiny.
+- **The Hollow Hand Cult**: A mysterious group that seeks to unleash a deadly power.
+- **Stormfang**: A legendary sword said to hold the key to defeating the ultimate evil.
+
+## Gameplay
+In "Hero of Embers," you will embark on a journey that blends narrative choices and turn-based combat. You will encounter different enemies, explore new locations, and face moral dilemmas that shape the course of the story.
+
+### Core Features:
+- **Character Classes**: Choose from a range of classes that will define your playstyle. Classes include:
+    - **The Protector (Tank)** – High HP, high armor, low damage.
+    - **The Fighter (Balanced)** – Standard stats for a balanced approach.
+    - **The Avenger (Damager)** – High damage, low HP, for aggressive combat.
+  
+- **Dynamic Combat**: Engage in turn-based combat with a variety of enemies. The battle mechanics include HP, armor, and attack damage.
+
+- **Inventory System**: Collect items, potions, and weapons. You can equip your character with different gear as you progress.
+
+- **Choices That Matter**: The game features branching story paths where your choices will directly affect the plot.
+
+- **Save & Load**: Save your progress and load it later to continue where you left off.
+
+### Combat Mechanics:
+- **Turn-based Battles**: Each character has HP, armor, and damage stats, and you must strategize your moves carefully to defeat enemies.
+  
+- **Potion System**: Use health potions and other items to heal during battle or restore armor.
+
+### Levels of Difficulty:
+The game offers three difficulty levels that affect the stats and progression of the player:
+- **Cushioned Path (Easy)**: Increased player stats for an easier experience.
+- **Twisted Road (Normal)**: Balanced stats for a challenging yet fair experience.
+- **Iron Trial (Hard)**: Reduced player stats for a tough challenge.
+
 ## Plot Writer
-You can create your own plot by running the `plot_maker_app.py` file. Please note that you will need to install pyqt6 for this feature, as it's the only instance where a GUI is used.
+If you wish to create your own scenes and plot progression, you can use the Plot Writer tool. This is a GUI application built with PyQt6. To use it, you need to install the required dependencies and run the `plot_maker_app.py` file.
 
-![plot_maker_app](https://github.com/user-attachments/assets/3de29f7b-2386-4b59-a951-2fc930a22077)
-1. Enter the scene name, which you will need later to jump to this scene.
+### How to Use:
+1. Enter the scene name you want to create.
+2. Add a description that explains what is happening in the scene.
+3. Add options that the player can choose, with each option affecting the game in different ways.
+    - **Each option includes**:
+        - **Description** of the choice (e.g., "Fight", "Run Away").
+        - **Effect** (what happens after the player chooses).
+        - **Requirements** (items or conditions required to make the choice).
+        - **Items to give** (items the player will receive after making the choice).
+        - **Combat Encounter** (whether or not a fight will happen).
+        - **Next Scene** (the next scene that follows based on the choice).
+4. You can create a full story using this tool by adding new scenes, options, and branching paths.
 
-2. Add a description to tell the player what is happening.
+### Note:
+You must install `pyqt6` to use this tool:
+```bash
+pip install pyqt6
+```
+## Contributing
+We welcome contributions to the game! If you have ideas for new features, bug fixes, or improvements, feel free to fork the repository and submit a pull request. Before submitting, please ensure that your changes don’t break existing functionality.
 
-3. Click "Add Scene." Then, write the name of the scene again. You can add options for the player to make at this point.
+### How to Contribute:
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Make your changes and commit them with a clear description.
+4. Submit a pull request with a description of the changes.
 
-4. The option value represents a choice the player can make later. Use simple letters or numbers. Capitalization doesn't affect gameplay mechanics, but the player will see it as typed.
-
-5. Write a description of the option (e.g., "run away," "stay," "fight," etc.).
-
-6. The effect shows what happens after the player chooses this option.
-
-7. Requirements specify which items the player must have to select this option (e.g., the option to eat berries if the player has them).
-
-8. Use the "Items to Give" field to give the player items they will need later.
-
-9. Specify whether a combat encounter occurs after selecting the option.
-
-10. Set the enemy name for combat. (Ensure the name matches exactly what's in the `library.py` file.)
-
-11. Define the next scene that opens after selecting this option (you can type a scene name even if it doesn't exist yet).
-
-12. Click "Add Option" to add as many options as needed.
-
-13. After adding all options, click "New Scene" to start again.
-
-14. When you're done, click "Finish" to complete the plot.
-
+## License
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
