@@ -17,7 +17,7 @@ The game is not yet exported to an executable, and it lacks a click-to-play feat
 ## Installation
 To play the game, you need to have Python 3.x installed on your PC. You can then download the project files and run the game locally.
 
-1. Clone the repository:
+1. Clone the repository or download it manually:
     ```bash
     git clone https://github.com/McDjXdLol/Hero-of-Embers.git
     ```
