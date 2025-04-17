@@ -27,6 +27,8 @@ class Inventory:
     def show_inv(self):
         for item in self.inventory:
             print(f"{item[0]} x{item[1]}", end=", ")
+        if len(self.inventory) == 0:
+            print("Inventory: Empty")
 
     def show_inv_elixirs(self):
         for el in self.elixir_inventory:

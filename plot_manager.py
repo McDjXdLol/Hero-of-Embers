@@ -82,6 +82,7 @@ class PlotManager:
                 continue
         if selected_option is None:
             print("There was an error!")
+            return False
         else:
             os.system('cls')
             print(self.get_option_effect(selected_option))
@@ -103,5 +104,6 @@ class PlotManager:
             if self.get_option_next_scene(selected_option) != "END":
                 self.set_next_scene(selected_option)
                 self.select_option()
+                return True
             else:
                 return False
