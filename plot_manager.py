@@ -75,16 +75,22 @@ class PlotManager:
                 self.show_all_options()
                 print("\n")
                 print("I. Show inventory")
-                print("E. Save & Exit")
+                print("S. Save & Exit")
+                print("E. Exit without Saving")
                 selected_option = input("Select Option: ")
                 print("\n")
                 if selected_option in self.get_options_names():
                     break
                 elif selected_option.lower() == "i":
                     self.player.inventory.show_inv()
-                elif selected_option.lower() == "e":
+                elif selected_option.lower() == "s":
                     print("Saving & Exiting...")
                     SaveGame(self.player, self).save_game()
+                    time.sleep(1)
+                    sys.exit()
+                elif selected_option.lower() == "e":
+                    print("Exiting...")
+                    time.sleep(1)
                     sys.exit()
                 else:
                     print("There is no such option!")

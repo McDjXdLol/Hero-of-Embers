@@ -21,6 +21,6 @@ if __name__ == "__main__":
         PLOT_MANAGER = PlotManager(user)
         LoadGame(user, PLOT_MANAGER).load_data()
     while PLOT_MANAGER.select_option():
-        print("_++_")
+        print("")
     if not user.dead:
         SaveGame(user, PLOT_MANAGER).save_game()
