@@ -1,4 +1,4 @@
-# Hero of Embers
+# Hero of Embers (WIP)
 
 ## Table of Contents:
 - [Description](#description)
