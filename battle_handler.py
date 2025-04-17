@@ -145,7 +145,7 @@ Damage: {self.enemy.damage}"""
             self.player.give_experience(self.enemy.experience_drop)
             self.player.armor += int(self.player.max_armor / 2)
             if self.enemy.experience_drop >= 25:
-                droping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS))]
+                droping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS)-1)]
                 amount = random.randint(1,3)
             else:
                 droping_item = Library.HEAL_ITEMS[random.randint(0, 3)]

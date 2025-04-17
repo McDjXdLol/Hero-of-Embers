@@ -2,6 +2,7 @@ from player import Player
 from library import Library
 from selection import Selection
 from plot_manager import PlotManager
+from save_handler import SaveGame, LoadGame
 
 if __name__ == "__main__":
     NICKNAME = Selection.give_nickname()
@@ -13,4 +14,4 @@ if __name__ == "__main__":
     PLOT_MANAGER = PlotManager(user)
     while PLOT_MANAGER.select_option():
         print("")
-
+    SaveGame(user, PLOT_MANAGER).save_game()
