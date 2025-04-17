@@ -60,6 +60,8 @@ class Inventory:
                             self.weapon.remove(self.weapon[0])
                 self.weapon.append(item)
                 return old_weapon_damage, weapon[1]
+            return None
+        return None
 
     def equip_armor(self, item):
         old_armor = 0
@@ -72,3 +74,5 @@ class Inventory:
                             self.armor.remove(self.armor[0])
                 self.armor.append(item)
                 return old_armor, armor[1]
+            return None
+        return None
