@@ -1,7 +1,7 @@
 # Hero of Embers (WIP)
 ### List of content:
 - [Description](#Description)
-- [Instalation](#instalation)
+- [Installation](#installation)
 - [Plot](#Plot)
 - [Plot Writer](#plot-writer)
 ## Description
