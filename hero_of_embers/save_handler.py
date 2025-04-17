@@ -52,7 +52,7 @@ class LoadGame:
     @staticmethod
     def load_game():
         if os.path.exists("hero_of_embers/savegame.json"):
-            with open('savegame.json', 'r') as file:
+            with open('hero_of_embers/savegame.json', 'r') as file:
                 return json.load(file)
         else:
             return None
@@ -75,6 +75,6 @@ class LoadGame:
             self.player.level = save_data["player_level"]
             self.player.experience = save_data["player_experience"]
             self.plot_manager.actual_scene = save_data["current_scene"]
-            print("Save file loaded successfuly!")
+            print("Save file loaded successfully!")
         else:
             print("There is no save file to load!")
