@@ -11,7 +11,7 @@ The story follows a young farmer who arrives in a city and soon becomes involved
 
 <a name="plot-writer"></a>
 ## Plot Writer
-You can create your own plot by running the plot_maker_app.py file. Please note that you will need to install pyqt6 for this feature, as it's the only instance where a GUI is used.
+You can create your own plot by running the `plot_maker_app.py` file. Please note that you will need to install pyqt6 for this feature, as it's the only instance where a GUI is used.
 
 ![plot_maker_app](https://github.com/user-attachments/assets/3de29f7b-2386-4b59-a951-2fc930a22077)
 1. Enter the scene name, which you will need later to jump to this scene.
@@ -32,7 +32,7 @@ You can create your own plot by running the plot_maker_app.py file. Please note 
 
 9. Specify whether a combat encounter occurs after selecting the option.
 
-10. Set the enemy name for combat. (Ensure the name matches exactly what's in the library.py file.)
+10. Set the enemy name for combat. (Ensure the name matches exactly what's in the `library.py` file.)
 
 11. Define the next scene that opens after selecting this option (you can type a scene name even if it doesn't exist yet).
 
