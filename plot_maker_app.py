@@ -5,7 +5,6 @@ from PyQt6.QtWidgets import (
     QPushButton, QTextEdit, QHBoxLayout, QFormLayout
 )
 
-
 class SceneBuilderApp(QMainWindow):
     def __init__(self):
         super().__init__()
