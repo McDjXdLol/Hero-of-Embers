@@ -71,6 +71,8 @@ class PlotManager:
                 print("\n")
                 if selected_option in self.get_options_names():
                     break
+                elif selected_option.lower() == "i":
+                    self.player.inventory.show_inv()
                 else:
                     print("There is no such option!")
                     continue
