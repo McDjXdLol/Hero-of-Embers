@@ -4,13 +4,7 @@ from library import Library
 class Inventory:
     def __init__(self, ui):
         self.ui = ui
-        self.inventory = [[["Iron Sword", 40], 1],
-                          [["Gold Sword", 50], 1],
-                          [["Eclipse", 70], 1],
-                          [["Clothes", 0], 1],
-                          [["Wooden Armor", 10], 1],
-                          [["Knight Armor", 40], 1]
-                          ]
+        self.inventory = []
         self.elixir_inventory = []
         self.weapon = []
         self.armor = []
