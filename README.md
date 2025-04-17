@@ -82,7 +82,11 @@ If you'd like to create your own plot for the game, you can use the `plot_maker_
 13. **Start New Scene**: Once you've added options, click "New Scene" to create additional scenes and repeat the process.
 14. **Save Plot**: When you’re finished, click "Save to file" to save your plot. Now you're ready to load it into the game and start playing.
 
-To run the plot maker, simply execute `plot_maker_app.py` after installing `pyqt6`.
+To run the plot maker, simply execute the following command after installing `pyqt6`:
+```bash
+python plot_maker_app.py
+```
+
 
 ## Contributing
 Contributions are welcome! Fork the repository, make your changes, and create a pull request.
