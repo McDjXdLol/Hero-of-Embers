@@ -36,10 +36,10 @@ class Library:
     ]
     # [Name, HP, Armor, Damage, XP Drop]
     ENEMIES = [
-        ["Hungry Mugger", 20, 6, 8, 10],  # Pierwszy przeciwnik – testowy
-        ["Cult Initiate", 28, 8, 10, 15],  # Początkujący kultysta, lekko groźniejszy
-        ["Cultist Priest", 40, 10, 14, 25],  # Wspiera magią, średni poziom
-        ["Cultist Sorcerer", 55, 12, 18, 35],  # Potężniejszy magiczny wróg
-        ["Taren (High Priest)", 75, 18, 20, 60],  # Boss fabularny, zdradziecki mentor
-        ["Shadow Dragon", 120, 25, 28, 100]  # Finalny boss – totalna maszyna śmierci
+        ["Hungry Mugger", 20, 6, 8, 10],
+        ["Cult Initiate", 28, 8, 10, 15],
+        ["Cultist Priest", 40, 10, 14, 25],
+        ["Cultist Sorcerer", 55, 12, 18, 35],
+        ["Taren (High Priest)", 75, 18, 20, 60],
+        ["Shadow Dragon", 120, 25, 28, 100]
     ]
