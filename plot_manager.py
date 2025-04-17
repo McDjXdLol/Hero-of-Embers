@@ -1,5 +1,6 @@
 import json
 import os
+import random
 import time
 
 from enemy import Enemy
@@ -46,6 +47,9 @@ class PlotManager:
     def set_next_scene(self, option_name):
         self.actual_scene = self.scenes_data[self.actual_scene][option_name]['next_scene']
 
+    def get_drop_information(self, option_name):
+        return self.scenes_data[self.actual_scene][option_name]['drop']
+
     def show_all_options(self):
         for option in self.get_options_names():
             print(f"{option}. {self.get_option_description(option)}")
@@ -86,6 +90,10 @@ class PlotManager:
         else:
             os.system('cls')
             print(self.get_option_effect(selected_option))
+            if self.get_drop_information(selected_option):
+                droping_item = Library.HEAL_ITEMS[random.randint(0, len(Library.HEAL_ITEMS))]
+                amount = random.randint(1, 3)
+                self.player.inventory.add_to_inv(droping_item, self.player.inventory.elixir_inventory, amount=amount)
             if self.is_fight(selected_option):
                 time.sleep(1)
                 for en in Library.ENEMIES:

@@ -9,7 +9,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Hungry Mugger",
-      "next_scene": "scene_2"
+      "next_scene": "scene_2",
+      "drop": false
     },
     "2": {
       "description": "Go straight to the tavern district.",
@@ -18,7 +19,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_3"
+      "next_scene": "scene_3",
+      "drop": false
     }
   },
   "scene_2": {
@@ -31,7 +33,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_3"
+      "next_scene": "scene_3",
+      "drop": true
     },
     "2": {
       "description": "Ask the barkeep about better work.",
@@ -40,7 +43,8 @@
       "giving_item": "old_mop",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_3"
+      "next_scene": "scene_3",
+      "drop": false
     }
   },
   "scene_3": {
@@ -53,7 +57,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_4"
+      "next_scene": "scene_4",
+      "drop": true
     },
     "2": {
       "description": "Ignore them and keep cleaning.",
@@ -62,7 +67,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_4"
+      "next_scene": "scene_4",
+      "drop": false
     }
   },
   "scene_4": {
@@ -75,7 +81,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_5"
+      "next_scene": "scene_5",
+      "drop": true
     }
   },
   "scene_5": {
@@ -88,7 +95,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_6"
+      "next_scene": "scene_6",
+      "drop": false
     },
     "2": {
       "description": "Freeze and watch.",
@@ -97,7 +105,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_6"
+      "next_scene": "scene_6",
+      "drop": false
     }
   },
   "scene_6": {
@@ -110,7 +119,8 @@
       "giving_item": "simple_meal",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_7"
+      "next_scene": "scene_7",
+      "drop": true
     }
   },
   "scene_7": {
@@ -123,7 +133,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_8"
+      "next_scene": "scene_8",
+      "drop": false
     },
     "2": {
       "description": "Ask her why the dragon didn't attack.",
@@ -132,7 +143,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_8"
+      "next_scene": "scene_8",
+      "drop": false
     }
   },
   "scene_8": {
@@ -145,7 +157,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_9"
+      "next_scene": "scene_9",
+      "drop": false
     },
     "2": {
       "description": "Challenge her to a mock duel.",
@@ -154,7 +167,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_9"
+      "next_scene": "scene_9",
+      "drop": true
     }
   },
   "scene_9": {
@@ -167,7 +181,8 @@
       "giving_item": "stormfang",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_10"
+      "next_scene": "scene_10",
+      "drop": true
     }
   },
   "scene_10": {
@@ -180,7 +195,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_11"
+      "next_scene": "scene_11",
+      "drop": true
     },
     "2": {
       "description": "Ask around for more information.",
@@ -189,7 +205,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_11"
+      "next_scene": "scene_11",
+      "drop": false
     }
   },
   "scene_11": {
@@ -202,7 +219,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Cult Initiate",
-      "next_scene": "scene_12"
+      "next_scene": "scene_12",
+      "drop": false
     },
     "2": {
       "description": "Take a cautious approach, try to learn more about the cult before acting.",
@@ -211,7 +229,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_12"
+      "next_scene": "scene_12",
+      "drop": true
     }
   },
   "scene_12": {
@@ -224,7 +243,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Cultist Priest",
-      "next_scene": "scene_13"
+      "next_scene": "scene_13",
+      "drop": false
     },
     "2": {
       "description": "Try to sneak past the cultists and find the source of the ritual.",
@@ -233,7 +253,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_13"
+      "next_scene": "scene_13",
+      "drop": true
     }
   },
   "scene_13": {
@@ -246,7 +267,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Taren (High Priest)",
-      "next_scene": "scene_14"
+      "next_scene": "scene_14",
+      "drop": false
     },
     "2": {
       "description": "Try to escape the temple and regroup with Lyria.",
@@ -255,7 +277,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_14"
+      "next_scene": "scene_14",
+      "drop": true
     }
   },
   "scene_14": {
@@ -268,7 +291,8 @@
       "giving_item": "stormfang",
       "is_combat": true,
       "enemy_name": "Taren (High Priest)",
-      "next_scene": "scene_15"
+      "next_scene": "scene_15",
+      "drop": false
     },
     "2": {
       "description": "Flee from the temple, hoping to survive the collapsing ruins.",
@@ -277,7 +301,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_16"
+      "next_scene": "scene_16",
+      "drop": false
     }
   },
   "scene_15": {
@@ -290,7 +315,8 @@
       "giving_item": "stormfang",
       "is_combat": true,
       "enemy_name": "Taren (High Priest)",
-      "next_scene": "scene_17"
+      "next_scene": "scene_17",
+      "drop": false
     },
     "2": {
       "description": "Try to escape before it's too late, leaving Taren to his fate.",
@@ -299,7 +325,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_16"
+      "next_scene": "scene_16",
+      "drop": true
     }
   },
   "scene_16": {
@@ -312,7 +339,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_18"
+      "next_scene": "scene_18",
+      "drop": true
     },
     "2": {
       "description": "Follow the trail of the cult, determined to stop their ritual.",
@@ -321,7 +349,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Cultist Sorcerer",
-      "next_scene": "scene_18"
+      "next_scene": "scene_18",
+      "drop": false
     }
   },
   "scene_17": {
@@ -334,7 +363,8 @@
       "giving_item": "stormfang",
       "is_combat": true,
       "enemy_name": "Taren (High Priest)",
-      "next_scene": "scene_18"
+      "next_scene": "scene_18",
+      "drop": false
     },
     "2": {
       "description": "Attempt to overpower him with your raw strength and will, without relying on magic.",
@@ -343,7 +373,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Taren (High Priest)",
-      "next_scene": "scene_18"
+      "next_scene": "scene_18",
+      "drop": false
     }
   },
   "scene_18": {
@@ -356,7 +387,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_19"
+      "next_scene": "scene_19",
+      "drop": true
     },
     "2": {
       "description": "Prepare for battle, knowing that only one way out of this is through sheer force.",
@@ -365,7 +397,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Shadow Dragon",
-      "next_scene": "scene_20"
+      "next_scene": "scene_20",
+      "drop": false
     }
   },
   "scene_19": {
@@ -378,7 +411,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Cult Sorcerer",
-      "next_scene": "scene_20"
+      "next_scene": "scene_20",
+      "drop": false
     },
     "2": {
       "description": "Flee the ritual site and prepare for the inevitable battle with the dragon.",
@@ -387,7 +421,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_20"
+      "next_scene": "scene_20",
+      "drop": true
     }
   },
   "scene_20": {
@@ -400,7 +435,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Shadow Dragon",
-      "next_scene": "scene_21"
+      "next_scene": "scene_21",
+      "drop": false
     },
     "2": {
       "description": "Look for a way to outsmart the dragon, knowing that brute force alone won't defeat it.",
@@ -409,7 +445,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Shadow Dragon",
-      "next_scene": "scene_21"
+      "next_scene": "scene_21",
+      "drop": false
     }
   },
   "scene_21": {
@@ -422,7 +459,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Shadow Dragon",
-      "next_scene": "scene_22"
+      "next_scene": "scene_22",
+      "drop": false
     },
     "2": {
       "description": "Call upon your last bit of magic to weaken the dragon before striking with Stormfang.",
@@ -431,7 +469,8 @@
       "giving_item": "",
       "is_combat": true,
       "enemy_name": "Shadow Dragon",
-      "next_scene": "scene_22"
+      "next_scene": "scene_22",
+      "drop": false
     }
   },
   "scene_22": {
@@ -444,7 +483,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_23"
+      "next_scene": "scene_23",
+      "drop": false
     },
     "2": {
       "description": "Search for survivors among the ruins.",
@@ -453,7 +493,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_23"
+      "next_scene": "scene_23",
+      "drop": false
     }
   },
   "scene_23": {
@@ -466,7 +507,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_24"
+      "next_scene": "scene_24",
+      "drop": false
     },
     "2": {
       "description": "Head back to Eldoria, ready to rebuild.",
@@ -475,7 +517,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "scene_24"
+      "next_scene": "scene_24",
+      "drop": false
     }
   },
   "scene_24": {
@@ -488,7 +531,8 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
-      "next_scene": "END"
+      "next_scene": "END",
+      "drop": false
     }
   }
 }
