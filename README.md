@@ -33,8 +33,7 @@
     python main.py
     ```
 ## Plot
-The story follows Aldric, a young farmer who discovers a hidden destiny tied to an ancient order. Alongside Lyria, he unravels a conspiracy by the Hollow Hand Cult and seeks to wield the legendary sword Stormfang. Players must navigate difficult choices, face betrayal, and prepare for a final confrontation against a rising evil.
-
+The story follows a young farmer who discovers a hidden destiny tied to an ancient order. Alongside a companion, they unravel a conspiracy by the Hollow Hand Cult and seek to wield the legendary sword Stormfang. Players must navigate difficult choices, face betrayal, and prepare for a final confrontation against a rising evil.
 ### Key Story Elements:
 **The Protector**: An ancient order with ties to Aldric’s fate.
 
