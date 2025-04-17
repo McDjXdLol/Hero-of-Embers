@@ -9,6 +9,7 @@ class Inventory:
         self.weapon = []
         self.armor = []
 
+
     @staticmethod
     def add_to_inv(item, inv, amount=1):
         its_in_in = False
@@ -20,8 +21,7 @@ class Inventory:
         if not its_in_in:
             inv.append([item, amount])
 
-    @staticmethod
-    def show_equiped_weapons(inv):
+    def show_equiped_weapons(self,inv):
         for item in inv:
             self.ui.change_text(item, end=", ")
 
