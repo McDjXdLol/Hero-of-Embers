@@ -531,6 +531,20 @@
       "giving_item": "",
       "is_combat": false,
       "enemy_name": "",
+      "next_scene": "scene_25",
+      "drop": false
+    }
+  },
+  "scene_25": {
+    "scene_name": "credits",
+    "description": "\n\n\n\nGame developed by: McDjXdLol\nStory written by: McDjXdLol\nMain design: McDjXdLol\nProgramming: McDjXdLol, Assistant: ChatGPT\nThank you for playing!",
+    "1": {
+      "description": "Exit",
+      "effect": "",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
       "next_scene": "END",
       "drop": false
     }

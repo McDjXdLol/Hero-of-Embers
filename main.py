@@ -19,7 +19,6 @@ if __name__ == "__main__":
         user = Player(name=NICKNAME, hp=CHARACTER_CLASS[1] + DIFFICULTY[0], armor=CHARACTER_CLASS[2] + DIFFICULTY[1],
                       damage=CHARACTER_CLASS[3] + DIFFICULTY[2], player_class=Library.PLAYER_CLASSES[0])
         PLOT_MANAGER = PlotManager(user)
-        LoadGame(user, PLOT_MANAGER).load_data()
     while PLOT_MANAGER.select_option():
         print("")
     if not user.dead:
