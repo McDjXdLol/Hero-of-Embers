@@ -11,7 +11,8 @@ from save_handler import SaveGame
 
 
 class PlotManager:
-    def __init__(self, player):
+    def __init__(self, player, ui):
+        self.ui = ui
         self.player = player
         scene_file = open('scenes.json')
         scene_str = scene_file.read()
@@ -37,8 +38,7 @@ class PlotManager:
         if option_name in self.scenes_data[self.actual_scene]:
             return self.scenes_data[self.actual_scene][option_name]['description']
         else:
-            print(f"Option {option_name} not found!")
-            return None
+            return f"Option {option_name} not found!"
 
     def get_option_effect(self, option_name):
         return self.scenes_data[self.actual_scene][option_name]['effect']
@@ -62,11 +62,13 @@ class PlotManager:
         return self.scenes_data[self.actual_scene]['scene_id']
 
     def show_all_options(self):
+        options = []
         for option in self.get_options_names():
-            print(f"{option}. {self.get_option_description(option)}")
+            options.append(f"{option}. {self.get_option_description(option)}")
+        return options
 
     def show_description(self):
-        print(f"{self.get_description().format(name=self.player.name)}")
+        return f"{self.get_description().format(name=self.player.name)}"
 
     def is_fight(self, option_name):
         return self.scenes_data[self.actual_scene][option_name]['is_combat']
@@ -93,40 +95,39 @@ class PlotManager:
         selected_option = None
         while True:
             try:
-                self.show_description()
-                print()
-                self.show_all_options()
-                print("\n")
-                print("I. Show inventory")
-                print("S. Save & Exit")
-                print("E. Exit without Saving")
-                selected_option = input("Select Option: ")
-                print("\n")
+                self.ui.change_text(self.show_description())
+                self.ui.change_text(self.show_all_options())
+                self.ui.change_text("\n")
+                self.ui.change_text("I. Show inventory")
+                self.ui.change_text("S. Save & Exit")
+                self.ui.change_text("E. Exit without Saving")
+                selected_option = self.ui.get_input("str","Select Option: ")
+                self.ui.change_text("\n")
                 if selected_option in self.get_options_names():
                     break
                 elif selected_option.lower() == "i":
                     self.player.inventory.show_inv()
                 elif selected_option.lower() == "s":
-                    print("Saving & Exiting...")
+                    self.ui.change_text("Saving & Exiting...")
                     SaveGame(self.player, self).save_game()
                     time.sleep(1)
                     sys.exit()
                 elif selected_option.lower() == "e":
-                    print("Exiting...")
+                    self.ui.change_text("Exiting...")
                     time.sleep(1)
                     sys.exit()
                 else:
-                    print("There is no such option!")
+                    self.ui.change_text("There is no such option!")
                     continue
             except ValueError:
-                print("You entered it wrong!")
+                self.ui.change_text("You entered it wrong!")
                 continue
         if selected_option is None:
-            print("There was an error!")
+            self.ui.change_text("There was an error!")
             return False
         else:
             os.system('cls')
-            print(self.get_option_effect(selected_option))
+            self.ui.change_text(self.get_option_effect(selected_option))
             if self.get_drop_information(selected_option):
                 self.random_drop(self.get_scene_id())
             if self.is_fight(selected_option):
@@ -134,14 +135,14 @@ class PlotManager:
                 for en in Library.ENEMIES:
                     if en[0] == self.fight_who(selected_option):
                         oponent = Enemy(self.fight_who(selected_option), en[1], en[2], en[3], en[4])
-                        if bH(self.player, oponent).battle():
+                        if bH(self.player, oponent, self.ui).battle():
                             if self.get_option_next_scene(selected_option) != "END":
                                 self.set_next_scene(selected_option)
                                 self.select_option()
                             else:
                                 return False
                         else:
-                            print("You died!")
+                            self.ui.change_text("You died!")
                             return False
 
             if self.get_option_next_scene(selected_option) != "END":

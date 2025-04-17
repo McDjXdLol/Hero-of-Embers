@@ -6,7 +6,8 @@ class Player:
     Class that got every information about player. Information like damage, hp, max hp etc.
     """
 
-    def __init__(self, name="No Name", hp=100, player_class="Human", armor=0, damage=0):
+    def __init__(self, name, hp, player_class, armor, damage, ui):
+        self.ui = ui
         self.name = name
         self.max_hp = hp
         self.hp = hp
@@ -15,7 +16,7 @@ class Player:
         self.damage = damage
         self.player_class = player_class
         self.dead = False
-        self.inventory = Inventory()
+        self.inventory = Inventory(ui)
         self.level = 1
         self.experience = 0
         self.experience_to_next_level = [0, 50, 120, 210, 320, 450, 600, 770, 960, 1170, 1400]
@@ -45,13 +46,13 @@ class Player:
         return self.dead
 
     def give_experience(self, amount):
-        print(f"{self.name} gained {amount} xp!")
+        self.ui.change_text(f"{self.name} gained {amount} xp!")
         if type(self.level) == int:
             if self.level < len(self.experience_to_next_level):
                 if self.experience + amount > self.experience_to_next_level[self.level]:
                     self.experience = (self.experience + amount) - self.experience_to_next_level[self.level]
                     self.level += 1
-                    print(f"{self.name} got next level!")
+                    self.ui.change_text(f"{self.name} got next level!")
                     self.select_boost()
                 else:
                     self.experience += amount
@@ -59,51 +60,51 @@ class Player:
                 if self.experience + amount > self.experience_to_next_level[self.level-len(self.experience_to_next_level)-1]:
                     self.experience = (self.experience + amount) - self.experience_to_next_level[self.level-len(self.experience_to_next_level)-1]
                     self.level += 1
-                    print(f"{self.name} got next level!")
+                    self.ui.change_text(f"{self.name} got next level!")
                     self.select_legendary_boost()
                 else:
                     self.experience += amount
             else:
                 self.experience = "MAX"
                 self.level = "MAX"
-                print("You got the maximum level!")
+                self.ui.change_text("You got the maximum level!")
         else:
-            print("You already got the maximum level!")
+            self.ui.change_text("You already got the maximum level!")
 
 
     def select_legendary_boost(self):
-        print("Select bonus: ")
-        print("1. Damage +15")
-        print("2. HP +30")
-        print("3. Armor +15")
+        self.ui.change_text("Select bonus: ")
+        self.ui.change_text("1. Damage +15")
+        self.ui.change_text("2. HP +30")
+        self.ui.change_text("3. Armor +15")
         while True:
             try:
                 sel = int(input(""))
                 if 1 > sel > 3:
-                    print("The number is incorrect!")
+                    self.ui.change_text("The number is incorrect!")
                 else:
-                    print(f"You selected {sel}")
+                    self.ui.change_text(f"You selected {sel}")
                     self.give_legendary_bonus(sel)
                     break
             except ValueError:
-                print("You have to enter the number!")
+                self.ui.change_text("You have to enter the number!")
 
     def select_boost(self):
         while True:
-            print("Select bonus: ")
-            print("1. Damage +5")
-            print("2. HP +10")
-            print("3. Armor +5")
+            self.ui.change_text("Select bonus: ")
+            self.ui.change_text("1. Damage +5")
+            self.ui.change_text("2. HP +10")
+            self.ui.change_text("3. Armor +5")
             try:
                 sel = int(input(""))
                 if 1 <= sel <= 3:
-                    print(f"You selected {sel}")
+                    self.ui.change_text(f"You selected {sel}")
                     self.give_bonus(sel)
                     break
                 else:
-                    print("The number is incorrect! Try again!")
+                    self.ui.change_text("The number is incorrect! Try again!")
             except ValueError:
-                print("You have to enter the number!")
+                self.ui.change_text("You have to enter the number!")
 
     def give_legendary_bonus(self, sel):
         match sel:

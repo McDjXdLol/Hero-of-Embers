@@ -2,7 +2,8 @@ from library import Library
 
 
 class Inventory:
-    def __init__(self):
+    def __init__(self, ui):
+        self.ui = ui
         self.inventory = []
         self.elixir_inventory = []
         self.weapon = []
@@ -22,37 +23,37 @@ class Inventory:
     @staticmethod
     def show_equiped_weapons(inv):
         for item in inv:
-            print(item, end=", ")
+            self.ui.change_text(item, end=", ")
 
     def which_weapon_to_equip(self, inv_weapons):
-        print("Which weapon do you want to equip?")
+        self.ui.change_text("Which weapon do you want to equip?")
         for weapon_id, weapon in enumerate(inv_weapons):
-            print(f"{weapon_id + 1}. {weapon}")
+            self.ui.change_text(f"{weapon_id + 1}. {weapon}")
         try:
             selected_weapon = int(input())
             if selected_weapon <= len(inv_weapons):
-                print("Equipping")
+                self.ui.change_text("Equipping")
                 self.equip_weapon(inv_weapons[selected_weapon - 1])
                 self.remove_from_inv(inv_weapons[selected_weapon - 1], self.inventory)
             else:
-                print("There is no such option!")
+                self.ui.change_text("There is no such option!")
         except ValueError:
-            print("You have to enter the number! Try again.")
+            self.ui.change_text("You have to enter the number! Try again.")
 
     def which_armor_to_equip(self, inv_armors):
-        print("Which armor do you want to equip?")
+        self.ui.change_text("Which armor do you want to equip?")
         for armors_id, armors in enumerate(inv_armors):
-            print(f"{armors_id + 1}. {armors}")
+            self.ui.change_text(f"{armors_id + 1}. {armors}")
         try:
             selected_armor = int(input())
             if selected_armor <= len(inv_armors):
-                print("Equipping")
+                self.ui.change_text("Equipping")
                 self.equip_armor(inv_armors[selected_armor - 1])
                 self.remove_from_inv(inv_armors[selected_armor - 1], self.inventory)
             else:
-                print("There is no such option!")
+                self.ui.change_text("There is no such option!")
         except ValueError:
-            print("You have to enter the number! Try again.")
+            self.ui.change_text("You have to enter the number! Try again.")
 
     def show_inv(self):
         inventory_weapons = []
@@ -75,28 +76,28 @@ class Inventory:
                 continue
 
         if len(self.inventory) == 0:
-            print("Inventory: Empty")
+            self.ui.change_text("Inventory: Empty")
             return
 
-        print("Weapons: ")
+        self.ui.change_text("Weapons: ")
         for weapon in inventory_weapons:
-            print(f"{weapon}")
+            self.ui.change_text(f"{weapon}")
 
-        print("Armors: ")
+        self.ui.change_text("Armors: ")
         for armor in inventory_armors:
-            print(f"{armor}")
+            self.ui.change_text(f"{armor}")
 
-        print("Miscellaneous: ")
+        self.ui.change_text("Miscellaneous: ")
         for rest in inventory_items:
-            print(f"{rest}")
+            self.ui.change_text(f"{rest}")
 
         if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
-            print("Do you want to equip one of them?\n1. Yes\n2. No")
+            self.ui.change_text("Do you want to equip one of them?\n1. Yes\n2. No")
             try:
                 want = int(input())
                 if want == 1:
                     if len(inventory_armors) > 0 and len(inventory_weapons) > 0:
-                        print("Do you want to equip:\n1. Weapon\n2. Armor?")
+                        self.ui.change_text("Do you want to equip:\n1. Weapon\n2. Armor?")
                         try:
                             which_to_equip = int(input())
                             if which_to_equip == 1:
@@ -104,9 +105,9 @@ class Inventory:
                             elif which_to_equip == 2:
                                 self.which_armor_to_equip(inventory_armors)
                             else:
-                                print("There is no such option!")
+                                self.ui.change_text("There is no such option!")
                         except ValueError:
-                            print("You have to enter the number!")
+                            self.ui.change_text("You have to enter the number!")
 
                     elif len(inventory_armors) > 0:
                         self.which_armor_to_equip(inventory_armors)
@@ -117,13 +118,13 @@ class Inventory:
                 elif want == 2:
                     return
                 else:
-                    print("There is no such option!")
+                    self.ui.change_text("There is no such option!")
             except ValueError:
-                print("You have to enter the number! Try again.")
+                self.ui.change_text("You have to enter the number! Try again.")
 
     def show_inv_elixirs(self):
         for el in self.elixir_inventory:
-            print(f"{el[0]} x{el[1]}", end=", ")
+            self.ui.change_text(f"{el[0]} x{el[1]}", end=", ")
 
     @staticmethod
     def remove_from_inv(item, inv):
@@ -150,7 +151,7 @@ class Inventory:
                             old_weapon_damage = old_weapon[1]
                             self.weapon.remove(self.weapon[0])
                 self.weapon.append(item)
-                print(f"Weapon equiped: {item}")
+                self.ui.change_text(f"Weapon equiped: {item}")
                 return old_weapon_damage, weapon[1]
             return None
         return None
@@ -165,7 +166,7 @@ class Inventory:
                             old_armor = old_armor[1]
                             self.armor.remove(self.armor[0])
                 self.armor.append(item)
-                print(f"Armor equiped: {item}")
+                self.ui.change_text(f"Armor equiped: {item}")
                 return old_armor, armor[1]
             return None
         return None

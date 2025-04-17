@@ -2,48 +2,50 @@ from library import Library
 
 
 class Selection:
-    """
-    Class that is used to start the game. It's gotten the class selection etc.
-    """
+    def __init__(self, ui):
+        """
+        Class that is used to start the game. It's gotten the class selection etc.
+        """
+        self.ui = ui
 
-    @staticmethod
-    def give_nickname():
-        return input("Enter username: ")
 
-    @staticmethod
-    def class_select():
-        print("Choose class:")
+    def give_nickname(self):
+        return self.ui.get_input("str", "Enter username: ")
+
+
+    def class_select(self):
+        self.ui.change_text("Choose class:")
         for class_nr, classes in enumerate(Library.PLAYER_CLASSES):
-            print(f"{class_nr + 1}. {classes[0]}")
+            self.ui.change_text(f"{class_nr + 1}. {classes[0]}")
         while True:
             try:
-                class_nr_input = int(input(""))
+                class_nr_input = self.ui.get_input(0, "")
                 if class_nr_input > len(Library.PLAYER_CLASSES):
-                    print("The number is incorrect!")
+                    self.ui.change_text("The number is incorrect!")
                 elif class_nr_input <= 0:
-                    print("The number is incorrect!")
+                    self.ui.change_text("The number is incorrect!")
                 else:
                     break
             except ValueError:
-                print("You have to enter the number! Try again.")
+                self.ui.change_text("You have to enter the number! Try again.")
         return class_nr_input - 1
 
-    @staticmethod
-    def difficulty_select():
-        print("Choose difficulty:")
+
+    def difficulty_select(self):
+        self.ui.change_text("Choose difficulty:")
         for diff_nr, diff in enumerate(Library.DIFFICULTIES):
-            print(f"{diff_nr + 1}. {diff[0]}")
+            self.ui.change_text(f"{diff_nr + 1}. {diff[0]}")
         while True:
             try:
-                diff_nr_input = int(input(""))
+                diff_nr_input = self.ui.get_input(0, "")
                 if diff_nr_input > len(Library.DIFFICULTIES):
-                    print("The number is incorrect!")
+                    self.ui.change_text("The number is incorrect!")
                 elif diff_nr_input <= 0:
-                    print("The number is incorrect!")
+                    self.ui.change_text("The number is incorrect!")
                 else:
                     break
             except ValueError:
-                print("You have to enter the number! Try again.")
+                self.ui.change_text("You have to enter the number! Try again.")
         return diff_nr_input - 1
 
 
