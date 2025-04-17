@@ -41,7 +41,7 @@ class SaveGame:
         }
 
     def save_game(self):
-        with open('savegame.json', 'w') as file:
+        with open('hero_of_embers/savegame.json', 'w') as file:
             json.dump(self.data, file)
 
 class LoadGame:
@@ -51,7 +51,7 @@ class LoadGame:
 
     @staticmethod
     def load_game():
-        if os.path.exists("savegame.json"):
+        if os.path.exists("hero_of_embers/savegame.json"):
             with open('savegame.json', 'r') as file:
                 return json.load(file)
         else:

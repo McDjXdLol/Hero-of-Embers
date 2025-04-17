@@ -4,17 +4,17 @@ import random
 import sys
 import time
 
-from enemy import Enemy
-from library import Library
-from battle_handler import BattleHandler as bH
-from save_handler import SaveGame
+from hero_of_embers.enemy import Enemy
+from hero_of_embers.library import Library
+from hero_of_embers.battle_handler import BattleHandler as bH
+from hero_of_embers.save_handler import SaveGame
 
 
 class PlotManager:
     def __init__(self, player, ui):
         self.ui = ui
         self.player = player
-        scene_file = open('scenes.json')
+        scene_file = open('hero_of_embers/scenes.json')
         scene_str = scene_file.read()
         self.scenes_data = json.loads(scene_str)
         first_scene = list(self.scenes_data.keys())[0]

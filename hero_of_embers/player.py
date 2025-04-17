@@ -1,4 +1,4 @@
-from inventory import Inventory
+from hero_of_embers.inventory import Inventory
 
 
 class Player:

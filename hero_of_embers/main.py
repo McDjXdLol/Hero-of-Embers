@@ -1,15 +1,15 @@
-from player import Player
-from library import Library
-from selection import Selection
-from plot_manager import PlotManager
-from save_handler import SaveGame, LoadGame
-from ui_manager import UI
+from hero_of_embers.player import Player
+from hero_of_embers.library import Library
+from hero_of_embers.selection import Selection
+from hero_of_embers.plot_manager import PlotManager
+from hero_of_embers.save_handler import SaveGame, LoadGame
+from hero_of_embers.ui_manager import UI
 import os
 
 
 if __name__ == "__main__":
     ui = UI()
-    if os.path.exists("savegame.json"):
+    if os.path.exists("hero_of_embers/savegame.json"):
         user = Player(name="", hp=0, armor=0,
                       damage=0, player_class=[], ui=ui)
         PLOT_MANAGER = PlotManager(user, ui)
