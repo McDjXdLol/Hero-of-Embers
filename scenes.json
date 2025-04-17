@@ -1,46 +1,494 @@
 {
-    "scene_1": {
-        "scene_name": "scene_1",
-        "description": "desc",
-        "1": {
-            "description": "option 1 description",
-            "effect": "option 1 effect",
-            "requirements": "opt",
-            "giving_item": "",
-            "is_combat": true,
-            "enemy_name": "Werewolf",
-            "next_scene": "scene_2"
-        },
-        "2": {
-            "description": "option 2 description",
-            "effect": "option 2 effect",
-            "requirements": "",
-            "giving_item": "spider_eye",
-            "is_combat": true,
-            "enemy_name": "Spider",
-            "next_scene": "scene_2"
-        }
+  "scene_1": {
+    "scene_name": "Ash and Soil",
+    "description": "You are Aldric, a poor farmer from a dying village. With nothing left, you’ve just arrived in the city of Eldoria, cold and hungry.",
+    "1": {
+      "description": "Search the alleys for work or food.",
+      "effect": "You wander into a shady alley and are approached by a suspicious man.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Hungry Mugger",
+      "next_scene": "scene_2"
     },
-    "scene_2": {
-        "scene_name": "scene_2",
-        "description": "scene 2 description",
-        "1": {
-            "description": "option 1 scene 2 description",
-            "effect": "option 1 scene 2 effect",
-            "requirements": "spider_eye",
-            "giving_item": "",
-            "is_combat": false,
-            "enemy_name": "",
-            "next_scene": "scene_1"
-        },
-        "2": {
-            "description": "option 2 scene 2 description",
-            "effect": "option 2 scene 2 effect",
-            "requirements": "",
-            "giving_item": "opt",
-            "is_combat": false,
-            "enemy_name": "",
-            "next_scene": "scene_1"
-        }
+    "2": {
+      "description": "Go straight to the tavern district.",
+      "effect": "You walk through muddy streets and find a tavern reeking of mold and old beer.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_3"
     }
+  },
+  "scene_2": {
+    "scene_name": "Filth and Ale",
+    "description": "You find work in a moldy tavern. The barkeep hires you as a janitor. It’s hard, thankless work, but it keeps you alive.",
+    "1": {
+      "description": "Keep sweeping floors and emptying pots.",
+      "effect": "You work for months, learning to stay invisible. One night, mercenaries arrive, drunk and loud.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_3"
+    },
+    "2": {
+      "description": "Ask the barkeep about better work.",
+      "effect": "He laughs and throws you a mop. 'Maybe if you survive a week first.'",
+      "requirements": "",
+      "giving_item": "old_mop",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_3"
+    }
+  },
+  "scene_3": {
+    "scene_name": "Whispers of Fire",
+    "description": "One evening, while scrubbing near a table of mercenaries, you overhear talk of a dragon in the northern forests. Smoke, fire, and an ancient threat.",
+    "1": {
+      "description": "Eavesdrop on the mercenaries.",
+      "effect": "They laugh it off, but something stirs inside you. A pull you can’t explain.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_4"
+    },
+    "2": {
+      "description": "Ignore them and keep cleaning.",
+      "effect": "You try to ignore the tale... but it haunts your thoughts.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_4"
+    }
+  },
+  "scene_4": {
+    "scene_name": "Into the Forest",
+    "description": "You can’t sleep. The whispers of fire echo in your mind. Grabbing what little you own, you head north into the woods.",
+    "1": {
+      "description": "Keep walking deeper into the darkness.",
+      "effect": "Hours pass. No beast. No fire. Just silence. Until a scream cuts the air.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_5"
+    }
+  },
+  "scene_5": {
+    "scene_name": "The Screaming Clearing",
+    "description": "In a moonlit clearing, a monstrous dragon looms over a girl. Its eyes burn like coals. She’s trapped.",
+    "1": {
+      "description": "Rush in and grab the girl.",
+      "effect": "You charge without thinking. The dragon roars, but doesn’t follow. Somehow, you escape.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_6"
+    },
+    "2": {
+      "description": "Freeze and watch.",
+      "effect": "The dragon lifts its head... then turns away. You seize the moment and grab the girl.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_6"
+    }
+  },
+  "scene_6": {
+    "scene_name": "A New Morning",
+    "description": "You wake up on your worn-out couch. The girl is gone. Was it all a dream? Then—knock knock.",
+    "1": {
+      "description": "Open the door.",
+      "effect": "She stands there. Real. Alive. Holding breakfast and a crooked smile.",
+      "requirements": "",
+      "giving_item": "simple_meal",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_7"
+    }
+  },
+  "scene_7": {
+    "scene_name": "Her Name is Lyria",
+    "description": "Her name is Lyria. Over food and shy glances, she shares her story. Wandering. Alone. No one ever helped her. Until now.",
+    "1": {
+      "description": "Listen quietly.",
+      "effect": "You nod. She laughs, says you smell like mop water and beer. For the first time in a long while—you laugh too.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_8"
+    },
+    "2": {
+      "description": "Ask her why the dragon didn’t attack.",
+      "effect": "She doesn’t know. But something in her eyes says she’s seen more than she admits.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_8"
+    }
+  },
+  "scene_8": {
+    "scene_name": "Training Begins",
+    "description": "Weeks pass. Lyria stays. You train together in the narrow alleys behind your home. Wooden sticks clash, laughter echoes.",
+    "1": {
+      "description": "Ask about her past.",
+      "effect": "She mentions her father—once a knight of the Ember Guard. A forgotten order, long believed gone.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_9"
+    },
+    "2": {
+      "description": "Challenge her to a mock duel.",
+      "effect": "You lunge. She counters with a graceful spin and knocks the stick from your hands. She's trained before.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_9"
+    }
+  },
+  "scene_9": {
+    "scene_name": "Stormfang",
+    "description": "One evening, under the fading sun, she gives you a blade wrapped in cloth. 'Stormfang,' she whispers. 'Forged in dragonfire. It's yours now.'",
+    "1": {
+      "description": "Take the blade with trembling hands.",
+      "effect": "Visions flash—flames, battles, a voice calling your name. Something ancient awakens within you.",
+      "requirements": "",
+      "giving_item": "stormfang",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_10"
+    }
+  },
+  "scene_10": {
+    "scene_name": "The Hollow Hand",
+    "description": "The rumors spread quickly: a strange cult calling themselves the Hollow Hand is making their presence known in Eldoria. Disappearances. Weird symbols. Whispers in the dark.",
+    "1": {
+      "description": "Investigate the cult’s symbols.",
+      "effect": "You find strange runes carved into the walls of an abandoned building. They glow faintly. This is no ordinary cult.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_11"
+    },
+    "2": {
+      "description": "Ask around for more information.",
+      "effect": "Locals are terrified. They speak of a 'dragon worshiper,' but no one dares to name him.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_11"
+    }
+  },
+  "scene_11": {
+    "scene_name": "The First Encounter",
+    "description": "Lyria approaches you one evening with a grave expression. 'I’ve found something,' she says. 'A temple. Beneath the city. It’s the cult’s headquarters.'",
+    "1": {
+      "description": "Plan an attack on the cult's temple.",
+      "effect": "You and Lyria gather your things and head out under the cover of night, determined to uncover the cult’s true purpose.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Cult Initiate",
+      "next_scene": "scene_12"
+    },
+    "2": {
+      "description": "Take a cautious approach, try to learn more about the cult before acting.",
+      "effect": "Lyria nods, but there’s urgency in her eyes. 'We don’t have much time. They are preparing something.'",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_12"
+    }
+  },
+  "scene_12": {
+    "scene_name": "The Betrayal",
+    "description": "You and Lyria make your way into the cult’s temple, the air thick with the scent of incense and fear. You hear the sound of chanting coming from deep within.",
+    "1": {
+      "description": "Move forward cautiously, prepared for a confrontation.",
+      "effect": "You step into the temple’s main hall, where shadowy figures gather around a stone altar. The chant grows louder.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Cultist Priest",
+      "next_scene": "scene_13"
+    },
+    "2": {
+      "description": "Try to sneak past the cultists and find the source of the ritual.",
+      "effect": "You and Lyria carefully move to the side, avoiding the cultists as best you can. But something doesn’t feel right.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_13"
+    }
+  },
+  "scene_13": {
+    "scene_name": "Revelation of Taren",
+    "description": "As you reach the heart of the temple, a cold laugh echoes through the chamber. 'Did you really think I was on your side?' Taren steps from the shadows, a wicked grin on his face.",
+    "1": {
+      "description": "Confront Taren and demand answers.",
+      "effect": "Taren reveals his true colors as the high priest of the Hollow Hand. His betrayal stings, and the realization hits you hard.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Taren (High Priest)",
+      "next_scene": "scene_14"
+    },
+    "2": {
+      "description": "Try to escape the temple and regroup with Lyria.",
+      "effect": "Taren raises his hands, chanting incantations to summon dark powers. The temple begins to shake as the ritual nears completion.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_14"
+    }
+  },
+  "scene_14": {
+    "scene_name": "Escape from the Temple",
+    "description": "The temple is collapsing around you as the dark magic spreads like wildfire. You and Lyria must make a quick decision.",
+    "1": {
+      "description": "Fight Taren and the cultists, hoping to stop the ritual.",
+      "effect": "You clash with Taren in a furious battle. The air crackles with the power of magic and betrayal.",
+      "requirements": "",
+      "giving_item": "stormfang",
+      "is_combat": true,
+      "enemy_name": "Taren (High Priest)",
+      "next_scene": "scene_15"
+    },
+    "2": {
+      "description": "Flee from the temple, hoping to survive the collapsing ruins.",
+      "effect": "You and Lyria sprint towards the exit, dodging falling debris and magical traps. You can feel the heat of the ritual behind you.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_16"
+    }
+  },
+  "scene_15": {
+    "scene_name": "The Last Stand",
+    "description": "You are face-to-face with Taren as the temple crumbles. The betrayal is fresh in your mind, but now is not the time for hesitation.",
+    "1": {
+      "description": "Continue the fight, determined to stop Taren’s plan.",
+      "effect": "With every strike, you feel the fury of the betrayal coursing through you. Taren’s magic is powerful, but you won't back down.",
+      "requirements": "",
+      "giving_item": "stormfang",
+      "is_combat": true,
+      "enemy_name": "Taren (High Priest)",
+      "next_scene": "scene_17"
+    },
+    "2": {
+      "description": "Try to escape before it's too late, leaving Taren to his fate.",
+      "effect": "You and Lyria rush toward the exit, narrowly avoiding Taren's destructive magic. The temple is falling apart.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_16"
+    }
+  },
+  "scene_16": {
+    "scene_name": "The Collapse",
+    "description": "You manage to escape the crumbling temple, but the damage has been done. The Hollow Hand’s plan is nearly complete, and the cult has gained too much power.",
+    "1": {
+      "description": "Regroup with Lyria and decide what to do next.",
+      "effect": "Lyria is shaken but determined. The weight of the betrayal weighs heavily on both of you, but you know the war isn't over.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_18"
+    },
+    "2": {
+      "description": "Follow the trail of the cult, determined to stop their ritual.",
+      "effect": "You set out, leaving the ruins behind. You can't allow the Hollow Hand to awaken the dragon. The journey ahead will be dangerous.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Cultist Sorcerer",
+      "next_scene": "scene_18"
+    }
+  },
+  "scene_17": {
+    "scene_name": "The Final Strike",
+    "description": "Taren, fueled by dark magic, is relentless. His power seems unstoppable, but you are determined to end his treachery once and for all.",
+    "1": {
+      "description": "Strike with Stormfang, pushing through the pain and the darkness surrounding you.",
+      "effect": "Stormfang glows brightly as you swing it through the air, your determination lending power to every blow. Taren staggers but fights back with all his might.",
+      "requirements": "",
+      "giving_item": "stormfang",
+      "is_combat": true,
+      "enemy_name": "Taren (High Priest)",
+      "next_scene": "scene_18"
+    },
+    "2": {
+      "description": "Attempt to overpower him with your raw strength and will, without relying on magic.",
+      "effect": "You press forward, using only your physical prowess to defeat Taren. It's a battle of pure will now.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Taren (High Priest)",
+      "next_scene": "scene_18"
+    }
+  },
+  "scene_18": {
+    "scene_name": "The Dragon's Awakening",
+    "description": "As Taren falls, the ground shakes violently. You feel a deep rumble, the earth itself groaning under the pressure. The dragon is waking.",
+    "1": {
+      "description": "Rush to the summoning circle, trying to stop the awakening before it's too late.",
+      "effect": "The dark ritual is in full swing. You must act fast to prevent the dragon’s return.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_19"
+    },
+    "2": {
+      "description": "Prepare for battle, knowing that only one way out of this is through sheer force.",
+      "effect": "With no time to waste, you ready yourself for the ultimate confrontation with the dragon.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Shadow Dragon",
+      "next_scene": "scene_20"
+    }
+  },
+  "scene_19": {
+    "scene_name": "Stopping the Ritual",
+    "description": "You try to disrupt the summoning, but it’s too late. The ritual is reaching its climax, and the ground splits open. A shadowy figure rises from the depths.",
+    "1": {
+      "description": "Keep fighting to destroy the ritual before the dragon fully awakens.",
+      "effect": "You push forward, trying to break the ritual’s hold, but the energy is overwhelming.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Cult Sorcerer",
+      "next_scene": "scene_20"
+    },
+    "2": {
+      "description": "Flee the ritual site and prepare for the inevitable battle with the dragon.",
+      "effect": "The ritual is complete. You know that you can’t stop the dragon now, only face it head-on.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_20"
+    }
+  },
+  "scene_20": {
+    "scene_name": "The Final Battle",
+    "description": "The Shadow Dragon stands before you, its dark scales gleaming with power. It roars, and the world trembles in its wake.",
+    "1": {
+      "description": "Charge at the Shadow Dragon, determined to end this once and for all.",
+      "effect": "With Stormfang in hand, you face the dragon. You know that this fight will be your last, but it must be done.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Shadow Dragon",
+      "next_scene": "scene_21"
+    },
+    "2": {
+      "description": "Look for a way to outsmart the dragon, knowing that brute force alone won't defeat it.",
+      "effect": "You analyze the dragon’s weaknesses, searching for an opening. The battle will be as much about strategy as strength.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Shadow Dragon",
+      "next_scene": "scene_21"
+    }
+  },
+  "scene_21": {
+    "scene_name": "The Final Blow",
+    "description": "The Shadow Dragon roars one last time as it rears back to strike. You know this is it—the final moment to deliver the killing blow.",
+    "1": {
+      "description": "Deliver the final strike with all your might, using Stormfang.",
+      "effect": "With one last surge of power, you drive Stormfang deep into the dragon’s heart. The beast screeches in pain as it collapses, its massive body crumbling to dust.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Shadow Dragon",
+      "next_scene": "scene_22"
+    },
+    "2": {
+      "description": "Call upon your last bit of magic to weaken the dragon before striking with Stormfang.",
+      "effect": "A flash of lightning streaks across the sky, and the dragon flinches. You seize the moment, stabbing Stormfang into its chest with precision and power.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Shadow Dragon",
+      "next_scene": "scene_22"
+    }
+  },
+  "scene_22": {
+    "scene_name": "The Aftermath",
+    "description": "The battle is over. The Shadow Dragon lies dead. The world, for a moment, is silent. But at what cost?",
+    "1": {
+      "description": "Look around the battlefield, reflecting on the sacrifices made.",
+      "effect": "The landscape is scarred, and the people you fought for may never be the same. The cost of victory weighs heavily on your shoulders.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_23"
+    },
+    "2": {
+      "description": "Search for survivors among the ruins.",
+      "effect": "You search the battlefield for any sign of life. Many have fallen, but a few still breathe. You know you cannot save everyone, but you must try.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_23"
+    }
+  },
+  "scene_23": {
+    "scene_name": "The Final Farewell",
+    "description": "As the dust settles, you stand alone. The dragon is dead, but what remains of the world you fought for? Of the people you fought beside?",
+    "1": {
+      "description": "Visit Lyria's resting place, the woman who once gave you hope.",
+      "effect": "You kneel by her resting place, offering a quiet farewell. Her memory lives on in your heart. It is a sorrowful moment, but one of peace.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_24"
+    },
+    "2": {
+      "description": "Head back to Eldoria, ready to rebuild.",
+      "effect": "With the Shadow Dragon defeated, Eldoria begins to recover. You know the road ahead will be long, but you have the strength to rebuild what was lost.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_24"
+    }
+  },
+  "scene_24": {
+    "scene_name": "End of the Journey",
+    "description": "The battle is over. Eldoria stands, but the cost of victory weighs heavily. You have saved the land, but at what price? The hero you were is no more, and now, only time will tell what kind of future awaits this broken world.",
+    "1": {
+      "description": "The story concludes.",
+      "effect": "The world fades into silence as the journey ends. Your actions will be remembered, but the hero's burden is yours alone to bear.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "END"
+    }
+  }
 }

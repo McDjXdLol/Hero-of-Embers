@@ -27,15 +27,11 @@ class Library:
                       ["Orc", 125, 35, 10],
                       ["Goblin", 50, 10, 35]]
     # [Name, HP, Armor, Damage, XP Drop]
-    ENEMIES = [["Wolf", 25, 10, 15, 20],
-               ["Grizzly Bear", 35, 5, 20, 25],
-               ["Skeleton", 30, 10, 20, 30],
-               ["Goblin", 50, 20, 25, 40],
-               ["Werewolf", 60, 20, 30, 50],
-               ["Elf", 45, 10, 55, 55],
-               ["Vampire", 65, 15, 45, 55],
-               ["Minotaur", 70, 30, 40, 60],
-               ["Cyclop", 70, 50, 40, 60],
-               ["Giant Troll", 90, 60, 30, 65],
-               ["Wyvern", 90, 50, 40, 80],
-               ["Dragon", 150, 250, 50, 100]]
+    ENEMIES = [
+        ["Hungry Mugger", 20, 6, 8, 10],  # Pierwszy przeciwnik – testowy
+        ["Cult Initiate", 28, 8, 10, 15],  # Początkujący kultysta, lekko groźniejszy
+        ["Cultist Priest", 40, 10, 14, 25],  # Wspiera magią, średni poziom
+        ["Cultist Sorcerer", 55, 12, 18, 35],  # Potężniejszy magiczny wróg
+        ["Taren (High Priest)", 75, 18, 20, 60],  # Boss fabularny, zdradziecki mentor
+        ["Shadow Dragon", 120, 25, 28, 100]  # Finalny boss – totalna maszyna śmierci
+    ]

@@ -7,7 +7,7 @@ if __name__ == "__main__":
     NICKNAME = Selection.give_nickname()
     CLASS_NR = Selection.class_select()
     CHARACTER_CLASS = Library().PLAYER_CLASSES[CLASS_NR]
-    user = Player(name=NICKNAME, hp=CHARACTER_CLASS[1]*5, armor=CHARACTER_CLASS[2], damage=CHARACTER_CLASS[3], player_class=Library.PLAYER_CLASSES[0])
+    user = Player(name=NICKNAME, hp=CHARACTER_CLASS[1], armor=CHARACTER_CLASS[2], damage=CHARACTER_CLASS[3], player_class=Library.PLAYER_CLASSES[0])
     PLOT_MANAGER = PlotManager(user)
     while PLOT_MANAGER.select_option():
         print("")
