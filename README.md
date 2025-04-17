@@ -4,7 +4,7 @@
 - [Plot](#Plot)
 - [Plot Writer](#plot-writer)
 ## Description
-This is a simple work-in-progress (WIP) console-based fantasy RPG game. Currently, it's not exported to an executable and lacks a click-to-play feature. To test the mechanics, you need to run the Python file via main.py. At this stage, the plot consists only of scene names.
+This is a simple work-in-progress (WIP) console-based fantasy RPG game. Currently, it's not exported to an executable and lacks a click-to-play feature. To test the mechanics, you need to run the Python file via `main.py`. At this stage, the plot consists only of scene names.
 
 ## Plot
 The story follows a young farmer who arrives in a city and soon becomes involved in a mysterious ancient threat. After meeting a strange girl, they uncover secrets about an ancient order and a legendary weapon. As they grow stronger, they get caught in a dangerous cult's web, facing tough choices and powerful enemies. The hero must uncover hidden conspiracies and prepare for a final battle that will determine the fate of the world.
