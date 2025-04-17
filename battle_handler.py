@@ -145,12 +145,12 @@ Damage: {self.enemy.damage}"""
             self.player.give_experience(self.enemy.experience_drop)
             self.player.armor += int(self.player.max_armor / 2)
             if self.enemy.experience_drop >= 25:
-                droping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS)-1)]
+                dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS)-1)]
                 amount = random.randint(1,3)
             else:
-                droping_item = Library.HEAL_ITEMS[random.randint(0, 3)]
+                dropping_item = Library.HEAL_ITEMS[random.randint(0, 3)]
                 amount = random.randint(1,4)
-            self.player.inventory.add_to_inv(droping_item, self.player.inventory.elixir_inventory, amount=amount)
+            self.player.inventory.add_to_inv(dropping_item, self.player.inventory.elixir_inventory, amount=amount)
             return True
         else:
             return False

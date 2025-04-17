@@ -105,9 +105,9 @@ class PlotManager:
             os.system('cls')
             print(self.get_option_effect(selected_option))
             if self.get_drop_information(selected_option):
-                droping_item = Library.HEAL_ITEMS[random.randint(0, len(Library.HEAL_ITEMS)-1)]
+                dropping_item = Library.HEAL_ITEMS[random.randint(0, len(Library.HEAL_ITEMS)-1)]
                 amount = random.randint(1, 3)
-                self.player.inventory.add_to_inv(droping_item, self.player.inventory.elixir_inventory, amount=amount)
+                self.player.inventory.add_to_inv(dropping_item, self.player.inventory.elixir_inventory, amount=amount)
             if self.is_fight(selected_option):
                 time.sleep(1)
                 for en in Library.ENEMIES:
