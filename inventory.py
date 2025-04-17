@@ -4,25 +4,28 @@ from library import Library
 class Inventory:
     def __init__(self, ui):
         self.ui = ui
-        self.inventory = []
+        self.inventory = [[["Iron Sword", 40], 1],
+                          [["Gold Sword", 50], 1],
+                          [["Eclipse", 70], 1],
+                          [["Clothes", 0], 1],
+                          [["Wooden Armor", 10], 1],
+                          [["Knight Armor", 40], 1]
+                          ]
         self.elixir_inventory = []
         self.weapon = []
         self.armor = []
 
     @staticmethod
     def add_to_inv(item, inv, amount=1):
-        its_in_in = False
         for it in inv:
-            if item in it:
-                its_in_in = True
+            if it[0][0] == item[0] and it[0][1] == item[1]:
                 it[1] += amount
-
-        if not its_in_in:
-            inv.append([item, amount])
+                return
+        inv.append([item, amount])
 
     def show_equiped_weapons(self, inv):
         for item in inv:
-            self.ui.change_text(item, end=", ")
+            self.ui.change_text(item)
 
     def which_weapon_to_equip(self, inv_weapons):
         self.ui.change_text("Which weapon do you want to equip?")
@@ -44,8 +47,9 @@ class Inventory:
             self.ui.change_text(f"{armors_id + 1}. {armors}")
         try:
             selected_armor = int(input())
+            print(
+                f"DEBUG - Selected Armor = {selected_armor}\nDEBUG - inv_armors = {inv_armors}\nDEBUG - len(inv_armors) = {len(inv_armors)}")
             if selected_armor <= len(inv_armors):
-                self.ui.change_text("Equipping")
                 self.equip_armor(inv_armors[selected_armor - 1])
                 self.remove_from_inv(inv_armors[selected_armor - 1], self.inventory)
             else:
@@ -58,20 +62,22 @@ class Inventory:
         inventory_armors = []
         inventory_items = []
         for item in self.inventory:
-            last_added = False
-            for _ in Library.WEAPONS:
-                if item[0] in _ and not last_added:
-                    inventory_weapons.append(item[0])
-                    last_added = True
-                    continue
-            for _ in Library.ARMORS:
-                if item[0] in _ and not last_added:
-                    inventory_armors.append(item[0])
-                    last_added = True
-                    continue
-            if not last_added:
+            name = item[0][0]  # ← nazwa
+            added = False
+
+            for w in Library.WEAPONS:
+                if name == w[0] and not added:
+                    inventory_weapons.append(name)
+                    added = True
+                    break
+            for a in Library.ARMORS:
+                if name == a[0] and not added:
+                    inventory_armors.append(name)
+                    added = True
+                    break
+
+            if not added:
                 inventory_items.append(item)
-                continue
 
         if len(self.weapon) != 0:
             self.ui.change_text(f"Equipped Weapon: {self.weapon[0]}")
@@ -131,12 +137,13 @@ class Inventory:
             self.ui.change_text(f"{el[0]} x{el[1]}", end=", ")
 
     @staticmethod
-    def remove_from_inv(item, inv):
+    def remove_from_inv(item_name, inv):
         for it in inv:
-            if item in it:
+            if it[0][0] == item_name:  # ← porównujemy nazwę
                 it[1] -= 1
-                if it[1] == 0:
+                if it[1] <= 0:
                     inv.remove(it)
+                break
 
     @staticmethod
     def check_if_in_inv(item, inv):
@@ -145,32 +152,36 @@ class Inventory:
                 return True
         return False
 
-    def equip_weapon(self, item):
+    def equip_weapon(self, item_name):
         old_weapon_damage = 0
         for weapon in Library.WEAPONS:
-            if item in weapon[0]:
-                if not len(self.weapon) == 0:
+            if item_name == weapon[0]:
+                if len(self.weapon) > 0:
                     for old_weapon in Library.WEAPONS:
-                        if self.weapon[0] in old_weapon:
+                        if self.weapon[0] == old_weapon[0]:
                             old_weapon_damage = old_weapon[1]
+                            # Dodaj starą broń z powrotem do inventory
+                            self.add_to_inv([self.weapon[0], old_weapon[1]], self.inventory)
                             self.weapon.remove(self.weapon[0])
-                self.weapon.append(item)
-                self.ui.change_text(f"Weapon equiped: {item}")
+                            break
+                self.weapon.append(item_name)
+                self.ui.change_text(f"Weapon equipped: {item_name}")
                 return old_weapon_damage, weapon[1]
-            return None
         return None
 
-    def equip_armor(self, item):
-        old_armor = 0
+    def equip_armor(self, item_name):
+        old_armor_value = 0
         for armor in Library.ARMORS:
-            if item in armor[0]:
-                if not len(self.armor) == 0:
+            if item_name == armor[0]:
+                if len(self.armor) > 0:
                     for old_armor in Library.ARMORS:
-                        if self.armor[0] in old_armor:
-                            old_armor = old_armor[1]
+                        if self.armor[0] == old_armor[0]:
+                            old_armor_value = old_armor[1]
+                            # Dodaj starą zbroję z powrotem do inventory
+                            self.add_to_inv([self.armor[0], old_armor[1]], self.inventory)
                             self.armor.remove(self.armor[0])
-                self.armor.append(item)
-                self.ui.change_text(f"Armor equiped: {item}")
-                return old_armor, armor[1]
-            return None
+                            break
+                self.armor.append(item_name)
+                self.ui.change_text(f"Armor equipped: {item_name}")
+                return old_armor_value, armor[1]
         return None
