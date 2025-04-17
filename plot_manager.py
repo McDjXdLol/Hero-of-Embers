@@ -67,6 +67,7 @@ class PlotManager:
                 print()
                 self.show_all_options()
                 print("\n")
+                print("I. Show inventory")
                 selected_option = input("Select Option: ")
                 print("\n")
                 if selected_option in self.get_options_names():
