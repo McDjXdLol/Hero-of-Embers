@@ -28,25 +28,30 @@ Damage: {self.enemy.damage}"""
         print(f"\n\n{self.enemy.name} turn!\n")
         self.player.deal_damage(self.enemy.damage)
         time.sleep(0.5)
-        print(f"{self.enemy.name} dealt {self.enemy.damage} dmg! \n{self.player.name} HP: {self.player.hp} Armor: {self.player.armor}")
+        print(
+            f"{self.enemy.name} dealt {self.enemy.damage} dmg! \n{self.player.name} HP: {self.player.hp} Armor: {self.player.armor}")
         return 0
 
     def player_turn(self):
         print(f"\n\n{self.player.name} turn")
         while True:
             print("\nSelect option: ")
-            print("1. Normal attack (100% chance)\n2.Quick attack (30% chance)\n3. Strong attack (20% chance)\n4. Heal\n5. Check Inventory")
+            print(
+                "1. Normal attack (100% chance)\n2.Quick attack (30% chance)\n3. Strong attack (20% chance)\n4. Heal\n5. Check Inventory")
             try:
                 sel = int(input())
                 if sel < 1:
                     print("The number is incorrect!")
                     continue
+
                 elif sel > 5:
                     print("The number is incorrect!")
                     continue
+
                 else:
                     time.sleep(0.5)
                     return self.sel_attack(sel)
+
             except ValueError:
                 print("You have to enter number!")
                 continue
@@ -89,7 +94,7 @@ Damage: {self.enemy.damage}"""
                     while True:
                         print("Choose the elixir:")
                         for eli in elixirs_in_inv:
-                            print(f"{eli[0]+1}. {eli[1][0]} x{eli[1][1]}")
+                            print(f"{eli[0] + 1}. {eli[1][0]} x{eli[1][1]}")
                         try:
                             chosen_elixir = int(input())
                             if chosen_elixir < 1:
@@ -100,13 +105,14 @@ Damage: {self.enemy.damage}"""
                                 break
                         except ValueError:
                             print("You have to enter the number!")
-                    chosen_elixir_name = elixirs_in_inv[chosen_elixir-1][1]
+                    chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][1]
                     print(f"You choose {chosen_elixir_name[0]}")
                     self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
                     for elix in Library.HEAL_ITEMS:
                         if chosen_elixir_name[0] in elix:
                             self.player.heal_hp(elix[1])
-                            print(f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
+                            print(
+                                f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
                             return 0
             case 5:
                 print("Elixirs: ", end="")
@@ -121,7 +127,7 @@ Damage: {self.enemy.damage}"""
                 print("Armor: ", end="")
                 self.player.inventory.show_equiped_weapons(self.player.inventory.armor)
                 return 0
-
+        return 1
 
     def battle(self):
         print(self.start_battle())
@@ -137,7 +143,7 @@ Damage: {self.enemy.damage}"""
             return False
         elif self.enemy.dead:
             self.player.give_experience(self.enemy.experience_drop)
-            self.player.armor += int(self.player.max_armor/4)
+            self.player.armor += int(self.player.max_armor / 4)
             return True
         else:
             return False
