@@ -23,9 +23,17 @@ class Library:
         ["Big Living Elixir", 100]
     ]
     # [Name, HP, Armor Value, Damage Value]
-    PLAYER_CLASSES = [["Human", 100, 10, 10],
-                      ["Orc", 125, 35, 10],
-                      ["Goblin", 50, 10, 35]]
+    PLAYER_CLASSES = [
+        ["The Protector (Tank)", 150, 50, 10],
+        ["The Fighter (Balanced)", 100, 25, 15],
+        ["The Avenger (Damager)", 70, 15, 30]
+    ]
+    # [Name, HP, Armor, Damage]
+    DIFFICULTIES = [
+        ["Cushioned Path", 30, 10, 5],
+        ["Twisted Road", 0, 0, 0],
+        ["Iron Trial", -30, -10, -5]
+    ]
     # [Name, HP, Armor, Damage, XP Drop]
     ENEMIES = [
         ["Hungry Mugger", 20, 6, 8, 10],  # Pierwszy przeciwnik – testowy
