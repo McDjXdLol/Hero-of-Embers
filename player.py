@@ -127,29 +127,3 @@ class Player:
                 self.armor += 5
                 self.max_armor += 5
 
-
-if __name__ == "__main__":
-    gracz = Player("name", 100, "Human", 100, 0)
-    gracz.deal_damage(20)
-    while type(gracz.level) == int :
-        gracz.give_experience(50)
-        if type(gracz.level) == int:
-            try:
-                xp = gracz.experience_to_next_level[gracz.level]
-            except IndexError:
-                xp = gracz.experience_to_legendary_level[gracz.level - len(gracz.experience_to_next_level) - 1]
-        else:
-            xp = gracz.level
-        print(f"""
-        Name: {gracz.name}
-        MAX HP: {gracz.max_hp}
-        HP: {gracz.hp}
-        Armor: {gracz.armor}
-        Damage: {gracz.damage}
-        Class: {gracz.player_class}
-        Player Dead: {gracz.dead}
-        Inventory: {gracz.inventory.inventory}
-        Level: {gracz.level}
-        Experience: {gracz.experience}
-        Experience to next level: {xp}
-        """)
