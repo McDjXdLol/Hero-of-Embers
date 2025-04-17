@@ -1,11 +1,14 @@
 import json
 import os
 import random
+import sys
 import time
 
 from enemy import Enemy
 from library import Library
 from battle_handler import BattleHandler as bH
+from save_handler import SaveGame
+
 
 class PlotManager:
     def __init__(self, player):
@@ -81,7 +84,8 @@ class PlotManager:
                     self.player.inventory.show_inv()
                 elif selected_option.lower() == "e":
                     print("Saving & Exiting...")
-                    return False
+                    SaveGame(self.player, self).save_game()
+                    sys.exit()
                 else:
                     print("There is no such option!")
                     continue
