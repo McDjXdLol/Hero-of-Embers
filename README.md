@@ -10,7 +10,7 @@
 - [License](#license)
 
 ## Description
-"Hero of Embers" is a work-in-progress, console-based fantasy RPG. Set in a rich, evolving fantasy world, the game focuses on combat, player choices, and a compelling narrative. You play as Aldric, a young hero uncovering dangerous secrets and battling rising evil forces. The game is still under development, with key features and storylines rapidly evolving.
+"Hero of Embers" is a work-in-progress, console-based fantasy RPG. Set in a rich, evolving fantasy world, the game focuses on combat, player choices, and a compelling narrative. You play as a young hero uncovering dangerous secrets and battling rising evil forces. The game is still under development, with key features and storylines rapidly evolving.
 
 ## Installation
 1. Clone the repository:
