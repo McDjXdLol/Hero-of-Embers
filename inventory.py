@@ -9,7 +9,6 @@ class Inventory:
         self.weapon = []
         self.armor = []
 
-
     @staticmethod
     def add_to_inv(item, inv, amount=1):
         its_in_in = False
@@ -21,7 +20,7 @@ class Inventory:
         if not its_in_in:
             inv.append([item, amount])
 
-    def show_equiped_weapons(self,inv):
+    def show_equiped_weapons(self, inv):
         for item in inv:
             self.ui.change_text(item, end=", ")
 
@@ -92,12 +91,12 @@ class Inventory:
             self.ui.change_text(f"{rest}")
 
         if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
-            self.ui.change_text("Do you want to equip one of them?\n1. Yes\n2. No")
+            self.ui.change_text(["Do you want to equip one of them?", "1. Yes", "2. No"])
             try:
                 want = int(input())
                 if want == 1:
                     if len(inventory_armors) > 0 and len(inventory_weapons) > 0:
-                        self.ui.change_text("Do you want to equip:\n1. Weapon\n2. Armor?")
+                        self.ui.change_text(["Do you want to equip:", "1. Weapon", "2. Armor?"])
                         try:
                             which_to_equip = int(input())
                             if which_to_equip == 1:

@@ -14,31 +14,32 @@ class BattleHandler:
         self.enemy = enemy
 
     def start_battle(self):
-        to_return = f"""    {self.player.name}
-HP:{self.player.hp}
-Armor: {self.player.armor}
-Damage: {self.player.damage}
-
-    {self.enemy.name}
-HP: {self.enemy.hp}
-Armor: {self.enemy.armor}
-Damage: {self.enemy.damage}"""
+        to_return = [f"    {self.player.name}", f"HP:{self.player.hp}", f"Armor: {self.player.armor}",
+                     f"Damage: {self.player.damage}", f"    {self.enemy.name}", f"HP: {self.enemy.hp}",
+                     f"Armor: {self.enemy.armor}", f"Damage: {self.enemy.damage}"]
         return to_return
 
     def enemy_turn(self):
-        self.ui.change_text(f"\n\n{self.enemy.name} turn!\n")
+        self.ui.change_text("\n")
+        self.ui.change_text("\n")
+        self.ui.change_text(f"{self.enemy.name} turn!")
+        self.ui.change_text("\n")
         self.player.deal_damage(self.enemy.damage)
         time.sleep(0.5)
-        self.ui.change_text(
-            f"{self.enemy.name} dealt {self.enemy.damage} dmg! \n{self.player.name} HP: {self.player.hp} Armor: {self.player.armor}")
+        self.ui.change_text([f"{self.enemy.name} dealt {self.enemy.damage} dmg!",
+                             f"{self.player.name} HP: {self.player.hp} Armor: {self.player.armor}"])
         return 0
 
     def player_turn(self):
-        self.ui.change_text(f"\n\n{self.player.name} turn")
+        self.ui.change_text("\n")
+        self.ui.change_text("\n")
+        self.ui.change_text(f"{self.player.name} turn")
         while True:
-            self.ui.change_text("\nSelect option: ")
-            self.ui.change_text(
-                "1. Normal attack (100% chance)\n2.Quick attack (30% chance)\n3. Strong attack (20% chance)\n4. Heal\n5. Check Inventory")
+            self.ui.change_text("\n")
+            self.ui.change_text("Select option: ")
+            self.ui.change_text([
+                "1. Normal attack (100% chance)", "2.Quick attack (30% chance)", "3. Strong attack (20% chance)",
+                "4. Heal", "5. Check Inventory"])
             try:
                 sel = self.ui.get_input(0, "")
                 if sel < 1:
@@ -61,14 +62,14 @@ Damage: {self.enemy.damage}"""
         match attack_sel:
             case 1:
                 self.enemy.deal_damage(self.player.damage)
-                self.ui.change_text(
-                    f"{self.player.name} dealt {self.player.damage} dmg!\n{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}")
+                self.ui.change_text([
+                    f"{self.player.name} dealt {self.player.damage} dmg!", f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"])
                 return 1
             case 2:
                 if random.random() < 0.3:
                     self.enemy.deal_damage(self.player.damage)
-                    self.ui.change_text(
-                        f"{self.player.name} dealt {self.player.damage} dmg!\n{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}")
+                    self.ui.change_text([
+                        f"{self.player.name} dealt {self.player.damage} dmg!", f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"])
                     return 0
                 else:
                     self.ui.change_text(f"{self.player.name} miss quick attack!")
@@ -76,8 +77,8 @@ Damage: {self.enemy.damage}"""
             case 3:
                 if random.random() < 0.2:
                     self.enemy.deal_damage(self.player.damage * 5)
-                    self.ui.change_text(
-                        f"{self.player.name} hit strong attack! {self.player.name} dealt {self.player.damage * 5} dmg!\n{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}")
+                    self.ui.change_text([
+                        f"{self.player.name} hit strong attack! {self.player.name} dealt {self.player.damage * 5} dmg!", f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"])
                     return 1
                 else:
                     self.ui.change_text(f"{self.player.name} miss strong attack!")
@@ -144,11 +145,11 @@ Damage: {self.enemy.damage}"""
             self.player.give_experience(self.enemy.experience_drop)
             self.player.armor += int(self.player.max_armor / 2)
             if self.enemy.experience_drop >= 25:
-                dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS)-1)]
-                amount = random.randint(1,3)
+                dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS) - 1)]
+                amount = random.randint(1, 3)
             else:
                 dropping_item = Library.HEAL_ITEMS[random.randint(0, 3)]
-                amount = random.randint(1,4)
+                amount = random.randint(1, 4)
             self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.elixir_inventory, amount=amount)
             return True
         else:
