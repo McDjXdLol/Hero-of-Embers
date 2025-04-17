@@ -59,7 +59,7 @@ In "Hero of Embers," you will embark on a journey that blends narrative choices 
   
 - **Dynamic Combat**: Engage in turn-based combat with a variety of enemies. The battle mechanics include HP, armor, and attack damage.
 
-- **Inventory System (WIP)**: Collect items, potions, and weapons. You can equip your character with different gear as you progress.
+- **Inventory System**: Collect items, potions, and weapons. You can equip your character with different gear as you progress.
 
 - **Choices That Matter**: The game features branching story paths where your choices will directly affect the plot.
 
