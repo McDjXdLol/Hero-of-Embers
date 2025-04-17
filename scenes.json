@@ -1,5 +1,6 @@
 {
   "scene_1": {
+    "scene_id": 1,
     "scene_name": "Ash and Soil",
     "description": "You are {name}, a poor farmer from a dying village. With nothing left, you've just arrived in the city of Eldoria, cold and hungry.",
     "1": {
@@ -24,6 +25,7 @@
     }
   },
   "scene_2": {
+    "scene_id": 2,
     "scene_name": "Filth and Ale",
     "description": "You find work in a moldy tavern. The barkeep hires you as a janitor. It's hard, thankless work, but it keeps you alive.",
     "1": {
@@ -48,6 +50,7 @@
     }
   },
   "scene_3": {
+    "scene_id": 3,
     "scene_name": "Whispers of Fire",
     "description": "One evening, while scrubbing near a table of mercenaries, you overhear talk of a dragon in the northern forests. Smoke, fire, and an ancient threat.",
     "1": {
@@ -72,6 +75,7 @@
     }
   },
   "scene_4": {
+    "scene_id": 4,
     "scene_name": "Into the Forest",
     "description": "You can't sleep. The whispers of fire echo in your mind. Grabbing what little you own, you head north into the woods.",
     "1": {
@@ -86,6 +90,7 @@
     }
   },
   "scene_5": {
+    "scene_id": 5,
     "scene_name": "The Screaming Clearing",
     "description": "In a moonlit clearing, a monstrous dragon looms over a girl. Its eyes burn like coals. She's trapped.",
     "1": {
@@ -110,6 +115,7 @@
     }
   },
   "scene_6": {
+    "scene_id": 6,
     "scene_name": "A New Morning",
     "description": "You wake up on your worn-out couch. The girl is gone. Was it all a dream? Then—knock knock.",
     "1": {
@@ -124,6 +130,7 @@
     }
   },
   "scene_7": {
+    "scene_id": 7,
     "scene_name": "Her Name is Lyria",
     "description": "Her name is Lyria. Over food and shy glances, she shares her story. Wandering. Alone. No one ever helped her. Until now.",
     "1": {
@@ -148,6 +155,7 @@
     }
   },
   "scene_8": {
+    "scene_id": 8,
     "scene_name": "Training Begins",
     "description": "Weeks pass. Lyria stays. You train together in the narrow alleys behind your home. Wooden sticks clash, laughter echoes.",
     "1": {
@@ -172,6 +180,7 @@
     }
   },
   "scene_9": {
+    "scene_id": 9,
     "scene_name": "Stormfang",
     "description": "One evening, under the fading sun, she gives you a blade wrapped in cloth. 'Stormfang,' she whispers. 'Forged in dragonfire. It's yours now.'",
     "1": {
@@ -186,6 +195,7 @@
     }
   },
   "scene_10": {
+    "scene_id": 10,
     "scene_name": "The Hollow Hand",
     "description": "The rumors spread quickly: a strange cult calling themselves the Hollow Hand is making their presence known in Eldoria. Disappearances. Weird symbols. Whispers in the dark.",
     "1": {
@@ -210,6 +220,7 @@
     }
   },
   "scene_11": {
+    "scene_id": 11,
     "scene_name": "The First Encounter",
     "description": "Lyria approaches you one evening with a grave expression. 'I've found something,' she says. 'A temple. Beneath the city. It's the cult's headquarters.'",
     "1": {
@@ -234,6 +245,7 @@
     }
   },
   "scene_12": {
+    "scene_id": 12,
     "scene_name": "The Betrayal",
     "description": "You and Lyria make your way into the cult's temple, the air thick with the scent of incense and fear. You hear the sound of chanting coming from deep within.",
     "1": {
@@ -258,6 +270,7 @@
     }
   },
   "scene_13": {
+    "scene_id": 13,
     "scene_name": "Revelation of Taren",
     "description": "As you reach the heart of the temple, a cold laugh echoes through the chamber. 'Did you really think I was on your side?' Taren steps from the shadows, a wicked grin on his face.",
     "1": {
@@ -282,6 +295,7 @@
     }
   },
   "scene_14": {
+    "scene_id": 14,
     "scene_name": "Escape from the Temple",
     "description": "The temple is collapsing around you as the dark magic spreads like wildfire. You and Lyria must make a quick decision.",
     "1": {
@@ -306,6 +320,7 @@
     }
   },
   "scene_15": {
+    "scene_id": 15,
     "scene_name": "The Last Stand",
     "description": "You are face-to-face with Taren as the temple crumbles. The betrayal is fresh in your mind, but now is not the time for hesitation.",
     "1": {
@@ -330,6 +345,7 @@
     }
   },
   "scene_16": {
+    "scene_id": 16,
     "scene_name": "The Collapse",
     "description": "You manage to escape the crumbling temple, but the damage has been done. The Hollow Hand's plan is nearly complete, and the cult has gained too much power.",
     "1": {
@@ -354,6 +370,7 @@
     }
   },
   "scene_17": {
+    "scene_id": 17,
     "scene_name": "The Final Strike",
     "description": "Taren, fueled by dark magic, is relentless. His power seems unstoppable, but you are determined to end his treachery once and for all.",
     "1": {
@@ -378,6 +395,7 @@
     }
   },
   "scene_18": {
+    "scene_id": 18,
     "scene_name": "The Dragon's Awakening",
     "description": "As Taren falls, the ground shakes violently. You feel a deep rumble, the earth itself groaning under the pressure. The dragon is waking.",
     "1": {
@@ -402,6 +420,7 @@
     }
   },
   "scene_19": {
+    "scene_id": 19,
     "scene_name": "Stopping the Ritual",
     "description": "You try to disrupt the summoning, but it's too late. The ritual is reaching its climax, and the ground splits open. A shadowy figure rises from the depths.",
     "1": {
@@ -426,6 +445,7 @@
     }
   },
   "scene_20": {
+    "scene_id": 20,
     "scene_name": "The Final Battle",
     "description": "The Shadow Dragon stands before you, its dark scales gleaming with power. It roars, and the world trembles in its wake.",
     "1": {
@@ -450,6 +470,7 @@
     }
   },
   "scene_21": {
+    "scene_id": 21,
     "scene_name": "The Final Blow",
     "description": "The Shadow Dragon roars one last time as it rears back to strike. You know this is it—the final moment to deliver the killing blow.",
     "1": {
@@ -474,6 +495,7 @@
     }
   },
   "scene_22": {
+    "scene_id": 22,
     "scene_name": "The Aftermath",
     "description": "The battle is over. The Shadow Dragon lies dead. The world, for a moment, is silent. But at what cost?",
     "1": {
@@ -498,6 +520,7 @@
     }
   },
   "scene_23": {
+    "scene_id": 23,
     "scene_name": "The Final Farewell",
     "description": "As the dust settles, you stand alone. The dragon is dead, but what remains of the world you fought for? Of the people you fought beside?",
     "1": {
@@ -522,6 +545,7 @@
     }
   },
   "scene_24": {
+    "scene_id": 24,
     "scene_name": "End of the Journey",
     "description": "The battle is over. Eldoria stands, but the cost of victory weighs heavily. You have saved the land, but at what price? The hero you were is no more, and now, only time will tell what kind of future awaits this broken world.",
     "1": {
@@ -536,6 +560,7 @@
     }
   },
   "scene_25": {
+    "scene_id": 25,
     "scene_name": "credits",
     "description": "\n\n\n\nGame developed by: McDjXdLol\nStory written by: McDjXdLol\nMain design: McDjXdLol\nProgramming: McDjXdLol, Assistant: ChatGPT\nThank you for playing!",
     "1": {

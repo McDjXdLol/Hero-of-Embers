@@ -27,13 +27,18 @@ class PlotManager:
 
     def get_options_names(self):
         options = []
-        for nr, p in enumerate(self.scenes_data[self.actual_scene]):
-            if nr > 1:
-                options.append(p.lower())
+        for key in self.scenes_data[self.actual_scene]:
+            if key.isdigit():
+                options.append(key)
         return options
 
     def get_option_description(self, option_name):
-        return self.scenes_data[self.actual_scene][option_name]['description']
+        option_name = str(option_name)
+        if option_name in self.scenes_data[self.actual_scene]:
+            return self.scenes_data[self.actual_scene][option_name]['description']
+        else:
+            print(f"Option {option_name} not found!")
+            return None
 
     def get_option_effect(self, option_name):
         return self.scenes_data[self.actual_scene][option_name]['effect']
@@ -53,6 +58,9 @@ class PlotManager:
     def get_drop_information(self, option_name):
         return self.scenes_data[self.actual_scene][option_name]['drop']
 
+    def get_scene_id(self):
+        return self.scenes_data[self.actual_scene]['scene_id']
+
     def show_all_options(self):
         for option in self.get_options_names():
             print(f"{option}. {self.get_option_description(option)}")
@@ -65,6 +73,21 @@ class PlotManager:
 
     def fight_who(self, option_name):
         return self.scenes_data[self.actual_scene][option_name]['enemy_name']
+
+    def random_drop(self, scene_id):
+        if scene_id <= 10:
+            dropping_item = Library.HEAL_ITEMS[random.randint(0, len(Library.HEAL_ITEMS) - 1)]
+            amount = random.randint(1, 3)
+            self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.elixir_inventory, amount=amount)
+        elif 11 <= scene_id <= 25:
+            libraries = [Library.HEAL_ITEMS, Library.WEAPONS, Library.ARMORS]
+            rolled_library = libraries[random.randint(0, 2)]
+            dropping_item = rolled_library[random.randint(0, len(rolled_library) - 1)]
+            match rolled_library:
+                case Library.HEAL_ITEMS:
+                    self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.elixir_inventory, amount=1)
+                case _:
+                    self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.inventory, amount=1)
 
     def select_option(self):
         selected_option = None
@@ -105,15 +128,13 @@ class PlotManager:
             os.system('cls')
             print(self.get_option_effect(selected_option))
             if self.get_drop_information(selected_option):
-                dropping_item = Library.HEAL_ITEMS[random.randint(0, len(Library.HEAL_ITEMS)-1)]
-                amount = random.randint(1, 3)
-                self.player.inventory.add_to_inv(dropping_item, self.player.inventory.elixir_inventory, amount=amount)
+                self.random_drop(self.get_scene_id())
             if self.is_fight(selected_option):
                 time.sleep(1)
                 for en in Library.ENEMIES:
                     if en[0] == self.fight_who(selected_option):
                         oponent = Enemy(self.fight_who(selected_option), en[1], en[2], en[3], en[4])
-                        if bH(self.player,oponent).battle():
+                        if bH(self.player, oponent).battle():
                             if self.get_option_next_scene(selected_option) != "END":
                                 self.set_next_scene(selected_option)
                                 self.select_option()

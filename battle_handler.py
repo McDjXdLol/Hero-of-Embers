@@ -83,18 +83,16 @@ Damage: {self.enemy.damage}"""
                     return 1
             case 4:
                 elixirs_in_inv = []
-                for elixir in Library.HEAL_ITEMS:
-                    if self.player.inventory.check_if_in_inv(elixir[0], self.player.inventory.elixir_inventory):
-                        for item_nr, item in enumerate(self.player.inventory.elixir_inventory):
-                            elixirs_in_inv.append([item_nr, item])
+                for elixir in self.player.inventory.elixir_inventory:
+                    elixirs_in_inv.append(elixir)
                 if len(elixirs_in_inv) == 0:
                     print(f"{self.player.name} don't have any elixirs in inventory!")
                     return 0
                 else:
                     while True:
                         print("Choose the elixir:")
-                        for eli in elixirs_in_inv:
-                            print(f"{eli[0] + 1}. {eli[1][0]} x{eli[1][1]}")
+                        for eli_nr, eli in enumerate(elixirs_in_inv):
+                            print(f"{eli_nr + 1}. {eli[0]} x{eli[1]}")
                         try:
                             chosen_elixir = int(input())
                             if chosen_elixir < 1:
@@ -105,11 +103,11 @@ Damage: {self.enemy.damage}"""
                                 break
                         except ValueError:
                             print("You have to enter the number!")
-                    chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][1]
-                    print(f"You choose {chosen_elixir_name[0]}")
+                    chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0]
+                    print(f"You choose {chosen_elixir_name}")
                     self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
                     for elix in Library.HEAL_ITEMS:
-                        if chosen_elixir_name[0] in elix:
+                        if chosen_elixir_name in elix:
                             self.player.heal_hp(elix[1])
                             print(
                                 f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
@@ -150,7 +148,7 @@ Damage: {self.enemy.damage}"""
             else:
                 dropping_item = Library.HEAL_ITEMS[random.randint(0, 3)]
                 amount = random.randint(1,4)
-            self.player.inventory.add_to_inv(dropping_item, self.player.inventory.elixir_inventory, amount=amount)
+            self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.elixir_inventory, amount=amount)
             return True
         else:
             return False
