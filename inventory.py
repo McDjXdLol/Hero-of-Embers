@@ -32,7 +32,7 @@ class Inventory:
         for weapon_id, weapon in enumerate(inv_weapons):
             self.ui.change_text(f"{weapon_id + 1}. {weapon}")
         try:
-            selected_weapon = int(input())
+            selected_weapon = int(self.ui.get_input(0, ""))
             if selected_weapon <= len(inv_weapons):
                 self.equip_weapon(inv_weapons[selected_weapon - 1])
                 self.remove_from_inv(inv_weapons[selected_weapon - 1], self.inventory)
@@ -46,9 +46,7 @@ class Inventory:
         for armors_id, armors in enumerate(inv_armors):
             self.ui.change_text(f"{armors_id + 1}. {armors}")
         try:
-            selected_armor = int(input())
-            print(
-                f"DEBUG - Selected Armor = {selected_armor}\nDEBUG - inv_armors = {inv_armors}\nDEBUG - len(inv_armors) = {len(inv_armors)}")
+            selected_armor = int(self.ui.get_input(0, ""))
             if selected_armor <= len(inv_armors):
                 self.equip_armor(inv_armors[selected_armor - 1])
                 self.remove_from_inv(inv_armors[selected_armor - 1], self.inventory)
@@ -104,12 +102,12 @@ class Inventory:
         if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
             self.ui.change_text(["Do you want to equip one of them?", "1. Yes", "2. No"])
             try:
-                want = int(input())
+                want = int(self.ui.get_input(0, ""))
                 if want == 1:
                     if len(inventory_armors) > 0 and len(inventory_weapons) > 0:
                         self.ui.change_text(["Do you want to equip:", "1. Weapon", "2. Armor"])
                         try:
-                            which_to_equip = int(input())
+                            which_to_equip = int(self.ui.get_input(0, ""))
                             if which_to_equip == 1:
                                 self.which_weapon_to_equip(inventory_weapons)
                             elif which_to_equip == 2:
@@ -139,7 +137,7 @@ class Inventory:
     @staticmethod
     def remove_from_inv(item_name, inv):
         for it in inv:
-            if it[0][0] == item_name:  # ← porównujemy nazwę
+            if it[0][0] == item_name:
                 it[1] -= 1
                 if it[1] <= 0:
                     inv.remove(it)
@@ -160,7 +158,6 @@ class Inventory:
                     for old_weapon in Library.WEAPONS:
                         if self.weapon[0] == old_weapon[0]:
                             old_weapon_damage = old_weapon[1]
-                            # Dodaj starą broń z powrotem do inventory
                             self.add_to_inv([self.weapon[0], old_weapon[1]], self.inventory)
                             self.weapon.remove(self.weapon[0])
                             break
@@ -177,7 +174,6 @@ class Inventory:
                     for old_armor in Library.ARMORS:
                         if self.armor[0] == old_armor[0]:
                             old_armor_value = old_armor[1]
-                            # Dodaj starą zbroję z powrotem do inventory
                             self.add_to_inv([self.armor[0], old_armor[1]], self.inventory)
                             self.armor.remove(self.armor[0])
                             break
