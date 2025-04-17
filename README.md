@@ -65,7 +65,9 @@ The game combines turn-based combat, player choices, and an evolving narrative. 
 If you'd like to create your own plot for the game, you can use the `plot_maker_app.py` script. This is the only part of the project where a GUI is used, so you'll need to install `pyqt6` beforehand.
 
 ![plot_maker_app](https://github.com/user-attachments/assets/3de29f7b-2386-4b59-a951-2fc930a22077)
-Here’s how to use it:
+
+
+### Here’s how to use it:
 1. **Scene Name**: Enter the name of the scene. Remember this name, as you'll use it later to navigate between scenes.
 2. **Description**: Add a description to tell the player what’s happening in the scene.
 3. **Add Scene**: After adding the scene, you'll need to re-enter the scene name to continue.
