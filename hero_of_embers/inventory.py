@@ -53,8 +53,9 @@ class Inventory:
         inventory_weapons = []
         inventory_armors = []
         inventory_items = []
+
         for item in self.inventory:
-            name = item[0][0]  # ← nazwa
+            name = item[0][0]
             added = False
 
             for w in Library.WEAPONS:
@@ -90,8 +91,10 @@ class Inventory:
             self.ui.change_text(f"{armor}")
 
         self.ui.change_text("Miscellaneous: ")
-        for rest in inventory_items:
-            self.ui.change_text(f"{rest}")
+        for item in inventory_items:
+            item_name = item[0][0]
+            item_amount = item[1]
+            self.ui.change_text(f"{item_name} x{item_amount}")
 
         if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
             self.ui.change_text(["Do you want to equip one of them?", "1. Yes", "2. No"])
@@ -110,13 +113,10 @@ class Inventory:
                                 self.ui.change_text("There is no such option!")
                         except ValueError:
                             self.ui.change_text("You have to enter the number!")
-
                     elif len(inventory_armors) > 0:
                         self.which_armor_to_equip(inventory_armors)
-
                     elif len(inventory_weapons) > 0:
                         self.which_weapon_to_equip(inventory_weapons)
-
                 elif want == 2:
                     return
                 else:
@@ -126,7 +126,7 @@ class Inventory:
 
     def show_inv_elixirs(self):
         for el in self.elixir_inventory:
-            self.ui.change_text(f"{el[0]} x{el[1]}", end=", ")
+            self.ui.change_text(f"{el[0]} x{el[1]}")
 
     @staticmethod
     def remove_from_inv(item_name, inv):
@@ -140,7 +140,7 @@ class Inventory:
     @staticmethod
     def check_if_in_inv(item, inv):
         for it in inv:
-            if item in it:
+            if it[0][0] == item:
                 return True
         return False
 

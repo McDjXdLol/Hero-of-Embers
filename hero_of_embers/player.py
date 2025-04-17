@@ -47,30 +47,39 @@ class Player:
 
     def give_experience(self, amount):
         self.ui.change_text(f"{self.name} gained {amount} xp!")
-        if type(self.level) == int:
-            if self.level < len(self.experience_to_next_level):
-                if self.experience + amount > self.experience_to_next_level[self.level]:
-                    self.experience = (self.experience + amount) - self.experience_to_next_level[self.level]
-                    self.level += 1
-                    self.ui.change_text(f"{self.name} got next level!")
-                    self.select_boost()
-                else:
-                    self.experience += amount
-            elif self.level < len(self.experience_to_next_level) + len(self.experience_to_legendary_level):
-                if self.experience + amount > self.experience_to_next_level[self.level-len(self.experience_to_next_level)-1]:
-                    self.experience = (self.experience + amount) - self.experience_to_next_level[self.level-len(self.experience_to_next_level)-1]
-                    self.level += 1
-                    self.ui.change_text(f"{self.name} got next level!")
-                    self.select_legendary_boost()
-                else:
-                    self.experience += amount
-            else:
-                self.experience = "MAX"
-                self.level = "MAX"
-                self.ui.change_text("You got the maximum level!")
-        else:
-            self.ui.change_text("You already got the maximum level!")
 
+        if self.level == "MAX":
+            self.ui.change_text("You already got the maximum level!")
+            return
+
+        self.experience += amount
+
+        while isinstance(self.level, int) and self.level < len(self.experience_to_next_level):
+            xp_needed = self.experience_to_next_level[self.level]
+            if self.experience >= xp_needed:
+                self.experience -= xp_needed
+                self.level += 1
+                self.ui.change_text(f"{self.name} got next level!")
+                self.select_boost()
+            else:
+                return
+
+        while isinstance(self.level, int) and self.level < len(self.experience_to_next_level) + len(
+                self.experience_to_legendary_level):
+            index = self.level - len(self.experience_to_next_level)
+            xp_needed = self.experience_to_legendary_level[index]
+            if self.experience >= xp_needed:
+                self.experience -= xp_needed
+                self.level += 1
+                if self.level == len(self.experience_to_next_level) + len(self.experience_to_legendary_level):
+                    self.level = "MAX"
+                    self.experience = "MAX"
+                    self.ui.change_text("You got the maximum level!")
+                    return
+                self.ui.change_text(f"{self.name} got next level!")
+                self.select_legendary_boost()
+            else:
+                return
 
     def select_legendary_boost(self):
         self.ui.change_text("Select bonus: ")
