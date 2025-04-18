@@ -1,6 +1,6 @@
 # Hero of Embers (WIP)
 
-## Table of Contents:
+## Table of Contents
 - [Description](#description)
 - [Installation](#installation)
 - [Plot](#plot)
@@ -10,54 +10,43 @@
 - [License](#license)
 
 ## Description
-"Hero of Embers" is a work-in-progress, console-based fantasy RPG. Set in a rich, evolving fantasy world, the game focuses on combat, player choices, and a compelling narrative. You play as a young hero uncovering dangerous secrets and battling rising evil forces. The game is still under development, with key features and storylines rapidly evolving.
+"Hero of Embers" is a console-based fantasy RPG. You play as Aldric, a young hero uncovering dangerous secrets and battling evil forces. The game is in progress, with evolving features and storyline.
 
 ## Installation
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/McDjXdLol/Hero-of-Embers.git
-   ```
+
+    ```bash
+    git clone https://github.com/McDjXdLol/Hero-of-Embers.git 
+    ```
+
 2. Navigate to the project folder:
 
     ```bash
     cd Hero-of-Embers
     ```
-3. Install required dependencies:
+
+3. Install dependencies:
 
     ```bash
-    pip install -r requirements.txt
+    pip install -r requirements.txt 
     ```
-4. To start the game:
+
+4. Start the game:
 
     ```bash
     python main.py
     ```
-## Plot (WIP)
-The story follows a young farmer who discovers a hidden destiny tied to an ancient order. Alongside a companion, they unravel a conspiracy by the Hollow Hand Cult and seek to wield the legendary sword Stormfang. Players must navigate difficult choices, face betrayal, and prepare for a final confrontation against a rising evil.
-### Key Story Elements:
-**The Protector**: An ancient order with ties to Aldric’s fate.
 
-**The Hollow Hand Cult**: A mysterious group with dark ambitions.
-
-**Stormfang**: A legendary sword crucial for defeating evil.
+## Plot
+Follow Aldric's journey from a young farmer to a hero who uncovers dark conspiracies tied to the Hollow Hand Cult and the legendary sword Stormfang.
 
 ## Gameplay
-The game combines turn-based combat, player choices, and an evolving narrative. You will explore different locations, fight various enemies, and make decisions that impact the plot.
+A turn-based RPG with choices that impact the story, dynamic combat, and an evolving narrative. Your choices shape your adventure, with features like:
 
-### Core Features:
-- **Character Classes**: Choose from:
-    - _**The Protector**_: Tank with high armor and HP.
-    - _**The Fighter**_: Balanced stats for versatile play style.
-    - _**The Avenger**_: High damage, low HP.
-
-
-- **Dynamic Combat**: Turn-based combat system with HP, armor, and damage stats.
-
-- **Inventory System**: Collect weapons, armor, and items for progression.
-
-- **Choices That Matter**: Decisions affect the course of the story.
-
-- **Save & Load**: Save your progress and load it anytime.
+- **Character Classes:** Protector, Fighter, and Avenger.
+- **Dynamic Combat:** Strategic turn-based battles.
+- **Inventory System:** Collect items for progression.
+- **Save/Load Progress:** Save your game and continue anytime.
 
 ## Plot Writer
 
@@ -87,10 +76,8 @@ To run the plot maker, simply execute the following command after installing `py
 python plot_maker_app.py
 ```
 
-
 ## Contributing
-Contributions are welcome! Fork the repository, make your changes, and create a pull request.
+Contributions are welcome! Please feel free to open issues or submit pull requests.
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
