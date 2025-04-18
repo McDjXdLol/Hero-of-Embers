@@ -14,7 +14,7 @@ class PlotManager:
     def __init__(self, player, ui):
         self.ui = ui
         self.player = player
-        scene_file = open('hero_of_embers/scenes.json')
+        scene_file = open('scenes.json')
         scene_str = scene_file.read()
         self.scenes_data = json.loads(scene_str)
         first_scene = list(self.scenes_data.keys())[0]

@@ -21,5 +21,7 @@ class UI:
             try:
                 self.player_input = int(input(what_to_ask_for))
             except ValueError:
+                self.player_input = "invalid"  # Dodanie tej linii
                 self.change_text("U have to enter the number! Try again.")
         return self.player_input
+
