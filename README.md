@@ -34,7 +34,7 @@
 4. Start the game:
 
     ```bash
-    python main.py
+    python run_game.py
     ```
 
 ## Plot
@@ -73,7 +73,7 @@ If you'd like to create your own plot for the game, you can use the `plot_maker_
 
 To run the plot maker, simply execute the following command after installing `pyqt6`:
 ```bash
-python plot_maker_app.py
+python run_plot_maker.py
 ```
 
 ## Contributing
