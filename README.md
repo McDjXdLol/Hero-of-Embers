@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Description](#description)
+- [List to do](#to-do-list)
 - [Installation](#installation)
 - [Plot](#plot)
 - [Gameplay](#gameplay)
@@ -11,6 +12,26 @@
 
 ## Description
 "Hero of Embers" is a console-based fantasy RPG. You play as Aldric, a young hero uncovering dangerous secrets and battling evil forces. The game is in progress, with evolving features and storyline.
+
+## To do list
+### The list of things I want to and the things that are already in game:
+- [x] Implemented a scene system driven by a scenes.json file.
+- [x] Built the main game loop.
+- [x] Developed a plot generation tool in the plot_maker directory.
+- [x] Added unit tests (run_tests.py).
+- [x] Managed dependencies with requirements.txt.
+- [x] Created a setup.py for package installation.
+- [x] Implement a combat system with enemies and stats.
+- [x] Add an inventory system and item management.
+- [x] Introduce experience points and level-up mechanics.
+- [x] Add game save/load functionality.
+- [x] Write docstring's documentation in code.
+- [ ] Add currency
+- [ ] Add option to trade.
+- [ ] Expand the storyline with additional scenes and choices.
+- [ ] Improve the user interface (e.g. color-coded text, better formatting).
+- [ ] Integrate sound and music (if ever expanded beyond the console).
+- [ ] Include demo screenshots or GIFs in the README.md.
 
 ## Installation
 1. Clone the repository:
