@@ -14,7 +14,7 @@
 "Hero of Embers" is a console-based fantasy RPG. You play as Aldric, a young hero uncovering dangerous secrets and battling evil forces. The game is in progress, with evolving features and storyline.
 
 ## To do list
-### The list of things I want to and the things that are already in game:
+### The list of things I want to add, and the things that are already in game:
 - [x] Implemented a scene system driven by a scenes.json file.
 - [x] Built the main game loop.
 - [x] Developed a plot generation tool in the plot_maker directory.
