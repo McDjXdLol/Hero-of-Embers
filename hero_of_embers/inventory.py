@@ -4,9 +4,12 @@ from hero_of_embers.library import Library
 class Inventory:
     def __init__(self, ui):
         """
-        Class that handles player inventory
-        :param ui: ui class object
-        :type ui: hero_of_embers.ui_manager.UI
+        Initializes the inventory for the player.
+
+        Parameters
+        ----------
+        ui : hero_of_embers.ui_manager.UI
+            UI class object to interact with the user.
         """
         self.ui = ui
         self.inventory = []
@@ -17,13 +20,16 @@ class Inventory:
     @staticmethod
     def add_to_inv(item, inv, amount=1):
         """
-        Function that is used to add item to selected inventory with selected amount
-        :param item: item array from Library
-        :param inv: selection of inventory
-        :param amount: amount of items to give
-        :type item: list
-        :type inv: list
-        :type amount: int
+        Adds a specified amount of an item to the selected inventory.
+
+        Parameters
+        ----------
+        item : list
+            Item array from Library.
+        inv : list
+            The inventory to which the item should be added.
+        amount : int, optional
+            The amount of the item to add (default is 1).
         """
         for it in inv:
             if it[0][0] == item[0] and it[0][1] == item[1]:
@@ -33,18 +39,24 @@ class Inventory:
 
     def show_equiped_weapons(self, inv):
         """
-        Function that shows equiped items
-        :param inv: inventory of equiped items
-        :type inv: list
+        Displays equipped items from the inventory.
+
+        Parameters
+        ----------
+        inv : list
+            Inventory of equipped items.
         """
         for item in inv:
             self.ui.change_text(item)
 
     def which_weapon_to_equip(self, inv_weapons):
         """
-        Function that is used to give player selection of what weapon he wants to equip
-        :param inv_weapons: list of weapons in player inventory
-        :type inv_weapons: list
+        Allows the player to choose which weapon to equip.
+
+        Parameters
+        ----------
+        inv_weapons : list
+            List of weapons in the player's inventory.
         """
         self.ui.change_text("Which weapon do you want to equip?")
         for weapon_id, weapon in enumerate(inv_weapons):
@@ -61,9 +73,12 @@ class Inventory:
 
     def which_armor_to_equip(self, inv_armors):
         """
-        Function that is used to give player selection of what armor he wants to equip
-        :param inv_armors: list of armors in player inventory
-        :type inv_armors: list
+        Allows the player to choose which armor to equip.
+
+        Parameters
+        ----------
+        inv_armors : list
+            List of armors in the player's inventory.
         """
         self.ui.change_text("Which armor do you want to equip?")
         for armors_id, armors in enumerate(inv_armors):
@@ -80,7 +95,7 @@ class Inventory:
 
     def show_inv(self):
         """
-        Function that shows the player inventory
+        Displays the player's inventory, including weapons, armors, and miscellaneous items.
         """
         inventory_weapons = []
         inventory_armors = []
@@ -158,7 +173,11 @@ class Inventory:
 
     def show_inv_elixirs(self):
         """
-        Function that is used to show player elixirs
+        Displays the player's elixirs inventory.
+
+        Notes
+        -----
+        Each elixir is shown along with the amount.
         """
         for el in self.elixir_inventory:
             self.ui.change_text(f"{el[0]} x{el[1]}")
@@ -166,11 +185,14 @@ class Inventory:
     @staticmethod
     def remove_from_inv(item_name, inv):
         """
-        Function that is used to delete appropriate amount of items from selected inventory
-        :param item_name: name of the item
-        :param inv: selected inventory
-        :type item_name: str
-        :type inv: list
+        Removes one item from the selected inventory.
+
+        Parameters
+        ----------
+        item_name : str
+            The name of the item to remove.
+        inv : list
+            The inventory to remove the item from.
         """
         for it in inv:
             if it[0][0] == item_name:
@@ -182,11 +204,19 @@ class Inventory:
     @staticmethod
     def check_if_in_inv(item, inv):
         """
-        Function that return if player has the item
-        :param item: item to check if is in inventory
-        :param inv: inventory to check
-        :type item: str
-        :type inv: list
+        Checks if the player has a specified item in their inventory.
+
+        Parameters
+        ----------
+        item : str
+            The item to check for in the inventory.
+        inv : list
+            The inventory to check.
+
+        Returns
+        -------
+        bool
+            True if the item is in the inventory, False otherwise.
         """
         for it in inv:
             if it[0][0] == item:
@@ -195,9 +225,18 @@ class Inventory:
 
     def equip_weapon(self, item_name):
         """
-        Function that is used to equip selected weapon
-        :param item_name: name of the weapon
-        :type item_name: str
+        Equips the selected weapon for the player.
+
+        Parameters
+        ----------
+        item_name : str
+            The name of the weapon to equip.
+
+        Returns
+        -------
+        tuple or None
+            A tuple containing the old weapon's damage and the new weapon's damage,
+            or None if the weapon could not be equipped.
         """
         old_weapon_damage = 0
         for weapon in Library.WEAPONS:
@@ -216,9 +255,18 @@ class Inventory:
 
     def equip_armor(self, item_name):
         """
-        Function that is used to equip selected armor
-        :param item_name: name of the armor
-        :type item_name: str
+        Equips the selected armor for the player.
+
+        Parameters
+        ----------
+        item_name : str
+            The name of the armor to equip.
+
+        Returns
+        -------
+        tuple or None
+            A tuple containing the old armor value and the new armor value,
+            or None if the armor could not be equipped.
         """
         old_armor_value = 0
         for armor in Library.ARMORS:

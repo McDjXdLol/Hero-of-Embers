@@ -5,11 +5,14 @@ import os.path
 class SaveGame:
     def __init__(self, player, plot_manager):
         """
-        Class that is used to save player data to a file
-        :param player: player class object
-        :param plot_manager: plot_manager class object
-        :type player: hero_of_embers.player.Player
-        :type plot_manager: hero_of_embers.plot_manager.PlotManager
+        SaveGame class used to store player and plot data in a file.
+
+        Parameters
+        ----------
+        player : hero_of_embers.player.Player
+            Player class instance.
+        plot_manager : hero_of_embers.plot_manager.PlotManager
+            PlotManager class instance.
         """
         # Player Data
         self.player_name = player.name
@@ -49,19 +52,25 @@ class SaveGame:
 
     def save_game(self):
         """
-        Function that save all data to savegame.json file
+        Save all current game data to a JSON file.
+
+        Saves player and plot state to 'savegame.json'.
         """
         with open('savegame.json', 'w') as file:
             json.dump(self.data, file)
 
+
 class LoadGame:
     def __init__(self, player, plot_manager):
         """
-        Class that is used to load save file
-        :param player: player class object
-        :param plot_manager: plot_manager class object
-        :type player: hero_of_embers.player.Player
-        :type plot_manager: hero_of_embers.plot_manager.PlotManager
+        LoadGame class used to load saved game data.
+
+        Parameters
+        ----------
+        player : hero_of_embers.player.Player
+            Player class instance.
+        plot_manager : hero_of_embers.plot_manager.PlotManager
+            PlotManager class instance.
         """
         self.player = player
         self.plot_manager = plot_manager
@@ -69,7 +78,12 @@ class LoadGame:
     @staticmethod
     def load_game():
         """
-        Function that load the savegame.json file
+        Load data from 'savegame.json'.
+
+        Returns
+        -------
+        dict or None
+            The saved data if file exists, otherwise None.
         """
         if os.path.exists("savegame.json"):
             with open('savegame.json', 'r') as file:
@@ -79,7 +93,10 @@ class LoadGame:
 
     def load_data(self):
         """
-        Function that return all the data to the variables
+        Load saved data into player and plot manager objects.
+
+        Updates all relevant player and plot variables with saved values.
+        Prints a message depending on whether a save file was found.
         """
         print("Loading save file...")
         save_data = self.load_game()

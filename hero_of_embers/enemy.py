@@ -1,17 +1,33 @@
 class Enemy:
     def __init__(self, name="Wolf", hp=100, armor=100, damage=15, experience=20):
         """
-        Class that handles enemy information.
-        :param name: name of enemy
-        :param hp: amount of hp
-        :param armor: amount of armor
-        :param damage: amount of damage
-        :param experience: amount of experience that enemy drop after killing him
-        :type name: str
-        :type hp: int
-        :type armor: int
-        :type damage: int
-        :type experience: int
+        Initializes the enemy with specified attributes.
+
+        Parameters
+        ----------
+        name : str, optional
+            Name of the enemy (default is "Wolf").
+        hp : int, optional
+            Health points of the enemy (default is 100).
+        armor : int, optional
+            Armor value of the enemy (default is 100).
+        damage : int, optional
+            Damage value of the enemy (default is 15).
+        experience : int, optional
+            Experience points dropped after the enemy is defeated (default is 20).
+
+        Attributes
+        ----------
+        name : str
+            Name of the enemy.
+        hp : int
+            Current health points of the enemy.
+        armor : int
+            Armor value of the enemy.
+        damage : int
+            Damage value of the enemy.
+        experience : int
+            Experience points dropped by the enemy.
         """
         self.name = name
         self.hp = hp
@@ -23,20 +39,25 @@ class Enemy:
 
     def deal_damage(self, amount):
         """
-        Function that is used to deal enemy damage
-        :param amount: amount of damage to deal
-        :type amount: int
+        Deals damage to the enemy, considering armor and health.
+
+        Parameters
+        ----------
+        amount : int
+            Amount of damage to deal to the enemy.
+
+        Returns
+        -------
+        bool
+            True if the enemy is killed, False otherwise.
         """
         if self.armor >= amount:
-            # Jeśli armor jest większy lub równy obrażeniom, po prostu zmniejszamy armor
             self.armor -= amount
         else:
-            # Jeśli armor nie wystarcza, wyczerpujemy armor, a reszta trafia do HP
             remaining_damage = amount - self.armor
-            self.armor = 0  # Armor jest wyczerpany
-            self.hp -= remaining_damage  # Reszta obrażeń trafia w HP
+            self.armor = 0
+            self.hp -= remaining_damage
 
-        # Jeśli po tym HP wroga spadło do 0 lub poniżej, wróg umiera
         if self.hp <= 0:
             return self.kill_enemy()
 
@@ -44,18 +65,30 @@ class Enemy:
 
     def heal_hp(self, amount):
         """
-        Function that is used to heal enemy
-        :param amount: amount of heal
-        :type amount: int
+        Heals the enemy by a specified amount.
+
+        Parameters
+        ----------
+        amount : int
+            Amount of health to heal.
+
+        Notes
+        -----
+        If the healing amount exceeds the maximum health, the health will be set to the maximum value.
         """
         if self.hp + amount > self.max_hp:
-            self.hp = self.max_hp  # Jeśli leczenie przekroczy max_hp, ustawiamy hp na max_hp
+            self.hp = self.max_hp
         else:
-            self.hp += amount  # Jeśli nie, po prostu dodajemy zdrowie
+            self.hp += amount
 
     def kill_enemy(self):
         """
-        Function that is used to kill enemy
+        Kills the enemy by setting health and armor to 0.
+
+        Returns
+        -------
+        bool
+            True, indicating the enemy is dead.
         """
         self.hp = 0
         self.armor = 0

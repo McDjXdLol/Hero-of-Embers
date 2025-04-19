@@ -4,23 +4,35 @@ from hero_of_embers.library import Library
 class Selection:
     def __init__(self, ui):
         """
-        Class that is used to start the game. It's gotten the class selection etc.
-        :param ui: ui class object
-        :type ui: hero_of_embers.ui_manager.UI
+        Selection class used for initializing game start procedures
+        such as nickname input, class selection, and difficulty choice.
+
+        Parameters
+        ----------
+        ui : hero_of_embers.ui_manager.UI
+            UI class instance responsible for user interaction.
         """
         self.ui = ui
 
-
     def give_nickname(self):
         """
-        Function that return player nickname input
+        Prompt the player to enter a nickname.
+
+        Returns
+        -------
+        str
+            The nickname entered by the player.
         """
         return self.ui.get_input("str", "Enter username: ")
 
-
     def class_select(self):
         """
-        Function that return player class selected by player
+        Prompt the player to select a class from available options.
+
+        Returns
+        -------
+        int
+            Index of the selected class in `Library.PLAYER_CLASSES`.
         """
         self.ui.change_text("Choose class:")
         for class_nr, classes in enumerate(Library.PLAYER_CLASSES):
@@ -38,10 +50,14 @@ class Selection:
                 self.ui.change_text("You have to enter the number! Try again.")
         return class_nr_input - 1
 
-
     def difficulty_select(self):
         """
-        Function that return difficulty set by player
+        Prompt the player to select a difficulty level.
+
+        Returns
+        -------
+        int
+            Index of the selected difficulty in `Library.DIFFICULTIES`.
         """
         self.ui.change_text("Choose difficulty:")
         for diff_nr, diff in enumerate(Library.DIFFICULTIES):
@@ -59,8 +75,16 @@ class Selection:
                 self.ui.change_text("You have to enter the number! Try again.")
         return diff_nr_input - 1
 
-
     def give_difficulty_stats(self):
+        """
+        Get difficulty stats based on the player's chosen difficulty level.
+
+        Returns
+        -------
+        list
+            A list of stats corresponding to the selected difficulty level,
+            excluding the name of the difficulty.
+        """
         diff_nr = self.difficulty_select()
         difficulty_stats = []
         for stat_nr, stat in enumerate(Library.DIFFICULTIES[diff_nr]):
@@ -69,4 +93,3 @@ class Selection:
             else:
                 difficulty_stats.append(stat)
         return difficulty_stats
-

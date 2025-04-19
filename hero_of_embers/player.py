@@ -4,19 +4,22 @@ from hero_of_embers.inventory import Inventory
 class Player:
     def __init__(self, name, hp, player_class, armor, damage, ui):
         """
-        Class that got every information about player. Information like damage, hp, max hp etc.
-        :param name: username
-        :param hp: player hp amount
-        :param player_class: player class
-        :param armor: player armor amount
-        :param damage: player damage amount
-        :param ui: ui class
-        :type name: str
-        :type hp: int
-        :type player_class: str
-        :type armor: int
-        :type damage: int
-        :type ui: hero_of_embers.ui_manager.UI
+        Class that stores all information about the player such as HP, damage, armor, level, etc.
+
+        Parameters
+        ----------
+        name : str
+            Username of the player.
+        hp : int
+            Initial health points of the player.
+        player_class : str
+            Chosen class of the player.
+        armor : int
+            Initial amount of armor.
+        damage : int
+            Base damage dealt by the player.
+        ui : hero_of_embers.ui_manager.UI
+            Instance of the UI manager to handle user interface updates.
         """
         self.ui = ui
         self.name = name
@@ -35,9 +38,17 @@ class Player:
 
     def deal_damage(self, amount):
         """
-        Function that deal player damage.
-        :param amount: amount of damage
-        :type amount: int
+        Applies damage to the player, reducing armor first, then health.
+
+        Parameters
+        ----------
+        amount : int
+            Amount of damage to apply.
+
+        Returns
+        -------
+        bool
+            True if the player dies, otherwise False.
         """
         if (self.hp + self.armor) - amount <= 0:
             return self.kill_player()
@@ -51,9 +62,12 @@ class Player:
 
     def heal_hp(self, amount):
         """
-        Function that heal player hp.
-        :param amount: amount of heal
-        :type amount: int
+        Heals the player's HP without exceeding max HP.
+
+        Parameters
+        ----------
+        amount : int
+            Amount of HP to heal.
         """
         if self.hp + amount > self.max_hp:
             self.hp = self.max_hp
@@ -62,7 +76,12 @@ class Player:
 
     def kill_player(self):
         """
-        Function that is used to kill player
+        Kills the player by setting HP and armor to 0.
+
+        Returns
+        -------
+        bool
+            Always returns True to indicate the player is dead.
         """
         self.hp = 0
         self.armor = 0
@@ -71,7 +90,12 @@ class Player:
 
     def give_experience(self, amount):
         """
-        Function that is used to give player experience, if player enough give player level
+        Gives the player experience and handles leveling up when thresholds are reached.
+
+        Parameters
+        ----------
+        amount : int
+            Amount of experience to give.
         """
         self.ui.change_text(f"{self.name} gained {amount} xp!")
 
@@ -110,7 +134,7 @@ class Player:
 
     def select_legendary_boost(self):
         """
-        Function that is used to give player legendary boosts after getting a legendary level
+        Lets the player choose a legendary bonus after leveling up past the regular cap.
         """
         self.ui.change_text("Select bonus: ")
         self.ui.change_text("1. Damage +15")
@@ -130,7 +154,7 @@ class Player:
 
     def select_boost(self):
         """
-        Function that is used to give player boosts after getting a level
+        Lets the player choose a bonus after leveling up.
         """
         while True:
             self.ui.change_text("Select bonus: ")
@@ -150,9 +174,15 @@ class Player:
 
     def give_legendary_bonus(self, sel):
         """
-        Function that is used to give player legendary boosts after getting a legendary level
-        :param sel: selection of which bonus player wants
-        :type sel: int
+        Applies the selected legendary bonus to the player.
+
+        Parameters
+        ----------
+        sel : int
+            The selected bonus:
+            - 1: +15 Damage
+            - 2: +30 HP
+            - 3: +15 Armor
         """
         match sel:
             case 1:
@@ -166,9 +196,15 @@ class Player:
 
     def give_bonus(self, sel):
         """
-        Function that is used to give player legendary boosts after getting a legendary level
-        :param sel: selection of which bonus player wants
-        :type sel: int
+        Applies the selected regular level-up bonus to the player.
+
+        Parameters
+        ----------
+        sel : int
+            The selected bonus:
+            - 1: +5 Damage
+            - 2: +10 HP
+            - 3: +5 Armor
         """
         match sel:
             case 1:
@@ -179,4 +215,3 @@ class Player:
             case 3:
                 self.armor += 5
                 self.max_armor += 5
-
