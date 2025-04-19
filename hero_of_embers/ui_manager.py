@@ -1,5 +1,8 @@
 class UI:
     def __init__(self):
+        """
+        Class that handles the prints and inputs
+        """
         self.actually_showing_text = ""
         self.player_input = ""
 

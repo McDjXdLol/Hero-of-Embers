@@ -5,22 +5,34 @@ from hero_of_embers.library import Library
 
 
 class BattleHandler:
-    """
-    Class that handles the battles.
-    """
 
     def __init__(self, player, enemy, ui):
+        """
+        Class that handles the battles.
+        :param player: player class object
+        :param enemy: enemy class object
+        :param ui: ui class object
+        :type player: hero_of_embers.player.Player
+        :type enemy: hero_of_embers.enemy.Enemy
+        :type ui: hero_of_embers.ui_manager.UI
+        """
         self.ui = ui
         self.player = player
         self.enemy = enemy
 
-    def start_battle(self):
+    def battle_information(self):
+        """
+        Function that return information about player and enemy.
+        """
         to_return = [f"    {self.player.name}", f"HP:{self.player.hp}", f"Armor: {self.player.armor}",
                      f"Damage: {self.player.damage}", f"    {self.enemy.name}", f"HP: {self.enemy.hp}",
                      f"Armor: {self.enemy.armor}", f"Damage: {self.enemy.damage}"]
         return to_return
 
     def enemy_turn(self):
+        """
+        Function that is used when it's enemy turn
+        """
         self.ui.change_text("\n")
         self.ui.change_text("\n")
         self.ui.change_text(f"{self.enemy.name} turn!")
@@ -32,6 +44,9 @@ class BattleHandler:
         return 0
 
     def player_turn(self):
+        """
+        Function that is used when it's player turn. It returns the value of who is next.
+        """
         self.ui.change_text("\n")
         self.ui.change_text("\n")
         self.ui.change_text(f"{self.player.name} turn")
@@ -59,8 +74,13 @@ class BattleHandler:
                 self.ui.change_text("You have to enter number!")
                 continue
 
-    def sel_attack(self, attack_sel):
-        match attack_sel:
+    def sel_attack(self, move_sel):
+        """
+        Function that is used when player select his move.
+        :param move_sel: move selected by player
+        :type move_sel: int
+        """
+        match move_sel:
             case 1:
                 self.enemy.deal_damage(self.player.damage)
                 self.ui.change_text([
@@ -131,7 +151,10 @@ class BattleHandler:
         return 1
 
     def battle(self):
-        self.ui.change_text(self.start_battle())
+        """
+        Function that is main battle loop. Its return whoever wins.
+        """
+        self.ui.change_text(self.battle_information())
         whos_next = random.randint(0, 1)
         while not self.player.dead and not self.enemy.dead:
             if whos_next == 0:

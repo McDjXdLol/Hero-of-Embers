@@ -3,6 +3,11 @@ from hero_of_embers.library import Library
 
 class Inventory:
     def __init__(self, ui):
+        """
+        Class that handles player inventory
+        :param ui: ui class object
+        :type ui: hero_of_embers.ui_manager.UI
+        """
         self.ui = ui
         self.inventory = []
         self.elixir_inventory = []
@@ -11,6 +16,15 @@ class Inventory:
 
     @staticmethod
     def add_to_inv(item, inv, amount=1):
+        """
+        Function that is used to add item to selected inventory with selected amount
+        :param item: item array from Library
+        :param inv: selection of inventory
+        :param amount: amount of items to give
+        :type item: list
+        :type inv: list
+        :type amount: int
+        """
         for it in inv:
             if it[0][0] == item[0] and it[0][1] == item[1]:
                 it[1] += amount
@@ -18,10 +32,20 @@ class Inventory:
         inv.append([item, amount])
 
     def show_equiped_weapons(self, inv):
+        """
+        Function that shows equiped items
+        :param inv: inventory of equiped items
+        :type inv: list
+        """
         for item in inv:
             self.ui.change_text(item)
 
     def which_weapon_to_equip(self, inv_weapons):
+        """
+        Function that is used to give player selection of what weapon he wants to equip
+        :param inv_weapons: list of weapons in player inventory
+        :type inv_weapons: list
+        """
         self.ui.change_text("Which weapon do you want to equip?")
         for weapon_id, weapon in enumerate(inv_weapons):
             self.ui.change_text(f"{weapon_id + 1}. {weapon}")
@@ -36,6 +60,11 @@ class Inventory:
             self.ui.change_text("You have to enter the number! Try again.")
 
     def which_armor_to_equip(self, inv_armors):
+        """
+        Function that is used to give player selection of what armor he wants to equip
+        :param inv_armors: list of armors in player inventory
+        :type inv_armors: list
+        """
         self.ui.change_text("Which armor do you want to equip?")
         for armors_id, armors in enumerate(inv_armors):
             self.ui.change_text(f"{armors_id + 1}. {armors}")
@@ -50,6 +79,9 @@ class Inventory:
             self.ui.change_text("You have to enter the number! Try again.")
 
     def show_inv(self):
+        """
+        Function that shows the player inventory
+        """
         inventory_weapons = []
         inventory_armors = []
         inventory_items = []
@@ -125,11 +157,21 @@ class Inventory:
                 self.ui.change_text("You have to enter the number! Try again.")
 
     def show_inv_elixirs(self):
+        """
+        Function that is used to show player elixirs
+        """
         for el in self.elixir_inventory:
             self.ui.change_text(f"{el[0]} x{el[1]}")
 
     @staticmethod
     def remove_from_inv(item_name, inv):
+        """
+        Function that is used to delete appropriate amount of items from selected inventory
+        :param item_name: name of the item
+        :param inv: selected inventory
+        :type item_name: str
+        :type inv: list
+        """
         for it in inv:
             if it[0][0] == item_name:
                 it[1] -= 1
@@ -139,12 +181,24 @@ class Inventory:
 
     @staticmethod
     def check_if_in_inv(item, inv):
+        """
+        Function that return if player has the item
+        :param item: item to check if is in inventory
+        :param inv: inventory to check
+        :type item: str
+        :type inv: list
+        """
         for it in inv:
             if it[0][0] == item:
                 return True
         return False
 
     def equip_weapon(self, item_name):
+        """
+        Function that is used to equip selected weapon
+        :param item_name: name of the weapon
+        :type item_name: str
+        """
         old_weapon_damage = 0
         for weapon in Library.WEAPONS:
             if item_name == weapon[0]:
@@ -161,6 +215,11 @@ class Inventory:
         return None
 
     def equip_armor(self, item_name):
+        """
+        Function that is used to equip selected armor
+        :param item_name: name of the armor
+        :type item_name: str
+        """
         old_armor_value = 0
         for armor in Library.ARMORS:
             if item_name == armor[0]:

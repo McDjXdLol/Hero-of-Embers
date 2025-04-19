@@ -4,6 +4,13 @@ import os.path
 
 class SaveGame:
     def __init__(self, player, plot_manager):
+        """
+        Class that is used to save player data to a file
+        :param player: player class object
+        :param plot_manager: plot_manager class object
+        :type player: hero_of_embers.player.Player
+        :type plot_manager: hero_of_embers.plot_manager.PlotManager
+        """
         # Player Data
         self.player_name = player.name
         self.player_hp = player.hp
@@ -20,7 +27,7 @@ class SaveGame:
         self.player_experience = player.experience
 
         # Plot Data
-        self.current_scene = plot_manager.actual_scene
+        self.current_scene = plot_manager.current_scene
 
         # All data prepared to save
         self.data = {
@@ -41,16 +48,29 @@ class SaveGame:
         }
 
     def save_game(self):
+        """
+        Function that save all data to savegame.json file
+        """
         with open('savegame.json', 'w') as file:
             json.dump(self.data, file)
 
 class LoadGame:
     def __init__(self, player, plot_manager):
+        """
+        Class that is used to load save file
+        :param player: player class object
+        :param plot_manager: plot_manager class object
+        :type player: hero_of_embers.player.Player
+        :type plot_manager: hero_of_embers.plot_manager.PlotManager
+        """
         self.player = player
         self.plot_manager = plot_manager
 
     @staticmethod
     def load_game():
+        """
+        Function that load the savegame.json file
+        """
         if os.path.exists("savegame.json"):
             with open('savegame.json', 'r') as file:
                 return json.load(file)
@@ -58,6 +78,9 @@ class LoadGame:
             return None
 
     def load_data(self):
+        """
+        Function that return all the data to the variables
+        """
         print("Loading save file...")
         save_data = self.load_game()
         if save_data is not None:
@@ -74,7 +97,7 @@ class LoadGame:
             self.player.inventory.armor = save_data["player_armor_equiped"]
             self.player.level = save_data["player_level"]
             self.player.experience = save_data["player_experience"]
-            self.plot_manager.actual_scene = save_data["current_scene"]
+            self.plot_manager.current_scene = save_data["current_scene"]
             print("Save file loaded successfully!")
         else:
             print("There is no save file to load!")

@@ -11,7 +11,7 @@ if __name__ == "__main__":
     ui = UI()
     if os.path.exists("hero_of_embers/savegame.json"):
         user = Player(name="", hp=0, armor=0,
-                      damage=0, player_class=[], ui=ui)
+                      damage=0, player_class="", ui=ui)
         PLOT_MANAGER = PlotManager(user, ui)
         LoadGame(user, PLOT_MANAGER).load_data()
     else:

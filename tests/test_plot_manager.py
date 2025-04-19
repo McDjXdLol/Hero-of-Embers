@@ -56,7 +56,7 @@ class TestPlotManager(unittest.TestCase):
         self.plot_manager.set_next_scene(option_name)
 
         # Sprawdzenie, czy kolejna scena została ustawiona poprawnie
-        self.assertEqual(self.plot_manager.actual_scene, "scene_2")
+        self.assertEqual(self.plot_manager.current_scene, "scene_2")
 
     def test_show_all_options(self):
         options = self.plot_manager.show_all_options()

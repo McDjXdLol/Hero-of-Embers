@@ -5,15 +5,23 @@ class Selection:
     def __init__(self, ui):
         """
         Class that is used to start the game. It's gotten the class selection etc.
+        :param ui: ui class object
+        :type ui: hero_of_embers.ui_manager.UI
         """
         self.ui = ui
 
 
     def give_nickname(self):
+        """
+        Function that return player nickname input
+        """
         return self.ui.get_input("str", "Enter username: ")
 
 
     def class_select(self):
+        """
+        Function that return player class selected by player
+        """
         self.ui.change_text("Choose class:")
         for class_nr, classes in enumerate(Library.PLAYER_CLASSES):
             self.ui.change_text(f"{class_nr + 1}. {classes[0]}")
@@ -32,6 +40,9 @@ class Selection:
 
 
     def difficulty_select(self):
+        """
+        Function that return difficulty set by player
+        """
         self.ui.change_text("Choose difficulty:")
         for diff_nr, diff in enumerate(Library.DIFFICULTIES):
             self.ui.change_text(f"{diff_nr + 1}. {diff[0]}")
