@@ -30,7 +30,7 @@
 - [x] Introduce experience points and level-up mechanics.
 - [x] Add game save/load functionality.
 - [x] Write docstring's documentation in code.
-- [ ] Add currency
+- [ ] Add currency.
 - [ ] Add option to trade.
 - [ ] Expand the storyline with additional scenes and choices.
 - [ ] Improve the user interface (e.g. color-coded text, better formatting).
