@@ -37,8 +37,8 @@
     python run_game.py
     ```
 
-## Plot
-Follow Aldric's journey from a young farmer to a hero who uncovers dark conspiracies tied to the Hollow Hand Cult and the legendary sword Stormfang.
+## Plot (WIP)
+Follow Aldric's journey from a young farmer to a hero who uncovers dark conspiracies tied to the Hollow Hand Cult and the legendary sword Stormfang. 
 
 ## Gameplay
 A turn-based RPG with choices that impact the story, dynamic combat, and an evolving narrative. Your choices shape your adventure, with features like:
