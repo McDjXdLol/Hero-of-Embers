@@ -55,6 +55,6 @@ class UI:
             try:
                 self.player_input = int(input(what_to_ask_for))
             except ValueError:
-                self.player_input = "invalid"  # Handle invalid number input
+                self.player_input = 0
                 self.change_text("U have to enter the number! Try again.")
         return self.player_input

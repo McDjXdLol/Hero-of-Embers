@@ -136,21 +136,18 @@ class Player:
         """
         Lets the player choose a legendary bonus after leveling up past the regular cap.
         """
-        self.ui.change_text("Select bonus: ")
-        self.ui.change_text("1. Damage +15")
-        self.ui.change_text("2. HP +30")
-        self.ui.change_text("3. Armor +15")
         while True:
-            try:
-                sel = int(input(""))
-                if 1 > sel > 3:
-                    self.ui.change_text("The number is incorrect!")
-                else:
-                    self.ui.change_text(f"You selected {sel}")
-                    self.give_legendary_bonus(sel)
-                    break
-            except ValueError:
-                self.ui.change_text("You have to enter the number!")
+            self.ui.change_text("Select bonus: ")
+            self.ui.change_text("1. Damage +15")
+            self.ui.change_text("2. HP +30")
+            self.ui.change_text("3. Armor +15")
+            sel = self.ui.get_input(0, "")
+            if 1 > sel > 3:
+                self.ui.change_text("The number is incorrect!")
+            else:
+                self.ui.change_text(f"You selected {sel}")
+                self.give_legendary_bonus(sel)
+                break
 
     def select_boost(self):
         """
@@ -161,16 +158,14 @@ class Player:
             self.ui.change_text("1. Damage +5")
             self.ui.change_text("2. HP +10")
             self.ui.change_text("3. Armor +5")
-            try:
-                sel = int(input(""))
-                if 1 <= sel <= 3:
-                    self.ui.change_text(f"You selected {sel}")
-                    self.give_bonus(sel)
-                    break
-                else:
-                    self.ui.change_text("The number is incorrect! Try again!")
-            except ValueError:
-                self.ui.change_text("You have to enter the number!")
+            sel = self.ui.get_input(0, "")
+            if 1 <= sel <= 3:
+                self.ui.change_text(f"You selected {sel}")
+                self.give_bonus(sel)
+                break
+            else:
+                self.ui.change_text("The number is incorrect! Try again!")
+
 
     def give_legendary_bonus(self, sel):
         """

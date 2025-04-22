@@ -53,8 +53,7 @@ def main():
         PLOT_MANAGER = PlotManager(user, ui)
 
     # Main game loop where the player selects plot options
-    while PLOT_MANAGER.select_option():
-        print("")  # Placeholder for any additional output or actions in the loop
+    while PLOT_MANAGER.select_option(): print("")
 
     # Save the game if the player exit from loop, but don't if he is dead
     if not user.dead:

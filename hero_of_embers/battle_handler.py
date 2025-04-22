@@ -86,16 +86,12 @@ class BattleHandler:
                 "4. Heal",
                 "5. Check Inventory"
             ])
-            try:
-                sel = int(self.ui.get_input(0, ""))
-                if sel < 1 or sel > 5:
-                    self.ui.change_text("The number is incorrect!")
-                    continue
-                time.sleep(0.5)
-                return self.attack_selection(sel)
-            except ValueError:
-                self.ui.change_text("You have to enter number!")
+            sel = int(self.ui.get_input(0, ""))
+            if sel < 1 or sel > 5:
+                self.ui.change_text("The number is incorrect!")
                 continue
+            time.sleep(0.5)
+            return self.attack_selection(sel)
         return 0
 
     def attack_selection(self, move_sel):
@@ -152,14 +148,11 @@ class BattleHandler:
                     self.ui.change_text("Choose the elixir:")
                     for eli_nr, eli in enumerate(elixirs_in_inv):
                         self.ui.change_text(f"{eli_nr + 1}. {eli[0]} x{eli[1]}")
-                    try:
-                        chosen_elixir = self.ui.get_input(0, "")
-                        if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
-                            self.ui.change_text("The number is incorrect!")
-                        else:
-                            break
-                    except ValueError:
-                        self.ui.change_text("You have to enter the number!")
+                    chosen_elixir = self.ui.get_input(0, "")
+                    if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
+                        self.ui.change_text("The number is incorrect!")
+                    else:
+                        break
                 chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0]
                 self.ui.change_text(f"You choose {chosen_elixir_name}")
                 self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)

@@ -62,15 +62,13 @@ class Inventory:
         self.ui.change_text("Which weapon do you want to equip?")
         for weapon_id, weapon in enumerate(inv_weapons):
             self.ui.change_text(f"{weapon_id + 1}. {weapon}")
-        try:
-            selected_weapon = int(self.ui.get_input(0, ""))
-            if selected_weapon <= len(inv_weapons):
-                self.equip_weapon(inv_weapons[selected_weapon - 1])
-                self.remove_from_inv(inv_weapons[selected_weapon - 1], self.inventory)
-            else:
-                self.ui.change_text("There is no such option!")
-        except ValueError:
-            self.ui.change_text("You have to enter the number! Try again.")
+
+        selected_weapon = int(self.ui.get_input(0, ""))
+        if selected_weapon <= len(inv_weapons):
+            self.equip_weapon(inv_weapons[selected_weapon - 1])
+            self.remove_from_inv(inv_weapons[selected_weapon - 1], self.inventory)
+        else:
+            self.ui.change_text("There is no such option!")
 
     def which_armor_to_equip(self, inv_armors):
         """
@@ -84,15 +82,13 @@ class Inventory:
         self.ui.change_text("Which armor do you want to equip?")
         for armors_id, armors in enumerate(inv_armors):
             self.ui.change_text(f"{armors_id + 1}. {armors}")
-        try:
-            selected_armor = int(self.ui.get_input(0, ""))
-            if selected_armor <= len(inv_armors):
-                self.equip_armor(inv_armors[selected_armor - 1])
-                self.remove_from_inv(inv_armors[selected_armor - 1], self.inventory)
-            else:
-                self.ui.change_text("There is no such option!")
-        except ValueError:
-            self.ui.change_text("You have to enter the number! Try again.")
+
+        selected_armor = int(self.ui.get_input(0, ""))
+        if selected_armor <= len(inv_armors):
+            self.equip_armor(inv_armors[selected_armor - 1])
+            self.remove_from_inv(inv_armors[selected_armor - 1], self.inventory)
+        else:
+            self.ui.change_text("There is no such option!")
 
     def show_inv(self):
         """
