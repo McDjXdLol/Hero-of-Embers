@@ -1,4 +1,4 @@
-# Hero of Embers **(WIP)**
+# Hero of Embers - Version 0.2.0
 
 ## 📖 Table of Contents
 - [Description](#description)
