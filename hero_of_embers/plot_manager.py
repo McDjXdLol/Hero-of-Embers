@@ -57,6 +57,9 @@ class PlotManager:
         """
         return self.scenes_data[self.current_scene]['description']
 
+    def get_trade_information(self):
+        return self.scenes_data[self.current_scene]['trade']
+
     def get_options_names(self):
         """
         Returns available option keys for the current scene.
@@ -277,7 +280,7 @@ class PlotManager:
             try:
                 self.ui.change_text(self.show_description())
                 self.ui.change_text(self.show_all_options())
-                if not self.was_in_shop:
+                if not self.was_in_shop and self.get_trade_information():
                     self.ui.change_text(
                         ["T. Go trade", "I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
                 else:
@@ -286,7 +289,7 @@ class PlotManager:
                 self.ui.change_text("\n")
                 if selected_option in self.get_options_names():
                     break
-                elif selected_option.lower() == "t":
+                elif selected_option.lower() == "t" and not self.was_in_shop and self.get_trade_information():
                     self.was_in_shop = TradeHandler(self.ui, self.player).trade()
                 elif selected_option.lower() == "i":
                     self.player.inventory.show_inv()

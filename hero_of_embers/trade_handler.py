@@ -11,7 +11,7 @@ class TradeHandler:
         self.heal_items = Library.HEAL_ITEMS
 
     def buy(self, item):
-        self.ui.change_text(f"You bought: {item[0][3]}")
+        self.ui.change_text(f"You bought: {item[0][0]}")
         self.player.inventory.take_from_wallet(item[0][3])
         self.player.inventory.add_to_inv(item[0], self.player.inventory.inventory, 1)
 
