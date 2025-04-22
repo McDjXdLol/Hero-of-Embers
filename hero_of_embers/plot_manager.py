@@ -281,6 +281,7 @@ class PlotManager:
                 random_heal_item = random.choices(Library.HEAL_ITEMS, weights=[h[3] for h in Library.HEAL_ITEMS])
                 self.ui.change_text(f"3. {random_heal_item[0][0]} x{random_heal_item[0][3]}Ɇ")
                 self.ui.change_text("4. Exit shop")
+                # User input
                 ina = int(input())
                 if ina > 0:
                     match ina:
