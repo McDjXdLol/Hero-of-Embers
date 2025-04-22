@@ -24,7 +24,7 @@ class Inventory:
         else:
             return True
 
-    def take_from_wallet(self,amount):
+    def take_from_wallet(self, amount):
         if self.check_if_can_buy(amount):
             self.wallet -= amount
         else:

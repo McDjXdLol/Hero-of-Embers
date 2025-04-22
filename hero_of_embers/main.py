@@ -1,10 +1,11 @@
-from hero_of_embers.player import Player
+import os
+
 from hero_of_embers.library import Library
-from hero_of_embers.selection import Selection
+from hero_of_embers.player import Player
 from hero_of_embers.plot_manager import PlotManager
 from hero_of_embers.save_handler import SaveGame, LoadGame
+from hero_of_embers.selection import Selection
 from hero_of_embers.ui_manager import UI
-import os
 
 
 def main():

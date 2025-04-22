@@ -1,6 +1,7 @@
 # Hero of Embers - Version 0.2.0
 
 ## 📖 Table of Contents
+
 - [Description](#description)
 - [List to do](#to-do-list)
 - [Installation](#installation)
@@ -12,13 +13,20 @@
 - [License](#license)
 
 <a name='description'></a>
+
 ## ✨ Description
 
-**Hero of Embers** invites you into a **rich, evolving fantasy world**. You guide a young hero uncovering dangerous secrets, forging alliances, and confronting a rising evil. Though the game is still under heavy development, key systems like scene management, combat and narrative choices are already in place. Expect new content and mechanics in every update!
+**Hero of Embers** invites you into a **rich, evolving fantasy world**. You guide a young hero uncovering dangerous
+secrets, forging alliances, and confronting a rising evil. Though the game is still under heavy development, key systems
+like scene management, combat and narrative choices are already in place. Expect new content and mechanics in every
+update!
 
 <a name='to-do-list'></a>
+
 ## ✅ To do list
+
 ### The list of things I want to add, and the things that are already in game:
+
 - [x] Implemented a scene system driven by a scenes.json file.
 - [x] Built the main game loop.
 - [x] Developed a plot generation tool in the plot_maker directory.
@@ -38,6 +46,7 @@
 - [ ] Include demo screenshots or GIFs in the README.md.
 
 <a name='installation'></a>
+
 ## 🛠️ Installation
 
 1. Clone this repository:
@@ -56,15 +65,20 @@
     ```bash
     python run_game.py
     ```
+
 <a name='usage'></a>
+
 ## 🚀 Usage
 
-Simply launch the game and follow on-screen prompts. Choices you make will influence the story’s outcome—be bold, but choose wisely!
+Simply launch the game and follow on-screen prompts. Choices you make will influence the story’s outcome—be bold, but
+choose wisely!
 
 <a name='plot'></a>
+
 ## 📜 Plot (WIP)
 
-You begin as a humble farmer drawn into a hidden destiny tied to the ancient **Protector** order. Alongside companions, you unravel the conspiracy of the Hollow **Hand Cult** and seek the legendary sword Stormfang before darkness descends.
+You begin as a humble farmer drawn into a hidden destiny tied to the ancient **Protector** order. Alongside companions,
+you unravel the conspiracy of the Hollow **Hand Cult** and seek the legendary sword Stormfang before darkness descends.
 
 ### 🗝️ Key Story Elements
 
@@ -75,6 +89,7 @@ You begin as a humble farmer drawn into a hidden destiny tied to the ancient **P
 - **Stormfang**: A legendary blade essential to vanquishing evil.
 
 <a name='gameplay'></a>
+
 ## 🎲 Gameplay
 
 Experience a blend of **turn-based combat**, **branching narrative**, and **strategic choices.**
@@ -83,11 +98,11 @@ Experience a blend of **turn-based combat**, **branching narrative**, and **stra
 
 - **Character Classes**:
 
-  - **Protector**: Tanky, high defense & HP
+    - **Protector**: Tanky, high defense & HP
 
-  - **Fighter**: Balanced offense and defense
+    - **Fighter**: Balanced offense and defense
 
-  - **Avenger**: High damage, lower survivability
+    - **Avenger**: High damage, lower survivability
 
 - **Dynamic Combat**: HP, armor, damage stats
 
@@ -100,6 +115,7 @@ Experience a blend of **turn-based combat**, **branching narrative**, and **stra
 - **Save & Load**: Resume your adventure at any time
 
 <a name='plot-maker'></a>
+
 ## 📝 Plot Maker
 
 The only GUI component of the project! Use `plot_maker_app.py` (requires PyQt6) to craft custom story scenes.
@@ -120,10 +136,13 @@ The only GUI component of the project! Use `plot_maker_app.py` (requires PyQt6) 
 14. **Save to File**: Export scenes.json for the game to load.
 
 To run the plot maker:
+
 ```bash
 python plot_maker_app.py
 ```
+
 <a name='contriburing'></a>
+
 ### 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to fork the repo and submit a pull request.
@@ -137,7 +156,8 @@ Contributions, issues, and feature requests are welcome! Feel free to fork the r
 Please adhere to the existing code style and include tests where appropriate.
 
 <a name="license"></a>
+
 ## 📄 License
 
-Distributed under the MIT License. See LICENSE for more information.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 

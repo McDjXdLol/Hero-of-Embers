@@ -4,9 +4,9 @@ import random
 import sys
 import time
 
+from hero_of_embers.battle_handler import BattleHandler as bH
 from hero_of_embers.enemy import Enemy
 from hero_of_embers.library import Library
-from hero_of_embers.battle_handler import BattleHandler as bH
 from hero_of_embers.save_handler import SaveGame
 
 
