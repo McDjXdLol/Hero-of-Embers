@@ -30,11 +30,11 @@
 - [x] Introduce experience points and level-up mechanics.
 - [x] Add game save/load functionality.
 - [x] Write docstring's documentation in code.
-- [ ] Add currency.
+- [x] Add currency.
 - [ ] Add option to trade.
 - [ ] Expand the storyline with additional scenes and choices.
 - [ ] Improve the user interface (e.g. color-coded text, better formatting).
-- [ ] Integrate sound and music (if ever expanded beyond the console).
+- [ ] ~~Integrate sound and music~~.
 - [ ] Include demo screenshots or GIFs in the README.md.
 
 <a name='installation'></a>
@@ -81,7 +81,7 @@ Experience a blend of **turn-based combat**, **branching narrative**, and **stra
 
 **Core Mechanics**:
 
-- Character Classes
+- **Character Classes**:
 
   - **Protector**: Tanky, high defense & HP
 
@@ -92,6 +92,8 @@ Experience a blend of **turn-based combat**, **branching narrative**, and **stra
 - **Dynamic Combat**: HP, armor, damage stats
 
 - **Inventory**: Acquire and manage gear
+
+- **Currency**: Buy and sell stuff (WIP)
 
 - **Choices** That Matter: Decisions alter the story path
 

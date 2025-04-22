@@ -156,7 +156,7 @@ class Inventory:
             item_amount = item[1]
             self.ui.change_text(f"{item_name} x{item_amount}")
 
-        self.ui.change_text(f"Dragon coins: {self.wallet}")
+        self.ui.change_text(f"Dragon coins: {self.wallet}Ɇ")
 
         if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
             self.ui.change_text(["Do you want to equip one of them?", "1. Yes", "2. No"])
