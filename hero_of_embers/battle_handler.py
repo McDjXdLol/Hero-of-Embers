@@ -92,13 +92,13 @@ class BattleHandler:
                     self.ui.change_text("The number is incorrect!")
                     continue
                 time.sleep(0.5)
-                return self.sel_attack(sel)
+                return self.attack_selection(sel)
             except ValueError:
                 self.ui.change_text("You have to enter number!")
                 continue
         return 0
 
-    def sel_attack(self, move_sel):
+    def attack_selection(self, move_sel):
         """
         Process the selected player move.
 

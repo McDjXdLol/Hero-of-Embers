@@ -56,7 +56,7 @@ def main():
     while PLOT_MANAGER.select_option():
         print("")  # Placeholder for any additional output or actions in the loop
 
-    # Save the game if the player is still alive
+    # Save the game if the player exit from loop, but don't if he is dead
     if not user.dead:
         SaveGame(user, PLOT_MANAGER).save_game()
 
