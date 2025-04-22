@@ -170,17 +170,7 @@ class BattleHandler:
                             f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
                         return 0
             case 5:
-                self.ui.change_text("Elixirs: ")
-                self.player.inventory.show_inv_elixirs()
-                self.ui.change_text("")
-                self.ui.change_text("Items: ")
                 self.player.inventory.show_inv()
-                self.ui.change_text("")
-                self.ui.change_text("Weapon: ")
-                self.player.inventory.show_equiped_weapons(self.player.inventory.weapon)
-                self.ui.change_text("")
-                self.ui.change_text("Armor: ")
-                self.player.inventory.show_equiped_weapons(self.player.inventory.armor)
                 return 0
             case _:
                 return 0
