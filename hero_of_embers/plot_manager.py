@@ -261,6 +261,10 @@ class PlotManager:
             else:
                 self.player.inventory.add_to_inv(item[0], self.player.inventory.inventory)
 
+
+    def trade(self):
+        self.ui.change_text("(WIP)")
+
     def select_option(self):
         """
         Main control loop for user input and scene handling.
@@ -274,11 +278,13 @@ class PlotManager:
             try:
                 self.ui.change_text(self.show_description())
                 self.ui.change_text(self.show_all_options())
-                self.ui.change_text("\nI. Show inventory\nS. Save & Exit\nE. Exit without Saving")
+                self.ui.change_text(["T. Go trade", "I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
                 selected_option = self.ui.get_input("str", "Select Option: ").strip()
                 self.ui.change_text("\n")
                 if selected_option in self.get_options_names():
                     break
+                elif selected_option.lower() == "t":
+                    self.trade()
                 elif selected_option.lower() == "i":
                     self.player.inventory.show_inv()
                 elif selected_option.lower() == "s":
@@ -320,3 +326,4 @@ class PlotManager:
             self.set_next_scene(selected_option)
             return self.select_option()
         return False
+

@@ -110,7 +110,7 @@ class BattleHandler:
         Returns
         -------
         int
-            0 if enemy goes next, 1 if player goes again.
+            1 if enemy goes next, 0 if player goes again.
         """
         match move_sel:
             case 1:
@@ -206,6 +206,8 @@ class BattleHandler:
             return False
         elif self.enemy.dead:
             self.player.give_experience(self.enemy.experience_drop)
+            self.player.inventory.wallet += self.enemy.money_drop
+            self.ui.change_text(f"You got {self.enemy.money_drop} dragon coins!")
             self.player.armor += int(self.player.max_armor / 2)
             if self.enemy.experience_drop >= 25:
                 dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS) - 1)]

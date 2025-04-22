@@ -1,5 +1,5 @@
 class Enemy:
-    def __init__(self, name="Wolf", hp=100, armor=100, damage=15, experience=20):
+    def __init__(self, name="Wolf", hp=100, armor=100, damage=15, experience=20, money=20):
         """
         Initializes the enemy with specified attributes.
 
@@ -36,6 +36,7 @@ class Enemy:
         self.damage = damage
         self.dead = False
         self.experience_drop = experience
+        self.money_drop = money
 
     def deal_damage(self, amount):
         """

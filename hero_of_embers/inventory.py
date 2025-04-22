@@ -16,6 +16,19 @@ class Inventory:
         self.elixir_inventory = []
         self.weapon = []
         self.armor = []
+        self.wallet = 0
+
+    def check_if_can_buy(self, amount):
+        if self.wallet < amount:
+            return False
+        else:
+            return True
+
+    def take_from_wallet(self,amount):
+        if self.check_if_can_buy(amount):
+            self.wallet -= amount
+        else:
+            self.ui.change_text("You don't have enough dragon coins!")
 
     @staticmethod
     def add_to_inv(item, inv, amount=1):
@@ -142,6 +155,8 @@ class Inventory:
             item_name = item[0][0]
             item_amount = item[1]
             self.ui.change_text(f"{item_name} x{item_amount}")
+
+        self.ui.change_text(f"Dragon coins: {self.wallet}")
 
         if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
             self.ui.change_text(["Do you want to equip one of them?", "1. Yes", "2. No"])
