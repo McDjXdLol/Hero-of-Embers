@@ -1,4 +1,4 @@
-# Hero of Embers - Version 0.2.0
+# Hero of Embers - Version 0.2.1
 
 ## 📖 Table of Contents
 
