@@ -39,7 +39,7 @@ update!
 - [x] Add game save/load functionality.
 - [x] Write docstring's documentation in code.
 - [x] Add currency.
-- [ ] Add option to trade.
+- [x] Add option to trade.
 - [ ] Expand the storyline with additional scenes and choices.
 - [ ] Improve the user interface (e.g. color-coded text, better formatting).
 - [ ] ~~Integrate sound and music~~.
