@@ -1,57 +1,66 @@
 class UI:
     def __init__(self):
         """
-        Initializes the UI class to handle text display and user input.
+        Initialize the UI class to handle text display and user input.
+
+        Attributes
+        ----------
+        actually_showing_text : str or list of str
+            The current text or list of texts to be displayed.
+        player_input : str or int
+            The last input received from the player.
         """
         self.actually_showing_text = ""
         self.player_input = ""
 
     def change_text(self, to_what):
         """
-        Updates the text displayed on the UI.
+        Update the text displayed on the console UI.
 
         Parameters
         ----------
         to_what : str or list of str
-            The text or list of texts to be displayed on the console.
+            The text or list of texts to be displayed.
         """
         self.actually_showing_text = to_what
         self.show_on_console()
 
     def show_on_console(self):
         """
-        Displays the current text on the console. If the text is a list, it prints each item.
+        Display the currently stored text on the console.
 
         Notes
         -----
-        The method checks if the text to display is a list or a single string.
+        If the stored text is a list, each element is printed on a new line.
+        If it's a single string, it's printed directly.
         """
-        if type(self.actually_showing_text) == list:
+        if isinstance(self.actually_showing_text, list):
             for text_to_show in self.actually_showing_text:
                 print(text_to_show)
         else:
             print(self.actually_showing_text)
 
-    def get_input(self, nr_or_text, what_to_ask_for=""):
+    def get_input(self, excepted_type, what_to_ask_for=""):
         """
-        Prompts the user for input and returns the input value.
+        Prompt the user for input and return the result.
 
         Parameters
         ----------
-        nr_or_text : int or str
-            The type of input expected. If int, the user is expected to enter a number.
-            If str, a general text input is expected.
+        excepted_type : int or str
+            Indicates the type of input expected:
+            - If int, input should be a number.
+            - If str, input can be any text.
         what_to_ask_for : str, optional
-            The prompt message shown to the user (default is an empty string).
+            The prompt message shown to the user (default is empty string).
 
         Returns
         -------
         str or int
-            The user input. If the input is invalid when expecting a number, "invalid" is returned.
+            The user input. Returns `0` if an invalid number is entered when expecting an int.
         """
-        if type(nr_or_text) == str:
+        if isinstance(excepted_type, str):
             self.player_input = input(what_to_ask_for)
-        elif type(nr_or_text) == int:
+        elif isinstance(excepted_type, int):
             try:
                 self.player_input = int(input(what_to_ask_for))
             except ValueError:
@@ -61,5 +70,13 @@ class UI:
 
     @staticmethod
     def clean_print(amount_of_lines):
-        for x in range(0, amount_of_lines):
+        """
+        Print multiple empty lines to the console for spacing.
+
+        Parameters
+        ----------
+        amount_of_lines : int
+            The number of empty lines to print.
+        """
+        for _ in range(amount_of_lines):
             print("\n")
