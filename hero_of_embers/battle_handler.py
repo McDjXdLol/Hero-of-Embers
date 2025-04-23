@@ -52,9 +52,10 @@ class BattleHandler:
         int
             Always returns 0 to indicate player goes next.
         """
-        self.ui.clean_print(2)
+        self.ui.change_text("\n")
+        self.ui.change_text("\n")
         self.ui.change_text(f"{self.enemy.name} turn!")
-        self.ui.clean_print(1)
+        self.ui.change_text("\n")
         self.player.deal_damage(self.enemy.damage)
         time.sleep(0.5)
         self.ui.change_text([
@@ -72,10 +73,11 @@ class BattleHandler:
         int
             0 if the enemy should go next, 1 if the player goes again.
         """
-        self.ui.clean_print(2)
+        self.ui.change_text("\n")
+        self.ui.change_text("\n")
         self.ui.change_text(f"{self.player.name} turn")
         while True:
-            self.ui.clean_print(1)
+            self.ui.change_text("\n")
             self.ui.change_text("Select option: ")
             self.ui.change_text([
                 "1. Normal attack (100% chance)",
@@ -84,74 +86,16 @@ class BattleHandler:
                 "4. Heal",
                 "5. Check Inventory"
             ])
-            sel = int(self.ui.get_input(0, ""))
-            if sel < 1 or sel > 5:
-                self.ui.change_text("The number is incorrect!")
-                continue
-            else:
+            try:
+                sel = int(self.ui.get_input(0, ""))
+                if sel < 1 or sel > 5:
+                    self.ui.change_text("The number is incorrect!")
+                    continue
                 time.sleep(0.5)
                 return self.attack_selection(sel)
-        return 0
-
-    def normal_attack(self):
-        self.enemy.deal_damage(self.player.damage)
-        self.ui.change_text([
-            f"{self.player.name} dealt {self.player.damage} dmg!",
-            f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"
-        ])
-        return 1
-
-    def quick_attack(self):
-        if random.random() < 0.3:
-            self.enemy.deal_damage(self.player.damage)
-            self.ui.change_text([
-                f"{self.player.name} dealt {self.player.damage} dmg!",
-                f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"
-            ])
-            return 0
-        else:
-            self.ui.change_text(f"{self.player.name} miss quick attack!")
-            return 1
-
-    def strong_attack(self):
-        if random.random() < 0.2:
-            dmg = self.player.damage * 5
-            self.enemy.deal_damage(dmg)
-            self.ui.change_text([
-                f"{self.player.name} hit strong attack! {self.player.name} dealt {dmg} dmg!",
-                f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"
-            ])
-            return 1
-        else:
-            self.ui.change_text(f"{self.player.name} miss strong attack!")
-            return 1
-
-    def select_elixir(self):
-        elixirs_in_inv = list(self.player.inventory.elixir_inventory)
-        if not elixirs_in_inv:
-            self.ui.change_text(f"{self.player.name} don't have any elixirs in inventory!")
-            return 0
-        while True:
-            self.ui.change_text("Choose the elixir:")
-            for eli_nr, eli in enumerate(elixirs_in_inv):
-                self.ui.change_text(f"{eli_nr + 1}. {eli[0]} x{eli[1]}")
-            try:
-                chosen_elixir = self.ui.get_input(0, "")
-                if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
-                    self.ui.change_text("The number is incorrect!")
-                else:
-                    break
             except ValueError:
-                self.ui.change_text("You have to enter the number!")
-        chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0]
-        self.ui.change_text(f"You choose {chosen_elixir_name}")
-        self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
-        for elix in Library.HEAL_ITEMS:
-            if chosen_elixir_name in elix:
-                self.player.heal_hp(elix[1])
-                self.ui.change_text(
-                    f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
-                return 0
+                self.ui.change_text("You have to enter number!")
+                continue
         return 0
 
     def attack_selection(self, move_sel):
@@ -170,30 +114,68 @@ class BattleHandler:
         """
         match move_sel:
             case 1:
-                return self.normal_attack()
+                self.enemy.deal_damage(self.player.damage)
+                self.ui.change_text([
+                    f"{self.player.name} dealt {self.player.damage} dmg!",
+                    f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"
+                ])
+                return 1
             case 2:
-                return self.quick_attack()
+                if random.random() < 0.3:
+                    self.enemy.deal_damage(self.player.damage)
+                    self.ui.change_text([
+                        f"{self.player.name} dealt {self.player.damage} dmg!",
+                        f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"
+                    ])
+                    return 0
+                else:
+                    self.ui.change_text(f"{self.player.name} miss quick attack!")
+                    return 1
             case 3:
-                return self.strong_attack()
+                if random.random() < 0.2:
+                    dmg = self.player.damage * 5
+                    self.enemy.deal_damage(dmg)
+                    self.ui.change_text([
+                        f"{self.player.name} hit strong attack! {self.player.name} dealt {dmg} dmg!",
+                        f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"
+                    ])
+                    return 1
+                else:
+                    self.ui.change_text(f"{self.player.name} miss strong attack!")
+                    return 1
             case 4:
-                return self.select_elixir()
+                elixirs_in_inv = list(self.player.inventory.elixir_inventory)
+                if not elixirs_in_inv:
+                    self.ui.change_text(f"{self.player.name} don't have any elixirs in inventory!")
+                    return 0
+                while True:
+                    self.ui.change_text("Choose the elixir:")
+                    for eli_nr, eli in enumerate(elixirs_in_inv):
+                        self.ui.change_text(f"{eli_nr + 1}. {eli[0]} x{eli[1]}")
+                    try:
+                        chosen_elixir = self.ui.get_input(0, "")
+                        if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
+                            self.ui.change_text("The number is incorrect!")
+                        else:
+                            break
+                    except ValueError:
+                        self.ui.change_text("You have to enter the number!")
+                chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0]
+                self.ui.change_text(f"You choose {chosen_elixir_name}")
+                self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
+                for elix in Library.HEAL_ITEMS:
+                    if chosen_elixir_name in elix:
+                        self.player.heal_hp(elix[1])
+                        self.ui.change_text(
+                            f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
+                        return 0
             case 5:
                 self.player.inventory.show_inv()
                 return 0
             case _:
                 return 0
+        return 1
 
-    def give_drop(self):
-        self.player.give_experience(self.enemy.experience_drop)
-        self.player.inventory.wallet += self.enemy.money_drop
-        self.ui.change_text(f"You got {self.enemy.money_drop} dragon coins!")
-        if self.enemy.experience_drop >= 25:
-            dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS) - 1)]
-            amount = random.randint(1, 3)
-        else:
-            dropping_item = Library.HEAL_ITEMS[random.randint(0, 3)]
-            amount = random.randint(1, 4)
-        self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.elixir_inventory, amount=amount)
     def battle(self):
         """
         Main battle loop handler.
@@ -213,7 +195,16 @@ class BattleHandler:
         if self.player.dead:
             return False
         elif self.enemy.dead:
-            self.give_drop()
+            self.player.give_experience(self.enemy.experience_drop)
+            self.player.inventory.wallet += self.enemy.money_drop
+            self.ui.change_text(f"You got {self.enemy.money_drop} dragon coins!")
             self.player.armor += int(self.player.max_armor / 2)
+            if self.enemy.experience_drop >= 25:
+                dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS) - 1)]
+                amount = random.randint(1, 3)
+            else:
+                dropping_item = Library.HEAL_ITEMS[random.randint(0, 3)]
+                amount = random.randint(1, 4)
+            self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.elixir_inventory, amount=amount)
             return True
         return False
