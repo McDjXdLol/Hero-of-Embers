@@ -108,6 +108,11 @@ class Inventory:
         if len(self.armor) != 0:
             self.ui.change_text(f"Equipped Armor: {self.armor[0]}")
 
+        if self.wallet == 0:
+            self.ui.change_text("Wallet: Empty")
+        else:
+            self.ui.change_text(f"Dragon coins: {self.wallet}Ɇ")
+
         if len(self.inventory) == 0:
             self.ui.change_text("Inventory: Empty")
             return
@@ -126,7 +131,6 @@ class Inventory:
             item_amount = item[1]
             self.ui.change_text(f"{item_name} x{item_amount}")
 
-        self.ui.change_text(f"Dragon coins: {self.wallet}Ɇ")
 
         if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
             self.equip_selection(inventory_armors, inventory_weapons)
@@ -176,11 +180,11 @@ class Inventory:
         inv : list
             The inventory to remove the item from.
         """
-        for it in inv:
+        for i, it in enumerate(inv):
             if it[0][0] == item_name:
                 it[1] -= 1
                 if it[1] <= 0:
-                    inv.remove(it)
+                    inv.pop(i)
                 break
 
     @staticmethod
