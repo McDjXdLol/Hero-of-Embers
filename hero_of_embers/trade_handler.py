@@ -1,6 +1,6 @@
 import random
 
-from library import Library
+from hero_of_embers.library import Library
 
 
 class TradeHandler:
