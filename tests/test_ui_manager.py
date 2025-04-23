@@ -26,7 +26,7 @@ class TestUI(unittest.TestCase):
     @patch('builtins.input', return_value="invalid")
     def test_get_input_invalid_number(self, mock_input):
         result = self.ui.get_input(0, "Enter a number: ")
-        self.assertEqual(result, "invalid")
+        self.assertEqual(result, 0)
         self.assertEqual(self.ui.actually_showing_text, "U have to enter the number! Try again.")
 
     @patch('builtins.input', return_value="TestPlayer")

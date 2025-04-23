@@ -23,7 +23,7 @@ class TestSaveGame(unittest.TestCase):
         self.player_mock.inventory.armor = "shield"
         self.player_mock.level = 1
         self.player_mock.experience = 0
-        self.plot_manager_mock.actual_scene = "scene_1"
+        self.plot_manager_mock.current_scene = "scene_1"
         self.save_game = SaveGame(self.player_mock, self.plot_manager_mock)
 
     def test_save_game(self):
@@ -58,7 +58,7 @@ class TestSaveGame(unittest.TestCase):
         load_game.load_data()
         self.assertEqual(self.player_mock.name, "Hero")
         self.assertEqual(self.player_mock.hp, 100)
-        self.assertEqual(self.plot_manager_mock.actual_scene, "scene_1")
+        self.assertEqual(self.plot_manager_mock.current_scene, "scene_1")
 
     def tearDown(self):
         if os.path.exists('savegame.json'):

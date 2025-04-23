@@ -3,6 +3,30 @@ from hero_of_embers.library import Library
 from hero_of_embers.entity import Entity
 
 class Player(Entity):
+    """
+    Represents the player character in the game.
+
+    Inherits from Entity and extends it with player-specific features such as
+    inventory, leveling system, and experience tracking.
+
+    Attributes
+    ----------
+    ui : object
+        Interface for communication with the player (text-based).
+    player_class : str
+        The class chosen by the player (e.g., Warrior, Mage).
+    inventory : Inventory
+        Player's inventory management system.
+    level : int or str
+        Current level of the player or 'MAX' if maximum level reached.
+    experience : int or str
+        Current experience points or 'MAX' if maximum level reached.
+    experience_to_next_level : list
+        List of experience thresholds for regular levels.
+    experience_to_legendary_level : list
+        List of experience thresholds for legendary levels.
+    """
+
     def __init__(self, name, hp, player_class, armor, damage, ui):
         super().__init__(name, hp, armor, damage)
         self.ui = ui
@@ -13,15 +37,14 @@ class Player(Entity):
         self.experience_to_next_level = Library.XP_NXT_LVL
         self.experience_to_legendary_level = Library.XP_NXT_LG_LVL
 
-
     def give_experience(self, amount):
         """
-        Gives the player experience and handles leveling up when thresholds are reached.
+        Grants experience to the player and handles level-ups if thresholds are met.
 
         Parameters
         ----------
         amount : int
-            Amount of experience to give.
+            Amount of experience to add to the player's total.
         """
         self.ui.change_text(f"{self.name} gained {amount} xp!")
 
@@ -41,8 +64,7 @@ class Player(Entity):
             else:
                 return
 
-        while isinstance(self.level, int) and self.level < len(self.experience_to_next_level) + len(
-                self.experience_to_legendary_level):
+        while isinstance(self.level, int) and self.level < len(self.experience_to_next_level) + len(self.experience_to_legendary_level):
             index = self.level - len(self.experience_to_next_level)
             xp_needed = self.experience_to_legendary_level[index]
             if self.experience >= xp_needed:
@@ -60,7 +82,7 @@ class Player(Entity):
 
     def select_legendary_boost(self):
         """
-        Lets the player choose a legendary bonus after leveling up past the regular cap.
+        Prompts the player to select a legendary bonus after reaching legendary levels.
         """
         self.ui.change_text("Select bonus: ")
         self.ui.change_text("1. Damage +15")
@@ -77,7 +99,7 @@ class Player(Entity):
 
     def select_boost(self):
         """
-        Lets the player choose a bonus after leveling up.
+        Prompts the player to choose a bonus after a regular level-up.
         """
         while True:
             self.ui.change_text("Select bonus: ")
@@ -94,15 +116,15 @@ class Player(Entity):
 
     def give_legendary_bonus(self, sel):
         """
-        Applies the selected legendary bonus to the player.
+        Applies the selected legendary level bonus.
 
         Parameters
         ----------
         sel : int
             The selected bonus:
-            - 1: +15 Damage
-            - 2: +30 HP
-            - 3: +15 Armor
+            - 1: Increase damage by 15.
+            - 2: Increase max HP by 30.
+            - 3: Increase armor and max armor by 15.
         """
         match sel:
             case 1:
@@ -116,15 +138,15 @@ class Player(Entity):
 
     def give_bonus(self, sel):
         """
-        Applies the selected regular level-up bonus to the player.
+        Applies the selected regular level bonus.
 
         Parameters
         ----------
         sel : int
             The selected bonus:
-            - 1: +5 Damage
-            - 2: +10 HP
-            - 3: +5 Armor
+            - 1: Increase damage by 5.
+            - 2: Increase max HP by 10.
+            - 3: Increase armor and max armor by 5.
         """
         match sel:
             case 1:

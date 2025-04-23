@@ -1,4 +1,4 @@
-# Hero of Embers - Version 0.2.0
+# Hero of Embers - Version 0.2.1
 
 ## 📖 Table of Contents
 
@@ -40,7 +40,7 @@ update!
 - [x] Write docstring's documentation in code.
 - [x] Add currency.
 - [x] Add option to trade.
-- [ ] Remake plot. 
+- [ ] Remake plot.
 - [ ] Expand the storyline with additional scenes and choices.
 - [ ] Improve the user interface (e.g. color-coded text, better formatting).
 - [ ] ~~Integrate sound and music~~.

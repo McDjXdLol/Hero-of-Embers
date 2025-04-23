@@ -1,34 +1,35 @@
 class Library:
     """
     A class that contains static data related to the game, such as weapons, armors,
-    healing items, player classes, difficulties, and enemies.
+    healing items, player classes, difficulties, and enemies. These are used to populate
+    game mechanics, trade options, player progression, and difficulty settings.
 
     Attributes
     ----------
-    TRADE_QUOTES: list of str
-        A list of quotes that trading guy uses.
+    AFTER_SELL_QUOTES : list of str
+        A list of quotes used by the trader when the player sells items.
+    NO_PURCHASE_QUOTES : list of str
+        A list of quotes the trader uses when the player doesn't buy anything.
+    TRADE_QUOTES : list of str
+        A list of quotes the trader uses during trading.
+    SELL_QUOTES : list of str
+        A list of quotes used by the trader when the player sells items to them.
     XP_NXT_LVL : list of int
-        A list of experience nedded for each level.
-    XP_NXT_LG_LVL: list of int
-        A list of experience nedded for each legendary level.
+        A list of experience points required for each player level.
+    XP_NXT_LG_LVL : list of int
+        A list of experience points required for each legendary level.
     WEAPONS : list of list of str, int, int, int
-        A list of weapons where each weapon is represented by a name, the associated damage,
-        the cost in game currency, and the shop drop weight (rarity).
+        A list of weapons, each represented by a name, damage value, cost, and drop weight (rarity).
     ARMORS : list of list of str, int, int, int
-        A list of armors where each armor is represented by a name, the associated armor value,
-        the cost in game currency, and the shop drop weight (rarity).
+        A list of armors, each represented by a name, armor value, cost, and drop weight (rarity).
     HEAL_ITEMS : list of list of str, int, int, int
-        A list of healing items where each item is represented by a name, the amount of health it heals,
-        the cost in game currency, and the shop drop weight (rarity).
+        A list of healing items, each represented by a name, heal amount, cost, and drop weight (rarity).
     PLAYER_CLASSES : list of list of str, int, int, int
-        A list of player classes, where each class is represented by a name, health points (HP), armor value,
-        and damage value.
+        A list of player classes, each represented by a name, HP, armor value, and damage value.
     DIFFICULTIES : list of list of str, int, int, int
-        A list of difficulty levels, where each level is represented by a name, HP adjustment, armor value,
-        and damage adjustment.
+        A list of difficulty levels, each represented by a name, HP modifier, armor modifier, and damage modifier.
     ENEMIES : list of list of str, int, int, int, int, int
-        A list of enemies, where each enemy is represented by a name, HP, armor, damage, XP drop upon defeat,
-        and the amount of money dropped upon defeat.
+        A list of enemies, each represented by a name, HP, armor value, damage, XP drop, and money drop.
     """
 
     AFTER_SELL_QUOTES = [
@@ -69,7 +70,6 @@ class Library:
         "You sure you’re not cursed to be broke?",
     ]
 
-    # Trade quotes
     TRADE_QUOTES = [
         "You're my last client. When you leave, I’ll disappear. At least for now.",
         "Gold talks, friend. But sometimes... silence is more expensive.",
@@ -108,13 +108,10 @@ class Library:
         "Perfect! I was missing just this piece... for the ritual.",
     ]
 
-    # XP nedded to next level
     XP_NXT_LVL = [0, 50, 120, 210, 320, 450, 600, 770, 960, 1170, 1400]
 
-    # XP nedded to next legendary level
     XP_NXT_LG_LVL = [2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000]
 
-    # Weapons: name, damage, cost, drop weight
     WEAPONS = [
         ["Wooden Stick", 10, 15, 40],
         ["Stone Sword", 25, 50, 30],
@@ -124,14 +121,12 @@ class Library:
         ["Excalibur", 80, 300, 1]
     ]
 
-    # Armors: name, armor, cost, drop weight
     ARMORS = [
         ["Clothes", 1, 5, 50],
         ["Wooden Armor", 10, 40, 35],
         ["Knight Armor", 40, 120, 15]
     ]
 
-    # Healing items: name, heal amount, cost, drop weight
     HEAL_ITEMS = [
         ["Small Heart Elixir", 10, 15, 40],
         ["Medium Heart Elixir", 20, 30, 30],
@@ -141,21 +136,18 @@ class Library:
         ["Big Living Elixir", 100, 150, 1]
     ]
 
-    # Player classes: name, HP, armor, damage
     PLAYER_CLASSES = [
         ["The Protector (Tank)", 150, 50, 10],
         ["The Fighter (Balanced)", 100, 25, 15],
         ["The Avenger (Damager)", 70, 15, 30]
     ]
 
-    # Difficulty levels: name, HP mod, armor mod, damage mod
     DIFFICULTIES = [
         ["Cushioned Path", 30, 10, 5],
         ["Twisted Road", 0, 0, 0],
         ["Iron Trial", -30, -10, -5]
     ]
 
-    # Enemies: name, HP, armor, damage, XP, money
     ENEMIES = [
         ["Hungry Mugger", 20, 6, 8, 10, 24],
         ["Cult Initiate", 28, 8, 10, 15, 32],
