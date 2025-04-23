@@ -277,35 +277,32 @@ class PlotManager:
             False if the game ends or player dies, otherwise True.
         """
         while True:
-            try:
-                self.ui.change_text(self.show_description())
-                self.ui.change_text(self.show_all_options())
-                if not self.was_in_shop and self.get_trade_information():
-                    self.ui.change_text(
-                        ["T. Go trade", "I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
-                else:
-                    self.ui.change_text(["I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
-                selected_option = self.ui.get_input("str", "Select Option: ").strip()
-                self.ui.change_text("\n")
-                if selected_option in self.get_options_names():
-                    break
-                elif selected_option.lower() == "t" and not self.was_in_shop and self.get_trade_information():
-                    self.was_in_shop = TradeHandler(self.ui, self.player).trade()
-                elif selected_option.lower() == "i":
-                    self.player.inventory.show_inv()
-                elif selected_option.lower() == "s":
-                    self.ui.change_text("Saving & Exiting...")
-                    SaveGame(self.player, self).save_game()
-                    time.sleep(1)
-                    sys.exit()
-                elif selected_option.lower() == "e":
-                    self.ui.change_text("Exiting...")
-                    time.sleep(1)
-                    sys.exit()
-                else:
-                    self.ui.change_text("There is no such option!")
-            except ValueError:
-                self.ui.change_text("You entered it wrong!")
+            self.ui.change_text(self.show_description())
+            self.ui.change_text(self.show_all_options())
+            if not self.was_in_shop and self.get_trade_information():
+                self.ui.change_text(
+                    ["T. Go trade", "I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
+            else:
+                self.ui.change_text(["I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
+            selected_option = self.ui.get_input("str", "Select Option: ").strip()
+            self.ui.change_text("\n")
+            if selected_option in self.get_options_names():
+                break
+            elif selected_option.lower() == "t" and not self.was_in_shop and self.get_trade_information():
+                self.was_in_shop = TradeHandler(self.ui, self.player).trade()
+            elif selected_option.lower() == "i":
+                self.player.inventory.show_inv()
+            elif selected_option.lower() == "s":
+                self.ui.change_text("Saving & Exiting...")
+                SaveGame(self.player, self).save_game()
+                time.sleep(1)
+                sys.exit()
+            elif selected_option.lower() == "e":
+                self.ui.change_text("Exiting...")
+                time.sleep(1)
+                sys.exit()
+            else:
+                self.ui.change_text("There is no such option!")
 
         os.system('cls' if os.name == 'nt' else 'clear')
         self.ui.change_text(self.get_option_effect(selected_option))

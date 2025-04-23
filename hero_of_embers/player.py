@@ -1,92 +1,18 @@
 from hero_of_embers.inventory import Inventory
+from hero_of_embers.entity import Entity
+from hero_of_embers.library import Library
 
-
-class Player:
+class Player(Entity):
     def __init__(self, name, hp, player_class, armor, damage, ui):
-        """
-        Class that stores all information about the player such as HP, damage, armor, level, etc.
-
-        Parameters
-        ----------
-        name : str
-            Username of the player.
-        hp : int
-            Initial health points of the player.
-        player_class : str
-            Chosen class of the player.
-        armor : int
-            Initial amount of armor.
-        damage : int
-            Base damage dealt by the player.
-        ui : hero_of_embers.ui_manager.UI
-            Instance of the UI manager to handle user interface updates.
-        """
+        super().__init__(name, hp, armor, damage)
         self.ui = ui
-        self.name = name
-        self.max_hp = hp
-        self.hp = hp
-        self.max_armor = armor
-        self.armor = armor
-        self.damage = damage
         self.player_class = player_class
-        self.dead = False
         self.inventory = Inventory(ui)
         self.level = 1
         self.experience = 0
-        self.experience_to_next_level = [0, 50, 120, 210, 320, 450, 600, 770, 960, 1170, 1400]
-        self.experience_to_legendary_level = [2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000]
+        self.experience_to_next_level = Library.XP_NXT_LVL
+        self.experience_to_legendary_level = Library.XP_NXT_LG_LVL
 
-    def deal_damage(self, amount):
-        """
-        Applies damage to the player, reducing armor first, then health.
-
-        Parameters
-        ----------
-        amount : int
-            Amount of damage to apply.
-
-        Returns
-        -------
-        bool
-            True if the player dies, otherwise False.
-        """
-        if (self.hp + self.armor) - amount <= 0:
-            return self.kill_player()
-        else:
-            if self.armor - amount < 0:
-                self.hp += self.armor - amount
-                self.armor = 0
-            else:
-                self.armor -= amount
-            return False
-
-    def heal_hp(self, amount):
-        """
-        Heals the player's HP without exceeding max HP.
-
-        Parameters
-        ----------
-        amount : int
-            Amount of HP to heal.
-        """
-        if self.hp + amount > self.max_hp:
-            self.hp = self.max_hp
-        else:
-            self.hp += amount
-
-    def kill_player(self):
-        """
-        Kills the player by setting HP and armor to 0.
-
-        Returns
-        -------
-        bool
-            Always returns True to indicate the player is dead.
-        """
-        self.hp = 0
-        self.armor = 0
-        self.dead = True
-        return self.dead
 
     def give_experience(self, amount):
         """
@@ -141,16 +67,13 @@ class Player:
         self.ui.change_text("2. HP +30")
         self.ui.change_text("3. Armor +15")
         while True:
-            try:
-                sel = int(input(""))
-                if 1 > sel > 3:
-                    self.ui.change_text("The number is incorrect!")
-                else:
-                    self.ui.change_text(f"You selected {sel}")
-                    self.give_legendary_bonus(sel)
-                    break
-            except ValueError:
-                self.ui.change_text("You have to enter the number!")
+            selection = self.ui.get_input(0, "")
+            if 1 > selection > 3:
+                self.ui.change_text("The number is incorrect!")
+            else:
+                self.ui.change_text(f"You selected {selection}")
+                self.give_legendary_bonus(selection)
+                break
 
     def select_boost(self):
         """
@@ -161,16 +84,13 @@ class Player:
             self.ui.change_text("1. Damage +5")
             self.ui.change_text("2. HP +10")
             self.ui.change_text("3. Armor +5")
-            try:
-                sel = int(input(""))
-                if 1 <= sel <= 3:
-                    self.ui.change_text(f"You selected {sel}")
-                    self.give_bonus(sel)
-                    break
-                else:
-                    self.ui.change_text("The number is incorrect! Try again!")
-            except ValueError:
-                self.ui.change_text("You have to enter the number!")
+            selection = self.ui.get_input(0, "")
+            if 1 <= selection <= 3:
+                self.ui.change_text(f"You selected {selection}")
+                self.give_bonus(selection)
+                break
+            else:
+                self.ui.change_text("The number is incorrect! Try again!")
 
     def give_legendary_bonus(self, sel):
         """

@@ -5,6 +5,10 @@ class Library:
 
     Attributes
     ----------
+    XP_NXT_LVL : list of int
+        A list of experience nedded for each level.
+    XP_NXT_LG_LVL: list of int
+        A list of experience nedded for each legendary level.
     WEAPONS : list of list of str, int, int, int
         A list of weapons where each weapon is represented by a name, the associated damage,
         the cost in game currency, and the shop drop weight (rarity).
@@ -24,6 +28,12 @@ class Library:
         A list of enemies, where each enemy is represented by a name, HP, armor, damage, XP drop upon defeat,
         and the amount of money dropped upon defeat.
     """
+
+    # XP nedded to next level
+    XP_NXT_LVL = [0, 50, 120, 210, 320, 450, 600, 770, 960, 1170, 1400]
+
+    # XP nedded to next legendary level
+    XP_NXT_LG_LVL = [2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000]
 
     # Weapons: name, damage, cost, drop weight
     WEAPONS = [

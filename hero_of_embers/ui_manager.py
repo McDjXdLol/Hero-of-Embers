@@ -58,3 +58,8 @@ class UI:
                 self.player_input = "invalid"  # Handle invalid number input
                 self.change_text("U have to enter the number! Try again.")
         return self.player_input
+
+    @staticmethod
+    def clean_print(amount_of_lines):
+        for x in range(0, amount_of_lines):
+            print("\n")

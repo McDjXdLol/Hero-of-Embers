@@ -38,16 +38,14 @@ class Selection:
         for class_nr, classes in enumerate(Library.PLAYER_CLASSES):
             self.ui.change_text(f"{class_nr + 1}. {classes[0]}")
         while True:
-            try:
-                class_nr_input = self.ui.get_input(0, "")
-                if class_nr_input > len(Library.PLAYER_CLASSES):
-                    self.ui.change_text("The number is incorrect!")
-                elif class_nr_input <= 0:
-                    self.ui.change_text("The number is incorrect!")
-                else:
-                    break
-            except ValueError:
-                self.ui.change_text("You have to enter the number! Try again.")
+            class_nr_input = self.ui.get_input(0, "")
+            if class_nr_input > len(Library.PLAYER_CLASSES):
+                self.ui.change_text("The number is incorrect!")
+            elif class_nr_input <= 0:
+                self.ui.change_text("The number is incorrect!")
+            else:
+                break
+
         return class_nr_input - 1
 
     def difficulty_select(self):
@@ -63,16 +61,14 @@ class Selection:
         for diff_nr, diff in enumerate(Library.DIFFICULTIES):
             self.ui.change_text(f"{diff_nr + 1}. {diff[0]}")
         while True:
-            try:
-                diff_nr_input = self.ui.get_input(0, "")
-                if diff_nr_input > len(Library.DIFFICULTIES):
-                    self.ui.change_text("The number is incorrect!")
-                elif diff_nr_input <= 0:
-                    self.ui.change_text("The number is incorrect!")
-                else:
-                    break
-            except ValueError:
-                self.ui.change_text("You have to enter the number! Try again.")
+            diff_nr_input = self.ui.get_input(0, "")
+            if diff_nr_input > len(Library.DIFFICULTIES):
+                self.ui.change_text("The number is incorrect!")
+            elif diff_nr_input <= 0:
+                self.ui.change_text("The number is incorrect!")
+            else:
+                break
+
         return diff_nr_input - 1
 
     def give_difficulty_stats(self):
