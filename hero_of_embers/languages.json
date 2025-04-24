@@ -58,6 +58,12 @@
       "S. Save & Exit",
       "E. Exit without Saving"
     ],
+    "plot_main_options": [
+      "T. Go trade",
+      "I. Show inventory",
+      "S. Save & Exit",
+      "E. Exit without Saving"
+    ],
     "plot_saving_exiting": "Saving & Exiting...",
     "plot_exiting": "Exiting...",
     "plot_no_option": "There is no such option!",
@@ -144,6 +150,12 @@
     "player_armor_bonus2": "3. Pancerz +5",
     "player_incorrect_number_try_again": "Niepoprawny numer! Spróbuj ponownie!",
     "plot_show_inventory": [
+      "I. Pokaż ekwipunek",
+      "S. Zapisz i wyjdź",
+      "E. Wyjdź bez zapisu"
+    ],
+    "plot_main_options": [
+      "T. Handel",
       "I. Pokaż ekwipunek",
       "S. Zapisz i wyjdź",
       "E. Wyjdź bez zapisu"
@@ -238,6 +250,12 @@
       "S. Guardar y salir",
       "E. Salir sin guardar"
     ],
+    "plot_main_options": [
+      "T. Ir a comerciar",
+      "I. Mostrar inventario",
+      "S. Guardar y salir",
+      "E. Salir sin guardar"
+    ],
     "plot_saving_exiting": "Guardando y saliendo...",
     "plot_exiting": "Saliendo...",
     "plot_no_option": "¡No existe esa opción!",
@@ -324,6 +342,12 @@
     "player_armor_bonus2": "3. Armure +5",
     "player_incorrect_number_try_again": "Le numéro est incorrect ! Réessayez !",
     "plot_show_inventory": [
+      "I. Afficher l'inventaire",
+      "S. Sauvegarder et quitter",
+      "E. Quitter sans sauvegarder"
+    ],
+    "plot_main_options": [
+      "T. Aller au commerce",
       "I. Afficher l'inventaire",
       "S. Sauvegarder et quitter",
       "E. Quitter sans sauvegarder"
