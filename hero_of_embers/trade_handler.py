@@ -116,9 +116,9 @@ class TradeHandler:
             name = item_data[0]
             cost = item_data[2]
             price = cost // 2
-            self.ui.change_text(GetTexts.load_texts("trade_enter_number_sell").format(idx=idx,quantity=quantity,name=name,price=price))
+            self.ui.change_text(GetTexts.load_texts("trade_item_option").format(idx=idx+1,quantity=quantity,name=name,price=price))
 
-        self.ui.change_text("Enter the number of the item to sell or 0 to cancel:")
+        self.ui.change_text(GetTexts.load_texts("trade_enter_number_sell"))
 
         choice = int(self.ui.get_input(0, ""))
         if choice == 0:

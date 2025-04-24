@@ -86,7 +86,7 @@ class Inventory:
         """
         self.ui.change_text(GetTexts.load_texts("inventory_choose_equipment").format(item_type=item_type))
         for i, item in enumerate(items):
-            self.ui.change_text(GetTexts.load_texts("inventory_item_option").format(i=i, item=item))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_option").format(i=i+1, item=item))
         try:
             selected = int(self.ui.get_input(0, ""))
             if selected <= len(items):

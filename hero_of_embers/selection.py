@@ -37,7 +37,8 @@ class Selection:
         """
         self.ui.change_text(GetTexts.load_texts("selection_choose_class"))
         for class_nr, classes in enumerate(Library.PLAYER_CLASSES):
-            self.ui.change_text(GetTexts.load_texts("selection_class_option").format(class_nr=class_nr, classes=classes))
+            self.ui.change_text(
+                GetTexts.load_texts("selection_class_option").format(class_nr=class_nr + 1, classes=classes))
         while True:
             class_nr_input = self.ui.get_input(0, "")
             if class_nr_input > len(Library.PLAYER_CLASSES):
@@ -60,7 +61,7 @@ class Selection:
         """
         self.ui.change_text(GetTexts.load_texts("selection_choose_difficulty"))
         for diff_nr, diff in enumerate(Library.DIFFICULTIES):
-            self.ui.change_text(GetTexts.load_texts("selection_diff_option").format(diff_nr=diff_nr, diff=diff))
+            self.ui.change_text(GetTexts.load_texts("selection_diff_option").format(diff_nr=diff_nr + 1, diff=diff))
         while True:
             diff_nr_input = self.ui.get_input(0, "")
             if diff_nr_input > len(Library.DIFFICULTIES):

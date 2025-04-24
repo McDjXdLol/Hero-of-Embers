@@ -66,7 +66,7 @@ class BattleHandler:
             Always returns 0 to indicate player goes next.
         """
         self.ui.clean_print(2)
-        self.ui.change_text(GetTexts.load_texts("battle_enemy_turn"))
+        self.ui.change_text(GetTexts.load_texts("battle_enemy_turn").format(name=self.enemy.name))
         self.ui.clean_print(1)
         self.player.deal_damage(self.enemy.damage)
         time.sleep(0.5)
@@ -86,7 +86,7 @@ class BattleHandler:
             0 if the enemy should go next, 1 if the player goes again.
         """
         self.ui.clean_print(2)
-        self.ui.change_text(GetTexts.load_texts("battle_player_turn"))
+        self.ui.change_text(GetTexts.load_texts("battle_player_turn").format(name=self.player.name))
         while True:
             self.ui.clean_print(1)
             self.ui.change_text(GetTexts.load_texts("battle_select_option"))
@@ -179,7 +179,7 @@ class BattleHandler:
         while True:
             self.ui.change_text(GetTexts.load_texts("battle_choose_elixir"))
             for eli_nr, eli in enumerate(elixirs_in_inv):
-                self.ui.change_text(GetTexts.load_texts("battle_elixir_option").format(eli_nr=eli_nr, eli=eli))
+                self.ui.change_text(GetTexts.load_texts("battle_elixir_option").format(eli_nr=eli_nr+1, eli=eli))
             chosen_elixir = self.ui.get_input(0, "")
             if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
                 self.ui.change_text(GetTexts.load_texts("battle_incorrect_number_elixir"))
