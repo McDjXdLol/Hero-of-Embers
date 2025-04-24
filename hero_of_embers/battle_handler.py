@@ -140,7 +140,7 @@ class BattleHandler:
             ])
             return 0
         else:
-            self.ui.change_text(GetTexts.load_texts("battle_missed_quick_attack", self.lang))
+            self.ui.change_text(GetTexts.load_texts("battle_missed_quick_attack", self.lang).format(name=self.player.name))
             return 1
 
     def strong_attack(self):
@@ -161,7 +161,7 @@ class BattleHandler:
             ])
             return 1
         else:
-            self.ui.change_text(GetTexts.load_texts("battle_missed_strong_attack", self.lang))
+            self.ui.change_text(GetTexts.load_texts("battle_missed_strong_attack", self.lang).format(name=self.player.name))
             return 1
 
     def choose_elixir(self):
@@ -175,7 +175,7 @@ class BattleHandler:
         """
         elixirs_in_inv = list(self.player.inventory.elixir_inventory)
         if not elixirs_in_inv:
-            self.ui.change_text(GetTexts.load_texts("battle_no_elixir", self.lang))
+            self.ui.change_text(GetTexts.load_texts("battle_no_elixir", self.lang).format(name=self.player.name))
             return 0
         while True:
             self.ui.change_text(GetTexts.load_texts("battle_choose_elixir", self.lang))

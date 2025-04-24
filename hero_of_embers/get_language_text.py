@@ -1,7 +1,11 @@
 import json
 class GetTexts:
     LANGUAGES_NAMES = {
-        "en": "English"
+        "en": "English",
+        "pl": "Polski",
+        "es": "Español",
+        "fr": "Français"
+
     }
     @staticmethod
     def load_texts(text, language='en'):
