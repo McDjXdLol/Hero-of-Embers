@@ -19,6 +19,18 @@ class BattleHandler:
     """
 
     def __init__(self, player, enemy, ui):
+        """
+        Initializes the battle handler with player, enemy, and UI.
+
+        Parameters
+        ----------
+        player : hero_of_embers.player.Player
+            The player character object.
+        enemy : hero_of_embers.enemy.Enemy
+            The enemy character object.
+        ui : hero_of_embers.ui_manager.UI
+            The UI manager for displaying information and handling user input.
+        """
         self.ui = ui
         self.player = player
         self.enemy = enemy
@@ -94,6 +106,14 @@ class BattleHandler:
         return 0
 
     def normal_attack(self):
+        """
+        Perform a normal attack on the enemy.
+
+        Returns
+        -------
+        int
+            1 if enemy goes next, 0 if player goes again.
+        """
         self.enemy.deal_damage(self.player.damage)
         self.ui.change_text([
             f"{self.player.name} dealt {self.player.damage} dmg!",
@@ -102,6 +122,14 @@ class BattleHandler:
         return 1
 
     def quick_attack(self):
+        """
+        Perform a quick attack on the enemy with a 30% chance of success.
+
+        Returns
+        -------
+        int
+            0 if the enemy goes next, 1 if the player goes again.
+        """
         if random.random() < 0.3:
             self.enemy.deal_damage(self.player.damage)
             self.ui.change_text([
@@ -110,10 +138,18 @@ class BattleHandler:
             ])
             return 0
         else:
-            self.ui.change_text(f"{self.player.name} miss quick attack!")
+            self.ui.change_text(f"{self.player.name} missed quick attack!")
             return 1
 
     def strong_attack(self):
+        """
+        Perform a strong attack on the enemy with a 20% chance of success.
+
+        Returns
+        -------
+        int
+            1 if enemy goes next, 0 if player goes again.
+        """
         if random.random() < 0.2:
             dmg = self.player.damage * 5
             self.enemy.deal_damage(dmg)
@@ -123,34 +159,40 @@ class BattleHandler:
             ])
             return 1
         else:
-            self.ui.change_text(f"{self.player.name} miss strong attack!")
+            self.ui.change_text(f"{self.player.name} missed strong attack!")
             return 1
 
     def choose_elixir(self):
+        """
+        Allows the player to choose an elixir from their inventory.
+
+        Returns
+        -------
+        int
+            0 if player should proceed to the enemy's turn, or repeat the player's turn.
+        """
         elixirs_in_inv = list(self.player.inventory.elixir_inventory)
         if not elixirs_in_inv:
-            self.ui.change_text(f"{self.player.name} don't have any elixirs in inventory!")
+            self.ui.change_text(f"{self.player.name} doesn't have any elixirs in inventory!")
             return 0
         while True:
             self.ui.change_text("Choose the elixir:")
             for eli_nr, eli in enumerate(elixirs_in_inv):
                 self.ui.change_text(f"{eli_nr + 1}. {eli[0]} x{eli[1]}")
-            try:
-                chosen_elixir = self.ui.get_input(0, "")
-                if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
-                    self.ui.change_text("The number is incorrect!")
-                else:
-                    break
-            except ValueError:
-                self.ui.change_text("You have to enter the number!")
+            chosen_elixir = self.ui.get_input(0, "")
+            if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
+                self.ui.change_text("The number is incorrect!")
+            else:
+                break
         chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0]
-        self.ui.change_text(f"You choose {chosen_elixir_name}")
+        self.ui.change_text(f"You chose {chosen_elixir_name}")
         self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
         for elix in Library.HEAL_ITEMS:
             if chosen_elixir_name in elix:
                 self.player.heal_hp(elix[1])
                 self.ui.change_text(
-                    f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!")
+                    f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!"
+                )
                 return 0
         return 0
 

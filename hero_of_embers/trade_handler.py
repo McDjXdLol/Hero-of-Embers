@@ -1,9 +1,40 @@
 import random
 
-from library import Library
+from hero_of_embers.library import Library
+
 
 class TradeHandler:
+    """
+    Handles trading interactions between the player and the merchant.
+
+    Provides functionality to buy and sell items, and manages communication
+    with the user interface and the player's inventory.
+
+    Attributes
+    ----------
+    ui : object
+        The user interface handler used to display text and receive input.
+    player : Player
+        The player object involved in the trade.
+    weapons : list
+        List of available weapon items.
+    armors : list
+        List of available armor items.
+    heal_items : list
+        List of available healing items.
+    """
+
     def __init__(self, ui, player):
+        """
+        Initializes the TradeHandler with UI and player objects.
+
+        Parameters
+        ----------
+        ui : object
+            Interface for text communication and input.
+        player : Player
+            The player engaging in trade.
+        """
         self.ui = ui
         self.player = player
         self.weapons = Library.WEAPONS
@@ -14,9 +45,8 @@ class TradeHandler:
         """
         Opens the trading interface where the player can choose to buy or sell items.
 
-        Displays a mysterious merchant's message and prompts the player to select
+        Displays a merchant's quote and prompts the player to select
         one of the available actions. Redirects to the appropriate buying or selling page.
-
         """
         self.ui.change_text(random.choice(Library.TRADE_QUOTES))
         self.ui.change_text("What would you like to do?")
@@ -37,7 +67,6 @@ class TradeHandler:
             case _:
                 self.ui.change_text("There is no such option!")
 
-
     def sell_item(self, item, price):
         """
         Sells an item from the player's inventory.
@@ -50,7 +79,6 @@ class TradeHandler:
             The dragon coin amount received for selling the item.
         """
         name = item[0][0]
-        # Upewniamy się, że item w ogóle istnieje w inventory
         if item in self.player.inventory.inventory:
             self.player.inventory.wallet += price
             self.player.inventory.remove_from_inv(name, self.player.inventory.inventory)
@@ -65,7 +93,7 @@ class TradeHandler:
         Parameters
         ----------
         item : list
-            The item to buy, in the format [name, dmg, cost, weight].
+            The item to buy, in the format [name, dmg, cost, drop_weight].
         """
         self.ui.change_text(f"You bought: {item[0][0]}")
         self.player.inventory.take_from_wallet(item[0][2])
@@ -84,11 +112,9 @@ class TradeHandler:
         for idx, inv_item in enumerate(inventory):
             item_data = inv_item[0]
             quantity = inv_item[1]
-
             name = item_data[0]
             cost = item_data[2]
             price = cost // 2
-
             self.ui.change_text(f"{idx + 1}. {name} (x{quantity}) - {price}Ɇ")
 
         self.ui.change_text("Enter the number of the item to sell or 0 to cancel:")

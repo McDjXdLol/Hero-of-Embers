@@ -19,12 +19,33 @@ class Inventory:
         self.wallet = 0
 
     def check_if_can_buy(self, amount):
+        """
+        Checks if the player has enough dragon coins to make a purchase.
+
+        Parameters
+        ----------
+        amount : int
+            The amount of dragon coins required for the purchase.
+
+        Returns
+        -------
+        bool
+            True if the player has enough dragon coins, False otherwise.
+        """
         if self.wallet < amount:
             return False
         else:
             return True
 
     def take_from_wallet(self, amount):
+        """
+        Deducts the specified amount of dragon coins from the player's wallet.
+
+        Parameters
+        ----------
+        amount : int
+            The amount of dragon coins to deduct from the wallet.
+        """
         if self.check_if_can_buy(amount):
             self.wallet -= amount
         else:
@@ -131,11 +152,20 @@ class Inventory:
             item_amount = item[1]
             self.ui.change_text(f"{item_name} x{item_amount}")
 
-
         if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
             self.equip_selection(inventory_armors, inventory_weapons)
 
     def equip_selection(self, inventory_armors, inventory_weapons):
+        """
+        Allows the player to equip a selected item (weapon or armor).
+
+        Parameters
+        ----------
+        inventory_armors : list
+            List of available armor items in the inventory.
+        inventory_weapons : list
+            List of available weapon items in the inventory.
+        """
         self.ui.change_text(["Do you want to equip one of them?", "1. Yes", "2. No"])
         want = int(self.ui.get_input(0, ""))
         if want == 1:
@@ -149,9 +179,9 @@ class Inventory:
                 else:
                     self.ui.change_text("There is no such option!")
             elif len(inventory_armors) > 0:
-                    self.which_item_to_equip(inventory_armors, self.equip_armor, "armor")
+                self.which_item_to_equip(inventory_armors, self.equip_armor, "armor")
             elif len(inventory_weapons) > 0:
-                    self.which_item_to_equip(inventory_weapons, self.equip_weapon, "weapon")
+                self.which_item_to_equip(inventory_weapons, self.equip_weapon, "weapon")
         elif want == 2:
             return
         else:

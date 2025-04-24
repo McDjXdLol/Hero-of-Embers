@@ -14,7 +14,7 @@ from hero_of_embers.save_handler import SaveGame
 class PlotManager:
     def __init__(self, player, ui):
         """
-        Manages the game plot and scenes loaded from the JSON file.
+        Initializes the PlotManager, loading the game plot from the JSON file.
 
         Parameters
         ----------
@@ -30,22 +30,6 @@ class PlotManager:
         self.current_scene = list(self.scenes_data.keys())[0]
         self.was_in_shop = False
 
-    def open_scene(self, scene_name):
-        """
-        Returns data for a specific scene.
-
-        Parameters
-        ----------
-        scene_name : str
-            The name of the scene.
-
-        Returns
-        -------
-        dict
-            The scene data.
-        """
-        return self.scenes_data[scene_name]
-
     def get_description(self):
         """
         Returns the description of the current scene.
@@ -58,6 +42,14 @@ class PlotManager:
         return self.scenes_data[self.current_scene]['description']
 
     def get_trade_information(self):
+        """
+        Returns trade information for the current scene.
+
+        Returns
+        -------
+        dict
+            Trade data (if any) for the current scene.
+        """
         return self.scenes_data[self.current_scene]['trade']
 
     def get_options_names(self):
@@ -67,7 +59,7 @@ class PlotManager:
         Returns
         -------
         list of str
-            List of option keys.
+            List of option keys available in the current scene.
         """
         return [key for key in self.scenes_data[self.current_scene] if key.isdigit()]
 
@@ -83,7 +75,7 @@ class PlotManager:
         Returns
         -------
         str
-            Option description or error message.
+            Option description or error message if option not found.
         """
         option_name = str(option_name)
         return self.scenes_data[self.current_scene].get(option_name, {}).get('description',
@@ -104,22 +96,6 @@ class PlotManager:
             Description of the effect.
         """
         return self.scenes_data[self.current_scene][option_name]['effect']
-
-    def get_option_requirements(self, option_name):
-        """
-        Returns requirements for a selected option.
-
-        Parameters
-        ----------
-        option_name : str
-            The option key.
-
-        Returns
-        -------
-        list
-            List of requirements.
-        """
-        return self.scenes_data[self.current_scene][option_name]['requirements']
 
     def get_option_giving_item(self, option_name):
         """
@@ -198,13 +174,13 @@ class PlotManager:
         Returns
         -------
         list of str
-            Descriptions of each option.
+            Descriptions of each available option in the current scene.
         """
         return [f"{opt}. {self.get_option_description(opt)}" for opt in self.get_options_names()]
 
     def show_description(self):
         """
-        Returns formatted description of the current scene.
+        Returns formatted description of the current scene with player name.
 
         Returns
         -------
@@ -247,7 +223,7 @@ class PlotManager:
 
     def random_drop(self, scene_id):
         """
-        Grants a random drop to the player based on story progress.
+        Grants a random drop to the player based on the current story progress.
 
         Parameters
         ----------
