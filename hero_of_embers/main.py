@@ -29,17 +29,18 @@ def main():
     -------
     None
     """
-    ui = UI()
+    LANGUAGE = Selection(UI("en"), "en").select_language()
+    ui = UI(LANGUAGE)
 
     # Load saved game data if it exists
     if os.path.exists("hero_of_embers/savegame.json"):
         user = Player(name="", hp=0, armor=0,
-                      damage=0, player_class="", ui=ui)
-        PLOT_MANAGER = PlotManager(user, ui)
+                      damage=0, player_class="", ui=ui, lang="en")
+        PLOT_MANAGER = PlotManager(user, ui, "en")
         LoadGame(user, PLOT_MANAGER).load_data()
     else:
         # No saved game, start a new one
-        SELECTION = Selection(ui)
+        SELECTION = Selection(ui, LANGUAGE)
         NICKNAME = SELECTION.give_nickname()
         CLASS_NR = SELECTION.class_select()
         CHARACTER_CLASS = Library().PLAYER_CLASSES[CLASS_NR]
@@ -49,8 +50,8 @@ def main():
         user = Player(name=NICKNAME, hp=CHARACTER_CLASS[1] + DIFFICULTY[0],
                       armor=CHARACTER_CLASS[2] + DIFFICULTY[1],
                       damage=CHARACTER_CLASS[3] + DIFFICULTY[2],
-                      player_class=Library.PLAYER_CLASSES[0], ui=ui)
-        PLOT_MANAGER = PlotManager(user, ui)
+                      player_class=Library.PLAYER_CLASSES[0], ui=ui, lang=LANGUAGE)
+        PLOT_MANAGER = PlotManager(user, ui, LANGUAGE)
 
     # Main game loop where the player selects plot options
     while PLOT_MANAGER.select_option(): print("")

@@ -19,7 +19,7 @@ class BattleHandler:
         UI manager instance for user interactions.
     """
 
-    def __init__(self, player, enemy, ui):
+    def __init__(self, player, enemy, ui, lang):
         """
         Initializes the battle handler with player, enemy, and UI.
 
@@ -32,6 +32,7 @@ class BattleHandler:
         ui : hero_of_embers.ui_manager.UI
             The UI manager for displaying information and handling user input.
         """
+        self.lang = lang
         self.ui = ui
         self.player = player
         self.enemy = enemy
@@ -66,7 +67,7 @@ class BattleHandler:
             Always returns 0 to indicate player goes next.
         """
         self.ui.clean_print(2)
-        self.ui.change_text(GetTexts.load_texts("battle_enemy_turn").format(name=self.enemy.name))
+        self.ui.change_text(GetTexts.load_texts("battle_enemy_turn", self.lang).format(name=self.enemy.name))
         self.ui.clean_print(1)
         self.player.deal_damage(self.enemy.damage)
         time.sleep(0.5)
@@ -86,10 +87,10 @@ class BattleHandler:
             0 if the enemy should go next, 1 if the player goes again.
         """
         self.ui.clean_print(2)
-        self.ui.change_text(GetTexts.load_texts("battle_player_turn").format(name=self.player.name))
+        self.ui.change_text(GetTexts.load_texts("battle_player_turn", self.lang).format(name=self.player.name))
         while True:
             self.ui.clean_print(1)
-            self.ui.change_text(GetTexts.load_texts("battle_select_option"))
+            self.ui.change_text(GetTexts.load_texts("battle_select_option", self.lang))
             self.ui.change_text([
                 "1. Normal attack (100% chance)",
                 "2. Quick attack (30% chance)",
@@ -99,7 +100,7 @@ class BattleHandler:
             ])
             sel = int(self.ui.get_input(0, ""))
             if sel < 1 or sel > 5:
-                self.ui.change_text(GetTexts.load_texts("battle_incorrect_number"))
+                self.ui.change_text(GetTexts.load_texts("battle_incorrect_number", self.lang))
                 continue
             else:
                 time.sleep(0.5)
@@ -139,7 +140,7 @@ class BattleHandler:
             ])
             return 0
         else:
-            self.ui.change_text(GetTexts.load_texts("battle_missed_quick_attack"))
+            self.ui.change_text(GetTexts.load_texts("battle_missed_quick_attack", self.lang))
             return 1
 
     def strong_attack(self):
@@ -160,7 +161,7 @@ class BattleHandler:
             ])
             return 1
         else:
-            self.ui.change_text(GetTexts.load_texts("battle_missed_strong_attack"))
+            self.ui.change_text(GetTexts.load_texts("battle_missed_strong_attack", self.lang))
             return 1
 
     def choose_elixir(self):
@@ -174,19 +175,19 @@ class BattleHandler:
         """
         elixirs_in_inv = list(self.player.inventory.elixir_inventory)
         if not elixirs_in_inv:
-            self.ui.change_text(GetTexts.load_texts("battle_no_elixir"))
+            self.ui.change_text(GetTexts.load_texts("battle_no_elixir", self.lang))
             return 0
         while True:
-            self.ui.change_text(GetTexts.load_texts("battle_choose_elixir"))
+            self.ui.change_text(GetTexts.load_texts("battle_choose_elixir", self.lang))
             for eli_nr, eli in enumerate(elixirs_in_inv):
-                self.ui.change_text(GetTexts.load_texts("battle_elixir_option").format(eli_nr=eli_nr+1, eli=eli))
+                self.ui.change_text(GetTexts.load_texts("battle_elixir_option", self.lang).format(eli_nr=eli_nr+1, eli=eli))
             chosen_elixir = self.ui.get_input(0, "")
             if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
-                self.ui.change_text(GetTexts.load_texts("battle_incorrect_number_elixir"))
+                self.ui.change_text(GetTexts.load_texts("battle_incorrect_number_elixir", self.lang))
             else:
                 break
         chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0]
-        self.ui.change_text(GetTexts.load_texts("battle_chosen_elixir").format(chosen_elixir_name=chosen_elixir_name))
+        self.ui.change_text(GetTexts.load_texts("battle_chosen_elixir", self.lang).format(chosen_elixir_name=chosen_elixir_name))
         self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
         for elix in Library.HEAL_ITEMS:
             if chosen_elixir_name in elix:
@@ -247,7 +248,7 @@ class BattleHandler:
         elif self.enemy.dead:
             self.player.give_experience(self.enemy.experience_drop)
             self.player.inventory.wallet += self.enemy.money_drop
-            self.ui.change_text(GetTexts.load_texts("battle_enemy_money_drop").format(money_drop=self.enemy.money_drop))
+            self.ui.change_text(GetTexts.load_texts("battle_enemy_money_drop", self.lang).format(money_drop=self.enemy.money_drop))
             self.player.armor += int(self.player.max_armor / 2)
             if self.enemy.experience_drop >= 25:
                 dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS) - 1)]
