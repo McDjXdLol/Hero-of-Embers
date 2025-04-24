@@ -1,3 +1,4 @@
+from hero_of_embers.get_language_text import GetTexts
 from hero_of_embers.inventory import Inventory
 from hero_of_embers.library import Library
 from hero_of_embers.entity import Entity
@@ -46,10 +47,10 @@ class Player(Entity):
         amount : int
             Amount of experience to add to the player's total.
         """
-        self.ui.change_text(f"{self.name} gained {amount} xp!")
+        self.ui.change_text(GetTexts.load_texts("player_gained_xp").format(name=self.name, amount=amount))
 
         if self.level == "MAX":
-            self.ui.change_text("You already got the maximum level!")
+            self.ui.change_text(GetTexts.load_texts("player_max_level"))
             return
 
         self.experience += amount
@@ -59,7 +60,7 @@ class Player(Entity):
             if self.experience >= xp_needed:
                 self.experience -= xp_needed
                 self.level += 1
-                self.ui.change_text(f"{self.name} got next level!")
+                self.ui.change_text(GetTexts.load_texts("player_next_level").format(name=self.name))
                 self.select_boost()
             else:
                 return
@@ -73,9 +74,9 @@ class Player(Entity):
                 if self.level == len(self.experience_to_next_level) + len(self.experience_to_legendary_level):
                     self.level = "MAX"
                     self.experience = "MAX"
-                    self.ui.change_text("You got the maximum level!")
+                    self.ui.change_text(GetTexts.load_texts("player_max_level_reached"))
                     return
-                self.ui.change_text(f"{self.name} got next level!")
+                self.ui.change_text(GetTexts.load_texts("player_next_level").format(name=self.name))
                 self.select_legendary_boost()
             else:
                 return
@@ -84,16 +85,16 @@ class Player(Entity):
         """
         Prompts the player to select a legendary bonus after reaching legendary levels.
         """
-        self.ui.change_text("Select bonus: ")
-        self.ui.change_text("1. Damage +15")
-        self.ui.change_text("2. HP +30")
-        self.ui.change_text("3. Armor +15")
+        self.ui.change_text(GetTexts.load_texts("player_select_bonus"))
+        self.ui.change_text(GetTexts.load_texts("player_damage_bonus"))
+        self.ui.change_text(GetTexts.load_texts("player_hp_bonus"))
+        self.ui.change_text(GetTexts.load_texts("player_armor_bonus"))
         while True:
             selection = self.ui.get_input(0, "")
             if 1 > selection > 3:
-                self.ui.change_text("The number is incorrect!")
+                self.ui.change_text(GetTexts.load_texts("player_incorrect_number"))
             else:
-                self.ui.change_text(f"You selected {selection}")
+                self.ui.change_text(GetTexts.load_texts("player_selected_bonus").format(selection=selection))
                 self.give_legendary_bonus(selection)
                 break
 
@@ -102,17 +103,17 @@ class Player(Entity):
         Prompts the player to choose a bonus after a regular level-up.
         """
         while True:
-            self.ui.change_text("Select bonus: ")
-            self.ui.change_text("1. Damage +5")
-            self.ui.change_text("2. HP +10")
-            self.ui.change_text("3. Armor +5")
+            self.ui.change_text(GetTexts.load_texts("player_select_bonus2"))
+            self.ui.change_text(GetTexts.load_texts("player_select_damage_bonus2"))
+            self.ui.change_text(GetTexts.load_texts("player_select_hp_bonus2"))
+            self.ui.change_text(GetTexts.load_texts("player_select_armor_bonus2"))
             selection = self.ui.get_input(0, "")
             if 1 <= selection <= 3:
-                self.ui.change_text(f"You selected {selection}")
+                self.ui.change_text(GetTexts.load_texts("player_selected_bonus").format(selection=selection))
                 self.give_bonus(selection)
                 break
             else:
-                self.ui.change_text("The number is incorrect! Try again!")
+                self.ui.change_text(GetTexts.load_texts("player_incorrect_number_try_again"))
 
     def give_legendary_bonus(self, sel):
         """

@@ -4,6 +4,7 @@ import random
 import sys
 import time
 
+from hero_of_embers.get_language_text import GetTexts
 from hero_of_embers.trade_handler import TradeHandler
 from hero_of_embers.battle_handler import BattleHandler as bH
 from hero_of_embers.enemy import Enemy
@@ -259,9 +260,9 @@ class PlotManager:
                 self.ui.change_text(
                     ["T. Go trade", "I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
             else:
-                self.ui.change_text(["I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
+                self.ui.change_text(GetTexts.load_texts("plot_show_inventory"))
             selected_option = self.ui.get_input("str", "Select Option: ").strip()
-            self.ui.change_text("\n")
+            self.ui.clean_print(1)
             if selected_option in self.get_options_names():
                 break
             elif selected_option.lower() == "t" and not self.was_in_shop and self.get_trade_information():
@@ -269,16 +270,16 @@ class PlotManager:
             elif selected_option.lower() == "i":
                 self.player.inventory.show_inv()
             elif selected_option.lower() == "s":
-                self.ui.change_text("Saving & Exiting...")
+                self.ui.change_text(GetTexts.load_texts("plot_saving_exiting"))
                 SaveGame(self.player, self).save_game()
                 time.sleep(1)
                 sys.exit()
             elif selected_option.lower() == "e":
-                self.ui.change_text("Exiting...")
+                self.ui.change_text(GetTexts.load_texts("plot_exiting"))
                 time.sleep(1)
                 sys.exit()
             else:
-                self.ui.change_text("There is no such option!")
+                self.ui.change_text(GetTexts.load_texts("plot_no_option"))
 
         os.system('cls' if os.name == 'nt' else 'clear')
         self.ui.change_text(self.get_option_effect(selected_option))
@@ -298,7 +299,7 @@ class PlotManager:
                         else:
                             return False
                     else:
-                        self.ui.change_text("You died!")
+                        self.ui.change_text(GetTexts.load_texts("plot_you_died"))
                         return False
 
         if self.get_option_next_scene(selected_option) != "END":

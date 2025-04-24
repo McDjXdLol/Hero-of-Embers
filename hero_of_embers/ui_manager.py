@@ -1,3 +1,6 @@
+from hero_of_embers.get_language_text import GetTexts
+
+
 class UI:
     def __init__(self):
         """
@@ -61,11 +64,13 @@ class UI:
         if isinstance(excepted_type, str):
             self.player_input = input(what_to_ask_for)
         elif isinstance(excepted_type, int):
-            try:
-                self.player_input = int(input(what_to_ask_for))
-            except ValueError:
-                self.player_input = 0
-                self.change_text("U have to enter the number! Try again.")
+            while True:
+                try:
+                    self.player_input = int(input(what_to_ask_for))
+                    break
+                except ValueError:
+                    self.player_input = 0
+                    self.change_text(GetTexts.load_texts("ui_enter_number_try_again"))
         return self.player_input
 
     @staticmethod
