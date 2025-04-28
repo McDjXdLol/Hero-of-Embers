@@ -246,7 +246,7 @@ class BattleHandler:
         if self.player.dead:
             return False
         elif self.enemy.dead:
-            self.player.give_experience(self.enemy.experience_drop)
+            self.player.level_handler.give_experience(self.enemy.experience_drop)
             self.player.inventory.wallet += self.enemy.money_drop
             self.ui.change_text(GetTexts.load_texts("battle_enemy_money_drop", self.lang).format(money_drop=self.enemy.money_drop))
             self.player.armor += int(self.player.max_armor / 2)
