@@ -38,7 +38,17 @@ class Selection:
         str
             The nickname entered by the player.
         """
-        return self.ui.get_input("str", "Enter username: ")
+        while True:
+            nickname = self.ui.get_input("str", "Enter username: ")
+            if nickname == "":
+                self.ui.change_text("Username cannot be empty! Try again!")
+            elif len(nickname) < 3:
+                self.ui.change_text("Username has to be at least 3 characters long! Try again!")
+            elif len(nickname) > 20:
+                self.ui.change_text("Username has to be less that 20 character long! Try again")
+            else:
+                return nickname
+
 
     def class_select(self):
         """
