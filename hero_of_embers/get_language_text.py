@@ -7,11 +7,15 @@ class GetTexts:
         "fr": "Français"
 
     }
-    @staticmethod
-    def load_texts(text, language='en'):
+    TEXT = {}
+
+    def get_texts(self):
         with open('languages.json', 'r', encoding='utf-8') as f:
-            texts = json.load(f)
-        return texts.get(language, {})[text]
+            self.TEXT = json.load(f)
+
+    @classmethod
+    def load_texts(cls, text, language='en'):
+        return cls.TEXT.get(language, {})[text]
 
     @classmethod
     def get_languages_names(cls):

@@ -6,7 +6,7 @@ from hero_of_embers.plot_manager import PlotManager
 from hero_of_embers.save_handler import SaveGame, LoadGame
 from hero_of_embers.selection import Selection
 from hero_of_embers.ui_manager import UI
-
+from hero_of_embers.get_language_text import GetTexts
 
 def main():
     """
@@ -29,6 +29,7 @@ def main():
     -------
     None
     """
+    GetTexts().get_texts()
     LANGUAGE = Selection(UI("en"), "en").select_language()
     ui = UI(LANGUAGE)
 
