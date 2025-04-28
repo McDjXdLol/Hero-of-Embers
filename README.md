@@ -143,7 +143,7 @@ The only GUI component of the project! Use `plot_maker_app.py` (requires PyQt6) 
 To run the plot maker:
 
 ```bash
-python plot_maker_app.py
+python run_plot_maker.py
 ```
 
 <a name='contriburing'></a>
