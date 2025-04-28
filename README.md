@@ -1,4 +1,4 @@
-# Hero of Embers - Version 0.3.0 (WIP) 
+# Hero of Embers - Version 0.3.1 (WIP) 
 
 ## 📖 Table of Contents
 
