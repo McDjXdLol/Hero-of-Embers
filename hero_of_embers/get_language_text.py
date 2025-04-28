@@ -15,7 +15,9 @@ class GetTexts:
 
     @classmethod
     def load_texts(cls, text, language='en'):
-        return cls.TEXT.get(language, {})[text]
+        if not cls.TEXT:
+            cls.get_texts(cls)
+        return cls.TEXT[language][text]
 
     @classmethod
     def get_languages_names(cls):
