@@ -1,4 +1,4 @@
-# Hero of Embers - Version 0.2.1
+# Hero of Embers - Version 0.3.0
 
 ## 📖 Table of Contents
 
@@ -40,6 +40,10 @@ update!
 - [x] Write docstring's documentation in code.
 - [x] Add currency.
 - [x] Add option to trade.
+- [x] Rebuild `plot_maker_app.py`, to be easier to use.
+- [ ] Add more languages.
+- [ ] Add level to enemies.
+- [ ] Add more statistics to player.
 - [ ] Remake plot.
 - [ ] Expand the storyline with additional scenes and choices.
 - [ ] Improve the user interface (e.g. color-coded text, better formatting).

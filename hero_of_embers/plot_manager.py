@@ -4,6 +4,7 @@ import random
 import sys
 import time
 
+from hero_of_embers.get_language_text import GetTexts
 from hero_of_embers.trade_handler import TradeHandler
 from hero_of_embers.battle_handler import BattleHandler as bH
 from hero_of_embers.enemy import Enemy
@@ -12,7 +13,7 @@ from hero_of_embers.save_handler import SaveGame
 
 
 class PlotManager:
-    def __init__(self, player, ui):
+    def __init__(self, player, ui, lang):
         """
         Initializes the PlotManager, loading the game plot from the JSON file.
 
@@ -23,6 +24,7 @@ class PlotManager:
         ui : hero_of_embers.ui_manager.UI
             The user interface manager.
         """
+        self.lang = lang
         self.ui = ui
         self.player = player
         with open('scenes.json', 'r', encoding='utf-8') as scene_file:
@@ -259,26 +261,26 @@ class PlotManager:
                 self.ui.change_text(
                     ["T. Go trade", "I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
             else:
-                self.ui.change_text(["I. Show inventory", "S. Save & Exit", "E. Exit without Saving"])
+                self.ui.change_text(GetTexts.load_texts("plot_show_inventory", self.lang))
             selected_option = self.ui.get_input("str", "Select Option: ").strip()
-            self.ui.change_text("\n")
+            self.ui.clean_print(1)
             if selected_option in self.get_options_names():
                 break
             elif selected_option.lower() == "t" and not self.was_in_shop and self.get_trade_information():
-                self.was_in_shop = TradeHandler(self.ui, self.player).trade()
+                self.was_in_shop = TradeHandler(self.ui, self.player, self.lang).trade()
             elif selected_option.lower() == "i":
                 self.player.inventory.show_inv()
             elif selected_option.lower() == "s":
-                self.ui.change_text("Saving & Exiting...")
+                self.ui.change_text(GetTexts.load_texts("plot_saving_exiting", self.lang))
                 SaveGame(self.player, self).save_game()
                 time.sleep(1)
                 sys.exit()
             elif selected_option.lower() == "e":
-                self.ui.change_text("Exiting...")
+                self.ui.change_text(GetTexts.load_texts("plot_exiting", self.lang))
                 time.sleep(1)
                 sys.exit()
             else:
-                self.ui.change_text("There is no such option!")
+                self.ui.change_text(GetTexts.load_texts("plot_no_option", self.lang))
 
         os.system('cls' if os.name == 'nt' else 'clear')
         self.ui.change_text(self.get_option_effect(selected_option))
@@ -291,14 +293,14 @@ class PlotManager:
             for en in Library.ENEMIES:
                 if en[0] == self.fight_who(selected_option):
                     opponent = Enemy(self.fight_who(selected_option), *en[1:])
-                    if bH(self.player, opponent, self.ui).battle():
+                    if bH(self.player, opponent, self.ui, self.lang).battle():
                         if self.get_option_next_scene(selected_option) != "END":
                             self.set_next_scene(selected_option)
                             return self.select_option()
                         else:
                             return False
                     else:
-                        self.ui.change_text("You died!")
+                        self.ui.change_text(GetTexts.load_texts("plot_you_died", self.lang))
                         return False
 
         if self.get_option_next_scene(selected_option) != "END":

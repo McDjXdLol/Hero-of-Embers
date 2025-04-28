@@ -1,8 +1,8 @@
 from hero_of_embers.library import Library
-
+from hero_of_embers.get_language_text import GetTexts
 
 class Inventory:
-    def __init__(self, ui):
+    def __init__(self, ui, lang):
         """
         Initializes the inventory for the player.
 
@@ -11,6 +11,7 @@ class Inventory:
         ui : hero_of_embers.ui_manager.UI
             UI class object to interact with the user.
         """
+        self.lang = lang
         self.ui = ui
         self.inventory = []
         self.elixir_inventory = []
@@ -49,7 +50,7 @@ class Inventory:
         if self.check_if_can_buy(amount):
             self.wallet -= amount
         else:
-            self.ui.change_text("You don't have enough dragon coins!")
+            self.ui.change_text(GetTexts.load_texts("inventory_not_enough_coins", self.lang))
 
     @staticmethod
     def add_to_inv(item, inv, amount=1):
@@ -84,18 +85,18 @@ class Inventory:
         item_type : str
             Type of item, for display purposes.
         """
-        self.ui.change_text(f"Which {item_type} do you want to equip?")
+        self.ui.change_text(GetTexts.load_texts("inventory_choose_equipment", self.lang).format(item_type=item_type))
         for i, item in enumerate(items):
-            self.ui.change_text(f"{i + 1}. {item}")
+            self.ui.change_text(GetTexts.load_texts("inventory_item_option", self.lang).format(i=i+1, item=item))
         try:
             selected = int(self.ui.get_input(0, ""))
             if selected <= len(items):
                 equip_function(items[selected - 1])
                 self.remove_from_inv(items[selected - 1], self.inventory)
             else:
-                self.ui.change_text("There is no such option!")
+                self.ui.change_text(GetTexts.load_texts("inventory_no_option", self.lang))
         except ValueError:
-            self.ui.change_text("You have to enter the number! Try again.")
+            self.ui.change_text(GetTexts.load_texts("inventory_enter_number", self.lang))
 
     def show_inv(self):
         """
@@ -124,33 +125,33 @@ class Inventory:
                 inventory_items.append(item)
 
         if len(self.weapon) != 0:
-            self.ui.change_text(f"Equipped Weapon: {self.weapon[0]}")
+            self.ui.change_text(GetTexts.load_texts("inventory_equipped_weapon", self.lang).format(weapon=self.weapon))
 
         if len(self.armor) != 0:
-            self.ui.change_text(f"Equipped Armor: {self.armor[0]}")
+            self.ui.change_text(GetTexts.load_texts("inventory_equipped_armor", self.lang).format(armor=self.armor))
 
         if self.wallet == 0:
-            self.ui.change_text("Wallet: Empty")
+            self.ui.change_text(GetTexts.load_texts("inventory_wallet_empty", self.lang))
         else:
-            self.ui.change_text(f"Dragon coins: {self.wallet}Ɇ")
+            self.ui.change_text(GetTexts.load_texts("inventory_dragon_coins", self.lang).format(wallet=self.wallet))
 
         if len(self.inventory) == 0:
-            self.ui.change_text("Inventory: Empty")
+            self.ui.change_text(GetTexts.load_texts("inventory_inventory_empty", self.lang))
             return
 
-        self.ui.change_text("Weapons: ")
+        self.ui.change_text(GetTexts.load_texts("inventory_weapons", self.lang))
         for weapon in inventory_weapons:
-            self.ui.change_text(f"{weapon}")
+            self.ui.change_text(GetTexts.load_texts("inventory_weapon", self.lang).format(weapon=weapon))
 
-        self.ui.change_text("Armors: ")
+        self.ui.change_text(GetTexts.load_texts("inventory_armors", self.lang))
         for armor in inventory_armors:
-            self.ui.change_text(f"{armor}")
+            self.ui.change_text(GetTexts.load_texts("inventory_armor", self.lang).format(armor=armor))
 
-        self.ui.change_text("Miscellaneous: ")
+        self.ui.change_text(GetTexts.load_texts("inventory_miscellaneous", self.lang))
         for item in inventory_items:
             item_name = item[0][0]
             item_amount = item[1]
-            self.ui.change_text(f"{item_name} x{item_amount}")
+            self.ui.change_text(GetTexts.load_texts("inventory_misc_item", self.lang).format(item_name=item_name, item_amount=item_amount))
 
         if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
             self.equip_selection(inventory_armors, inventory_weapons)
@@ -166,18 +167,18 @@ class Inventory:
         inventory_weapons : list
             List of available weapon items in the inventory.
         """
-        self.ui.change_text(["Do you want to equip one of them?", "1. Yes", "2. No"])
+        self.ui.change_text(GetTexts.load_texts("inventory_equip_one", self.lang))
         want = int(self.ui.get_input(0, ""))
         if want == 1:
             if len(inventory_armors) > 0 and len(inventory_weapons) > 0:
-                self.ui.change_text(["Do you want to equip:", "1. Weapon", "2. Armor"])
+                self.ui.change_text(GetTexts.load_texts("inventory_equip_type", self.lang))
                 which_to_equip = int(self.ui.get_input(0, ""))
                 if which_to_equip == 1:
                     self.which_item_to_equip(inventory_weapons, self.equip_weapon, "weapon")
                 elif which_to_equip == 2:
                     self.which_item_to_equip(inventory_armors, self.equip_armor, "armor")
                 else:
-                    self.ui.change_text("There is no such option!")
+                    self.ui.change_text(GetTexts.load_texts("inventory_no_option", self.lang))
             elif len(inventory_armors) > 0:
                 self.which_item_to_equip(inventory_armors, self.equip_armor, "armor")
             elif len(inventory_weapons) > 0:
@@ -185,7 +186,7 @@ class Inventory:
         elif want == 2:
             return
         else:
-            self.ui.change_text("There is no such option!")
+            self.ui.change_text(GetTexts.load_texts("inventory_no_option", self.lang))
 
     def show_inv_elixirs(self):
         """
@@ -196,7 +197,7 @@ class Inventory:
         Each elixir is shown along with the amount.
         """
         for el in self.elixir_inventory:
-            self.ui.change_text(f"{el[0]} x{el[1]}")
+            self.ui.change_text(GetTexts.load_texts("inventory_misc_item", self.lang).format(el=el))
 
     @staticmethod
     def remove_from_inv(item_name, inv):
@@ -265,7 +266,7 @@ class Inventory:
                             self.weapon.remove(self.weapon[0])
                             break
                 self.weapon.append(item_name)
-                self.ui.change_text(f"Weapon equipped: {item_name}")
+                self.ui.change_text(GetTexts.load_texts("inventory_equipped_weapon", self.lang).format(item_name=item_name))
                 return old_weapon_damage, weapon[1]
         return None
 
@@ -295,6 +296,6 @@ class Inventory:
                             self.armor.remove(self.armor[0])
                             break
                 self.armor.append(item_name)
-                self.ui.change_text(f"Armor equipped: {item_name}")
+                self.ui.change_text(GetTexts.load_texts("inventory_equipped_armor", self.lang).format(item_name))
                 return old_armor_value, armor[1]
         return None
