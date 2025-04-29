@@ -52,11 +52,7 @@ def main():
                       damage=CHARACTER_CLASS[3] + DIFFICULTY[2],
                       player_class=Library.PLAYER_CLASSES[0], ui=ui, lang=LANGUAGE)
         PLOT_MANAGER = PlotManager(user, ui, LANGUAGE)
-
     return PLOT_MANAGER.select_option()
-
-
-
 
 if __name__ == "__main__":
     # Main game loop
