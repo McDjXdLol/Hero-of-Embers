@@ -23,7 +23,6 @@ def main():
     1. Check if a save game exists.
     2. If save game exists, load the saved data.
     3. If no save game exists, prompt the user to create a new character.
-    4. Progress through the plot options and save progress when the game ends.
 
     Returns
     -------
@@ -54,13 +53,12 @@ def main():
                       player_class=Library.PLAYER_CLASSES[0], ui=ui, lang=LANGUAGE)
         PLOT_MANAGER = PlotManager(user, ui, LANGUAGE)
 
-    # Main game loop where the player selects plot options
-    while PLOT_MANAGER.select_option(): print("")
+    return PLOT_MANAGER.select_option()
 
-    # Save the game if the player exit from loop, but don't if he is dead
-    if not user.dead:
-        SaveGame(user, PLOT_MANAGER).save_game()
+
 
 
 if __name__ == "__main__":
-    main()
+    # Main game loop
+    while main():
+        print("")

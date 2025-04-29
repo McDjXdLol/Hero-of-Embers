@@ -246,16 +246,20 @@ class BattleHandler:
         if self.player.dead:
             return False
         elif self.enemy.dead:
-            self.player.level_handler.give_experience(self.enemy.experience_drop)
-            self.player.inventory.wallet += self.enemy.money_drop
-            self.ui.change_text(GetTexts.load_texts("battle_enemy_money_drop", self.lang).format(money_drop=self.enemy.money_drop))
-            self.player.armor += int(self.player.max_armor / 2)
-            if self.enemy.experience_drop >= 25:
-                dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS) - 1)]
-                amount = random.randint(1, 3)
-            else:
-                dropping_item = Library.HEAL_ITEMS[random.randint(0, 3)]
-                amount = random.randint(1, 4)
-            self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.elixir_inventory, amount=amount)
+            self.give_drop()
             return True
         return False
+
+    def give_drop(self):
+        self.player.level_handler.give_experience(self.enemy.experience_drop)
+        self.player.inventory.wallet += self.enemy.money_drop
+        self.ui.change_text(
+            GetTexts.load_texts("battle_enemy_money_drop", self.lang).format(money_drop=self.enemy.money_drop))
+        self.player.armor += int(self.player.max_armor / 2)
+        if self.enemy.experience_drop >= 25:
+            dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS) - 1)]
+            amount = random.randint(1, 3)
+        else:
+            dropping_item = Library.HEAL_ITEMS[random.randint(0, 3)]
+            amount = random.randint(1, 4)
+        self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.elixir_inventory, amount=amount)
