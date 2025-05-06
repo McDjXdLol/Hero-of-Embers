@@ -2,7 +2,7 @@
 
 ## About & Plans
 ### About
-This is simple work-in-progress (WIP) console game. That I'm creating at free time. 
+This is simple work-in-progress (WIP) console game. That I'm creating at my free time. 
 
 ### Plans
 For now, the plot needs to be changed, because for now it is short, shortened, for testing purposes. Additionally, the translation of the game needs to be completed. Because for now, only about half of the texts are translated. 
