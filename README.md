@@ -148,7 +148,7 @@ python run_plot_maker.py
 
 <a name='contriburing'></a>
 
-### 🤝 Contributing
+## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to fork the repo and submit a pull request.
 
