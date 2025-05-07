@@ -152,14 +152,7 @@ python run_plot_maker.py
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to fork the repo and submit a pull request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push to the branch (`git push origin feature/YourFeature`)
-5. Open a Pull Request
-
-Please adhere to the existing code style and include tests where appropriate.
+For more information check this [CONTRIBUTING](CONTRIBUTING.md)
 
 <a name="license"></a>
 
