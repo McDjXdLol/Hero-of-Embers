@@ -121,7 +121,7 @@ Experience a blend of **turn-based combat**, **branching narrative**, and **stra
 
 <a name='plot-maker'></a>
 
-## 📝 Plot Maker
+## 📝 Plot Maker (WIP)
 
 The only GUI component of the project! Use `plot_maker_app.py` (requires PyQt6) to craft custom story scenes.
 
@@ -148,7 +148,7 @@ python run_plot_maker.py
 
 <a name='contriburing'></a>
 
-### 🤝 Contributing
+## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to fork the repo and submit a pull request.
 
