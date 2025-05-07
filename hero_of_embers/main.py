@@ -3,7 +3,7 @@ import os
 from library import Library
 from player import Player
 from plot_manager import PlotManager
-from save_handler import SaveGame, LoadGame
+from save_handler import LoadGame
 from selection import Selection
 from ui_manager import UI
 from get_language_text import GetTexts

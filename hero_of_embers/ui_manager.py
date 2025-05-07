@@ -8,10 +8,8 @@ class UI:
 
         Attributes
         ----------
-        actually_showing_text : str or list of str
-            The current text or list of texts to be displayed.
-        player_input : str or int
-            The last input received from the player.
+        lang : str
+            The current language (code)
         """
         self.lang = lang
         self.actually_showing_text = ""

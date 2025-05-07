@@ -11,6 +11,15 @@ from enemy import Enemy
 from library import Library
 from save_handler import SaveGame
 
+lang_file = ""
+def check_for_file(lang):
+    global lang_file
+    cwd = os.getcwd()
+    if cwd.endswith("hero_of_embers"):
+        lang_file = os.path.join(cwd, "languages", f"scenes_{lang}.json")
+    else:
+        lang_file = os.path.join(cwd, "hero_of_embers", "languages",  f"scenes_{lang}.json")
+
 
 class PlotManager:
     def __init__(self, player, ui, lang):
@@ -27,7 +36,8 @@ class PlotManager:
         self.lang = lang
         self.ui = ui
         self.player = player
-        with open(f'languages/scenes_{lang}.json', 'r', encoding='utf-8') as scene_file:
+        check_for_file(lang)
+        with open(lang_file, 'r', encoding='utf-8') as scene_file:
             self.scenes_data = json.load(scene_file)
         self.current_scene = list(self.scenes_data.keys())[0]
         self.was_in_shop = False

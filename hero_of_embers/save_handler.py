@@ -26,8 +26,8 @@ class SaveGame:
         self.player_elixir_inventory = player.inventory.elixir_inventory
         self.player_weapon_equiped = player.inventory.weapon
         self.player_armor_equiped = player.inventory.armor
-        self.player_level = player.level
-        self.player_experience = player.experience
+        self.player_level = player.level_handler.level
+        self.player_experience = player.level_handler.level
 
         # Plot Data
         self.current_scene = plot_manager.current_scene

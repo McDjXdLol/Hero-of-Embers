@@ -1,4 +1,14 @@
 import json, os
+
+lang_file = ""
+def check_for_file():
+    global lang_file
+    cwd = os.getcwd()
+    if cwd.endswith("hero_of_embers"):
+        lang_file = os.path.join(cwd, "languages", "languages.json")
+    else:
+        lang_file = os.path.join(cwd, "hero_of_embers", "languages", "languages.json")
+
 class GetTexts:
     LANGUAGES_NAMES = {
         "en": "English",
@@ -8,9 +18,10 @@ class GetTexts:
 
     }
     TEXT = {}
+    check_for_file()
 
     def get_texts(self):
-        with open(f'{os.getcwd()}\\languages\\languages.json', 'r', encoding='utf-8') as f:
+        with open(lang_file, 'r', encoding='utf-8') as f:
             self.TEXT = json.load(f)
 
     @classmethod
@@ -21,7 +32,7 @@ class GetTexts:
 
     @classmethod
     def get_languages_names(cls):
-        with open(f'{os.getcwd()}\\languages\\languages.json', "r", encoding="utf-8") as f:
+        with open(lang_file, "r", encoding="utf-8") as f:
             texts = json.load(f)
 
         available_languages = []
