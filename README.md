@@ -1,4 +1,5 @@
 # Hero of Embers - Version 0.3.3 (WIP) 
+![image](https://github.com/user-attachments/assets/9ebc9385-f15a-48cb-9463-6585f2ec4f32)
 
 ## 📖 Table of Contents
 
