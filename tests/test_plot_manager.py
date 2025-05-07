@@ -11,7 +11,7 @@ class TestPlotManager(unittest.TestCase):
         self.ui_mock = MagicMock()
         self.plot_manager = PlotManager(self.player_mock, self.ui_mock)
 
-        # Zakładając, że wczytujesz plik scenes.json w PlotManager
+        # Zakładając, że wczytujesz plik scenes_en.json w PlotManager
         self.plot_manager.scenes_data = {
             "scene_1": {
                 "scene_id": 1,

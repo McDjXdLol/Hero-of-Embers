@@ -4,12 +4,12 @@ import random
 import sys
 import time
 
-from hero_of_embers.get_language_text import GetTexts
-from hero_of_embers.trade_handler import TradeHandler
-from hero_of_embers.battle_handler import BattleHandler as bH
-from hero_of_embers.enemy import Enemy
-from hero_of_embers.library import Library
-from hero_of_embers.save_handler import SaveGame
+from get_language_text import GetTexts
+from trade_handler import TradeHandler
+from battle_handler import BattleHandler as bH
+from enemy import Enemy
+from library import Library
+from save_handler import SaveGame
 
 
 class PlotManager:
@@ -27,7 +27,7 @@ class PlotManager:
         self.lang = lang
         self.ui = ui
         self.player = player
-        with open('scenes.json', 'r', encoding='utf-8') as scene_file:
+        with open(f'languages/scenes_{lang}.json', 'r', encoding='utf-8') as scene_file:
             self.scenes_data = json.load(scene_file)
         self.current_scene = list(self.scenes_data.keys())[0]
         self.was_in_shop = False

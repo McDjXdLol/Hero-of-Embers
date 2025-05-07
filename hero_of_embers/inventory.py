@@ -1,5 +1,5 @@
-from hero_of_embers.library import Library
-from hero_of_embers.get_language_text import GetTexts
+from library import Library
+from get_language_text import GetTexts
 
 class Inventory:
     def __init__(self, ui, lang):

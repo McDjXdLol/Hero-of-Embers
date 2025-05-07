@@ -152,16 +152,16 @@
     "plot_show_inventory": [
       "I. Pokaż ekwipunek",
       "S. Zapisz i wyjdź",
-      "E. Wyjdź bez zapisu"
+      "E. Wyjdź bez zapisywania"
     ],
     "plot_main_options": [
       "T. Handel",
       "I. Pokaż ekwipunek",
       "S. Zapisz i wyjdź",
-      "E. Wyjdź bez zapisu"
+      "E. Wyjdź bez zapisywania"
     ],
-    "plot_saving_exiting": "Zapisywanie i wychodzenie...",
-    "plot_exiting": "Wychodzenie...",
+    "plot_saving_exiting": "Zapisywanie i wyłączanie...",
+    "plot_exiting": "Wyłączanie...",
     "plot_no_option": "Nie ma takiej opcji!",
     "plot_you_died": "Zginąłeś!",
     "selection_choose_class": "Wybierz klasę:",

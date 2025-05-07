@@ -157,7 +157,7 @@ class SceneBuilderApp(QMainWindow):
         self.description_input.clear()
 
     def save_to_file(self):
-        file_name = "../hero_of_embers/scenes.json"
+        file_name = f"../hero_of_embers/languages/scenes_en.json"
         with open(file_name, 'w') as f:
             json.dump(self.options, f, indent=4)
         self.scenes_display.append(f"Data saved to {file_name}.")

@@ -1,4 +1,4 @@
-from hero_of_embers.entity import Entity
+from entity import Entity
 
 class Enemy(Entity):
     """

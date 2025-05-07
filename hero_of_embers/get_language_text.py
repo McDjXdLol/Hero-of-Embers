@@ -1,4 +1,4 @@
-import json
+import json, os
 class GetTexts:
     LANGUAGES_NAMES = {
         "en": "English",
@@ -10,7 +10,7 @@ class GetTexts:
     TEXT = {}
 
     def get_texts(self):
-        with open('languages.json', 'r', encoding='utf-8') as f:
+        with open(f'{os.getcwd()}\\languages\\languages.json', 'r', encoding='utf-8') as f:
             self.TEXT = json.load(f)
 
     @classmethod
@@ -21,7 +21,7 @@ class GetTexts:
 
     @classmethod
     def get_languages_names(cls):
-        with open("languages.json", "r", encoding="utf-8") as f:
+        with open(f'{os.getcwd()}\\languages\\languages.json', "r", encoding="utf-8") as f:
             texts = json.load(f)
 
         available_languages = []

@@ -1,4 +1,4 @@
-from hero_of_embers.get_language_text import GetTexts
+from get_language_text import GetTexts
 
 
 class UI:

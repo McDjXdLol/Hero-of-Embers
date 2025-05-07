@@ -1,8 +1,6 @@
-from hero_of_embers.get_language_text import GetTexts
-from hero_of_embers.inventory import Inventory
-from hero_of_embers.level_handler import LevelHandler
-from hero_of_embers.library import Library
-from hero_of_embers.entity import Entity
+from inventory import Inventory
+from level_handler import LevelHandler
+from entity import Entity
 
 class Player(Entity):
     """

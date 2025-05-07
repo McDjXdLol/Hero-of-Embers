@@ -1,0 +1,603 @@
+{
+  "scene_1": {
+    "scene_id": 1,
+    "trade": false,
+    "scene_name": "Cendre et terre",
+    "description": "Vous êtes {name}, un pauvre fermier d'un village mourant. N'ayant plus rien, vous venez d'arriver dans la ville d'Eldoria, froid et affamé.",
+    "1": {
+      "description": "Chercher du travail ou de la nourriture dans les ruelles.",
+      "effect": "Vous vous aventurez dans une ruelle sombre et un homme suspect vous aborde.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Voleur affamé",
+      "next_scene": "scene_2",
+      "drop": false
+    },
+    "2": {
+      "description": "Aller directement au quartier des tavernes.",
+      "effect": "Vous marchez dans des rues boueuses et trouvez une taverne qui sent la moisissure et la vieille bière.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_3",
+      "drop": false
+    }
+  },
+  "scene_2": {
+    "scene_id": 2,
+    "trade": true,
+    "scene_name": "Ordure et bière",
+    "description": "Vous trouvez du travail dans une taverne moisie. Le patron vous engage comme homme de ménage. C'est un travail ingrat et difficile, mais il vous permet de rester en vie.",
+    "1": {
+      "description": "Continuer à balayer les sols et à vider les pots.",
+      "effect": "Vous travaillez pendant des mois, apprenant à rester invisible. Une nuit, des mercenaires arrivent, ivres et bruyants.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_3",
+      "drop": true
+    },
+    "2": {
+      "description": "Demander au patron un meilleur travail.",
+      "effect": "Il rit et vous jette une serpillière. 'Peut-être si tu survives une semaine d'abord.'",
+      "requirements": "",
+      "giving_item": "old_mop",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_3",
+      "drop": false
+    }
+  },
+  "scene_3": {
+    "scene_id": 3,
+    "trade": true,
+    "scene_name": "Murmures de feu",
+    "description": "Un soir, alors que vous frottez près d'une table de mercenaires, vous entendez parler d'un dragon dans les forêts du nord. Fumée, feu et une ancienne menace.",
+    "1": {
+      "description": "Écouter les conversations des mercenaires.",
+      "effect": "Ils en rient, mais quelque chose s'agite en vous. Une attirance que vous ne pouvez pas expliquer.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_4",
+      "drop": true
+    },
+    "2": {
+      "description": "Les ignorer et continuer à nettoyer.",
+      "effect": "Vous essayez d'ignorer l'histoire... mais elle hante vos pensées.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_4",
+      "drop": false
+    }
+  },
+  "scene_4": {
+    "scene_id": 4,
+    "trade": false,
+    "scene_name": "Dans la forêt",
+    "description": "Vous ne pouvez pas dormir. Les murmures de feu résonnent dans votre esprit. Saisissant le peu que vous possédez, vous vous dirigez vers le nord dans les bois.",
+    "1": {
+      "description": "Continuer à marcher plus profondément dans l'obscurité.",
+      "effect": "Les heures passent. Pas de bête. Pas de feu. Juste le silence. Jusqu'à ce qu'un cri déchire l'air.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_5",
+      "drop": true
+    }
+  },
+  "scene_5": {
+    "scene_id": 5,
+    "trade": false,
+    "scene_name": "La clairière hurlante",
+    "description": "Dans une clairière éclairée par la lune, un dragon monstrueux se dresse au-dessus d'une fille. Ses yeux brûlent comme des charbons. Elle est piégée.",
+    "1": {
+      "description": "Se précipiter et attraper la fille.",
+      "effect": "Vous chargez sans réfléchir. Le dragon rugit, mais ne vous suit pas. D'une manière ou d'une autre, vous vous échappez.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_6",
+      "drop": false
+    },
+    "2": {
+      "description": "Se figer et regarder.",
+      "effect": "Le dragon lève la tête... puis se détourne. Vous saisissez l'instant et attrapez la fille.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_6",
+      "drop": false
+    }
+  },
+  "scene_6": {
+    "scene_id": 6,
+    "trade": false,
+    "scene_name": "Un nouveau matin",
+    "description": "Vous vous réveillez sur votre canapé usé. La fille a disparu. Était-ce tout un rêve ? Puis — toc toc.",
+    "1": {
+      "description": "Ouvrir la porte.",
+      "effect": "Elle se tient là. Réelle. Vivante. Tenant le petit déjeuner et un sourire en coin.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_7",
+      "drop": true
+    }
+  },
+  "scene_7": {
+    "scene_id": 7,
+    "trade": false,
+    "scene_name": "Elle s'appelle Lyria",
+    "description": "Elle s'appelle Lyria. Pendant le repas et les regards timides, elle partage son histoire. Errant. Seule. Personne ne l'a jamais aidée. Jusqu'à maintenant.",
+    "1": {
+      "description": "Écouter tranquillement.",
+      "effect": "Vous hochez la tête. Elle rit, dit que vous sentez l'eau de la serpillière et la bière. Pour la première fois depuis longtemps, vous riez aussi.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_8",
+      "drop": false
+    },
+    "2": {
+      "description": "Lui demander pourquoi le dragon n'a pas attaqué.",
+      "effect": "Elle ne sait pas. Mais quelque chose dans ses yeux dit qu'elle a vu plus qu'elle ne l'admet.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_8",
+      "drop": false
+    }
+  },
+  "scene_8": {
+    "scene_id": 8,
+    "trade": true,
+    "scene_name": "L'entraînement commence",
+    "description": "Les semaines passent. Lyria reste. Vous vous entraînez ensemble dans les ruelles étroites derrière votre maison. Les bâtons de bois s'entrechoquent, le rire résonne.",
+    "1": {
+      "description": "S'enquérir de son passé.",
+      "effect": "Elle mentionne son père, autrefois chevalier de la Garde d'Ember. Un ordre oublié, longtemps cru disparu.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_9",
+      "drop": false
+    },
+    "2": {
+      "description": "La défier en duel amical.",
+      "effect": "Vous attaquez. Elle contre avec une pirouette gracieuse et fait tomber le bâton de vos mains. Elle s'est déjà entraînée.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_9",
+      "drop": true
+    }
+  },
+  "scene_9": {
+    "scene_id": 9,
+    "trade": true,
+    "scene_name": "Stormfang",
+    "description": "Un soir, au coucher du soleil, elle vous donne une lame enveloppée dans un tissu. 'Stormfang', murmure-t-elle. 'Forgée dans le feu du dragon. Elle est à toi maintenant.'",
+    "1": {
+      "description": "Prendre la lame avec des mains tremblantes.",
+      "effect": "Des visions éclairent : des flammes, des batailles, une voix appelant votre nom. Quelque chose d'ancien s'éveille en vous.",
+      "requirements": "",
+      "giving_item": "stormfang",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_10",
+      "drop": true
+    }
+  },
+  "scene_10": {
+    "scene_id": 10,
+    "trade": false,
+    "scene_name": "La Main Creuse",
+    "description": "Les rumeurs se répandent rapidement : un étrange culte se faisant appeler la Main Creuse fait connaître sa présence à Eldoria. Disparitions. Symboles étranges. Chuchotements dans l'obscurité.",
+    "1": {
+      "description": "Enquêter sur les symboles du culte.",
+      "effect": "Vous trouvez d'étranges runes gravées dans les murs d'un bâtiment abandonné. Elles brillent faiblement. Ce n'est pas un culte ordinaire.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_11",
+      "drop": true
+    },
+    "2": {
+      "description": "Se renseigner pour obtenir plus d'informations.",
+      "effect": "Les habitants sont terrifiés. Ils parlent d'un 'adorateur de dragon', mais personne n'ose le nommer.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_11",
+      "drop": false
+    }
+  },
+  "scene_11": {
+    "scene_id": 11,
+    "trade": true,
+    "scene_name": "La Première Rencontre",
+    "description": "Lyria vous approche un soir avec une expression grave. 'J'ai trouvé quelque chose', dit-elle. 'Un temple. Sous la ville. C'est le quartier général du culte.'",
+    "1": {
+      "description": "Planifier une attaque contre le temple du culte.",
+      "effect": "Lyria et vous rassemblez vos affaires et partez sous le couvert de la nuit, déterminé à découvrir le véritable objectif du culte.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Initié du culte",
+      "next_scene": "scene_12",
+      "drop": false
+    },
+    "2": {
+      "description": "Adopter une approche prudente, essayer d'en apprendre davantage sur le culte avant d'agir.",
+      "effect": "Lyria hoche la tête, mais il y a de l'urgence dans ses yeux. 'Nous n'avons pas beaucoup de temps. Ils préparent quelque chose.'",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_12",
+      "drop": true
+    }
+  },
+  "scene_12": {
+    "scene_id": 12,
+    "trade": false,
+    "scene_name": "La Trahison",
+    "description": "Lyria et vous vous frayez un chemin dans le temple du culte, l'air épais de l'odeur d'encens et de peur. Vous entendez le son de chants venant des profondeurs.",
+    "1": {
+      "description": "Avancer prudemment, prêt à une confrontation.",
+      "effect": "Vous entrez dans la salle principale du temple, où des silhouettes obscures se rassemblent autour d'un autel de pierre. Le chant se fait plus fort.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Prêtre cultiste",
+      "next_scene": "scene_13",
+      "drop": false
+    },
+    "2": {
+      "description": "Essayer de contourner les cultistes et de trouver la source du rituel.",
+      "effect": "Lyria et vous vous déplacez prudemment sur le côté, évitant les cultistes du mieux que vous pouvez. Mais quelque chose ne va pas.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_13",
+      "drop": true
+    }
+  },
+  "scene_13": {
+    "trade": false,
+    "scene_id": 13,
+    "scene_name": "Révélation de Taren",
+    "description": "Alors que vous atteignez le cœur du temple, un rire froid résonne dans la chambre. 'Pensiez-vous vraiment que j'étais de votre côté ?' Taren sort de l'ombre, un sourire méchant sur son visage.",
+    "1": {
+      "description": "Confronter Taren et exiger des réponses.",
+      "effect": "Taren révèle ses vraies couleurs en tant que grand prêtre de la Main Creuse. Sa trahison pique, et la réalisation vous frappe durement.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Taren (Grand Prêtre)",
+      "next_scene": "scene_14",
+      "drop": false
+    },
+    "2": {
+      "description": "Essayer de s'échapper du temple et de se regrouper avec Lyria.",
+      "effect": "Taren lève les mains, chantant des incantations pour invoquer les pouvoirs obscurs. Le temple commence à trembler alors que le rituel approche de son achèvement.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_14",
+      "drop": true
+    }
+  },
+  "scene_14": {
+    "scene_id": 14,
+    "trade": false,
+    "scene_name": "Évasion du temple",
+    "description": "Le temple s'effondre autour de vous alors que la magie noire se répand comme une traînée de poudre. Lyria et vous devez prendre une décision rapide.",
+    "1": {
+      "description": "Combattre Taren et les cultistes, dans l'espoir d'arrêter le rituel.",
+      "effect": "Vous vous battez avec Taren dans une bataille furieuse. L'air crépite du pouvoir de la magie et de la trahison.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Taren (Grand Prêtre)",
+      "next_scene": "scene_15",
+      "drop": false
+    },
+    "2": {
+      "description": "Fuir le temple, dans l'espoir de survivre à l'effondrement des ruines.",
+      "effect": "Lyria et vous sprintez vers la sortie, esquivant les débris qui tombent et les pièges magiques. Vous pouvez sentir la chaleur du rituel derrière vous.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_16",
+      "drop": false
+    }
+  },
+  "scene_15": {
+    "scene_id": 15,
+    "trade": false,
+    "scene_name": "Le dernier combat",
+    "description": "Vous êtes face à face avec Taren alors que le temple s'écroule. La trahison est fraîche dans votre esprit, mais ce n'est pas le moment d'hésiter.",
+    "1": {
+      "description": "Continuer le combat, déterminé à arrêter le plan de Taren.",
+      "effect": "À chaque coup, vous sentez la fureur de la trahison vous parcourir. La magie de Taren est puissante, mais vous ne reculerez pas.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Taren (Grand Prêtre)",
+      "next_scene": "scene_17",
+      "drop": false
+    },
+    "2": {
+      "description": "Essayer de s'échapper avant qu'il ne soit trop tard, laissant Taren à son sort.",
+      "effect": "Lyria et vous vous précipitez vers la sortie, évitant de justesse la magie destructrice de Taren. Le temple tombe en ruine.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_16",
+      "drop": true
+    }
+  },
+  "scene_16": {
+    "scene_id": 16,
+    "trade": true,
+    "scene_name": "L'effondrement",
+    "description": "Vous parvenez à vous échapper du temple qui s'effondre, mais les dégâts sont faits. Le plan de la Main Creuse est presque achevé, et le culte a gagné trop de pouvoir.",
+    "1": {
+      "description": "Se regrouper avec Lyria et décider de la prochaine étape.",
+      "effect": "Lyria est secouée mais déterminée. Le poids de la trahison pèse lourdement sur vous deux, mais vous savez que la guerre n'est pas finie.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_18",
+      "drop": true
+    },
+    "2": {
+      "description": "Suivre la piste du culte, déterminé à arrêter leur rituel.",
+      "effect": "Vous partez, laissant les ruines derrière vous. Vous ne pouvez pas permettre à la Main Creuse d'éveiller le dragon. Le voyage à venir sera dangereux.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Sorcier cultiste",
+      "next_scene": "scene_18",
+      "drop": false
+    }
+  },
+  "scene_17": {
+    "scene_id": 17,
+    "trade": false,
+    "scene_name": "Le coup final",
+    "description": "Taren, alimenté par la magie noire, est implacable. Son pouvoir semble imparable, mais vous êtes déterminé à mettre fin à sa traîtrise une fois pour toutes.",
+    "1": {
+      "description": "Frapper avec Stormfang, surmontant la douleur et les ténèbres qui vous entourent.",
+      "effect": "Stormfang brille de mille feux alors que vous le faites tournoyer dans les airs, votre détermination donnant de la puissance à chaque coup. Taren chancelle mais riposte de toutes ses forces.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Taren (Grand Prêtre)",
+      "next_scene": "scene_18",
+      "drop": false
+    },
+    "2": {
+      "description": "Essayer de le maîtriser avec votre force brute et votre volonté, sans vous fier à la magie.",
+      "effect": "Vous avancez, utilisant uniquement vos prouesses physiques pour vaincre Taren. C'est maintenant une bataille de pure volonté.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Taren (Grand Prêtre)",
+      "next_scene": "scene_18",
+      "drop": false
+    }
+  },
+  "scene_18": {
+    "scene_id": 18,
+    "trade": true,
+    "scene_name": "L'éveil du dragon",
+    "description": "Alors que Taren tombe, le sol tremble violemment. Vous sentez un grondement profond, la terre elle-même gémissant sous la pression. Le dragon se réveille.",
+    "1": {
+      "description": "Se précipiter vers le cercle d'invocation, en essayant d'arrêter l'éveil avant qu'il ne soit trop tard.",
+      "effect": "Le rituel sombre bat son plein. Vous devez agir vite pour empêcher le retour du dragon.",
+      "requirements": "",
+
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_19",
+      "drop": true
+    },
+    "2": {
+      "description": "Se préparer au combat, sachant que la seule issue est la force brute.",
+      "effect": "Sans perdre de temps, vous vous préparez à l'affrontement ultime avec le dragon.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Dragon de l'ombre",
+      "next_scene": "scene_20",
+      "drop": false
+    }
+  },
+  "scene_19": {
+    "scene_id": 19,
+    "trade": false,
+    "scene_name": "Arrêter le rituel",
+    "description": "Vous essayez d'interrompre l'invocation, mais il est trop tard. Le rituel atteint son point culminant et le sol se裂缝开裂. Une silhouette sombre émerge des profondeurs.",
+    "1": {
+      "description": "Continuer à se battre pour détruire le rituel avant que le dragon ne se réveille complètement.",
+      "effect": "Vous avancez, essayant de briser l'emprise du rituel, mais l'énergie est accablante.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Sorcier cultiste",
+      "next_scene": "scene_20",
+      "drop": false
+    },
+    "2": {
+      "description": "Fuir le site du rituel et se préparer à l'inévitable bataille avec le dragon.",
+      "effect": "Le rituel est terminé. Vous savez que vous ne pouvez pas arrêter le dragon maintenant, seulement l'affronter de front.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_20",
+      "drop": true
+    }
+  },
+  "scene_20": {
+    "scene_id": 20,
+    "trade": true,
+    "scene_name": "La bataille finale",
+    "description": "Le Dragon de l'ombre se dresse devant vous, ses écailles sombres brillant de puissance. Il rugit, et le monde tremble à son réveil.",
+    "1": {
+      "description": "Charger le Dragon de l'ombre, déterminé à en finir une fois pour toutes.",
+      "effect": "Avec Stormfang à la main, vous affrontez le dragon. Vous savez que ce combat sera votre dernier, mais il doit être mené.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Dragon de l'ombre",
+      "next_scene": "scene_21",
+      "drop": false
+    },
+    "2": {
+      "description": "Chercher un moyen de déjouer le dragon, sachant que la force brute seule ne suffira pas à le vaincre.",
+      "effect": "Vous analysez lesfaiblesses du dragon, cherchant une ouverture. La bataille sera autant une question de stratégie que de force.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Dragon de l'ombre",
+      "next_scene": "scene_21",
+      "drop": false
+    }
+  },
+  "scene_21": {
+    "scene_id": 21,
+    "trade": false,
+    "scene_name": "Le coup final",
+    "description": "Le Dragon de l'ombre rugit une dernière fois alors qu'il se cabre pour frapper. Vous savez que c'est le moment décisif : le moment final pour porter le coup fatal.",
+    "1": {
+      "description": "Porter le coup final de toutes vos forces, en utilisant Stormfang.",
+      "effect": "Avec une dernière poussée de puissance, vous enfoncez Stormfang profondément dans le cœur du dragon. La bête hurle de douleur alors qu'elle s'effondre, son corps massif tombant en poussière.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Dragon de l'ombre",
+      "next_scene": "scene_22",
+      "drop": false
+    },
+    "2": {
+      "description": "Faire appel à votre dernière once de magie pour affaiblir le dragon avant de frapper avec Stormfang.",
+      "effect": "Un éclair traverse le ciel et le dragon tressaille. Vous saisissez l'instant, plantant Stormfang dans sa poitrine avec précision et puissance.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": true,
+      "enemy_name": "Dragon de l'ombre",
+      "next_scene": "scene_22",
+      "drop": false
+    }
+  },
+  "scene_22": {
+    "scene_id": 22,
+    "trade": false,
+    "scene_name": "Les conséquences",
+    "description": "La bataille est terminée. Le Dragon de l'ombre gît mort. Le monde, pendant un instant, est silencieux. Mais à quel prix ?",
+    "1": {
+      "description": "Regarder autour du champ de bataille, en réfléchissant aux sacrifices consentis.",
+      "effect": "Le paysage est marqué et les gens pour lesquels vous vous êtes battu ne seront peut-être plus jamais les mêmes. Le coût de la victoire pèse lourdement sur vos épaules.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_23",
+      "drop": false
+    },
+    "2": {
+      "description": "Chercher des survivants parmi les ruines.",
+      "effect": "Vous fouillez le champ de bataille à la recherche de tout signe de vie. Beaucoup sont tombés, mais quelques-uns respirent encore. Vous savez que vous ne pouvez pas sauver tout le monde, mais vous devez essayer.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_23",
+      "drop": false
+    }
+  },
+  "scene_23": {
+    "scene_id": 23,
+    "trade": false,
+    "scene_name": "L'adieu final",
+    "description": "Alors que la poussière retombe, vous vous tenez seul. Le dragon est mort, mais qu'est-ce qui reste du monde pour lequel vous vous êtes battu ? Des gens aux côtés desquels vous vous êtes battu ?",
+    "1": {
+      "description": "Visiter le lieu de repos de Lyria, la femme qui vous a donné de l'espoir.",
+      "effect": "Vous vous agenouillez près de son lieu de repos, offrant un adieu silencieux. Son souvenir vit dans votre cœur. C'est un moment de tristesse, mais de paix.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_24",
+      "drop": false
+    },
+    "2": {
+      "description": "Retourner à Eldoria, prêt à reconstruire.",
+      "effect": "Le Dragon de l'ombre vaincu, Eldoria commence à se rétablir. Vous savez que la route à venir sera longue, mais vous avez la force de reconstruire ce qui a été perdu.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_24",
+      "drop": false
+    }
+  },
+  "scene_24": {
+    "scene_id": 24,
+    "trade": false,
+    "scene_name": "Fin du voyage",
+    "description": "La bataille est terminée. Eldoria se dresse, mais le coût de la victoire pèse lourdement. Vous avez sauvé la terre, mais à quel prix ? Le héros que vous étiez n'est plus, et maintenant, seul le temps dira quel genre d'avenir attend ce monde brisé.",
+    "1": {
+      "description": "L'histoire se termine.",
+      "effect": "Le monde s'estompe dans le silence alors que le voyage se termine. Vos actions seront mémorisées, mais le fardeau du héros vous appartient à porter seul.",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "scene_25",
+      "drop": false
+    }
+  },
+  "scene_25": {
+    "scene_id": 25,
+    "trade": false,
+    "scene_name": "crédits",
+    "description": "\n\n\n\nJeu développé par : McDjXdLol\nHistoire écrite par : McDjXdLol\nConception principale : McDjXdLol\nProgrammation : McDjXdLol\nMerci d'avoir joué !",
+    "1": {
+      "description": "Quitter",
+      "effect": "",
+      "requirements": "",
+      "giving_item": "",
+      "is_combat": false,
+      "enemy_name": "",
+      "next_scene": "END",
+      "drop": false
+    }
+  }
+}
