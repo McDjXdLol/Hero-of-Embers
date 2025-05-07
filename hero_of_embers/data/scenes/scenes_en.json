@@ -1,0 +1,246 @@
+{
+  "game_title": "Whispers of Eldoria",
+  "starting_scene_id": "ash_and_soil",
+  "player_defaults": {
+    "name_placeholder": "{name}",
+    "inventory": [],
+    "flags": {},
+    "stats": {
+      "health": 100,
+      "gold": 0
+    }
+  },
+  "items": {
+    "old_mop": {
+      "id": "old_mop",
+      "name": "Old Mop",
+      "description": "A worn-out mop, surprisingly sturdy. Might be useful for more than cleaning.",
+      "type": "weapon",
+      "value": 2
+    },
+    "rusty_dagger": {
+      "id": "rusty_dagger",
+      "name": "Rusty Dagger",
+      "description": "A pitted and dull dagger, better than nothing.",
+      "type": "weapon",
+      "value": 4
+    },
+    "gold_coins_small": {
+      "id": "gold_coins_small",
+      "name": "Small Pouch of Coins",
+      "description": "A few clinking coins. Enough for a cheap meal.",
+      "type": "currency",
+      "value": 5
+    }
+  },
+  "enemies": {
+    "hungry_mugger": {
+      "id": "hungry_mugger",
+      "name": "Hungry Mugger",
+      "health": 30,
+      "attack": 5,
+      "description": "A desperate figure with hunger in their eyes and a glint of steel.",
+      "loot": [
+        { "item_id": "rusty_dagger", "chance": 0.75 },
+        { "item_id": "gold_coins_small", "chance": 0.5 }
+      ]
+    }
+  },
+  "scenes": {
+    "ash_and_soil": {
+      "id": "ash_and_soil",
+      "name": "Ash and Soil",
+      "description": "You are {name}, a poor farmer from a dying village. With nothing left, you've just arrived in the city of Eldoria, cold and hungry.",
+      "choices": [
+        {
+          "id": "search_alleys",
+          "text": "Search the alleys for work or food.",
+          "outcome_text": "You wander into a shady alley. A desperate-looking figure eyes your meager belongings and approaches menacingly.",
+          "effects": [
+            { "type": "start_combat", "enemy_id": "hungry_mugger",
+              "on_win": {
+                "text": "You manage to fend off the mugger. They drop something as they flee.",
+                "effects": [{ "type": "go_to_scene", "scene_id": "filth_and_ale" }]
+              },
+              "on_lose": {
+                "text": "The mugger overpowers you, taking what little you had. You're left bruised and even more destitute.",
+                "effects": [{ "type": "go_to_scene", "scene_id": "game_over_mugged" }]
+              }
+            }
+          ]
+        },
+        {
+          "id": "goto_tavern_district",
+          "text": "Go straight to the tavern district.",
+          "outcome_text": "You navigate the muddy, crowded streets and find 'The Leaky Mug', a tavern reeking of mold, stale beer, and unwashed bodies.",
+          "effects": [
+            { "type": "go_to_scene", "scene_id": "leaky_mug_entrance" }
+          ]
+        }
+      ]
+    },
+    "filth_and_ale": {
+      "id": "filth_and_ale",
+      "name": "Filth and Ale at The Leaky Mug",
+      "description": "The barkeep at 'The Leaky Mug', a burly man named Grond, grudgingly hires you as a cleaner. It's hard, thankless work, but it provides a roof (of sorts) and scraps of food. You are now at The Leaky Mug.",
+      "on_enter_effects": [ // Actions that happen when the scene loads
+        { "type": "set_flag", "flag_id": "hired_at_leaky_mug" }
+      ],
+      "choices": [
+        {
+          "id": "keep_sweeping",
+          "text": "Keep sweeping floors and emptying chamber pots.",
+          "outcome_text": "You toil away for weeks, becoming a fixture in the tavern's grimy background. One night, a boisterous group of mercenaries stumbles in, their voices loud and their armor clanking.",
+          "effects": [
+            { "type": "set_flag", "flag_id": "mercenaries_arrived" },
+            { "type": "go_to_scene", "scene_id": "whispers_of_fire" }
+          ]
+        },
+        {
+          "id": "ask_barkeep_better_work",
+          "text": "Ask Grond the barkeep about better work.",
+          "outcome_text": "Grond scoffs, wiping a tankard. 'Better work? You barely manage this. Prove you're not useless first.' He shoves a particularly grimy mop at you.",
+          "effects": [
+            { "type": "give_item", "item_id": "old_mop" },
+            { "type": "set_flag", "flag_id": "got_mop_from_grond" }
+            // Stays in the same scene, or could loop to a slightly modified version of this scene.
+            // For simplicity, let's assume they can still choose "keep_sweeping" or this choice again.
+          ]
+        }
+      ]
+    },
+    "leaky_mug_entrance": {
+      "id": "leaky_mug_entrance",
+      "name": "The Leaky Mug - Entrance",
+      "description": "You stand at the entrance of 'The Leaky Mug'. The air is thick with smoke and the din of patrons. What do you do?",
+      "choices": [
+        {
+          "id": "approach_barkeep",
+          "text": "Approach the barkeep and ask for work.",
+          "outcome_text": "The barkeep, Grond, sizes you up.",
+          "effects": [
+            { "type": "go_to_scene", "scene_id": "filth_and_ale" } // This leads to the description where you get hired.
+          ]
+        },
+        {
+          "id": "observe_patrons",
+          "text": "Try to observe the patrons, perhaps overhear something useful.",
+          "outcome_text": "You try to blend in. Most conversations are drunken ramblings, but you catch snippets about city guard patrols and rising food prices. Nothing immediately useful.",
+          "effects": [
+            // Stays in this scene, or could set a minor flag.
+          ]
+        },
+        {
+          "id": "leave_tavern",
+          "text": "This place isn't for you. Leave.",
+          "outcome_text": "You decide the tavern isn't the best place to start. You step back out into the muddy streets.",
+          "effects": [
+            { "type": "go_to_scene", "scene_id": "ash_and_soil" } // Or a new "city_streets" scene
+          ]
+        }
+      ]
+    },
+    "whispers_of_fire": {
+      "id": "whispers_of_fire",
+      "name": "Whispers of Fire",
+      "description": "One evening, while scrubbing near a table occupied by the recently arrived mercenaries, you overhear their hushed, excited talk. They speak of a dragon stirring in the northern forests – of smoke, fire, and an ancient, slumbering threat.",
+      "requirements": [ // Scene-level requirements: player must have heard mercenaries arrive
+        { "type": "flag_is_set", "flag_id": "mercenaries_arrived" }
+      ],
+      "choices": [
+        {
+          "id": "eavesdrop_mercs",
+          "text": "Subtly try to eavesdrop more on the mercenaries.",
+          "outcome_text": "They laugh off the danger, boasting of glory and treasure. But their words ignite something within you – a strange pull towards the north, a sense of destiny you can't explain.",
+          "effects": [
+            { "type": "set_flag", "flag_id": "heard_dragon_rumor" },
+            { "type": "go_to_scene", "scene_id": "restless_night" }
+          ]
+        },
+        {
+          "id": "ignore_mercs",
+          "text": "Ignore their dangerous talk and focus on your cleaning.",
+          "outcome_text": "You try to push their words from your mind, focusing on the grime. Yet, the tales of fire and shadow linger, unsettling your thoughts.",
+          "effects": [
+            { "type": "set_flag", "flag_id": "ignored_dragon_rumor" },
+            { "type": "go_to_scene", "scene_id": "restless_night" }
+          ]
+        }
+      ]
+    },
+    "restless_night": {
+      "id": "restless_night",
+      "name": "A Restless Night",
+      "description": "You can't sleep. The whispers of fire and the north echo in your mind. The city feels suffocating. An undeniable urge pulls you towards the wilderness.",
+      "choices": [
+        {
+          "id": "prepare_to_leave",
+          "text": "Gather your meager belongings and head north into the woods.",
+          "outcome_text": "Under the cloak of darkness, you slip out of Eldoria and venture into the foreboding northern forest.",
+          "effects": [
+            { "type": "go_to_scene", "scene_id": "into_the_forest" }
+          ]
+        },
+        {
+          "id": "stay_in_city",
+          "text": "Try to ignore the feeling and stay in the city. It's safer here.",
+          "outcome_text": "You force yourself to stay, to continue your mundane life. But the call of the north never truly fades, leaving a lingering sense of regret and unfulfilled purpose.",
+          "effects": [
+            { "type": "go_to_scene", "scene_id": "end_mundane_life" }
+          ]
+        }
+      ]
+    },
+    "into_the_forest": {
+      "id": "into_the_forest",
+      "name": "Into the Forest",
+      "description": "Hours pass as you walk deeper into the oppressive darkness of the northern woods. No beasts attack. No sign of fire. Just an unnerving silence... until a piercing scream cuts through the night air nearby!",
+      "choices": [
+        {
+          "id": "investigate_scream",
+          "text": "Investigate the scream.",
+          "outcome_text": "You cautiously move towards the sound...",
+          "effects": [
+            { "type": "go_to_scene", "scene_id": "end_cliffhanger" } // Placeholder for next part of the story
+          ]
+        },
+        {
+          "id": "flee_scream",
+          "text": "That sounds dangerous. Turn back to Eldoria.",
+          "outcome_text": "Fear grips you. This adventure is too much. You turn and flee back towards the relative safety of the city.",
+          "effects": [
+            { "type": "go_to_scene", "scene_id": "end_cowardice" }
+          ]
+        }
+      ]
+    },
+    "game_over_mugged": {
+      "id": "game_over_mugged",
+      "name": "Game Over - Mugged",
+      "description": "Beaten and robbed, you have nothing left. The harsh streets of Eldoria claim another victim. Your adventure ends here.",
+      "is_terminal": true, // Indicates this is an end state
+      "choices": []
+    },
+    "end_mundane_life": {
+      "id": "end_mundane_life",
+      "name": "A Quiet End",
+      "description": "You live out your days in Eldoria, always wondering about the path not taken. The whispers of fire fade into a distant memory. Your life is safe, but unremarkable.",
+      "is_terminal": true,
+      "choices": []
+    },
+    "end_cowardice": {
+      "id": "end_cowardice",
+      "name": "Return to Safety",
+      "description": "You return to Eldoria, shaken but alive. The forest's secrets remain hidden from you. Perhaps some adventures are best left to others.",
+      "is_terminal": true,
+      "choices": []
+    },
+    "end_cliffhanger": {
+      "id": "end_cliffhanger",
+      "name": "To Be Continued...",
+      "description": "The forest is dark, and the source of the scream awaits. Your journey has truly begun... (To be continued).",
+      "is_terminal": true, // Or could lead to more content
+      "choices": []
+    }
+  }
+}
