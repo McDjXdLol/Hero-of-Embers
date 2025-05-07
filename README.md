@@ -1,4 +1,4 @@
-# Hero of Embers - Version 0.3.2 (WIP) 
+# Hero of Embers - Version 0.3.3 (WIP) 
 
 ## 📖 Table of Contents
 
@@ -165,4 +165,3 @@ Please adhere to the existing code style and include tests where appropriate.
 ## 📄 License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
-
