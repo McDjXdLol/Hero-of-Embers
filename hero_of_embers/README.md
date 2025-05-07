@@ -3,6 +3,7 @@
 ## About & Plans
 ### About
 This is simple work-in-progress (WIP) console game. That I'm creating at my free time. 
+So for now the translations is done by AI so I'm not sure if it's right. If you want to help me with translating it, check [this](https://github.com/McDjXdLol/Hero-of-Embers?tab=readme-ov-file#contriburing).
 
 ### Plans
 For now, the plot needs to be changed, because for now it is short, shortened, for testing purposes. Additionally, the translation of the game needs to be completed. Because for now, only about half of the texts are translated. 
