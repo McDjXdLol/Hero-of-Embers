@@ -3,3 +3,4 @@ __pycache__
 .venv
 versioning
 .gitignore
+create_version.py
