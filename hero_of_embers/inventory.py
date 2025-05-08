@@ -66,11 +66,14 @@ class Inventory:
         amount : int, optional
             The amount of the item to add (default is 1).
         """
-        for it in inv:
-            if it[0][0] == item[0] and it[0][1] == item[1]:
-                it[1] += amount
-                return
-        inv.append([item, amount])
+        if len(inv) == 0:
+            inv.append([item, amount])
+        else:
+            for it in inv:
+                if it[0][0] == item[0] and it[0][1] == item[1]:
+                    it[1] += amount
+                    return
+            inv.append([item, amount])
 
     def which_item_to_equip(self, items, equip_function, item_type="item"):
         """

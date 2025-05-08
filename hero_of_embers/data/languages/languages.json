@@ -12,6 +12,7 @@
     "battle_incorrect_number_elixir": "The number is incorrect!",
     "battle_chosen_elixir": "You chose {chosen_elixir_name}",
     "battle_enemy_money_drop": "You got {money_drop} dragon coins!",
+    "battle_enemy_item_drop": "You got {drop_name}!",
     "inventory_not_enough_coins": "You don't have enough dragon coins!",
     "inventory_choose_equipment": "Which {item_type} do you want to equip?",
     "inventory_item_option": "{i}. {item}",

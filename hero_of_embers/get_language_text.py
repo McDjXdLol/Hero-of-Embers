@@ -23,11 +23,11 @@ class GetTexts:
         with open(check_for_file(), 'r', encoding='utf-8') as f:
             self.TEXT = json.load(f)
 
-
-    def load_texts(self, text, language='en'):
-        if not self.TEXT:
-            self.get_texts()
-        return self.TEXT[language][text]
+    @classmethod
+    def load_texts(cls, text, language='en'):
+        if not cls.TEXT:
+            cls.get_texts(cls)
+        return cls.TEXT[language][text]
 
     @classmethod
     def get_languages_names(cls):

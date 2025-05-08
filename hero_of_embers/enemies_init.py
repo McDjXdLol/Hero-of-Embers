@@ -67,8 +67,9 @@ class EnemiesInit:
         dmg = self.scene_manager.get_enemy_data(enemy_id, self.scene_manager.ATTACK)
         xp_drop = self.scene_manager.get_enemy_data(enemy_id, self.scene_manager.XP_DROP)
         loot = self.scene_manager.get_enemy_data(enemy_id, self.scene_manager.LOOT)
-        item_id = loot[0]
-        drop_chance = loot[1]
+        drop = []
+        for item in loot:
+            drop.append([item[0], item[1]])
 
         data = {
             "name": name,
@@ -77,8 +78,7 @@ class EnemiesInit:
             "armor": armor,
             "dmg": dmg,
             "xp_drop": xp_drop,
-            "item_id": item_id,
-            "drop_chance": drop_chance
+            "drop": drop
         }
         return data
 
@@ -122,8 +122,5 @@ class EnemiesInit:
                 The probability that the enemy will drop the item.
         """
         data = self.get_enemy_data(enemy_id)
-        drop = {
-            "item_id": data["item_id"],
-            "drop_chance": data["drop_chance"]
-        }
-        return drop
+        print(f"\n\n\n\n\nDEBUG:\n\n-ENEMIES_INIT:\n\n--GET_ENEMMY_DROP:\n\n{data["drop"]}")
+        return data["drop"]

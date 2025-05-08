@@ -11,14 +11,25 @@ from enemy import Enemy
 from library import Library
 from save_handler import SaveGame
 
-lang_file = ""
-def check_for_file(lang):
-    global lang_file
-    cwd = os.getcwd()
-    if cwd.endswith("hero_of_embers"):
-        lang_file = os.path.join(cwd, "languages", f"scenes_{lang}.json")
-    else:
-        lang_file = os.path.join(cwd, "hero_of_embers", "languages",  f"scenes_{lang}.json")
+def check_for_file(lang="en"):
+    """
+    Gets the file path for the scene data based on the language.
+
+    Parameters
+    ----------
+    lang : str, optional
+        The language code (e.g., 'en', 'pl').  Defaults to 'en'.
+
+    Returns
+    -------
+    str
+        The absolute file path to the scene data file.
+    """
+    curr_dir = os.path.dirname(__file__)
+    data_dir = os.path.join(curr_dir, "data")
+    lang_dir = os.path.join(data_dir, "scenes")
+    lang_file = os.path.join(lang_dir, f"scenes_{lang}.json")
+    return lang_file
 
 
 class PlotManager:
@@ -36,8 +47,8 @@ class PlotManager:
         self.lang = lang
         self.ui = ui
         self.player = player
-        check_for_file(lang)
-        with open(lang_file, 'r', encoding='utf-8') as scene_file:
+
+        with open(check_for_file(lang), 'r', encoding='utf-8') as scene_file:
             self.scenes_data = json.load(scene_file)
         self.current_scene = list(self.scenes_data.keys())[0]
         self.was_in_shop = False

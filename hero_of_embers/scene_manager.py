@@ -155,12 +155,12 @@ class SceneManager:
         except json.JSONDecodeError:
             print(f"Error: Failed to decode JSON: {self.lang_file}")
 
+        self.STARTING_SCENE_ID = "starting_scene_id"
         self.current_scene = self.get_starting_scene()
 
         # Constant Variables
         # -----------------------------------------------------------------
         self.GAME_TITLE = "game_title"
-        self.STARTING_SCENE_ID = "starting_scene_id"
         self.NAME = "name"
         self.DESCRIPTION = "description"
         self.TYPE = "type"
@@ -511,7 +511,7 @@ class SceneManager:
         list
             A list of effects for the choice.
         """
-        choice = self.scenes_data.get(self.SCENES, {}).get(self.current_scene).get(self.CHOICES).get(choice_id, {})
+        choice = self.scenes_data.get(self.SCENES, {}).get(self.current_scene).get(self.CHOICES)[choice_id]
         return choice.get(self.EFFECTS, [])
 
     def get_choices_data(self, choice_id, type_of_data):
@@ -564,7 +564,9 @@ class SceneManager:
                     if effect.get(self.TYPE, {}) == self.START_COMBAT:
                         return effect.get(self.ENEMY_ID, None)
                 return None
-        return None
+            case _:
+                choice = self.scenes_data.get(self.SCENES, {}).get(self.current_scene).get(self.CHOICES)[choice_id]
+                return choice.get(type_of_data)
 
     def get_fight_result_data(self, choice_id, fight_won, type_of_data):
         """

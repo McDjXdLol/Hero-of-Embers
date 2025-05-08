@@ -62,6 +62,22 @@ class ItemsInit:
 
         return items
 
+    def get_item(self, item_id):
+        items = []
+        for itemm_id in self.scene_manager.get_all_items_ids():
+            if itemm_id == item_id:
+                item_name = self.scene_manager.get_item_data(item_id, self.scene_manager.NAME)
+                item_description = self.scene_manager.get_item_data(item_id, self.scene_manager.DESCRIPTION)
+                item_type = self.scene_manager.get_item_data(item_id, self.scene_manager.TYPE)
+                item_value = self.scene_manager.get_item_data(item_id, self.scene_manager.VALUE)
+                if item_type == "weapon":
+                    item_damage = self.scene_manager.get_item_data(item_id, self.scene_manager.ATTACK)
+                    items.append([item_name, item_description, item_type, item_damage, item_value])
+                else:
+                    items.append([item_name, item_description, item_type, item_value])
+
+        return items
+
     def get_heal_items(self):
         """
         Retrieves a list of all healing items with their details.
