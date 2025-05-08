@@ -1,7 +1,7 @@
 import json
 import os
 
-
+# Getting scenes file location
 def check_for_file(lang="en"):
     curr_dir = os.path.dirname(__file__)
     data_dir = os.path.join(curr_dir, "data")
@@ -10,12 +10,13 @@ def check_for_file(lang="en"):
     return lang_file
 
 class SceneManager:
-    def __init__(self, player, ui, lang="en"):
+    def __init__(self, lang="en"):
 
+        # Setting up language
         self.lang = lang
-        self.player = player
-        self.ui = ui
         self.lang_file = check_for_file(lang)
+
+        # Loading scenes file
         try:
             with open(self.lang_file, 'r', encoding='utf-8') as scene_file:
                 self.scenes_data = json.load(scene_file)
@@ -72,42 +73,92 @@ class SceneManager:
         self.START_COMBAT = "start_combat"
         self.ON_WIN = "on_win"
         self.ON_LOSE = "on_lose"
+        self.ARMOR = "armor"
+        self.XP_DROP = "xp_drop"
+        self.HEALING_ITEMS = "healing_items"
+        self.HEAL_AMOUNT = "heal_amount"
         # -----------------------------------------------------------------
 
+    def set_current_scene(self, scene_id):
+        self.current_scene = scene_id
+
     def get_game_title(self):
+        """
+        Function that returns game title
+        """
         return self.scenes_data.get(self.GAME_TITLE)
 
     def get_starting_scene(self):
+        """
+        Function that returns starting scene
+        """
         return self.scenes_data.get(self.STARTING_SCENE_ID)
 
     def get_starting_inv(self):
+        """
+        Function that returns starting inventory
+        """
         return self.scenes_data.get(self.PLAYER_DEFAULTS, {}).get(self.INVENTORY)
 
     def get_starting_flags(self):
+        """
+        Function that returns starting flags
+        """
         return self.scenes_data.get(self.PLAYER_DEFAULTS, {}).get(self.FLAGS)
 
-    def get_starting_hp(self):
-        return self.scenes_data.get(self.PLAYER_DEFAULTS, {}).get(self.STATS, {}).get(self.HEALTH)
-
     def get_starting_cash(self):
+        """
+        Function that returns starting cash
+        """
         return self.scenes_data.get(self.PLAYER_DEFAULTS, {}).get(self.STATS, {}).get(self.GOLD)
 
+    def get_all_heal_items_ids(self):
+        """
+        Function that returns ids of all the healing items
+        """
+        return list(self.scenes_data.get(self.HEALING_ITEMS, {}).keys())
+
+    def get_heal_item_data(self, item_id, type_of_data):
+        """
+        Function that returns data about healing items
+        type_of_data: [id, name, description, heal_amount, value]
+        """
+        item = self.scenes_data.get(self.HEALING_ITEMS, {}).get(item_id, {})
+        return item.get(type_of_data)
+
+    def get_all_items_ids(self):
+        """
+        Function that returns ids of all the items
+        """
+        return list(self.scenes_data.get(self.ITEMS, {}).keys())
+
     def get_item_data(self, item_id, type_of_data):
+        """
+        Function that returns data about items
+        type_of_data: [id, name, description, type, (if weapon - damage), value]
+        """
         item = self.scenes_data.get(self.ITEMS, {}).get(item_id, {})
-        item.get(type_of_data)
+        return item.get(type_of_data)
 
     def get_enemy_data(self, enemy_id, type_of_data):
+        """
+        Function that returns data about enemies
+        type_of_data: [id, name, health, armor, attack, description, loot, xp_drop]
+        """
         enemy = self.scenes_data.get(self.ENEMIES, {}).get(enemy_id, {})
         if type_of_data != self.LOOT:
-            enemy.get(type_of_data)
+            return enemy.get(type_of_data, [])
         else:
             items = []
             for item in enemy.get(self.LOOT, []):
                 items.append([item.get(self.ITEM_ID, {}), item.get(self.CHANCE)])
             return items
-        return []
 
     def get_scene_data(self, type_of_data):
+        """
+        Function that returns data about scene
+        type_of_data: [name, description, is_last_scene, requirements_flags, requiremenets_items, on_enter_effects_flags, on_enter_effects_give_item]
+        """
         scene = self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {})
         match type_of_data:
             case self.NAME:
@@ -165,36 +216,59 @@ class SceneManager:
                         return give_items
                 else:
                     return None
+        return None
 
-    def is_terminal_in_scene(self):
+    def is_terminal_in_scene(self) -> bool:
+        """
+        Function that returns if there is is_terminal variable in scene
+        """
         scene = self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {})
         return "is_terminal" in scene and bool(scene[self.IS_TERMINAL])
 
     def is_there_scene_requirements(self):
+        """
+        Function that returns if there is requirements variable in scene
+        """
         scene = self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {})
         return self.REQUIREMENTS in scene and bool(scene[self.REQUIREMENTS])
 
     def is_there_scene_on_enter_effects(self):
+        """
+        Function that returns if there is on_enter_effects variable in scene
+        """
         scene = self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {})
         return "on_enter_effects" in scene and bool(scene[self.ON_ENTER_EFFECTS])
 
     def get_scene_on_enter_effects(self):
+        """
+        Function that returns on_enter_effects
+        """
         if self.is_there_scene_on_enter_effects():
             return self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {}).get(self.ON_ENTER_EFFECTS, {})
         else:
             return []
 
     def get_scene_choices(self):
+        """
+        Function that returns choice_id, choice_text
+        """
         choices = []
         for choice in self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {}).get(self.CHOICES, []):
             choices.append([choice.get(self.ID, {}), choice.get(self.TEXT, {})])
         return choices
 
     def get_choice_effects(self, choice_id):
+        """
+        Function that returns choice effects list
+        """
         choice = self.scenes_data.get(self.SCENES, {}).get(self.current_scene).get(self.CHOICES).get(choice_id, {})
         return choice.get(self.EFFECTS, [])
 
     def get_choices_data(self, choice_id, type_of_data):
+        """
+        Function that returns data about choices.
+        type_of_data: [flags, give_item, go_to_scene, is_fight, enemy_id]
+        """
         match type_of_data:
             case self.FLAGS:
                 flags = []
@@ -229,8 +303,13 @@ class SceneManager:
                     if effect.get(self.TYPE, {}) == self.START_COMBAT:
                         return effect.get(self.ENEMY_ID, None)
                 return None
+        return None
 
     def get_fight_result_data(self, choice_id, fight_won, type_of_data):
+        """
+        Function that returns data about fight results.
+        type_of_data: [text, go_to_scene, give_item, flags]
+        """
         match type_of_data:
             case self.TEXT:
                 for effect in self.get_choice_effects(choice_id):
@@ -285,3 +364,4 @@ class SceneManager:
                     return None
                 else:
                     return flags
+        return None

@@ -18,18 +18,12 @@ class Library:
         A list of experience points required for each player level.
     XP_NXT_LG_LVL : list of int
         A list of experience points required for each legendary level.
-    WEAPONS : list of list of str, int, int, int
-        A list of weapons, each represented by a name, damage value, cost, and drop weight (rarity).
-    ARMORS : list of list of str, int, int, int
-        A list of armors, each represented by a name, armor value, cost, and drop weight (rarity).
     HEAL_ITEMS : list of list of str, int, int, int
         A list of healing items, each represented by a name, heal amount, cost, and drop weight (rarity).
     PLAYER_CLASSES : list of list of str, int, int, int
         A list of player classes, each represented by a name, HP, armor value, and damage value.
     DIFFICULTIES : list of list of str, int, int, int
         A list of difficulty levels, each represented by a name, HP modifier, armor modifier, and damage modifier.
-    ENEMIES : list of list of str, int, int, int, int, int
-        A list of enemies, each represented by a name, HP, armor value, damage, XP drop, and money drop.
     """
 
     AFTER_SELL_QUOTES = [
@@ -112,21 +106,6 @@ class Library:
 
     XP_NXT_LG_LVL = [2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000]
 
-    WEAPONS = [
-        ["Wooden Stick", 10, 15, 40],
-        ["Stone Sword", 25, 50, 30],
-        ["Iron Sword", 40, 90, 15],
-        ["Gold Sword", 50, 130, 10],
-        ["Eclipse", 70, 200, 4],
-        ["Excalibur", 80, 300, 1]
-    ]
-
-    ARMORS = [
-        ["Clothes", 1, 5, 50],
-        ["Wooden Armor", 10, 40, 35],
-        ["Knight Armor", 40, 120, 15]
-    ]
-
     HEAL_ITEMS = [
         ["Small Heart Elixir", 10, 15, 40],
         ["Medium Heart Elixir", 20, 30, 30],
@@ -146,13 +125,4 @@ class Library:
         ["Cushioned Path", 30, 10, 5],
         ["Twisted Road", 0, 0, 0],
         ["Iron Trial", -30, -10, -5]
-    ]
-
-    ENEMIES = [
-        ["Hungry Mugger", 20, 6, 8, 10, 24],
-        ["Cult Initiate", 28, 8, 10, 15, 32],
-        ["Cultist Priest", 40, 10, 14, 25, 44],
-        ["Cultist Sorcerer", 55, 12, 18, 35, 59],
-        ["Taren (High Priest)", 75, 18, 20, 60, 78],
-        ["Shadow Dragon", 120, 25, 28, 100, 121]
     ]

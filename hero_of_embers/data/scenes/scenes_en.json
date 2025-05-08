@@ -1,13 +1,56 @@
 {
-  "game_title": "Whispers of Eldoria",
+  "game_title": "Hero of embers",
   "starting_scene_id": "ash_and_soil",
   "player_defaults": {
     "name_placeholder": "{name}",
     "inventory": [],
     "flags": {},
     "stats": {
-      "health": 100,
       "gold": 0
+    }
+  },
+  "healing_items": {
+    "lesser_vitality_draught": {
+      "id": "lesser_vitality_draught",
+      "name": "Lesser Vitality Draught",
+      "description": "A simple yet effective drink that restores a bit of lost energy. Invaluable in minor skirmishes.",
+      "heal_amount": 10,
+      "value": 15
+    },
+    "minor_restoration_phial": {
+      "id": "minor_restoration_phial",
+      "name": "Minor Restoration Phial",
+      "description": "A glass phial filled with a soothing liquid. Brings relief and allows you to quickly return to full strength.",
+      "heal_amount": 20,
+      "value": 30
+    },
+    "standard_life_potion": {
+      "id": "standard_life_potion",
+      "name": "Standard Life Potion",
+      "description": "The essence of life in liquid form. A solid dose of regeneration for those who have sustained more serious wounds.",
+      "heal_amount": 45,
+      "value": 70
+    },
+    "greater_vigor_tonic": {
+      "id": "greater_vigor_tonic",
+      "name": "Greater Vigor Tonic",
+      "description": "A thick elixir that strengthens both body and spirit. Allows for greater exertion and increases resistance to the hardships of the journey.",
+      "heal_amount": 60,
+      "value": 90
+    },
+    "major_mending_brew": {
+      "id": "major_mending_brew",
+      "name": "Major Mending Brew",
+      "description": "A potent concoction with an intense herbal aroma. Heals deep wounds and restores vitality in the blink of an eye.",
+      "heal_amount": 80,
+      "value": 120
+    },
+    "supreme_essence_of_life": {
+      "id": "supreme_essence_of_life",
+      "name": "Supreme Essence of Life",
+      "description": "The rarest and most precious of elixirs. Contains the pure essence of life, capable of reversing even the most severe injuries.",
+      "heal_amount": 100,
+      "value": 150
     }
   },
   "items": {
@@ -16,6 +59,7 @@
       "name": "Old Mop",
       "description": "A worn-out mop, surprisingly sturdy. Might be useful for more than cleaning.",
       "type": "weapon",
+      "damage": 8,
       "value": 2
     },
     "rusty_dagger": {
@@ -23,6 +67,7 @@
       "name": "Rusty Dagger",
       "description": "A pitted and dull dagger, better than nothing.",
       "type": "weapon",
+      "damage": 15,
       "value": 4
     },
     "gold_coins_small": {
@@ -38,11 +83,19 @@
       "id": "hungry_mugger",
       "name": "Hungry Mugger",
       "health": 30,
+      "armor": 10,
       "attack": 5,
+      "xp_drop": 100,
       "description": "A desperate figure with hunger in their eyes and a glint of steel.",
       "loot": [
-        { "item_id": "rusty_dagger", "chance": 0.75 },
-        { "item_id": "gold_coins_small", "chance": 0.5 }
+        {
+          "item_id": "rusty_dagger",
+          "chance": 0.75
+        },
+        {
+          "item_id": "gold_coins_small",
+          "chance": 0.5
+        }
       ]
     }
   },
@@ -57,14 +110,26 @@
           "text": "Search the alleys for work or food.",
           "outcome_text": "You wander into a shady alley. A desperate-looking figure eyes your meager belongings and approaches menacingly.",
           "effects": [
-            { "type": "start_combat", "enemy_id": "hungry_mugger",
+            {
+              "type": "start_combat",
+              "enemy_id": "hungry_mugger",
               "on_win": {
                 "text": "You manage to fend off the mugger. They drop something as they flee.",
-                "effects": [{ "type": "go_to_scene", "scene_id": "filth_and_ale" }]
+                "effects": [
+                  {
+                    "type": "go_to_scene",
+                    "scene_id": "filth_and_ale"
+                  }
+                ]
               },
               "on_lose": {
                 "text": "The mugger overpowers you, taking what little you had. You're left bruised and even more destitute.",
-                "effects": [{ "type": "go_to_scene", "scene_id": "game_over_mugged" }]
+                "effects": [
+                  {
+                    "type": "go_to_scene",
+                    "scene_id": "game_over_mugged"
+                  }
+                ]
               }
             }
           ]
@@ -74,7 +139,10 @@
           "text": "Go straight to the tavern district.",
           "outcome_text": "You navigate the muddy, crowded streets and find 'The Leaky Mug', a tavern reeking of mold, stale beer, and unwashed bodies.",
           "effects": [
-            { "type": "go_to_scene", "scene_id": "leaky_mug_entrance" }
+            {
+              "type": "go_to_scene",
+              "scene_id": "leaky_mug_entrance"
+            }
           ]
         }
       ]
@@ -83,8 +151,11 @@
       "id": "filth_and_ale",
       "name": "Filth and Ale at The Leaky Mug",
       "description": "The barkeep at 'The Leaky Mug', a burly man named Grond, grudgingly hires you as a cleaner. It's hard, thankless work, but it provides a roof (of sorts) and scraps of food. You are now at The Leaky Mug.",
-      "on_enter_effects": [ // Actions that happen when the scene loads
-        { "type": "set_flag", "flag_id": "hired_at_leaky_mug" }
+      "on_enter_effects": [
+        {
+          "type": "set_flag",
+          "flag_id": "hired_at_leaky_mug"
+        }
       ],
       "choices": [
         {
@@ -92,8 +163,14 @@
           "text": "Keep sweeping floors and emptying chamber pots.",
           "outcome_text": "You toil away for weeks, becoming a fixture in the tavern's grimy background. One night, a boisterous group of mercenaries stumbles in, their voices loud and their armor clanking.",
           "effects": [
-            { "type": "set_flag", "flag_id": "mercenaries_arrived" },
-            { "type": "go_to_scene", "scene_id": "whispers_of_fire" }
+            {
+              "type": "set_flag",
+              "flag_id": "mercenaries_arrived"
+            },
+            {
+              "type": "go_to_scene",
+              "scene_id": "whispers_of_fire"
+            }
           ]
         },
         {
@@ -101,10 +178,18 @@
           "text": "Ask Grond the barkeep about better work.",
           "outcome_text": "Grond scoffs, wiping a tankard. 'Better work? You barely manage this. Prove you're not useless first.' He shoves a particularly grimy mop at you.",
           "effects": [
-            { "type": "give_item", "item_id": "old_mop" },
-            { "type": "set_flag", "flag_id": "got_mop_from_grond" }
-            // Stays in the same scene, or could loop to a slightly modified version of this scene.
-            // For simplicity, let's assume they can still choose "keep_sweeping" or this choice again.
+            {
+              "type": "give_item",
+              "item_id": "old_mop"
+            },
+            {
+              "type": "set_flag",
+              "flag_id": "got_mop_from_grond"
+            },
+            {
+              "type": "go_to_scene",
+              "scene_id": "filth_and_ale"
+            }
           ]
         }
       ]
@@ -119,7 +204,10 @@
           "text": "Approach the barkeep and ask for work.",
           "outcome_text": "The barkeep, Grond, sizes you up.",
           "effects": [
-            { "type": "go_to_scene", "scene_id": "filth_and_ale" } // This leads to the description where you get hired.
+            {
+              "type": "go_to_scene",
+              "scene_id": "filth_and_ale"
+            }
           ]
         },
         {
@@ -127,7 +215,10 @@
           "text": "Try to observe the patrons, perhaps overhear something useful.",
           "outcome_text": "You try to blend in. Most conversations are drunken ramblings, but you catch snippets about city guard patrols and rising food prices. Nothing immediately useful.",
           "effects": [
-            // Stays in this scene, or could set a minor flag.
+            {
+              "type": "go_to_scene",
+              "scene_id": "leaky_mug_entrance"
+            }
           ]
         },
         {
@@ -135,7 +226,10 @@
           "text": "This place isn't for you. Leave.",
           "outcome_text": "You decide the tavern isn't the best place to start. You step back out into the muddy streets.",
           "effects": [
-            { "type": "go_to_scene", "scene_id": "ash_and_soil" } // Or a new "city_streets" scene
+            {
+              "type": "go_to_scene",
+              "scene_id": "ash_and_soil"
+            }
           ]
         }
       ]
@@ -144,8 +238,11 @@
       "id": "whispers_of_fire",
       "name": "Whispers of Fire",
       "description": "One evening, while scrubbing near a table occupied by the recently arrived mercenaries, you overhear their hushed, excited talk. They speak of a dragon stirring in the northern forests – of smoke, fire, and an ancient, slumbering threat.",
-      "requirements": [ // Scene-level requirements: player must have heard mercenaries arrive
-        { "type": "flag_is_set", "flag_id": "mercenaries_arrived" }
+      "requirements": [
+        {
+          "type": "flag_is_set",
+          "flag_id": "mercenaries_arrived"
+        }
       ],
       "choices": [
         {
@@ -153,8 +250,14 @@
           "text": "Subtly try to eavesdrop more on the mercenaries.",
           "outcome_text": "They laugh off the danger, boasting of glory and treasure. But their words ignite something within you – a strange pull towards the north, a sense of destiny you can't explain.",
           "effects": [
-            { "type": "set_flag", "flag_id": "heard_dragon_rumor" },
-            { "type": "go_to_scene", "scene_id": "restless_night" }
+            {
+              "type": "set_flag",
+              "flag_id": "heard_dragon_rumor"
+            },
+            {
+              "type": "go_to_scene",
+              "scene_id": "restless_night"
+            }
           ]
         },
         {
@@ -162,8 +265,14 @@
           "text": "Ignore their dangerous talk and focus on your cleaning.",
           "outcome_text": "You try to push their words from your mind, focusing on the grime. Yet, the tales of fire and shadow linger, unsettling your thoughts.",
           "effects": [
-            { "type": "set_flag", "flag_id": "ignored_dragon_rumor" },
-            { "type": "go_to_scene", "scene_id": "restless_night" }
+            {
+              "type": "set_flag",
+              "flag_id": "ignored_dragon_rumor"
+            },
+            {
+              "type": "go_to_scene",
+              "scene_id": "restless_night"
+            }
           ]
         }
       ]
@@ -178,7 +287,10 @@
           "text": "Gather your meager belongings and head north into the woods.",
           "outcome_text": "Under the cloak of darkness, you slip out of Eldoria and venture into the foreboding northern forest.",
           "effects": [
-            { "type": "go_to_scene", "scene_id": "into_the_forest" }
+            {
+              "type": "go_to_scene",
+              "scene_id": "into_the_forest"
+            }
           ]
         },
         {
@@ -186,7 +298,10 @@
           "text": "Try to ignore the feeling and stay in the city. It's safer here.",
           "outcome_text": "You force yourself to stay, to continue your mundane life. But the call of the north never truly fades, leaving a lingering sense of regret and unfulfilled purpose.",
           "effects": [
-            { "type": "go_to_scene", "scene_id": "end_mundane_life" }
+            {
+              "type": "go_to_scene",
+              "scene_id": "end_mundane_life"
+            }
           ]
         }
       ]
@@ -201,7 +316,10 @@
           "text": "Investigate the scream.",
           "outcome_text": "You cautiously move towards the sound...",
           "effects": [
-            { "type": "go_to_scene", "scene_id": "end_cliffhanger" } // Placeholder for next part of the story
+            {
+              "type": "go_to_scene",
+              "scene_id": "end_cliffhanger"
+            }
           ]
         },
         {
@@ -209,7 +327,10 @@
           "text": "That sounds dangerous. Turn back to Eldoria.",
           "outcome_text": "Fear grips you. This adventure is too much. You turn and flee back towards the relative safety of the city.",
           "effects": [
-            { "type": "go_to_scene", "scene_id": "end_cowardice" }
+            {
+              "type": "go_to_scene",
+              "scene_id": "end_cowardice"
+            }
           ]
         }
       ]
@@ -218,7 +339,7 @@
       "id": "game_over_mugged",
       "name": "Game Over - Mugged",
       "description": "Beaten and robbed, you have nothing left. The harsh streets of Eldoria claim another victim. Your adventure ends here.",
-      "is_terminal": true, // Indicates this is an end state
+      "is_terminal": true,
       "choices": []
     },
     "end_mundane_life": {
@@ -239,7 +360,7 @@
       "id": "end_cliffhanger",
       "name": "To Be Continued...",
       "description": "The forest is dark, and the source of the scream awaits. Your journey has truly begun... (To be continued).",
-      "is_terminal": true, // Or could lead to more content
+      "is_terminal": true,
       "choices": []
     }
   }
