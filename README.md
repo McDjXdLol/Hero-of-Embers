@@ -167,7 +167,7 @@ Huge thanks to the amazing folks who contributed to this project through pull re
 
 ### 🧙‍♂️ Honorable Mentions:
 
-- **@wonderinglostsoul44** – For bravely venturing into the depths of `scenes.json` and emerging with a patch that brought balance to the realm. Your contribution has lit a new spark in the embers!
+- **@wonderinglostsoul44** – For bravely venturing into the depths of `scenes.json` and emerging it into `game_data.json` with a patch that brought balance to the realm. Your contribution has lit a new spark in the embers!
 
 Want to be featured here? Open a pull request and leave your mark on the world of Embers. ⚔️
 
