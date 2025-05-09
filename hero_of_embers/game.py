@@ -24,13 +24,18 @@ class Game:
                 self.scene_manager.get_scene_data(self.scene_manager.DESCRIPTION).format(name=self.player.name))
 
             # If it's not last scene
+            # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             if not self.scene_manager.get_scene_data(self.scene_manager.IS_LAST_SCENE):
 
+                # Choice handling
+                # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 choices_ids = []
                 # Print all choices
                 for nr, choice in enumerate(self.scene_manager.get_scene_choices()):
                     self.ui.change_text(f"{nr + 1}. {choice[1]}")
                     choices_ids.append(choice[0])
+
+
 
                 # Get choice from user
                 choice_nr = self.ui.get_input(1, "") - 1
@@ -39,14 +44,17 @@ class Game:
                 if choice_nr >= len(choices_ids):
                     self.ui.change_text(GetTexts.load_texts("plot_no_option", self.lang))
                     continue
-                elif choice_nr <= 0:
+                elif choice_nr <= -1:
                     self.ui.change_text(GetTexts.load_texts("plot_no_option", self.lang))
                     continue
+
+                # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
                 # Text of choice that player choose
                 self.ui.change_text(self.scene_manager.get_choices_data(choice_nr, "outcome_text"))
 
                 # If in this scene is fight
+                # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
                 if self.scene_manager.get_choices_data(choice_nr, self.scene_manager.IS_FIGHT):
                     # Enemy data
                     enemy_id = self.scene_manager.get_choices_data(choice_nr, self.scene_manager.ENEMY_ID)
@@ -56,11 +64,14 @@ class Game:
                     battle = BattleHandler(self.player, enemy, self.ui, self.lang)
 
                     # Battle starts
+                    # ___________________________________________________________________________________________________________
                     if battle.battle():
                         # Fight won
-                        drop_data = self.enemies_init.get_enemy_drop(enemy_id)
+                        # =======================================================================================================
 
                         # Give player random drop
+                        # -------------------------------------------------------------------------------------------------------
+                        drop_data = self.enemies_init.get_enemy_drop(enemy_id)
                         for item in drop_data:
 
                             # Chances to drop
@@ -69,16 +80,23 @@ class Game:
                                     drop_name=self.items_init.get_item(item[0])[0][0]))
                                 self.player.inventory.add_to_inv(self.items_init.get_item(item[0]),
                                                                  self.player.inventory.inventory, 1)
+                        # -------------------------------------------------------------------------------------------------------
 
                         # Set flags after win
+                        # -------------------------------------------------------------------------------------------------------
                         flag_to_set = self.scene_manager.get_fight_result_data(choice_nr, True,
                                                                                self.scene_manager.FLAGS)
                         self.flag_manager.add_flag(flag_to_set)
+                        # -------------------------------------------------------------------------------------------------------
 
                         # Give player item after win
+                        # -------------------------------------------------------------------------------------------------------
                         item_id_to_give = self.scene_manager.get_fight_result_data(choice_nr, True,
                                                                                    self.scene_manager.GIVE_ITEM)
+                        # -------------------------------------------------------------------------------------------------------
+
                         # Check if there is item to give after winning
+                        # -------------------------------------------------------------------------------------------------------
                         if not item_id_to_give is None:
                             for item_id in item_id_to_give:
                                 # Give item to player
@@ -87,37 +105,58 @@ class Game:
                                     GetTexts.load_texts("battle_enemy_item_drop", self.lang).format(
                                         drop_name=item_to_give[0][0]))
                                 self.player.inventory.add_to_inv(item_to_give, self.player.inventory.inventory, 1)
+                        # -------------------------------------------------------------------------------------------------------
 
                         # Set next scene
+                        # -------------------------------------------------------------------------------------------------------
                         self.scene_manager.set_current_scene(
                             self.scene_manager.get_fight_result_data(choice_nr, True, self.scene_manager.GO_TO_SCENE))
+                        # -------------------------------------------------------------------------------------------------------
+                        # =======================================================================================================
+
+
                     else:
                         # Fight lose
+                        # =======================================================================================================
 
                         # Set flags after lose
+                        # -------------------------------------------------------------------------------------------------------
                         flag_to_set = self.scene_manager.get_fight_result_data(choice_nr, False,
                                                                                self.scene_manager.FLAGS)
                         self.flag_manager.add_flag(flag_to_set)
+                        # -------------------------------------------------------------------------------------------------------
 
                         # Give items after lose
+                        # -------------------------------------------------------------------------------------------------------
                         item_to_give = self.items_init.get_fight_item_by_choice_id(choice_nr, False)
                         self.ui.change_text(
                             GetTexts.load_texts("battle_enemy_item_drop", self.lang).format(
                                 drop_name=item_to_give[0][0][0]))
                         self.player.inventory.add_to_inv(item_to_give)
+                        # -------------------------------------------------------------------------------------------------------
 
                         # Set next scene
+                        # -------------------------------------------------------------------------------------------------------
                         self.scene_manager.set_current_scene(
                             self.scene_manager.get_fight_result_data(choice_nr, False, self.scene_manager.GO_TO_SCENE))
-
+                        # -------------------------------------------------------------------------------------------------------
+                        # =======================================================================================================
+                    # ___________________________________________________________________________________________________________
+                # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
                 else:
                     # If there is no fight
+                    # =======================================================================================================
 
                     # Set flags
+                    # -------------------------------------------------------------------------------------------------------
                     flag_to_set = self.scene_manager.get_choices_data(choice_nr, self.scene_manager.FLAGS)
                     self.flag_manager.add_flag(flag_to_set)
+                    # -------------------------------------------------------------------------------------------------------
 
-                    item_to_give = self.items_init.get_fight_item_by_choice_id(choice_nr, False)
+                    # Give item
+                    # -------------------------------------------------------------------------------------------------------
+                    item_id_to_give = self.scene_manager.get_choices_data(choice_nr, self.scene_manager.GIVE_ITEM)
+                    item_to_give = self.items_init.get_item(item_id_to_give)
 
                     if len(item_to_give) != 0:
                         self.ui.change_text(
@@ -125,9 +164,16 @@ class Game:
                                 drop_name=item_to_give[0][0][0]))
 
                     self.player.inventory.add_to_inv(self.player.inventory.inventory, item_to_give, 1)
+                    # -------------------------------------------------------------------------------------------------------
 
+                    # Change scene
+                    # -------------------------------------------------------------------------------------------------------
                     self.scene_manager.set_current_scene(
                         self.scene_manager.get_choices_data(choice_nr, self.scene_manager.GO_TO_SCENE))
+                    # -------------------------------------------------------------------------------------------------------
+                    # =======================================================================================================
+            # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
             else:
                 break
 

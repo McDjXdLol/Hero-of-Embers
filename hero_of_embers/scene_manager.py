@@ -511,7 +511,7 @@ class SceneManager:
         list
             A list of effects for the choice.
         """
-        choice = self.scenes_data.get(self.SCENES, {}).get(self.current_scene).get(self.CHOICES)[choice_id]
+        choice = self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {}).get(self.CHOICES, {})[choice_id]
         return choice.get(self.EFFECTS, [])
 
     def get_choices_data(self, choice_id, type_of_data):
@@ -609,7 +609,6 @@ class SceneManager:
                 return None
             case self.GIVE_ITEM:
                 give_items = []
-                print(f"\n\n\n\n\n\n\n\nDEBUG:\n\n\n\n\nChoice_ID: {choice_id}\n\n\n\n")
                 for effect in self.get_choice_effects(choice_id):
                     if effect.get(self.TYPE, {}) == self.START_COMBAT:
                         if fight_won:

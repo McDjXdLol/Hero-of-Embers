@@ -6,7 +6,7 @@ from player import Player
 from selection import Selection
 from ui_manager import UI
 from get_language_text import GetTexts
-# from save_handler import LoadGame
+from save_handler import LoadGame
 
 def main():
     """
@@ -30,30 +30,29 @@ def main():
     """
     GetTexts().get_texts()
     LANGUAGE = "en" # Selection(UI("en"), "en").select_language()
-    ui = UI(LANGUAGE)
+    UI_MANAGER = UI(LANGUAGE)
 
     # Load saved game data if it exists
     if os.path.exists("hero_of_embers/savegame.json"):
-        user = Player(name="", hp=0, armor=0,
-                      damage=0, player_class="", ui=ui, lang="en")
-        # PLOT_MANAGER = PlotManager(user, ui, "en")
-        GAME = Game(ui, user, LANGUAGE)
-        # LoadGame(user).load_data()
+        USER = Player(name="", hp=0, armor=0,
+                      damage=0, player_class="", ui=UI_MANAGER, lang="en")
+        GAME = Game(UI_MANAGER, USER, LANGUAGE)
+        LoadGame(USER, GAME.scene_manager, GAME.flag_manager).load_data()
     else:
         # No saved game, start a new one
-        SELECTION = Selection(ui, LANGUAGE)
+        SELECTION = Selection(UI_MANAGER, LANGUAGE)
         NICKNAME = SELECTION.give_nickname()
         CLASS_NR = SELECTION.class_select()
         CHARACTER_CLASS = Library().PLAYER_CLASSES[CLASS_NR]
         DIFFICULTY = SELECTION.give_difficulty_stats()
 
-        # Create new player based on selection
-        user = Player(name=NICKNAME, hp=CHARACTER_CLASS[1] + DIFFICULTY[0],
+        # Create new player based on player selection
+        USER = Player(name=NICKNAME, hp=CHARACTER_CLASS[1] + DIFFICULTY[0],
                       armor=CHARACTER_CLASS[2] + DIFFICULTY[1],
                       damage=CHARACTER_CLASS[3] + DIFFICULTY[2],
-                      player_class=Library.PLAYER_CLASSES[0], ui=ui, lang=LANGUAGE)
+                      player_class=Library.PLAYER_CLASSES[0], ui=UI_MANAGER, lang=LANGUAGE)
 
-        GAME = Game(ui, user, LANGUAGE)
+        GAME = Game(UI_MANAGER, USER, LANGUAGE)
     return GAME
 
 if __name__ == "__main__":
