@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
-from hero_of_embers.inventory import Inventory
+from hero_of_embers.player_data.inventory import Inventory
 
 class TestInventory(unittest.TestCase):
     def setUp(self):

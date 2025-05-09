@@ -1,7 +1,7 @@
 import random
 
-from get_language_text import GetTexts
-from library import Library
+from hero_of_embers.get_language_text import GetTexts
+from hero_of_embers.library import Library
 
 
 class TradeHandler:
@@ -17,12 +17,6 @@ class TradeHandler:
         The user interface handler used to display text and receive input.
     player : Player
         The player object involved in the trade.
-    weapons : list
-        List of available weapon items.
-    armors : list
-        List of available armor items.
-    heal_items : list
-        List of available healing items.
     """
 
     def __init__(self, ui, player, lang):
@@ -39,7 +33,6 @@ class TradeHandler:
         self.lang = lang
         self.ui = ui
         self.player = player
-        self.heal_items = Library.HEAL_ITEMS
 
     def trade(self):
         """

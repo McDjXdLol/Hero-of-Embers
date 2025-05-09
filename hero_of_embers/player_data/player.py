@@ -1,6 +1,6 @@
 from inventory import Inventory
 from level_handler import LevelHandler
-from entity import Entity
+from hero_of_embers.entity import Entity
 
 class Player(Entity):
     """

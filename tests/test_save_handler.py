@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import MagicMock
 import json
 import os
-from hero_of_embers.save_handler import SaveGame, LoadGame
+from hero_of_embers.handlers.save_handler import SaveGame, LoadGame
 
 
 class TestSaveGame(unittest.TestCase):

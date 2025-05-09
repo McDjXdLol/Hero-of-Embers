@@ -1,5 +1,5 @@
-from library import Library
-from get_language_text import GetTexts
+from hero_of_embers.library import Library
+from hero_of_embers.get_language_text import GetTexts
 
 class Inventory:
     def __init__(self, ui, lang):
@@ -105,59 +105,63 @@ class Inventory:
         """
         Displays the player's inventory, including weapons, armors, and miscellaneous items.
         """
-        inventory_weapons = []
-        inventory_armors = []
-        inventory_items = []
+        self.ui.change_text(f"Inv: {self.inventory}")
 
-        for item in self.inventory:
-            name = item[0][0]
-            added = False
+        is_inventory_working = False # WIP
+        if is_inventory_working:
+            inventory_weapons = []
+            inventory_armors = []
+            inventory_items = []
 
-            for w in Library.WEAPONS:
-                if name == w[0] and not added:
-                    inventory_weapons.append(name)
-                    added = True
-                    break
-            for a in Library.ARMORS:
-                if name == a[0] and not added:
-                    inventory_armors.append(name)
-                    added = True
-                    break
+            for item in self.inventory:
+                name = item[0][0]
+                added = False
 
-            if not added:
-                inventory_items.append(item)
+                for w in Library.WEAPONS:
+                    if name == w[0] and not added:
+                        inventory_weapons.append(name)
+                        added = True
+                        break
+                for a in Library.ARMORS:
+                    if name == a[0] and not added:
+                        inventory_armors.append(name)
+                        added = True
+                        break
 
-        if len(self.weapon) != 0:
-            self.ui.change_text(GetTexts.load_texts("inventory_equipped_weapon", self.lang).format(weapon=self.weapon))
+                if not added:
+                    inventory_items.append(item)
 
-        if len(self.armor) != 0:
-            self.ui.change_text(GetTexts.load_texts("inventory_equipped_armor", self.lang).format(armor=self.armor))
+            if len(self.weapon) != 0:
+                self.ui.change_text(GetTexts.load_texts("inventory_equipped_weapon", self.lang).format(weapon=self.weapon))
 
-        if self.wallet == 0:
-            self.ui.change_text(GetTexts.load_texts("inventory_wallet_empty", self.lang))
-        else:
-            self.ui.change_text(GetTexts.load_texts("inventory_dragon_coins", self.lang).format(wallet=self.wallet))
+            if len(self.armor) != 0:
+                self.ui.change_text(GetTexts.load_texts("inventory_equipped_armor", self.lang).format(armor=self.armor))
 
-        if len(self.inventory) == 0:
-            self.ui.change_text(GetTexts.load_texts("inventory_inventory_empty", self.lang))
-            return
+            if self.wallet == 0:
+                self.ui.change_text(GetTexts.load_texts("inventory_wallet_empty", self.lang))
+            else:
+                self.ui.change_text(GetTexts.load_texts("inventory_dragon_coins", self.lang).format(wallet=self.wallet))
 
-        self.ui.change_text(GetTexts.load_texts("inventory_weapons", self.lang))
-        for weapon in inventory_weapons:
-            self.ui.change_text(GetTexts.load_texts("inventory_weapon", self.lang).format(weapon=weapon))
+            if len(self.inventory) == 0:
+                self.ui.change_text(GetTexts.load_texts("inventory_inventory_empty", self.lang))
+                return
 
-        self.ui.change_text(GetTexts.load_texts("inventory_armors", self.lang))
-        for armor in inventory_armors:
-            self.ui.change_text(GetTexts.load_texts("inventory_armor", self.lang).format(armor=armor))
+            self.ui.change_text(GetTexts.load_texts("inventory_weapons", self.lang))
+            for weapon in inventory_weapons:
+                self.ui.change_text(GetTexts.load_texts("inventory_weapon", self.lang).format(weapon=weapon))
 
-        self.ui.change_text(GetTexts.load_texts("inventory_miscellaneous", self.lang))
-        for item in inventory_items:
-            item_name = item[0][0]
-            item_amount = item[1]
-            self.ui.change_text(GetTexts.load_texts("inventory_misc_item", self.lang).format(item_name=item_name, item_amount=item_amount))
+            self.ui.change_text(GetTexts.load_texts("inventory_armors", self.lang))
+            for armor in inventory_armors:
+                self.ui.change_text(GetTexts.load_texts("inventory_armor", self.lang).format(armor=armor))
 
-        if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
-            self.equip_selection(inventory_armors, inventory_weapons)
+            self.ui.change_text(GetTexts.load_texts("inventory_miscellaneous", self.lang))
+            for item in inventory_items:
+                item_name = item[0][0]
+                item_amount = item[1]
+                self.ui.change_text(GetTexts.load_texts("inventory_misc_item", self.lang).format(item_name=item_name, item_amount=item_amount))
+
+            if len(inventory_armors) > 0 or len(inventory_weapons) > 0:
+                self.equip_selection(inventory_armors, inventory_weapons)
 
     def equip_selection(self, inventory_armors, inventory_weapons):
         """

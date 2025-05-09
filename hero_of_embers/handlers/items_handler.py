@@ -1,4 +1,4 @@
-from scene_manager import SceneManager
+from hero_of_embers.scene_manager import SceneManager
 
 class ItemsInit:
     """

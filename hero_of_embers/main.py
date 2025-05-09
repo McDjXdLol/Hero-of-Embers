@@ -2,11 +2,11 @@ import os
 
 from game import Game
 from library import Library
-from player import Player
+from hero_of_embers.player_data.player import Player
 from selection import Selection
 from ui_manager import UI
 from get_language_text import GetTexts
-from save_handler import LoadGame
+from hero_of_embers.handlers.save_handler import LoadGame
 
 def main():
     """

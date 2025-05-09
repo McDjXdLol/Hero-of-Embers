@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from hero_of_embers.player import Player
+from hero_of_embers.player_data.player import Player
 from hero_of_embers.ui_manager import UI
 
 

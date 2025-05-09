@@ -1,12 +1,12 @@
 import random
 import sys
 
-from battle_handler import BattleHandler
-from enemies_init import EnemiesInit
+from hero_of_embers.handlers.battle_handler import BattleHandler
+from hero_of_embers.handlers.enemies_handler import EnemiesInit
 from flag_manager import FlagManager
 from get_language_text import GetTexts
-from hero_of_embers.save_handler import SaveGame
-from items_init import ItemsInit
+from hero_of_embers.handlers.save_handler import SaveGame
+from hero_of_embers.handlers.items_handler import ItemsInit
 from scene_manager import SceneManager
 
 
@@ -206,6 +206,6 @@ class Game:
 
 if __name__ == "__main__":
     from ui_manager import UI
-    from player import Player
+    from hero_of_embers.player_data.player import Player
 
     Game(UI("en"), Player(name="DEBUG", hp=50, armor=0, damage=5, player_class="", ui=UI("en"), lang="en"), "en").main()

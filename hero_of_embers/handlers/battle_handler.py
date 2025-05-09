@@ -1,7 +1,7 @@
 import random
 import time
 
-from get_language_text import GetTexts
+from hero_of_embers.get_language_text import GetTexts
 
 class BattleHandler:
     """

@@ -18,8 +18,6 @@ class Library:
         A list of experience points required for each player level.
     XP_NXT_LG_LVL : list of int
         A list of experience points required for each legendary level.
-    HEAL_ITEMS : list of list of str, int, int, int
-        A list of healing items, each represented by a name, heal amount, cost, and drop weight (rarity).
     PLAYER_CLASSES : list of list of str, int, int, int
         A list of player classes, each represented by a name, HP, armor value, and damage value.
     DIFFICULTIES : list of list of str, int, int, int
