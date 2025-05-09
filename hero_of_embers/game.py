@@ -1,9 +1,11 @@
 import random
+import sys
 
 from battle_handler import BattleHandler
 from enemies_init import EnemiesInit
 from flag_manager import FlagManager
 from get_language_text import GetTexts
+from hero_of_embers.save_handler import SaveGame
 from items_init import ItemsInit
 from scene_manager import SceneManager
 
@@ -17,6 +19,7 @@ class Game:
         self.enemies_init = EnemiesInit(self.lang)
         self.flag_manager = FlagManager()
         self.items_init = ItemsInit(self.lang)
+        self.its_setting = False
 
     def main(self):
         while True:
@@ -35,19 +38,42 @@ class Game:
                     self.ui.change_text(f"{nr + 1}. {choice[1]}")
                     choices_ids.append(choice[0])
 
-
+                self.ui.change_text(GetTexts.load_texts("plot_show_inventory", self.lang))
+                self.its_setting = False
 
                 # Get choice from user
-                choice_nr = self.ui.get_input(1, "") - 1
+                choice_nr = self.ui.get_input("str", "")
+                try:
+                    choice_nr = int(choice_nr)
+                    self.its_setting = False
+                except ValueError:
+                    self.its_setting = True
 
                 # Check if user entered wrong number
-                if choice_nr >= len(choices_ids):
+                if not self.its_setting and choice_nr - 1 >= len(choices_ids):
                     self.ui.change_text(GetTexts.load_texts("plot_no_option", self.lang))
                     continue
-                elif choice_nr <= -1:
+                elif not self.its_setting and choice_nr - 1 <= -1:
                     self.ui.change_text(GetTexts.load_texts("plot_no_option", self.lang))
                     continue
-
+                elif self.its_setting:
+                    match choice_nr.lower():
+                        case "i":
+                            self.player.inventory.show_inv()
+                            continue
+                        case "t":
+                            # Trading
+                            continue
+                        case "s":
+                            SaveGame(self.player, self.scene_manager, self.flag_manager)
+                            sys.exit()
+                        case "e":
+                            sys.exit()
+                        case _:
+                            self.ui.change_text(GetTexts.load_texts("plot_no_option", self.lang))
+                            continue
+                if not self.its_setting:
+                    choice_nr -= 1
                 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
                 # Text of choice that player choose

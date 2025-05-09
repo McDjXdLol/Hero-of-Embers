@@ -2,8 +2,6 @@ import random
 import time
 
 from get_language_text import GetTexts
-from library import Library
-from items_init import ItemsInit
 
 class BattleHandler:
     """
@@ -164,39 +162,39 @@ class BattleHandler:
             self.ui.change_text(GetTexts.load_texts("battle_missed_strong_attack", self.lang).format(name=self.player.name))
             return 1
 
-    def choose_elixir(self):
-        """
-        Allows the player to choose an elixir from their inventory.
-
-        Returns
-        -------
-        int
-            0 if player should proceed to the enemy's turn, or repeat the player's turn.
-        """
-        elixirs_in_inv = list(self.player.inventory.elixir_inventory)
-        if not elixirs_in_inv:
-            self.ui.change_text(GetTexts.load_texts("battle_no_elixir", self.lang).format(name=self.player.name))
-            return 0
-        while True:
-            self.ui.change_text(GetTexts.load_texts("battle_choose_elixir", self.lang))
-            for eli_nr, eli in enumerate(elixirs_in_inv):
-                self.ui.change_text(GetTexts.load_texts("battle_elixir_option", self.lang).format(eli_nr=eli_nr+1, eli=eli))
-            chosen_elixir = self.ui.get_input(0, "")
-            if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
-                self.ui.change_text(GetTexts.load_texts("battle_incorrect_number_elixir", self.lang))
-            else:
-                break
-        chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0]
-        self.ui.change_text(GetTexts.load_texts("battle_chosen_elixir", self.lang).format(chosen_elixir_name=chosen_elixir_name))
-        self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
-        for elix in Library.HEAL_ITEMS:
-            if chosen_elixir_name in elix:
-                self.player.heal_hp(elix[1])
-                self.ui.change_text(
-                    f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!"
-                )
-                return 0
-        return 0
+    # def choose_elixir(self):
+        #"""
+        #Allows the player to choose an elixir from their inventory.
+#
+        #Returns
+        #-------
+        #int
+        #    0 if player should proceed to the enemy's turn, or repeat the player's turn.
+        #"""
+        #elixirs_in_inv = list(self.player.inventory.elixir_inventory)
+        #if not elixirs_in_inv:
+        #    self.ui.change_text(GetTexts.load_texts("battle_no_elixir", self.lang).format(name=self.player.name))
+        #    return 0
+        #while True:
+        #    self.ui.change_text(GetTexts.load_texts("battle_choose_elixir", self.lang))
+        #    for eli_nr, eli in enumerate(elixirs_in_inv):
+        #        self.ui.change_text(GetTexts.load_texts("battle_elixir_option", self.lang).format(eli_nr=eli_nr+1, eli=eli))
+        #    chosen_elixir = self.ui.get_input(0, "")
+        #    if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
+        #        self.ui.change_text(GetTexts.load_texts("battle_incorrect_number_elixir", self.lang))
+        #    else:
+        #        break
+        #chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0]
+        #self.ui.change_text(GetTexts.load_texts("battle_chosen_elixir", self.lang).format(chosen_elixir_name=chosen_elixir_name))
+        # self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
+        # for elix in Library.HEAL_ITEMS:
+        #     if chosen_elixir_name in elix:
+        #         self.player.heal_hp(elix[1])
+        #         self.ui.change_text(
+        #             f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!"
+        #         )
+        #         return 0
+        # return 0
 
     def attack_selection(self, move_sel):
         """
@@ -220,7 +218,9 @@ class BattleHandler:
             case 3:
                 return self.strong_attack()
             case 4:
-                return self.choose_elixir()
+                # return self.choose_elixir()
+                self.ui.change_text("Option is disabled for now!")
+                return 0
             case 5:
                 self.player.inventory.show_inv()
                 return 0

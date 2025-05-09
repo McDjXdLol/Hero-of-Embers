@@ -39,8 +39,6 @@ class TradeHandler:
         self.lang = lang
         self.ui = ui
         self.player = player
-        self.weapons = Library.WEAPONS
-        self.armors = Library.ARMORS
         self.heal_items = Library.HEAL_ITEMS
 
     def trade(self):

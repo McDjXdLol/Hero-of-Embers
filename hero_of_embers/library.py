@@ -106,15 +106,6 @@ class Library:
 
     XP_NXT_LG_LVL = [2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000]
 
-    HEAL_ITEMS = [
-        ["Small Heart Elixir", 10, 15, 40],
-        ["Medium Heart Elixir", 20, 30, 30],
-        ["Big Heart Elixir", 45, 70, 15],
-        ["Small Living Elixir", 60, 90, 10],
-        ["Medium Living Elixir", 80, 120, 4],
-        ["Big Living Elixir", 100, 150, 1]
-    ]
-
     PLAYER_CLASSES = [
         ["The Protector (Tank)", 150, 50, 10],
         ["The Fighter (Balanced)", 100, 25, 15],
