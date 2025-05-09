@@ -3,7 +3,7 @@ import os.path
 
 
 class SaveGame:
-    def __init__(self, player, plot_manager):
+    def __init__(self, player):
         """
         SaveGame class used to store player and plot data in a file.
 
@@ -11,8 +11,6 @@ class SaveGame:
         ----------
         player : hero_of_embers.player.Player
             Player class instance.
-        plot_manager : hero_of_embers.plot_manager.PlotManager
-            PlotManager class instance.
         """
         # Player Data
         self.player_name = player.name
@@ -30,7 +28,6 @@ class SaveGame:
         self.player_experience = player.level_handler.level
 
         # Plot Data
-        self.current_scene = plot_manager.current_scene
 
         # All data prepared to save
         self.data = {
@@ -46,8 +43,7 @@ class SaveGame:
             "player_weapon_equiped": self.player_weapon_equiped,
             "player_armor_equiped": self.player_armor_equiped,
             "player_level": self.player_level,
-            "player_experience": self.player_experience,
-            "current_scene": self.current_scene
+            "player_experience": self.player_experience
         }
 
     def save_game(self):
@@ -61,7 +57,7 @@ class SaveGame:
 
 
 class LoadGame:
-    def __init__(self, player, plot_manager):
+    def __init__(self, player):
         """
         LoadGame class used to load saved game data.
 
@@ -69,11 +65,8 @@ class LoadGame:
         ----------
         player : hero_of_embers.player.Player
             Player class instance.
-        plot_manager : hero_of_embers.plot_manager.PlotManager
-            PlotManager class instance.
         """
         self.player = player
-        self.plot_manager = plot_manager
 
     @staticmethod
     def load_game():
@@ -114,7 +107,6 @@ class LoadGame:
             self.player.inventory.armor = save_data["player_armor_equiped"]
             self.player.level = save_data["player_level"]
             self.player.experience = save_data["player_experience"]
-            self.plot_manager.current_scene = save_data["current_scene"]
             print("Save file loaded successfully!")
         else:
             print("There is no save file to load!")
