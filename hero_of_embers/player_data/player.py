@@ -1,5 +1,5 @@
-from inventory import Inventory
-from level_handler import LevelHandler
+from hero_of_embers.player_data.inventory import Inventory
+from hero_of_embers.player_data.level_handler import LevelHandler
 from hero_of_embers.entity import Entity
 
 class Player(Entity):

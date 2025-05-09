@@ -2,7 +2,7 @@ import json
 import os
 
 # Getting scenes file location
-def check_for_file(lang="en"):
+def check_for_file():
     """
     Gets the file path for the scene data based on the language.
 
@@ -18,9 +18,8 @@ def check_for_file(lang="en"):
     """
     curr_dir = os.path.dirname(__file__)
     data_dir = os.path.join(curr_dir, "data")
-    lang_dir = os.path.join(data_dir, "scenes")
-    lang_file = os.path.join(lang_dir, f"scenes_{lang}.json")
-    return lang_file
+    data_file = os.path.join(data_dir, f"game_data.json")
+    return data_file
 
 class SceneManager:
     """
@@ -30,7 +29,7 @@ class SceneManager:
     ----------
     lang : str
         The language code for the scene data.
-    lang_file : str
+    data_file : str
         The file path to the scene data file.
     scenes_data : dict
         The loaded scene data from the JSON file.
@@ -143,17 +142,17 @@ class SceneManager:
         """
         # Setting up language
         self.lang = lang
-        self.lang_file = check_for_file(lang)
+        self.data_file = check_for_file()
 
         # Loading scenes file
         try:
-            with open(self.lang_file, 'r', encoding='utf-8') as scene_file:
+            with open(self.data_file, 'r', encoding='utf-8') as scene_file:
                 self.scenes_data = json.load(scene_file)
         except FileNotFoundError:
-            print(f"Error: Languages file not found: {self.lang_file}")
+            print(f"Error: Languages file not found: {self.data_file}")
             self.scenes_data = {}
         except json.JSONDecodeError:
-            print(f"Error: Failed to decode JSON: {self.lang_file}")
+            print(f"Error: Failed to decode JSON: {self.data_file}")
 
         self.STARTING_SCENE_ID = "starting_scene_id"
         self.current_scene = self.get_starting_scene()

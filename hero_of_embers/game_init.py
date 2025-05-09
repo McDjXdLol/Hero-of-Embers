@@ -1,4 +1,4 @@
-from scene_manager import SceneManager
+from data_manager import SceneManager
 
 class GameInit:
     """

@@ -11,7 +11,7 @@ class SaveGame:
         ----------
         player : hero_of_embers.player.Player
             Player class instance.
-        scene_manager : hero_of_embers.scene_manager.SceneManager
+        scene_manager : hero_of_embers.data_manager.SceneManager
             SceneManager class instance.
         flag_manager : hero_of_embers.flag_manager.FlagManager
             FlagManager class instance.
@@ -75,7 +75,7 @@ class LoadGame:
         ----------
         player : hero_of_embers.player.Player
             Player class instance.
-        scene_manager : hero_of_embers.scene_manager.SceneManager
+        scene_manager : hero_of_embers.data_manager.SceneManager
             SceneManager class instance.
         flag_manager : hero_of_embers.flag_manager.FlagManager
             FlagManager class instance.

@@ -1,7 +1,7 @@
 from typing import List, Union
 
 from hero_of_embers.enemy import Enemy
-from hero_of_embers.scene_manager import SceneManager
+from hero_of_embers.data_manager import SceneManager
 
 class EnemiesInit:
     """

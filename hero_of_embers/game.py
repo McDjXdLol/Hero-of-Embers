@@ -7,7 +7,7 @@ from flag_manager import FlagManager
 from get_language_text import GetTexts
 from hero_of_embers.handlers.save_handler import SaveGame
 from hero_of_embers.handlers.items_handler import ItemsInit
-from scene_manager import SceneManager
+from data_manager import SceneManager
 
 
 class Game:
