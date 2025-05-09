@@ -122,5 +122,4 @@ class EnemiesInit:
                 The probability that the enemy will drop the item.
         """
         data = self.get_enemy_data(enemy_id)
-        print(f"\n\n\n\n\nDEBUG:\n\n-ENEMIES_INIT:\n\n--GET_ENEMMY_DROP:\n\n{data["drop"]}")
         return data["drop"]

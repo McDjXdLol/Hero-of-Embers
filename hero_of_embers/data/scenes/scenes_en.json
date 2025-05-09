@@ -119,6 +119,10 @@
                   {
                     "type": "go_to_scene",
                     "scene_id": "filth_and_ale"
+                  },
+                  {
+                    "type": "give_item",
+                    "item_id": "old_mop"
                   }
                 ]
               },

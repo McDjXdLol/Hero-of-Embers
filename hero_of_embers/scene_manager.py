@@ -609,6 +609,7 @@ class SceneManager:
                 return None
             case self.GIVE_ITEM:
                 give_items = []
+                print(f"\n\n\n\n\n\n\n\nDEBUG:\n\n\n\n\nChoice_ID: {choice_id}\n\n\n\n")
                 for effect in self.get_choice_effects(choice_id):
                     if effect.get(self.TYPE, {}) == self.START_COMBAT:
                         if fight_won:

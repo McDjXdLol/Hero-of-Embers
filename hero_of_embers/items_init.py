@@ -110,3 +110,8 @@ class ItemsInit:
             heal_items.append([item_name, item_description, item_heal_amount, item_value])
 
         return heal_items
+
+    def get_fight_item_by_choice_id(self, choice_id, won:bool):
+        item_id = self.scene_manager.get_fight_result_data(choice_id, won, self.scene_manager.GIVE_ITEM)
+        item = self.get_item(item_id)
+        return item
