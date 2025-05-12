@@ -21,9 +21,9 @@ The only GUI component of the project! Use `plot_maker_app.py` (requires PyQt6) 
 
 ### To run the plot maker:
 
-        ```python 
-        python run_plot_maker.py
-        ```
+```python 
+python run_plot_maker.py
+```
 
 ## Plans
 So the **plot maker is not done yet**. There is still few variables to add to app, so the game could read it.
