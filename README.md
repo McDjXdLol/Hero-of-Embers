@@ -1,4 +1,4 @@
-# Hero of Embers - Version 0.3.3 (WIP) 
+# Hero of Embers - Version 0.4.0 (WIP) 
 ![image](https://github.com/user-attachments/assets/9ebc9385-f15a-48cb-9463-6585f2ec4f32)
 
 ## 📖 Table of Contents
@@ -11,6 +11,7 @@
 - [Gameplay](#gameplay)
 - [Plot Maker](#plot-maker)
 - [Contributing](#contriburing)
+- [Contributors](#contributors)
 - [License](#license)
 
 <a name='description'></a>
@@ -42,14 +43,17 @@ update!
 - [x] Add currency.
 - [x] Add option to trade.
 - [x] Rebuild `plot_maker_app.py`, to be easier to use.
+- [x] Game data structure overhaul (centralize enemies, items, title & scenes in one unified JSON).
+- [ ] Migrate all static game data from library.py to `game_data.json`.
+- [ ] Remove library.py and centralize game data in `game_data.json`.
 - [ ] Add more languages.
 - [ ] Add level to enemies.
 - [ ] Add more statistics to player.
 - [ ] Remake plot.
 - [ ] Expand the storyline with additional scenes and choices.
 - [ ] Improve the user interface (e.g. color-coded text, better formatting).
-- [ ] ~~Integrate sound and music~~.
 - [ ] Include demo screenshots or GIFs in the README.md.
+- [ ] ~~Integrate sound and music~~.
 
 <a name='installation'></a>
 
@@ -153,6 +157,25 @@ python run_plot_maker.py
 
 Contributions, issues, and feature requests are welcome! Feel free to fork the repo and submit a pull request.
 For more information check this [CONTRIBUTING](CONTRIBUTING.md)
+
+
+<a name="contributors"></a>
+
+## 🙏 Contributors
+
+Huge thanks to the amazing folks who contributed to this project through pull requests! Your help means the world and brings this fiery adventure one step closer to greatness. Whether you squashed bugs, cleaned up the code, or added spicy new features — you're officially part of the Hero of Embers saga 🔥🛡️
+
+### 🧙‍♂️ Honorable Mentions:
+
+- **@wonderinglostsoul44** – For bravely venturing into the depths of `scenes.json` and emerging it into `game_data.json` with a patch that brought balance to the realm. Your contribution has lit a new spark in the embers!
+
+Want to be featured here? Open a pull request and leave your mark on the world of Embers. ⚔️
+
+---
+
+*This section will be updated as more heroes join the journey.*
+
+
 
 <a name="license"></a>
 

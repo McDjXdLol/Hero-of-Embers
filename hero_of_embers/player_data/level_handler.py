@@ -1,5 +1,5 @@
-from get_language_text import GetTexts
-from library import Library
+from hero_of_embers.get_language_text import GetTexts
+from hero_of_embers.library import Library
 
 
 class LevelHandler:

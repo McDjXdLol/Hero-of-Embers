@@ -1,5 +1,4 @@
-from library import Library
-from get_language_text import GetTexts
+from hero_of_embers.get_language_text import GetTexts
 
 class Inventory:
     def __init__(self, ui, lang):
@@ -13,8 +12,9 @@ class Inventory:
         """
         self.lang = lang
         self.ui = ui
-        self.inventory = []
-        self.elixir_inventory = []
+        self.inventory = [[["Supreme Essence of Life" , "A", "elixir", 100, 100], 10], [["TEST-ELIXIR", "A", "elixir", 50, 50], 10]]
+        self.damage_from_weapon = 0
+        self.armor_from_armor = 0
         self.weapon = []
         self.armor = []
         self.wallet = 0
@@ -66,11 +66,14 @@ class Inventory:
         amount : int, optional
             The amount of the item to add (default is 1).
         """
-        for it in inv:
-            if it[0][0] == item[0] and it[0][1] == item[1]:
-                it[1] += amount
-                return
-        inv.append([item, amount])
+        if len(inv) == 0:
+            inv.append([item, amount])
+        else:
+            for it in inv:
+                if it[0][0] == item[0] and it[0][1] == item[1]:
+                    it[1] += amount
+                    return
+            inv.append([item, amount])
 
     def which_item_to_equip(self, items, equip_function, item_type="item"):
         """
@@ -87,7 +90,7 @@ class Inventory:
         """
         self.ui.change_text(GetTexts.load_texts("inventory_choose_equipment", self.lang).format(item_type=item_type))
         for i, item in enumerate(items):
-            self.ui.change_text(GetTexts.load_texts("inventory_item_option", self.lang).format(i=i+1, item=item))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_option", self.lang).format(i=i+1, item=item[0][0]))
         try:
             selected = int(self.ui.get_input(0, ""))
             if selected <= len(items):
@@ -102,33 +105,43 @@ class Inventory:
         """
         Displays the player's inventory, including weapons, armors, and miscellaneous items.
         """
+
         inventory_weapons = []
         inventory_armors = []
+        inventory_elixirs = []
         inventory_items = []
+        if len(self.inventory) > 0:
+            for item in self.inventory:
+                item_type = item[0][2]
 
-        for item in self.inventory:
-            name = item[0][0]
-            added = False
+                if item_type == "weapon":
+                    inventory_weapons.append(item)
+                elif item_type == "armor":
+                    inventory_armors.append(item)
+                elif item_type == "elixir":
+                    inventory_elixirs.append(item)
+                elif item_type == "currency":
+                    value = item[0][3]
+                    self.wallet += value
+                    self.inventory.remove(item)
+                else:
+                    inventory_items.append(item)
 
-            for w in Library.WEAPONS:
-                if name == w[0] and not added:
-                    inventory_weapons.append(name)
-                    added = True
-                    break
-            for a in Library.ARMORS:
-                if name == a[0] and not added:
-                    inventory_armors.append(name)
-                    added = True
-                    break
 
-            if not added:
-                inventory_items.append(item)
 
         if len(self.weapon) != 0:
-            self.ui.change_text(GetTexts.load_texts("inventory_equipped_weapon", self.lang).format(weapon=self.weapon))
+            self.ui.change_text(GetTexts.load_texts("inventory_equipped_weapon", self.lang).format(weapon=""))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_name", self.lang).format(name=self.weapon[0][0]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_damage", self.lang).format(damage=self.weapon[0][3]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_value", self.lang).format(value=self.weapon[0][4]))
 
         if len(self.armor) != 0:
-            self.ui.change_text(GetTexts.load_texts("inventory_equipped_armor", self.lang).format(armor=self.armor))
+            self.ui.change_text(GetTexts.load_texts("inventory_equipped_armor", self.lang).format(armor=""))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_name", self.lang).format(name=self.armor[0][0]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_armor", self.lang).format(damage=self.armor[0][3]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_value", self.lang).format(value=self.armor[0][4]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_amount", self.lang).format(amount=self.armor[1]))
+
 
         if self.wallet == 0:
             self.ui.change_text(GetTexts.load_texts("inventory_wallet_empty", self.lang))
@@ -141,11 +154,17 @@ class Inventory:
 
         self.ui.change_text(GetTexts.load_texts("inventory_weapons", self.lang))
         for weapon in inventory_weapons:
-            self.ui.change_text(GetTexts.load_texts("inventory_weapon", self.lang).format(weapon=weapon))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_name", self.lang).format(name=weapon[0][0]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_damage", self.lang).format(damage=weapon[0][3]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_value", self.lang).format(value=weapon[0][4]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_amount", self.lang).format(amount=weapon[1]))
 
         self.ui.change_text(GetTexts.load_texts("inventory_armors", self.lang))
         for armor in inventory_armors:
-            self.ui.change_text(GetTexts.load_texts("inventory_armor", self.lang).format(armor=armor))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_name", self.lang).format(name=armor[0][0]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_armor", self.lang).format(damage=armor[0][3]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_value", self.lang).format(value=armor[0][4]))
+            self.ui.change_text(GetTexts.load_texts("inventory_item_amount", self.lang).format(amount=armor[1]))
 
         self.ui.change_text(GetTexts.load_texts("inventory_miscellaneous", self.lang))
         for item in inventory_items:
@@ -196,8 +215,9 @@ class Inventory:
         -----
         Each elixir is shown along with the amount.
         """
-        for el in self.elixir_inventory:
-            self.ui.change_text(GetTexts.load_texts("inventory_misc_item", self.lang).format(el=el))
+        for el in self.inventory:
+            if el[0][2] == "elixir":
+                self.ui.change_text(GetTexts.load_texts("inventory_misc_item", self.lang).format(el=el))
 
     @staticmethod
     def remove_from_inv(item_name, inv):
@@ -240,13 +260,13 @@ class Inventory:
                 return True
         return False
 
-    def equip_weapon(self, item_name):
+    def equip_weapon(self, item):
         """
         Equips the selected weapon for the player.
 
         Parameters
         ----------
-        item_name : str
+        item : str
             The name of the weapon to equip.
 
         Returns
@@ -255,28 +275,24 @@ class Inventory:
             A tuple containing the old weapon's damage and the new weapon's damage,
             or None if the weapon could not be equipped.
         """
-        old_weapon_damage = 0
-        for weapon in Library.WEAPONS:
-            if item_name == weapon[0]:
-                if len(self.weapon) > 0:
-                    for old_weapon in Library.WEAPONS:
-                        if self.weapon[0] == old_weapon[0]:
-                            old_weapon_damage = old_weapon[1]
-                            self.add_to_inv([self.weapon[0], old_weapon[1]], self.inventory)
-                            self.weapon.remove(self.weapon[0])
-                            break
-                self.weapon.append(item_name)
-                self.ui.change_text(GetTexts.load_texts("inventory_equipped_weapon", self.lang).format(item_name=item_name))
-                return old_weapon_damage, weapon[1]
-        return None
+        self.damage_from_weapon = item[0][3]
+        if len(self.weapon) > 0:
+            self.weapon[0] = item[0]
+        else:
+            self.weapon.append(item[0])
 
-    def equip_armor(self, item_name):
+        self.remove_from_inv(item[0][0], self.inventory)
+
+        self.ui.change_text(GetTexts.load_texts("inventory_equipped_weapon", self.lang).format(weapon=item[0][0]))
+
+
+    def equip_armor(self, item):
         """
         Equips the selected armor for the player.
 
         Parameters
         ----------
-        item_name : str
+        item : str
             The name of the armor to equip.
 
         Returns
@@ -285,17 +301,12 @@ class Inventory:
             A tuple containing the old armor value and the new armor value,
             or None if the armor could not be equipped.
         """
-        old_armor_value = 0
-        for armor in Library.ARMORS:
-            if item_name == armor[0]:
-                if len(self.armor) > 0:
-                    for old_armor in Library.ARMORS:
-                        if self.armor[0] == old_armor[0]:
-                            old_armor_value = old_armor[1]
-                            self.add_to_inv([self.armor[0], old_armor[1]], self.inventory)
-                            self.armor.remove(self.armor[0])
-                            break
-                self.armor.append(item_name)
-                self.ui.change_text(GetTexts.load_texts("inventory_equipped_armor", self.lang).format(item_name))
-                return old_armor_value, armor[1]
-        return None
+        self.armor_from_armor = item[0][3]
+        if len(self.armor) > 0:
+            self.armor[0] = item[0]
+        else:
+            self.armor.append(item[0])
+
+        self.remove_from_inv(item[0][0], self.inventory)
+        self.ui.change_text(GetTexts.load_texts("inventory_equipped_armor", self.lang).format(armor=item[0][0]))
+

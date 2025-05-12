@@ -3,7 +3,7 @@ import os.path
 
 
 class SaveGame:
-    def __init__(self, player, plot_manager):
+    def __init__(self, player, scene_manager, flag_manager):
         """
         SaveGame class used to store player and plot data in a file.
 
@@ -11,8 +11,10 @@ class SaveGame:
         ----------
         player : hero_of_embers.player.Player
             Player class instance.
-        plot_manager : hero_of_embers.plot_manager.PlotManager
-            PlotManager class instance.
+        scene_manager : hero_of_embers.data_manager.SceneManager
+            SceneManager class instance.
+        flag_manager : hero_of_embers.flag_manager.FlagManager
+            FlagManager class instance.
         """
         # Player Data
         self.player_name = player.name
@@ -29,8 +31,11 @@ class SaveGame:
         self.player_level = player.level_handler.level
         self.player_experience = player.level_handler.level
 
-        # Plot Data
-        self.current_scene = plot_manager.current_scene
+        # Scenes Data
+        self.scenes_current_scene = scene_manager.current_scene
+
+        # Flags data
+        self.flags = flag_manager.flags
 
         # All data prepared to save
         self.data = {
@@ -47,7 +52,8 @@ class SaveGame:
             "player_armor_equiped": self.player_armor_equiped,
             "player_level": self.player_level,
             "player_experience": self.player_experience,
-            "current_scene": self.current_scene
+            "scenes_current_scene": self.scenes_current_scene,
+            "flags": self.flags
         }
 
     def save_game(self):
@@ -61,7 +67,7 @@ class SaveGame:
 
 
 class LoadGame:
-    def __init__(self, player, plot_manager):
+    def __init__(self, player, scene_manager, flag_manager):
         """
         LoadGame class used to load saved game data.
 
@@ -69,11 +75,14 @@ class LoadGame:
         ----------
         player : hero_of_embers.player.Player
             Player class instance.
-        plot_manager : hero_of_embers.plot_manager.PlotManager
-            PlotManager class instance.
+        scene_manager : hero_of_embers.data_manager.SceneManager
+            SceneManager class instance.
+        flag_manager : hero_of_embers.flag_manager.FlagManager
+            FlagManager class instance.
         """
         self.player = player
-        self.plot_manager = plot_manager
+        self.scene_manager = scene_manager
+        self.flag_manager = flag_manager
 
     @staticmethod
     def load_game():
@@ -114,7 +123,8 @@ class LoadGame:
             self.player.inventory.armor = save_data["player_armor_equiped"]
             self.player.level = save_data["player_level"]
             self.player.experience = save_data["player_experience"]
-            self.plot_manager.current_scene = save_data["current_scene"]
+            self.scene_manager.current_scene = save_data["current_scene"]
+            self.flag_manager.flags = save_data["flags"]
             print("Save file loaded successfully!")
         else:
             print("There is no save file to load!")

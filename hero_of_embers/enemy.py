@@ -11,11 +11,9 @@ class Enemy(Entity):
     ----------
     experience_drop : int
         The amount of experience points the enemy drops when defeated.
-    money_drop : int
-        The amount of money the enemy drops when defeated.
     """
 
-    def __init__(self, name="Wolf", hp=100, armor=100, damage=15, experience=20, money=20):
+    def __init__(self, name="Wolf", hp=100, armor=100, damage=15, experience=20):
         """
         Initializes an Enemy instance with specific stats and rewards.
 
@@ -31,9 +29,6 @@ class Enemy(Entity):
             The amount of damage the enemy can inflict (default is 15).
         experience : int, optional
             The experience points granted to the player upon defeat (default is 20).
-        money : int, optional
-            The money granted to the player upon defeat (default is 20).
         """
         super().__init__(name, hp, armor, damage)
         self.experience_drop = experience
-        self.money_drop = money

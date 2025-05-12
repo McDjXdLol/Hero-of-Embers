@@ -1,9 +1,7 @@
 import random
 import time
 
-from get_language_text import GetTexts
-from library import Library
-
+from hero_of_embers.get_language_text import GetTexts
 
 class BattleHandler:
     """
@@ -35,6 +33,8 @@ class BattleHandler:
         self.lang = lang
         self.ui = ui
         self.player = player
+        self.player_damage = self.player.damage + self.player.inventory.damage_from_weapon
+        self.player_armor = self.player.armor + self.player.inventory.armor_from_armor
         self.enemy = enemy
 
     def battle_information(self):
@@ -49,8 +49,8 @@ class BattleHandler:
         return [
             f"    {self.player.name}",
             f"HP:{self.player.hp}",
-            f"Armor: {self.player.armor}",
-            f"Damage: {self.player.damage}",
+            f"Armor: {self.player_armor}",
+            f"Damage: {self.player_damage}",
             f"    {self.enemy.name}",
             f"HP: {self.enemy.hp}",
             f"Armor: {self.enemy.armor}",
@@ -73,7 +73,7 @@ class BattleHandler:
         time.sleep(0.5)
         self.ui.change_text([
             f"{self.enemy.name} dealt {self.enemy.damage} dmg!",
-            f"{self.player.name} HP: {self.player.hp} Armor: {self.player.armor}"
+            f"{self.player.name} HP: {self.player.hp} Armor: {self.player_armor}"
         ])
         return 0
 
@@ -116,9 +116,9 @@ class BattleHandler:
         int
             1 if enemy goes next, 0 if player goes again.
         """
-        self.enemy.deal_damage(self.player.damage)
+        self.enemy.deal_damage(self.player_damage)
         self.ui.change_text([
-            f"{self.player.name} dealt {self.player.damage} dmg!",
+            f"{self.player.name} dealt {self.player_damage} dmg!",
             f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"
         ])
         return 1
@@ -133,9 +133,9 @@ class BattleHandler:
             0 if the enemy goes next, 1 if the player goes again.
         """
         if random.random() < 0.3:
-            self.enemy.deal_damage(self.player.damage)
+            self.enemy.deal_damage(self.player_damage)
             self.ui.change_text([
-                f"{self.player.name} dealt {self.player.damage} dmg!",
+                f"{self.player.name} dealt {self.player_damage} dmg!",
                 f"{self.enemy.name} HP {self.enemy.hp} Armor: {self.enemy.armor}"
             ])
             return 0
@@ -153,7 +153,7 @@ class BattleHandler:
             1 if enemy goes next, 0 if player goes again.
         """
         if random.random() < 0.2:
-            dmg = self.player.damage * 5
+            dmg = self.player_damage * 5
             self.enemy.deal_damage(dmg)
             self.ui.change_text([
                 f"{self.player.name} hit strong attack! {self.player.name} dealt {dmg} dmg!",
@@ -171,31 +171,33 @@ class BattleHandler:
         Returns
         -------
         int
-            0 if player should proceed to the enemy's turn, or repeat the player's turn.
+           0 if player should proceed to the enemy's turn, or repeat the player's turn.
         """
-        elixirs_in_inv = list(self.player.inventory.elixir_inventory)
-        if not elixirs_in_inv:
-            self.ui.change_text(GetTexts.load_texts("battle_no_elixir", self.lang).format(name=self.player.name))
-            return 0
+        elixirs_in_inv = []
+        for item in self.player.inventory.inventory:
+            if item[0][2] == "elixir":
+                elixirs_in_inv.append(item)
+        if len(elixirs_in_inv) == 0:
+           self.ui.change_text(
+                GetTexts.load_texts("battle_no_elixirs", self.lang).format(name=self.player.name)
+           )
+           return 0
         while True:
-            self.ui.change_text(GetTexts.load_texts("battle_choose_elixir", self.lang))
-            for eli_nr, eli in enumerate(elixirs_in_inv):
-                self.ui.change_text(GetTexts.load_texts("battle_elixir_option", self.lang).format(eli_nr=eli_nr+1, eli=eli))
-            chosen_elixir = self.ui.get_input(0, "")
-            if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
-                self.ui.change_text(GetTexts.load_texts("battle_incorrect_number_elixir", self.lang))
-            else:
-                break
-        chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0]
+           self.ui.change_text(GetTexts.load_texts("battle_choose_elixir", self.lang))
+           for eli_nr, eli in enumerate(elixirs_in_inv):
+               self.ui.change_text(GetTexts.load_texts("battle_elixir_option", self.lang).format(eli_nr=eli_nr+1, eli=eli))
+           chosen_elixir = self.ui.get_input(0, "")
+           if chosen_elixir < 1 or chosen_elixir > len(elixirs_in_inv):
+               self.ui.change_text(GetTexts.load_texts("battle_incorrect_number_elixir", self.lang))
+           else:
+               break
+        chosen_elixir_name = elixirs_in_inv[chosen_elixir - 1][0][0]
         self.ui.change_text(GetTexts.load_texts("battle_chosen_elixir", self.lang).format(chosen_elixir_name=chosen_elixir_name))
-        self.player.inventory.remove_from_inv(chosen_elixir_name, self.player.inventory.elixir_inventory)
-        for elix in Library.HEAL_ITEMS:
-            if chosen_elixir_name in elix:
-                self.player.heal_hp(elix[1])
-                self.ui.change_text(
-                    f"{self.player.name} was healed for {elix[1]} hp. {self.player.name} has {self.player.hp} HP!"
-                )
-                return 0
+        self.player.inventory.remove_from_inv(elixirs_in_inv[chosen_elixir - 1], self.player.inventory.inventory)
+
+
+        self.player.heal_hp(elixirs_in_inv[chosen_elixir - 1][0][3])
+        self.ui.change_text(f"{self.player.name} was healed for {elixirs_in_inv[chosen_elixir - 1][0][3]} hp. {self.player.name} has {self.player.hp} HP!")
         return 0
 
     def attack_selection(self, move_sel):
@@ -252,14 +254,4 @@ class BattleHandler:
 
     def give_drop(self):
         self.player.level_handler.give_experience(self.enemy.experience_drop)
-        self.player.inventory.wallet += self.enemy.money_drop
-        self.ui.change_text(
-            GetTexts.load_texts("battle_enemy_money_drop", self.lang).format(money_drop=self.enemy.money_drop))
         self.player.armor += int(self.player.max_armor / 2)
-        if self.enemy.experience_drop >= 25:
-            dropping_item = Library.HEAL_ITEMS[random.randint(3, len(Library.HEAL_ITEMS) - 1)]
-            amount = random.randint(1, 3)
-        else:
-            dropping_item = Library.HEAL_ITEMS[random.randint(0, 3)]
-            amount = random.randint(1, 4)
-        self.player.inventory.add_to_inv(dropping_item[0], self.player.inventory.elixir_inventory, amount=amount)

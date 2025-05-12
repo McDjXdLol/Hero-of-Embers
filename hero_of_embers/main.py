@@ -1,12 +1,12 @@
 import os
 
+from game import Game
 from library import Library
-from player import Player
-from plot_manager import PlotManager
-from save_handler import LoadGame
+from hero_of_embers.player_data.player import Player
 from selection import Selection
 from ui_manager import UI
 from get_language_text import GetTexts
+from hero_of_embers.handlers.save_handler import LoadGame
 
 def main():
     """
@@ -26,35 +26,37 @@ def main():
 
     Returns
     -------
-    None
+    Game
     """
     GetTexts().get_texts()
-    LANGUAGE = Selection(UI("en"), "en").select_language()
-    ui = UI(LANGUAGE)
+    LANGUAGE = "en" # Selection(UI("en"), "en").select_language()
+    UI_MANAGER = UI(LANGUAGE)
 
     # Load saved game data if it exists
     if os.path.exists("hero_of_embers/savegame.json"):
-        user = Player(name="", hp=0, armor=0,
-                      damage=0, player_class="", ui=ui, lang="en")
-        PLOT_MANAGER = PlotManager(user, ui, "en")
-        LoadGame(user, PLOT_MANAGER).load_data()
+        USER = Player(name="", hp=0, armor=0,
+                      damage=0, player_class="", ui=UI_MANAGER, lang="en")
+        GAME = Game(UI_MANAGER, USER, LANGUAGE)
+        LoadGame(USER, GAME.scene_manager, GAME.flag_manager).load_data()
     else:
         # No saved game, start a new one
-        SELECTION = Selection(ui, LANGUAGE)
+        SELECTION = Selection(UI_MANAGER, LANGUAGE)
         NICKNAME = SELECTION.give_nickname()
         CLASS_NR = SELECTION.class_select()
         CHARACTER_CLASS = Library().PLAYER_CLASSES[CLASS_NR]
         DIFFICULTY = SELECTION.give_difficulty_stats()
 
-        # Create new player based on selection
-        user = Player(name=NICKNAME, hp=CHARACTER_CLASS[1] + DIFFICULTY[0],
+        # Create new player based on player selection
+        USER = Player(name=NICKNAME, hp=CHARACTER_CLASS[1] + DIFFICULTY[0],
                       armor=CHARACTER_CLASS[2] + DIFFICULTY[1],
                       damage=CHARACTER_CLASS[3] + DIFFICULTY[2],
-                      player_class=Library.PLAYER_CLASSES[0], ui=ui, lang=LANGUAGE)
-        PLOT_MANAGER = PlotManager(user, ui, LANGUAGE)
-    return PLOT_MANAGER.select_option()
+                      player_class=Library.PLAYER_CLASSES[0], ui=UI_MANAGER, lang=LANGUAGE)
+
+        GAME = Game(UI_MANAGER, USER, LANGUAGE)
+    return GAME
 
 if __name__ == "__main__":
     # Main game loop
-    while main():
-        print("")
+    game = main()
+    game.main()
+

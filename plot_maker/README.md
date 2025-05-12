@@ -21,12 +21,12 @@ The only GUI component of the project! Use `plot_maker_app.py` (requires PyQt6) 
 
 ### To run the plot maker:
 
-```python 
-python run_plot_maker.py
-```
+        ```python 
+        python run_plot_maker.py
+        ```
 
 ## Plans
 So the **plot maker is not done yet**. There is still few variables to add to app, so the game could read it.
-But making plot maker is kinda hard. Because if I add something to plot file i have to add it to Plot Maker app.
+But making plot maker is kinda hard. Because if I add something to plot file I have to add it to Plot Maker app.
 And after few last updates I added a bunch of variables, and I forgot about adding all of them to Plot Maker.
 So for now it's pretty much not working "enough".

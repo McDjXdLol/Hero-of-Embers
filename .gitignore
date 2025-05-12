@@ -1,5 +1,6 @@
 .idea
 __pycache__
+.venv
 versioning
 .gitignore
-.venv
+create_version.py
