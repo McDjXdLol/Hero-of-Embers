@@ -1,4 +1,4 @@
-# Hero of Embers - Version 0.3.3 (WIP) 
+# Hero of Embers - Version 0.3.4 (WIP) 
 ![image](https://github.com/user-attachments/assets/9ebc9385-f15a-48cb-9463-6585f2ec4f32)
 
 ## 📖 Table of Contents
@@ -43,7 +43,7 @@ update!
 - [x] Add currency.
 - [x] Add option to trade.
 - [x] Rebuild `plot_maker_app.py`, to be easier to use.
-- [ ] Game data structure overhaul (centralize enemies, items, title & scenes in one unified JSON).
+- [x] Game data structure overhaul (centralize enemies, items, title & scenes in one unified JSON).
 - [ ] Migrate all static game data from library.py to `game_data.json`.
 - [ ] Remove library.py and centralize game data in `game_data.json`.
 - [ ] Add more languages.
@@ -52,8 +52,8 @@ update!
 - [ ] Remake plot.
 - [ ] Expand the storyline with additional scenes and choices.
 - [ ] Improve the user interface (e.g. color-coded text, better formatting).
-- [ ] ~~Integrate sound and music~~.
 - [ ] Include demo screenshots or GIFs in the README.md.
+- [ ] ~~Integrate sound and music~~.
 
 <a name='installation'></a>
 
