@@ -123,6 +123,10 @@
                   {
                     "type": "give_item",
                     "item_id": "old_mop"
+                  },
+                  {
+                    "type": "set_flag",
+                    "flag_id": "game_started"
                   }
                 ]
               },
@@ -242,12 +246,6 @@
       "id": "whispers_of_fire",
       "name": "Whispers of Fire",
       "description": "One evening, while scrubbing near a table occupied by the recently arrived mercenaries, you overhear their hushed, excited talk. They speak of a dragon stirring in the northern forests – of smoke, fire, and an ancient, slumbering threat.",
-      "requirements": [
-        {
-          "type": "flag_is_set",
-          "flag_id": "mercenaries_arrived"
-        }
-      ],
       "choices": [
         {
           "id": "eavesdrop_mercs",

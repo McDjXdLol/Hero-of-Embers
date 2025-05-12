@@ -6,11 +6,6 @@ def check_for_file():
     """
     Gets the file path for the scene data based on the language.
 
-    Parameters
-    ----------
-    lang : str, optional
-        The language code (e.g., 'en', 'pl').  Defaults to 'en'.
-
     Returns
     -------
     str
@@ -359,7 +354,7 @@ class SceneManager:
                 items.append([item.get(self.ITEM_ID, {}), item.get(self.CHANCE)])
             return items
 
-    def get_scene_data(self, type_of_data):
+    def get_scene_data(self, type_of_data, scene_id=""):
         """
         Retrieves data for the current scene.
 
@@ -367,13 +362,18 @@ class SceneManager:
         ----------
         type_of_data : str
             The type of data to retrieve (e.g., 'name', 'description').
+        scene_id : str
+            The name of scene that will be returned.
 
         Returns
         -------
         Any
             The requested data for the scene, or None if not found.
         """
-        scene = self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {})
+        if scene_id == "":
+            scene_id = self.current_scene
+
+        scene = self.scenes_data.get(self.SCENES, {}).get(scene_id, {})
         match type_of_data:
             case self.NAME:
                 return scene.get(self.NAME)
@@ -386,7 +386,7 @@ class SceneManager:
                     return False
             case self.REQUIREMENTS_FLAGS:
                 flags = []
-                if self.is_there_scene_requirements():
+                if self.is_there_scene_requirements(scene_id):
                     for requirements in scene.get(self.REQUIREMENTS, []):
                         if requirements.get(self.TYPE, {}) == self.FLAG_IS_SET:
                             flags.append(requirements.get(self.FLAG_ID, {}))
@@ -396,7 +396,7 @@ class SceneManager:
                     return flags
             case self.REQUIREMENTS_ITEMS:
                 required_items = []
-                if self.is_there_scene_requirements():
+                if self.is_there_scene_requirements(scene_id):
                     for requirements in scene.get(self.REQUIREMENTS, []):
                         if requirements.get(self.TYPE, {}) == self.HAVE_ITEM:
                             required_items.append(requirements.get(self.ITEM_ID, {}))
@@ -444,7 +444,7 @@ class SceneManager:
         scene = self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {})
         return "is_terminal" in scene and bool(scene[self.IS_TERMINAL])
 
-    def is_there_scene_requirements(self):
+    def is_there_scene_requirements(self, scene_id):
         """
         Checks if the current scene has requirements.
 
@@ -453,7 +453,7 @@ class SceneManager:
         bool
             True if the scene has requirements, False otherwise.
         """
-        scene = self.scenes_data.get(self.SCENES, {}).get(self.current_scene, {})
+        scene = self.scenes_data.get(self.SCENES, {}).get(scene_id, {})
         return self.REQUIREMENTS in scene and bool(scene[self.REQUIREMENTS])
 
     def is_there_scene_on_enter_effects(self):
