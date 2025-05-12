@@ -9,11 +9,12 @@
       "gold": 0
     }
   },
-  "healing_items": {
+  "items": {
     "lesser_vitality_draught": {
       "id": "lesser_vitality_draught",
       "name": "Lesser Vitality Draught",
       "description": "A simple yet effective drink that restores a bit of lost energy. Invaluable in minor skirmishes.",
+      "type": "elixir",
       "heal_amount": 10,
       "value": 15
     },
@@ -21,6 +22,7 @@
       "id": "minor_restoration_phial",
       "name": "Minor Restoration Phial",
       "description": "A glass phial filled with a soothing liquid. Brings relief and allows you to quickly return to full strength.",
+      "type": "elixir",
       "heal_amount": 20,
       "value": 30
     },
@@ -28,6 +30,7 @@
       "id": "standard_life_potion",
       "name": "Standard Life Potion",
       "description": "The essence of life in liquid form. A solid dose of regeneration for those who have sustained more serious wounds.",
+      "type": "elixir",
       "heal_amount": 45,
       "value": 70
     },
@@ -35,6 +38,7 @@
       "id": "greater_vigor_tonic",
       "name": "Greater Vigor Tonic",
       "description": "A thick elixir that strengthens both body and spirit. Allows for greater exertion and increases resistance to the hardships of the journey.",
+      "type": "elixir",
       "heal_amount": 60,
       "value": 90
     },
@@ -42,6 +46,7 @@
       "id": "major_mending_brew",
       "name": "Major Mending Brew",
       "description": "A potent concoction with an intense herbal aroma. Heals deep wounds and restores vitality in the blink of an eye.",
+      "type": "elixir",
       "heal_amount": 80,
       "value": 120
     },
@@ -49,11 +54,10 @@
       "id": "supreme_essence_of_life",
       "name": "Supreme Essence of Life",
       "description": "The rarest and most precious of elixirs. Contains the pure essence of life, capable of reversing even the most severe injuries.",
+      "type": "elixir",
       "heal_amount": 100,
       "value": 150
-    }
-  },
-  "items": {
+    },
     "old_mop": {
       "id": "old_mop",
       "name": "Old Mop",

@@ -106,7 +106,7 @@ class Game:
                                 # Chances to drop
                                 if random.random() < item[1]:
                                     self.ui.change_text(GetTexts().load_texts("battle_enemy_item_drop", self.lang).format(
-                                        drop_name=self.items_init.get_item(item[0])[0][0]))
+                                        drop_name=self.items_init.get_item(item[0])[0]))
                                     self.player.inventory.add_to_inv(self.items_init.get_item(item[0]),
                                                                      self.player.inventory.inventory, 1)
                             # -------------------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ class Game:
                                     item_to_give = self.items_init.get_item(item_id)
                                     self.ui.change_text(
                                         GetTexts.load_texts("battle_enemy_item_drop", self.lang).format(
-                                            drop_name=item_to_give[0][0]))
+                                            drop_name=item_to_give[0]))
                                     self.player.inventory.add_to_inv(item_to_give, self.player.inventory.inventory, 1)
                             # -------------------------------------------------------------------------------------------------------
 
@@ -193,7 +193,7 @@ class Game:
                                 GetTexts.load_texts("battle_enemy_item_drop", self.lang).format(
                                     drop_name=item_to_give[0][0][0]))
 
-                        self.player.inventory.add_to_inv(self.player.inventory.inventory, item_to_give, 1)
+                            self.player.inventory.add_to_inv(self.player.inventory.inventory, item_to_give, 1)
                         # -------------------------------------------------------------------------------------------------------
 
                         # Change scene
@@ -205,6 +205,7 @@ class Game:
 
                 else:
                     self.ui.change_text("You don't meet requirements for these option!")
+                    continue
             # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             else:
@@ -236,4 +237,4 @@ if __name__ == "__main__":
     from ui_manager import UI
     from hero_of_embers.player_data.player import Player
 
-    Game(UI("en"), Player(name="DEBUG", hp=50, armor=0, damage=5, player_class="", ui=UI("en"), lang="en"), "en").main()
+    Game(UI("en"), Player(name="DEBUG", hp=50, armor=0, damage=25, player_class="", ui=UI("en"), lang="en"), "en").main()

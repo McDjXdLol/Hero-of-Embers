@@ -161,6 +161,7 @@ class SceneManager:
         self.VALUE = "value"
         self.HEALTH = "health"
         self.ATTACK = "attack"
+        self.DAMAGE = "damage"
         self.LOOT = "loot"
         self.IS_LAST_SCENE = "is_last_scene"
         self.REQUIREMENTS = "requirements"
