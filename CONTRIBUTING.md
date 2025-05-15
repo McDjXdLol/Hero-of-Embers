@@ -8,7 +8,7 @@ Thanks for your interest in contributing to *Hero of Embers*, a console-based fa
 
 1. **Search Existing Issues**: Before opening a new issue, check if someone else has already reported the problem.
 2. **Provide Details**: Include information like operating system, Python version, and steps to reproduce the bug.
-3. **Include Logs/Screenshots**: If applicable, attach error messages or screenshots to help us understand the issue.
+3. **Include Logs/Screenshots**: If applicable, attach error messages or screenshots to help me understand the issue.
 
 ## ✨ Suggesting Enhancements
 
